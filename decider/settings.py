@@ -24,12 +24,13 @@ STATICFILES_DIRS = [
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'w+5h_h*%g60mz#pn$y#w*k!f1ai1q53n6ju9rt2mnfg8mm9i*-'
+# SECRET_KEY = 'w+5h_h*%g60mz#pn$y#w*k!f1ai1q53n6ju9rt2mnfg8mm9i*-'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['decider-v1.herokuapp.com', 'localhost', 'localhost:8081']
 
 
 # Application definition
@@ -130,6 +131,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 CORS_ORIGIN_ALLOW_ALL = False
 
