@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['decider-v1.herokuapp.com', 'localhost', 'localhost:8080']
+ALLOWED_HOSTS = ['decidor.herokuapp.com', 'localhost', 'localhost:8080']
 
 
 # Application definition
