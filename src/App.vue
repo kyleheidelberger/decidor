@@ -1,37 +1,16 @@
 <template>
-  <div id="app">
-    <button @click="SelectWinner()">Select a Winner</button>
-    <p>
-      {{winner}}
-    </p>
-  </div>
+  <main id="app">
+    <Decks />
+  </main>
 </template>
+
 <script>
-import axios from 'axios';
+import Decks from "./components/Decks.vue";
+
 export default {
-  name: 'App',
-  data() {
-      return {
-          names: null,
-          winner: null,
-      }
-  },
-  mounted: function() {
-    this.FetchData();
-  },
-  methods: {
-      FetchData: function() {
-          var app = this;
-          axios.get(process.env.API_URL + "/api").then(response => {
-              app.names = response.data.names;
-          });
-      },
-      SelectWinner: function() {
-        var winner = this.names[Math.floor(Math.random()*this.names.length)];
-        this.winner = winner;
-      },
+  name: "app",
+  components: {
+    Decks
   }
-}
+};
 </script>
-<style>
-</style>
