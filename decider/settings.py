@@ -30,21 +30,26 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['decider-v1.herokuapp.com', 'localhost', 'localhost:8081']
+ALLOWED_HOSTS = ['decider-v1.herokuapp.com', 'localhost', 'localhost:8080']
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
+    'django.contrib.sites',
+    'registration','django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'api',
-    'corsheaders',
+    'corsheaders',  
 ]
+
+LOGIN_REDIRECT_URL = ''
+ACCOUNT_ACTIVATION_DAYS = 7 
+# One-week activation window; you may, of course, use a different value.
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

@@ -12,6 +12,7 @@ psycopg2 = "*"
 gunicorn = "*"
 whitenoise = "*"
 django-heroku = "*"
+django-registration-redux = "*"
 
 [requires]
 python_version = "3.7"
