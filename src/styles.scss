@@ -58,10 +58,38 @@ $lg: linear-gradient(to right, #7796CB 0%, #A3BCF9 51%, #7796CB 100%);
 .netflixLogo {
     height: 200px;
     filter: blur(2.5px);
-    opacity: 0.80;
+    // opacity: 0.80;
 }
 
 .netflixTitle {
+    cursor: pointer;
+    font-family: 'Lato', sans-serif;
+    position: absolute;
+    z-index: 100;
+    font-size: 2.5rem;
+    border-bottom: 1.5px solid white;
+    text-shadow: 2px 2px 2px #000;
+    box-shadow: 0 4px 2px -2px #000;
+    align-self: center;
+    color: white;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+}
+
+.yelpDeckButton {
+    cursor: pointer;
+    border: none;
+    position: relative;
+    z-index: 1;
+}
+
+.yelpLogo {
+    height: 200px;
+    filter: blur(1px);
+    // opacity: 0.80;
+}
+
+.yelpDeckTitle {
     cursor: pointer;
     font-family: 'Lato', sans-serif;
     position: absolute;
