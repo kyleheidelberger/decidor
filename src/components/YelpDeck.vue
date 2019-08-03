@@ -1,7 +1,7 @@
 
 
 <template>
-  <section class="buttons-container" id="choice-logic">
+  <section class="buttons-container2" id="choice-logic2">
     <button
       v-for="(option, index) in options"
       :key="`${option}${index}`"
@@ -11,9 +11,15 @@
       :class="{ finalChoice: onlyChoice }"
     >{{option}}</button>
 
-    <div v-for="business in businesses" :key="`${business}`">
-      {{ business.name }}
-      <img :src="business.image_url" />"
+    <div class="searchBar">
+      <input type="text" v-model.lazy="cityName" placeholder="City" />
+      <button v-on:click="getBusinesses">Get Businesses</button>
+      <p>Input your current location. You are in: {{ cityName }}</p>
+    </div>
+
+    <div v-for="business in businesses" :key="`${business}`" class="yelp-business">
+      <a :href="business.url">{{ business.name }}</a>
+      <img :src="business.image_url" class="yelp-business-image" />"
     </div>
   </section>
 </template>
@@ -21,6 +27,16 @@
 
 <script>
 import axios from "axios";
+
+const yelpBaseURL =
+  "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?categories=food,all&location=";
+const apiKey =
+  "SM6pJx7LlCeKgElTpKU3PgsBDvqZud92PBBhqRBOEunqL9az6MmnAN9GUf4_mjjQva10STsyAlOs6RacEdskjV3qx7X_SjhqtpFVY0G0KzKvDoXcb4s-X2eZHOc5XXYx";
+// const LOCATIONS = "Durham, Greensboro, Raleigh";
+
+function buildURL(url) {
+  return yelpBaseURL + url;
+}
 
 export default {
   name: "YelpDeck",
@@ -57,29 +73,51 @@ export default {
       copyChoiceList: [],
       endIndex: 2,
       info: null,
-      cityName: "Durham",
-      businesses: []
+      //   cityName: "Durham",
+      businesses: [],
+      //   locations: LOCATIONS.split(","), // create an array of locations
+      cityName: "" // set default location to Durham
     };
   },
   mounted() {
-    // calls the search function
-    // this.showResults(this.cityName);
-    // this.buttonListener();
-    axios
-      .get(
-        `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?categories=food,all&location=${this.cityName}`,
-        {
+    this.getCityName();
+    // console.log(this.cityName);
+    // this.getBusinesses(this.cityName);
+    // axios
+    //   .get(
+    //     `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?categories=food,all&cityName=${this.cityName}`,
+    //     {
+    //       headers: {
+    //         "Access-Control-Allow-Origin": "*",
+    //         Authorization: `Bearer SM6pJx7LlCeKgElTpKU3PgsBDvqZud92PBBhqRBOEunqL9az6MmnAN9GUf4_mjjQva10STsyAlOs6RacEdskjV3qx7X_SjhqtpFVY0G0KzKvDoXcb4s-X2eZHOc5XXYx`
+    //       }
+    //     }
+    //   )
+    //   .then(response => {
+    //     this.businesses = response.data.businesses;
+    //   });
+  },
+  methods: {
+    getCityName() {
+      console.log(this.cityName);
+    },
+    getBusinesses(cityName) {
+      let apiURL = buildURL(this.cityName);
+      axios
+        .get(apiURL, {
           headers: {
             "Access-Control-Allow-Origin": "*",
-            Authorization: `Bearer SM6pJx7LlCeKgElTpKU3PgsBDvqZud92PBBhqRBOEunqL9az6MmnAN9GUf4_mjjQva10STsyAlOs6RacEdskjV3qx7X_SjhqtpFVY0G0KzKvDoXcb4s-X2eZHOc5XXYx`
+            Authorization: `Bearer ${apiKey}`
           }
-        }
-      )
-      .then(response => {
-        this.businesses = response.data.businesses;
-      });
-  }
-  //   methods: {
+        })
+        .then(response => {
+          this.businesses = response.data.businesses;
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
+  },
   //     searchYelp(cityName) {
   //       axios
   //         .get(
@@ -147,5 +185,28 @@ export default {
   //       });
   //     }
   //   }
+  computed: {
+    processedBusinesses() {
+      let businesses = this.businesses;
+
+      businesses.map(post => {
+        let imgObj = post.multimedia.find(
+          media => media.format === "superJumbo"
+        );
+        business.image_url = imgObj
+          ? imgObj.url
+          : "http://placehold.it/300x200?text=N/A";
+      });
+
+      let i,
+        j,
+        chunkedArray = [],
+        chunk = 4;
+      for (i = 0, j = 0; i < business.length; i += chunk, j++) {
+        chunkedArray[j] = businesses.slice(i, i + chunk);
+      }
+      return chunkedArray;
+    }
+  }
 };
 </script>

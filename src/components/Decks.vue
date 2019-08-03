@@ -2,8 +2,8 @@
   <section class="deck">
     <div class="container">
       <h2
-        v-if="hiddenCards"
-        @click="hiddenCards = false, hiddenDeck = true"
+        v-if="hiddenCards2"
+        @click="hiddenCards2 = false, hiddenDeck = true"
         class="netflixTitle"
       >Netflix</h2>
       <button
