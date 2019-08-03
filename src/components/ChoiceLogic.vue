@@ -5,7 +5,7 @@
       :key='`${option}${index}`'
       @click='selectOption(index)'
       class='option-buttons button-style'
-      :disabled='validated === true'
+      :disabled='validated'
       :class='{ finalChoice: onlyChoice }'
     >{{option}}</button>
   </section>
@@ -18,14 +18,8 @@ export default {
   props: {
     choices: {
       type: Array,
-      default() {
-        return ['Queer Eye', 'Stranger Things', 
-        'Bojack Horseman', 'Orange is the New Black', 
-        'Unbreakable Kimmy Schmidt', 'American Vandal', 
-        'Mindhunter', 'Russian Doll',
-        'Master of None', 'GLOW',
-        'The Umbrella Academy', 'Big Mouth', 
-        'Dark', 'The Crown']
+        default() {
+        return []
       }
     }
   },

@@ -1,16 +1,16 @@
 <template>
   <main id="app">
-    <Landing />
+    <Decks />
   </main>
 </template>
 
 <script>
-import Landing from "./components/Landing.vue";
+import Decks from "./components/Decks.vue";
 
 export default {
   name: "app",
   components: {
-    Landing
+    Decks
   }
 };
 </script>
