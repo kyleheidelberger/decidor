@@ -1,3 +1,13 @@
+if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(displayLocationInfo);
+}
+
+function displayLocationInfo(position) {
+    const lng = position.coords.longitude;
+    const lat = position.coords.latitude;
+
+    console.log(`longitude: ${lng} | latitude: ${lat}`);
+}
 
 // fetches data from iTunes API and returns it (using variable 'searchText')
 function searchYelp(zipCode) {
