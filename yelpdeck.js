@@ -9,9 +9,11 @@ function displayLocationInfo(position) {
     console.log(`longitude: ${lng} | latitude: ${lat}`);
 }
 
+
+
 // fetches data from iTunes API and returns it (using variable 'searchText')
-function searchYelp(zipCode) {
-    return fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?categories=food,all&location.zip_code=${zipCode}`, {
+function searchYelp(lng, lat) {
+    return fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?categories=food,all&longitude=${lng}&latitude=${lat}`, {
         headers: {
             "Access-Control-Allow-Origin": "*",
             "Authorization": `Bearer SM6pJx7LlCeKgElTpKU3PgsBDvqZud92PBBhqRBOEunqL9az6MmnAN9GUf4_mjjQva10STsyAlOs6RacEdskjV3qx7X_SjhqtpFVY0G0KzKvDoXcb4s-X2eZHOc5XXYx`
@@ -29,9 +31,9 @@ function searchYelp(zipCode) {
 
 
 // display results of search
-function showResults(zipCode) {
+function showResults(lng, lat) {
     // call searchYelp to get API data
-    searchYelp(zipCode)
+    searchYelp(lng, lat)
         .then(function (data) {
             console.log(data)
 
@@ -84,12 +86,12 @@ document.addEventListener('DOMContentLoaded', function () {
     button.addEventListener('click', function (event) {
         event.preventDefault()
         // adds user term= to user input and encodes for url
-        let zipCode = encodeURIComponent(button.value)
-        console.log(zipCode)
+        // let zipCode = encodeURIComponent(button.value)
+        // console.log(zipCode)
         // clears the search
-        button.value = ''
+        // button.value = ''
 
         // calls the search function
-        showResults(zipCode)
+        showResults(lng, lat)
     })
 })
