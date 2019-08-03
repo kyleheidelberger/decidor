@@ -53,8 +53,7 @@ export default {
       // hiddenCards: true,
       hiddenDeck: false,
       hiddenNetflix: true,
-      hiddenFood: true,
-      joey: ''
+      hiddenFood: true
     }
   },
   mounted() {
