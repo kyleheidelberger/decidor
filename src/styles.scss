@@ -61,20 +61,20 @@ $lg: linear-gradient(to right, #7796CB 0%, #A3BCF9 51%, #7796CB 100%);
     // opacity: 0.80;
 }
 
-.netflixTitle {
-    cursor: pointer;
-    font-family: 'Lato', sans-serif;
-    position: absolute;
-    z-index: 100;
-    font-size: 2.5rem;
-    border-bottom: 1.5px solid white;
-    text-shadow: 2px 2px 2px #000;
-    box-shadow: 0 4px 2px -2px #000;
-    align-self: center;
-    color: white;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-}
+// .netflixTitle {
+//     cursor: pointer;
+//     font-family: 'Lato', sans-serif;
+//     position: absolute;
+//     z-index: 100;
+//     font-size: 2.5rem;
+//     border-bottom: 1.5px solid white;
+//     text-shadow: 2px 2px 2px #000;
+//     box-shadow: 0 4px 2px -2px #000;
+//     align-self: center;
+//     color: white;
+//     letter-spacing: 2.5px;
+//     text-transform: uppercase;
+// }
 
 .yelpDeckButton {
     cursor: pointer;
@@ -134,4 +134,33 @@ $lg: linear-gradient(to right, #7796CB 0%, #A3BCF9 51%, #7796CB 100%);
 
 .searchBar {
     margin: 20px;
+}
+
+.header-image {
+    height: cover;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    filter: brightness(60%);
+    // -webkit-filter: brightness(60%);
+}
+
+.button {
+    z-index: 99;
+    position: absolute;
+}
+
+.title {
+    z-index: 100;
+    position: absolute;
+    font-size: 500%;
+    align-self: center;
+    color: white;
+    font-family: 'Lato', sans-serif;
+    text-shadow: 4px 4px 6px #000;
+}
+
+.banner-container {
+    display: flex;
+    justify-content: center;
 }
