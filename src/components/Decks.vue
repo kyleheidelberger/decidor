@@ -37,7 +37,7 @@
     </div>
 
     <div v-if="!businesses">
-      <ChoiceLogic :choices="allDecks.businesses" />
+      <ChoiceLogic :choices="allDecks.yelpBusinesses" />
     </div>
 
     <div v-for="(business, index) in businesses" :key="`${business}${index}`" class="yelp-business">
@@ -73,7 +73,8 @@ export default {
       allDecks: {
         netflixDeck: [],
         fastFoodDeck: [],
-        businesses: []
+        businesses: [],
+        yelpBusinesses: []
       },
       // hiddenCards: true,
       cityName: "",
@@ -119,10 +120,18 @@ export default {
       "McDonald's",
       "Wendy's",
       "Burger King",
-      "Chick-Fil-A"
+      "Chick-Fil-A",
+      "Bojangles",
+      "Sonic",
+      "Taco Bell",
+      "Moe's",
+      "Five Guys",
+      "Pizza Hut",
+      "Domino's"
     ];
     this.allDecks.fastFoodDeck.image =
       "https://youngwomenshealth.org/wp-content/uploads/2014/02/fast-food.jpg";
+    // this.allDecks.businesses = [];
     this.allDecks.businesses.image =
       "https://blog.yelp.com/wp-content/themes/yelpblog-updated/images/yelp-avatar.png";
   },
@@ -150,13 +159,31 @@ export default {
           }
         })
         .then(response => {
-          this.businesses = response.data.businesses;
-          console.log("businesses then", this.businesses);
+          this.allDecks.businesses = response.data.businesses;
+          this.filterBusinesses(this.allDecks.businesses);
         })
         .catch(error => {
           console.log(error);
         });
       // })
+    },
+    filterBusinesses() {
+      this.allDecks.businesses.map(business => {
+        let businessName = business.name;
+        let businessImageURL = business.image_url;
+        let businessRating = business.rating;
+        let businessURL = business.url;
+
+        this.allDecks.yelpBusinesses.push({
+          name: businessName,
+          imageURL: businessImageURL,
+          rating: businessRating,
+          url: businessURL
+        });
+        return this.allDecks.yelpBusinesses;
+      });
+      // for (let business of this.allDecks.businesses) {
+      // assigns data from fetch businesses to variables:
     }
   }
 };
