@@ -5,6 +5,7 @@
         v-if="hiddenCards"
         @click='hiddenCards = false, hiddenDeck = true'
         class='netflixTitle'>
+        Netflix
         </h2> -->
           <button
           id='deckButton'
@@ -13,7 +14,7 @@
           class='deckButton'
           @click='getCardsOnClick(key)'
           :class='{ hiddenDick: hiddenDeck }'>
-          {{ key }}
+          <!-- {{ key }} -->
             <img class="netflixLogo" src='https://cdn.vox-cdn.com/thumbor/AwKSiDyDnwy_qoVdLPyoRPUPo00=/39x0:3111x2048/1400x1400/filters:focal(39x0:3111x2048):format(png)/cdn.vox-cdn.com/uploads/chorus_image/image/49901753/netflixlogo.0.0.png'>
           </button>
     </div>
