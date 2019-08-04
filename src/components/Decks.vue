@@ -9,11 +9,8 @@
         @click="getCardsOnClick(key)"
         :class="{ hiddenDick: hiddenDeck }"
       >
-        {{ key }}
-        <img
-          class="netflixLogo"
-          src="https://cdn.vox-cdn.com/thumbor/AwKSiDyDnwy_qoVdLPyoRPUPo00=/39x0:3111x2048/1400x1400/filters:focal(39x0:3111x2048):format(png)/cdn.vox-cdn.com/uploads/chorus_image/image/49901753/netflixlogo.0.0.png"
-        />
+        <!-- {{ key }} -->
+        <img class="deckImage" :src="deck.image" />
       </button>
 
       <div v-if="!businesses" class="searchBar">
@@ -116,13 +113,18 @@ export default {
       "Dark",
       "The Crown"
     ];
-
+    this.allDecks.netflixDeck.image =
+      "https://cdn.vox-cdn.com/thumbor/AwKSiDyDnwy_qoVdLPyoRPUPo00=/39x0:3111x2048/1400x1400/filters:focal(39x0:3111x2048):format(png)/cdn.vox-cdn.com/uploads/chorus_image/image/49901753/netflixlogo.0.0.png";
     this.allDecks.fastFoodDeck = [
       "McDonald's",
       "Wendy's",
       "Burger King",
       "Chick-Fil-A"
     ];
+    this.allDecks.fastFoodDeck.image =
+      "https://youngwomenshealth.org/wp-content/uploads/2014/02/fast-food.jpg";
+    this.allDecks.businesses.image =
+      "https://blog.yelp.com/wp-content/themes/yelpblog-updated/images/yelp-avatar.png";
   },
   methods: {
     getCardsOnClick(key) {
