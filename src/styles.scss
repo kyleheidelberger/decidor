@@ -75,3 +75,32 @@ $lg: linear-gradient(to right, #7796CB 0%, #A3BCF9 51%, #7796CB 100%);
     letter-spacing: 2.5px;
     text-transform: uppercase;
 }
+
+.header-image {
+    height: cover;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    filter: brightness(60%);
+    // -webkit-filter: brightness(60%);
+}
+
+.button {
+    z-index: 99;
+    position: absolute;
+}
+
+.title {
+    z-index: 100;
+    position: absolute;
+    font-size: 500%;
+    align-self: center;
+    color: white;
+    font-family: 'Lato', sans-serif;
+    text-shadow: 4px 4px 6px #000;
+}
+
+.banner-container {
+    display: flex;
+    justify-content: center;
+}
