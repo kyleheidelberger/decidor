@@ -16,7 +16,7 @@
         />
       </button>
 
-      <div v-if="!hiddenBusinesses" class="searchBar">
+      <div v-if="!businesses" class="searchBar">
         <input type="text" v-model.lazy="cityName" v-on:change="getBusinesses" placeholder="City" />
         <button @click="getBusinesses">Get Businesses</button>
         <p>
@@ -39,16 +39,11 @@
       <!-- <ChoiceLogic :choices='fastFoodDeck'/> -->
     </div>
 
-    <div v-if="!hiddenBusinesses">
+    <div v-if="!businesses">
       <ChoiceLogic :choices="allDecks.businesses" />
     </div>
 
-    <div
-      v-for="(business, index) in businesses"
-      :key="`${business}${index}`"
-      @click="selectOption(index)"
-      class="yelp-business"
-    >
+    <div v-for="(business, index) in businesses" :key="`${business}${index}`" class="yelp-business">
       <!-- <a :href="business.url"> -->
       {{ business.name }}
       <img :src="business.image_url" class="yelp-business-image" />
@@ -86,7 +81,7 @@ export default {
       // hiddenCards: true,
       cityName: "",
       hiddenDeck: false,
-      hiddenBusinesses: true,
+      businesses: true,
       hiddenNetflix: true,
       hiddenFood: true
     };
@@ -138,7 +133,7 @@ export default {
         this.hiddenFood = false;
       } else {
         console.log("businesses else", this.businesses);
-        this.hiddenBusinesses = false;
+        this.businesses = false;
       }
     },
     getBusinesses() {
