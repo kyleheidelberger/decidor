@@ -13,7 +13,7 @@
         <img class="deckImage" :src="deck.image" />
       </button>
 
-      <div v-if="!businesses" class="searchBar">
+      <div v-if="!hiddenSearch" class="searchBar">
         <input type="text" v-model.lazy="cityName" v-on:change="getBusinesses" placeholder="City" />
         <button @click="getBusinesses">Get Businesses</button>
         <p>
@@ -36,7 +36,7 @@
       <!-- <ChoiceLogic :choices='fastFoodDeck'/> -->
     </div>
 
-    <div v-if="!businesses">
+    <div v-if="!hiddenBusiness">
       <ChoiceLogic :choices="allDecks.yelpBusinesses" />
     </div>
 
@@ -73,15 +73,17 @@ export default {
       allDecks: {
         netflixDeck: [],
         fastFoodDeck: [],
-        businesses: [],
         yelpBusinesses: []
       },
       // hiddenCards: true,
       cityName: "",
       hiddenDeck: false,
-      businesses: true,
+      businesses: [],
+      // businesses: true,
+      hiddenBusiness: true,
       hiddenNetflix: true,
-      hiddenFood: true
+      hiddenFood: true,
+      hiddenSearch: true,
     };
   },
   mounted() {
@@ -132,7 +134,7 @@ export default {
     this.allDecks.fastFoodDeck.image =
       "https://youngwomenshealth.org/wp-content/uploads/2014/02/fast-food.jpg";
     // this.allDecks.businesses = [];
-    this.allDecks.businesses.image =
+    this.allDecks.yelpBusinesses.image =
       "https://blog.yelp.com/wp-content/themes/yelpblog-updated/images/yelp-avatar.png";
   },
   methods: {
@@ -143,8 +145,8 @@ export default {
       } else if (key.includes("fastFoodDeck")) {
         this.hiddenFood = false;
       } else {
-        console.log("businesses else", this.businesses);
-        this.businesses = false;
+        // console.log("businesses else", this.businesses);
+        this.hiddenSearch = false;
       }
     },
     getBusinesses() {
@@ -180,6 +182,8 @@ export default {
           rating: businessRating,
           url: businessURL
         });
+        this.allDecks.businesses = [];
+        this.hiddenSearch = true;
         return this.allDecks.yelpBusinesses;
       });
       // for (let business of this.allDecks.businesses) {
