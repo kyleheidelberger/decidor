@@ -13,4 +13,5 @@ urlpatterns = [
   path('api', views.names),
   # path('accounts/', include('registration.backends.default.urls')),
   path('accounts/', include('allauth.urls')),
+  path('decks/', views.decks, name='decks'),
 ]

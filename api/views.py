@@ -7,3 +7,6 @@ def names(request):
 
 def index(request):
     return render(request, 'index.html')
+
+def decks(request):
+    return render(request, 'decks.html')

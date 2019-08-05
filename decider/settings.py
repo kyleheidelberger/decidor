@@ -54,7 +54,7 @@ INSTALLED_APPS = [
 
 SITE_ID = 1
 
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/decks/'
 ACCOUNT_ACTIVATION_DAYS = 7 
 # One-week activation window; you may, of course, use a different value.
 

@@ -1,17 +1,18 @@
 <script>
-import Decks from "./components/Decks.vue";
+import Landing from "./components/Landing.vue";
 
 export default {
   name: "app",
   components: {
-    Decks
+    Landing,
   }
 };
 </script>
 
 <template>
   <main id="app">
-    <Decks />
+    <Landing />
   </main>
+
 </template>
 
