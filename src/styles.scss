@@ -1,12 +1,17 @@
 @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
 $lg: linear-gradient(to right, #7796CB 0%, #A3BCF9 51%, #7796CB 100%);
-$dlg: linear-gradient(to bottom, #2f6e9a, #424d71, #3b3146, #251b22, #000000);
+$dlg: linear-gradient(to bottom right, #2f6e9a, #335383, #383869, #371d4b, #30002b);
+$blg: linear-gradient(to bottom, #2f6e9a, #335383, #383869, #371d4b);
 $lato: 'Lato', sans-serif;
 $bw: #e6f1f7;
 
 * {
     box-sizing: border-box;
     margin: 0;
+}
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
 body {
@@ -56,11 +61,13 @@ body {
     border: none;
     position: relative;
     z-index: 1;
+    background: transparent;
 }
 
 .container {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 // .netflixTitle {
@@ -143,6 +150,7 @@ body {
     width: 100%;
     position: relative;
     z-index: 1;
+    background: transparent;
     filter: brightness(60%);
     // -webkit-filter: brightness(60%);
 }
@@ -158,10 +166,10 @@ body {
     // -webkit-background-clip: text;
     // -webkit-text-fill-color: transparent;
     margin-top: 20%;
+    align-self: center;
     z-index: 100;
     position: absolute;
     font-size: 500%;
-    align-self: center;
     color: white;
     font-family: $lato;
     text-shadow: 0 1px 0 #ccc, 
@@ -294,17 +302,17 @@ body {
   padding: 12px 24px;
   background: transparent;
   border: 2px solid transparent;
-  border-image: $dlg;
+  border-image: $blg;
   border-image-slice: 1;
   letter-spacing: 1.2px;
   font-family: $lato;
-  color: #0090B2;
+  color: #30002b;
   &:hover,
   &:focus-within {
       cursor: pointer;
-      background: $dlg;
+      background: $blg;
       border: 2px solid transparent;
-      border-image: $dlg;
+      border-image: $blg;
       border-image-slice: 1;
       color: #fff;
   }
@@ -317,9 +325,9 @@ body {
     text-transform: uppercase;
     font-size: 1.3rem;
     padding: 12px 24px;
-    background: $dlg;
+    background: $blg;
     border: 2px solid transparent;
-    border-image: $dlg;
+    border-image: $blg;
     border-image-slice: 1;
     color: #fff;
 }
@@ -332,6 +340,7 @@ body {
 .top-rect {
     background: $dlg;
     width: 100%;
+    z-index: 2;
     position: absolute;
     top: 100px;
     left: 0;
@@ -344,7 +353,7 @@ body {
     display: block;
     background: $bw;
     height: 450px;
-    width: 9000px;
+    width: 9600px;
     position: absolute;
     z-index: 1;
     bottom: -40%;
@@ -386,4 +395,9 @@ body {
   
 .roll-enter-active {
     animation: roll .9s;
+}
+
+.center-title {
+    display: flex;
+    justify-content: center;
 }
