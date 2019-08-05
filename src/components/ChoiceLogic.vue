@@ -4,10 +4,10 @@
       v-for="(option, index) in options"
       :key="`${option}${index}`"
       @click="selectOption(index)"
-      class="option-buttons button-style"
+      class="option-buttons"
       :disabled="validated"
-      :class="{ finalChoice: onlyChoice }"
-    >{{option}}</button>
+      :class="{ finalChoice: onlyChoice }">
+    {{option}}</button>
   </section>
 </template>
 
