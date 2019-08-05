@@ -55,13 +55,44 @@ $lg: linear-gradient(to right, #7796CB 0%, #A3BCF9 51%, #7796CB 100%);
     justify-content: center;
 }
 
-.netflixLogo {
+.deckImage {
     height: 200px;
-    filter: blur(2.5px);
-    opacity: 0.80;
+    width: 200px;
+    // filter: blur(2.5px);
+    // opacity: 0.80;
+    border: 2px solid black;
+    border-radius: 10px;
 }
 
-.netflixTitle {
+// .netflixTitle {
+//     cursor: pointer;
+//     font-family: 'Lato', sans-serif;
+//     position: absolute;
+//     z-index: 100;
+//     font-size: 2.5rem;
+//     border-bottom: 1.5px solid white;
+//     text-shadow: 2px 2px 2px #000;
+//     box-shadow: 0 4px 2px -2px #000;
+//     align-self: center;
+//     color: white;
+//     letter-spacing: 2.5px;
+//     text-transform: uppercase;
+// }
+
+.yelpDeckButton {
+    cursor: pointer;
+    border: none;
+    position: relative;
+    z-index: 1;
+}
+
+.yelpLogo {
+    height: 200px;
+    filter: blur(1px);
+    // opacity: 0.80;
+}
+
+.yelpDeckTitle {
     cursor: pointer;
     font-family: 'Lato', sans-serif;
     position: absolute;
@@ -74,6 +105,38 @@ $lg: linear-gradient(to right, #7796CB 0%, #A3BCF9 51%, #7796CB 100%);
     color: white;
     letter-spacing: 2.5px;
     text-transform: uppercase;
+}
+
+.yelp-business {
+    cursor: pointer;
+    // flex: 1 1;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    font-size: 2.5rem;
+    letter-spacing: 0.2rem;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    text-shadow: 2px 0px 10px rgba(0,0,0,0.4);
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    border: none;
+    border-radius: 15px;
+    background-image: $lg;
+    &:hover:not(.finalChoice),
+    &:focus-within {
+        background-position: right center;
+    }
+}
+
+.yelp-business-image {
+    height: 200px;
+}
+
+.searchBar {
+    margin: 20px;
 }
 
 .header-image {
