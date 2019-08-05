@@ -1,19 +1,12 @@
 <template>
-    <header class='main-image'>
-        <nav class='banner-container'>
-            <img class='logo' src=//i.imgur.com/LDQ128H.png?2>
-            <button class='ghost button'>Log in</button>
-            <button class='fill button'>Register</button>
-              <transition appear
-              name='roll'>
-                <h1 class='title'>What are we going to do today?</h1>
-              </transition>
+  <div class='center-title'>
+    <transition appear
+    name='roll'>
+      <h1 class='title'>What are we going to do today?</h1>
+    </transition>
+  <div class='top-rect'></div>
                     <!-- <img class='header-image' :src='mainImageSrc'/> -->
-
-                    <div class='top-rect'>
-                    </div>
-        </nav>
-    </header>
+    </div>
 </template>
 
 <script>

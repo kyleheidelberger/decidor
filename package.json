@@ -55,7 +55,7 @@
     }
   },
   "vue": {
-    "filenameHashing": false    
+    "filenameHashing": false
   },
   "browserslist": [
     "> 1%",

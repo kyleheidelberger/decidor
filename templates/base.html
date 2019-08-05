@@ -15,9 +15,11 @@
 
     </head>
     <header>
-        <a href="{% url 'account_logout' %}">Logout</a>
-        <a href="{% url 'account_login' %}">Sign In</a>
-        <a href="{% url 'account_signup' %}">Register</a>
+        <nav class='banner-container'>
+            <img class='logo' src="https://i.imgur.com/O6G4X6Bundefined.png"/>
+            <button class='ghost button'><a href="{% url 'account_login' %}">Login</a></button>
+            <button class='fill button'><a href="{% url 'account_signup' %}">Register</a></button>
+        </nav>
     </header>
     <body>
         {% block content %}
