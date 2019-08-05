@@ -174,7 +174,7 @@ export default {
       "Play a Board Game"
     ];
     this.allDecks.activityDeck.image =
-      "https://imgs.6sqft.com/wp-content/uploads/2018/08/23121642/100-free-things-to-do-in-NYC.png";
+      "https://blindgossip.com/wp-content/uploads/2018/05/couple-popcorn-movies.jpg";
     this.allDecks.activityDeck.title = "Activities"
     this.allDecks.foodTypesDeck = [
       "American",
