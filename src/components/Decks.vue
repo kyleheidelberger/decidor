@@ -1,5 +1,7 @@
 <template>
   <section class="deck">
+  <transition appear
+  name="bounce">
     <div class="container">
       <button
         id="deckButton"
@@ -9,8 +11,6 @@
         @click="getCardsOnClick(key)"
         :class="{ hiddenDick: hiddenDeck }">
         <!-- {{ key }} -->
-        <transition appear
-            name="bounce">
             <div class='deck-container'>
                 <h2 class='deckTitle'>{{deck.title}}</h2>
                   <div
@@ -18,7 +18,6 @@
                     <img class="deckImage" :src="deck.image" />
                 </div>
             </div>
-          </transition>
       </button>
 
       <div v-if="!hiddenSearch" class="searchBar">
@@ -30,7 +29,7 @@
         </p>
       </div>
     </div>
-
+    </transition>
     <div v-if="!hiddenNetflix">
       <!-- <ChoiceLogic 
         v-for='(deck, key) in allDecks'
