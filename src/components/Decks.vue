@@ -11,6 +11,7 @@
       >
         <!-- {{ key }} -->
         <img class="deckImage" :src="deck.image" />
+        <span>{{deck.title}}</span>
       </button>
 
       <div v-if="!hiddenSearch" class="searchBar">
@@ -33,6 +34,16 @@
 
     <div v-if="!hiddenFood">
       <ChoiceLogic :choices="allDecks.fastFoodDeck" />
+      <!-- <ChoiceLogic :choices='fastFoodDeck'/> -->
+    </div>
+
+    <div v-if="!hiddenActivity">
+      <ChoiceLogic :choices="allDecks.activityDeck" />
+      <!-- <ChoiceLogic :choices='fastFoodDeck'/> -->
+    </div>
+
+    <div v-if="!hiddenFoodTypes">
+      <ChoiceLogic :choices="allDecks.foodTypesDeck" />
       <!-- <ChoiceLogic :choices='fastFoodDeck'/> -->
     </div>
 
@@ -77,6 +88,8 @@ export default {
       allDecks: {
         netflixDeck: [],
         fastFoodDeck: [],
+        activityDeck: [],
+        foodTypesDeck: [],
         yelpBusinesses: []
       },
       // hiddenCards: true,
@@ -87,6 +100,8 @@ export default {
       hiddenBusiness: true,
       hiddenNetflix: true,
       hiddenFood: true,
+      hiddenActivity: true,
+      hiddenFoodTypes: true,
       hiddenSearch: true
     };
   },
@@ -122,6 +137,7 @@ export default {
     ];
     this.allDecks.netflixDeck.image =
       "https://cdn.vox-cdn.com/thumbor/AwKSiDyDnwy_qoVdLPyoRPUPo00=/39x0:3111x2048/1400x1400/filters:focal(39x0:3111x2048):format(png)/cdn.vox-cdn.com/uploads/chorus_image/image/49901753/netflixlogo.0.0.png";
+    this.allDecks.netflixDeck.title = "Netflix Original Shows";
     this.allDecks.fastFoodDeck = [
       "McDonald's",
       "Wendy's",
@@ -137,9 +153,58 @@ export default {
     ];
     this.allDecks.fastFoodDeck.image =
       "https://youngwomenshealth.org/wp-content/uploads/2014/02/fast-food.jpg";
+    this.allDecks.fastFoodDeck.title = "Fast Food Chains"
+    this.allDecks.activityDeck = [
+      "Play a Sport",
+      "Go to the Movies",
+      "Go to a Park",
+      "Go out to Eat",
+      "Read a Book",
+      "Go Bowling",
+      "Go for a Walk/Hike",
+      "Try a New Recipe",
+      "Go to the Gym",
+      "Ride a Bike",
+      "Go Shopping",
+      "Start Learning a New Skill",
+      "Go out for a Drink",
+      "Plan a Vacation",
+      "Draw, Color, or Paint",
+      "Do Yoga",
+      "Play a Board Game"
+    ];
+    this.allDecks.activityDeck.image =
+      "https://imgs.6sqft.com/wp-content/uploads/2018/08/23121642/100-free-things-to-do-in-NYC.png";
+    this.allDecks.activityDeck.title = "Activities"
+    this.allDecks.foodTypesDeck = [
+      "American",
+      "Chinese",
+      "Thai",
+      "Italian",
+      "Mexican",
+      "Japanese",
+      "Seafood",
+      "Barbecue",
+      "Indian",
+      "Pizza",
+      "Korean",
+      "Cuban",
+      "Mediterranean",
+      "French",
+      "Jamaican",
+      "Middle Eastern",
+      "Steakhouse",
+      "Spanish",
+      "Pub",
+      "German"
+    ];
+    this.allDecks.foodTypesDeck.image =
+      "https://cafedelites.com/wp-content/uploads/2019/01/Chinese-Lemon-Chicken-IMAGE-42-500x500.jpg";
+    this.allDecks.foodTypesDeck.title = "Food Types";
     // this.allDecks.businesses = [];
     this.allDecks.yelpBusinesses.image =
       "https://blog.yelp.com/wp-content/themes/yelpblog-updated/images/yelp-avatar.png";
+    this.allDecks.yelpBusinesses.title = "Restaurants Near Me"
   },
   methods: {
     getCardsOnClick(key) {
@@ -148,6 +213,10 @@ export default {
         this.hiddenNetflix = false;
       } else if (key.includes("fastFoodDeck")) {
         this.hiddenFood = false;
+      } else if (key.includes("activityDeck")) {
+        this.hiddenActivity = false;
+      } else if (key.includes("foodTypesDeck")) {
+        this.hiddenFoodTypes = false;
       } else {
         // console.log("businesses else", this.businesses);
         this.hiddenSearch = false;
