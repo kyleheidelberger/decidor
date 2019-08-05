@@ -13,6 +13,7 @@ whitenoise = "*"
 django-heroku = "*"
 django-registration-redux = "*"
 psycopg2 = "*"
+django-allauth = "*"
 
 [requires]
 python_version = "3.7"

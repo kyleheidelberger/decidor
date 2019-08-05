@@ -1,9 +1,3 @@
-<template>
-  <main id="app">
-    <Decks />
-  </main>
-</template>
-
 <script>
 import Decks from "./components/Decks.vue";
 
@@ -14,3 +8,10 @@ export default {
   }
 };
 </script>
+
+<template>
+  <main id="app">
+    <Decks />
+  </main>
+</template>
+
