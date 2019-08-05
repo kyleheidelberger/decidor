@@ -8,19 +8,18 @@
         v-for="(deck, key) in allDecks"
         :key="`${deck}${key}`"
         class="deckButton"
-        @click="getCardsOnClick(key)"
-        :class="{ hiddenDick: hiddenDeck }">
-        <!-- {{ key }} -->
-            <div class='deck-container'>
-                <h2 class='deckTitle'>{{deck.title}}</h2>
-                  <div
-                  class='overlay'>
-                    <img class="deckImage" :src="deck.image" />
-                </div>
-            </div>
-        </button>
+        @click="sendKey(key)"
+        :class="{ hiddenDick: hiddenDeck }"
+      >
+          <div class='deck-container'>
+          <h2 class='deckTitle'>{{deck.title}}</h2>
+            <div
+            class='overlay'>
+              <img class="deckImage" :src="deck.image" />
+          </div>
       </div>
-    </transition>
+      </button>
+
       <div v-if="!hiddenSearch" class="searchBar">
         <input type="text" v-model.lazy="cityName" v-on:change="getBusinesses" placeholder="City" />
         <button @click="getBusinesses">Get Businesses</button>
@@ -68,20 +67,21 @@
     <div v-if="!hiddenBusiness">
       <transition appear
         name='enlorge'>
-      <ChoiceLogic :choices="allDecks.yelpBusinesses" />
+      <ChoiceLogic :choices="allDecks.yelpRestaurants" />
       </transition>
     </div>
 
     <div
-      v-for="(business, index) in allDecks.yelpBusinesses"
+      v-for="(business, index) in allDecks.yelpRestaurants"
       :key="`${business}${index}`"
-      class="yelp-business"
-    >
-      <!-- <a :href="business.url"> -->
-      {{ business.name }}
-      <img :src="business.imageURL" class="yelp-business-image" />
-      <!-- </a> -->
+      class="yelp-business">
+      <a :href="business.url" target="_blank">
+        {{ business.name }}
+        <img :src="business.imageURL" class="yelp-business-image" />
+      </a>
     </div>
+    </div>
+    </transition>
   </section>
 </template>
 
@@ -91,13 +91,9 @@ import ChoiceLogic from "./ChoiceLogic";
 import axios from "axios";
 
 const yelpBaseURL =
-  "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?categories=food,all&location=";
+  "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?";
 const apiKey =
   "SM6pJx7LlCeKgElTpKU3PgsBDvqZud92PBBhqRBOEunqL9az6MmnAN9GUf4_mjjQva10STsyAlOs6RacEdskjV3qx7X_SjhqtpFVY0G0KzKvDoXcb4s-X2eZHOc5XXYx";
-
-function buildURL(url) {
-  return yelpBaseURL + url;
-}
 
 export default {
   name: "Decks",
@@ -111,13 +107,16 @@ export default {
         fastFoodDeck: [],
         activityDeck: [],
         foodTypesDeck: [],
-        yelpBusinesses: []
+        yelpRestaurants: [],
+        yelpShops: [],
+        yelpArts: [],
+        yelpParks: []
       },
       // hiddenCards: true,
       cityName: "",
+      searchingFor: "",
       hiddenDeck: false,
       businesses: [],
-      // businesses: true,
       hiddenBusiness: true,
       hiddenNetflix: true,
       hiddenFood: true,
@@ -174,7 +173,7 @@ export default {
     ];
     this.allDecks.fastFoodDeck.image =
       "https://youngwomenshealth.org/wp-content/uploads/2014/02/fast-food.jpg";
-    this.allDecks.fastFoodDeck.title = "Fast Food Chains"
+    this.allDecks.fastFoodDeck.title = "Fast Food Chains";
     this.allDecks.activityDeck = [
       "Play a Sport",
       "Go to the Movies",
@@ -196,7 +195,7 @@ export default {
     ];
     this.allDecks.activityDeck.image =
       "https://blindgossip.com/wp-content/uploads/2018/05/couple-popcorn-movies.jpg";
-    this.allDecks.activityDeck.title = "Activities"
+    this.allDecks.activityDeck.title = "Activities";
     this.allDecks.foodTypesDeck = [
       "American",
       "Chinese",
@@ -223,11 +222,24 @@ export default {
       "https://cafedelites.com/wp-content/uploads/2019/01/Chinese-Lemon-Chicken-IMAGE-42-500x500.jpg";
     this.allDecks.foodTypesDeck.title = "Food Types";
     // this.allDecks.businesses = [];
-    this.allDecks.yelpBusinesses.image =
-      "https://blog.yelp.com/wp-content/themes/yelpblog-updated/images/yelp-avatar.png";
-    this.allDecks.yelpBusinesses.title = "Restaurants Near Me"
+    this.allDecks.yelpRestaurants.image =
+      "https://portal.restodata.ca/delice/gallery/images/Square/01_delice-_375-2018-03-21.jpg";
+    this.allDecks.yelpRestaurants.title = "Restaurants";
+    this.allDecks.yelpShops.image =
+      "https://s3-eu-west-1.amazonaws.com/brussels-images/content/gallery/visit/article/shopping-brussels-2018_sq_640.jpg";
+    this.allDecks.yelpShops.title = "Shops";
+    this.allDecks.yelpArts.image =
+      "https://wearewingard.com/wp-content/uploads/2018/04/cummermuseum-1920x1080-gallery3-768x768.jpg";
+    this.allDecks.yelpArts.title = "Arts & Entertainment";
+    this.allDecks.yelpParks.image =
+      "https://www.discoverdurham.com/imager/s3_us-east-1_amazonaws_com/durham-2019/images/Nature-Science/DUKE_GARDENS_BRIDGE_aea8419375870281fb13854150585c99.jpg";
+    this.allDecks.yelpParks.title = "Parks";
   },
   methods: {
+    sendKey(key) {
+      this.getCardsOnClick(key);
+      this.getSearchParam(key);
+    },
     getCardsOnClick(key) {
       this.hiddenDeck = true;
       if (key.includes("netflixDeck")) {
@@ -239,17 +251,26 @@ export default {
       } else if (key.includes("foodTypesDeck")) {
         this.hiddenFoodTypes = false;
       } else {
-        // console.log("businesses else", this.businesses);
         this.hiddenSearch = false;
       }
     },
-    // getSearchParam(key) {
+    getSearchParam(key) {
+      if (key.includes("yelpRestaurants")) {
+        this.searchingFor = "categories=food";
+      } else if (key.includes("yelpShops")) {
+        this.searchingFor = "categories=shopping,all";
+      } else if (key.includes("yelpArts")) {
+        this.searchingFor = "categories=arts,aquariums,localflavor";
+      } else if (key.includes("yelpParks")) {
+        this.searchingFor = "categories=parks,dog_parks,skate_parks";
+      }
+    },
+    buildURL(url, searchingFor, location) {
+      return `${yelpBaseURL}${this.searchingFor}&location=${this.cityName}`;
+    },
+    getBusinesses(key) {
+      let apiURL = this.buildURL(yelpBaseURL, this.searchingFor, this.cityName);
 
-    // },
-    getBusinesses() {
-      let apiURL = buildURL(this.cityName);
-
-      // Object.keys(this.allDecks).forEach(async (key) => {
       axios
         .get(apiURL, {
           headers: {
@@ -264,7 +285,6 @@ export default {
         .catch(error => {
           console.log(error);
         });
-      // })
     },
     filterBusinesses() {
       this.allDecks.businesses.map(business => {
@@ -273,7 +293,7 @@ export default {
         let businessRating = business.rating;
         let businessURL = business.url;
 
-        this.allDecks.yelpBusinesses.push({
+        this.allDecks.yelpRestaurants.push({
           name: businessName,
           imageURL: businessImageURL,
           rating: businessRating,
@@ -281,10 +301,8 @@ export default {
         });
         this.allDecks.businesses = [];
         this.hiddenSearch = true;
-        return this.allDecks.yelpBusinesses;
+        return this.allDecks.yelpRestaurants;
       });
-      // for (let business of this.allDecks.businesses) {
-      // assigns data from fetch businesses to variables:
     }
   }
 };
