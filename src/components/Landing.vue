@@ -4,7 +4,7 @@
             <button class='ghost button'>Log in</button>
             <button class='fill button'>Register</button>
                 <h1 class='title'>What are we going to do today?</h1>
-                    <img class='header-image' :src='mainImageSrc'/>
+                    <!-- <img class='header-image' :src='mainImageSrc'/> -->
         </div>
     </header>
 </template>

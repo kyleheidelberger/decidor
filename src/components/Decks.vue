@@ -7,11 +7,18 @@
         :key="`${deck}${key}`"
         class="deckButton"
         @click="getCardsOnClick(key)"
-        :class="{ hiddenDick: hiddenDeck }"
-      >
+        :class="{ hiddenDick: hiddenDeck }">
         <!-- {{ key }} -->
-        <img class="deckImage" :src="deck.image" />
-        <span>{{deck.title}}</span>
+        <transition appear
+            name="bounce">
+            <div class='deck-container'>
+                <h2 class='deckTitle'>{{deck.title}}</h2>
+                  <div
+                  class='overlay'>
+                    <img class="deckImage" :src="deck.image" />
+                </div>
+            </div>
+          </transition>
       </button>
 
       <div v-if="!hiddenSearch" class="searchBar">
@@ -32,8 +39,8 @@
       <ChoiceLogic :choices="allDecks.netflixDeck" />
     </div>
 
-    <div v-if="!hiddenFood">
-      <ChoiceLogic :choices="allDecks.fastFoodDeck" />
+      <div v-if="!hiddenFood">
+        <ChoiceLogic :choices="allDecks.fastFoodDeck" />
       <!-- <ChoiceLogic :choices='fastFoodDeck'/> -->
     </div>
 
@@ -137,7 +144,7 @@ export default {
     ];
     this.allDecks.netflixDeck.image =
       "https://cdn.vox-cdn.com/thumbor/AwKSiDyDnwy_qoVdLPyoRPUPo00=/39x0:3111x2048/1400x1400/filters:focal(39x0:3111x2048):format(png)/cdn.vox-cdn.com/uploads/chorus_image/image/49901753/netflixlogo.0.0.png";
-    this.allDecks.netflixDeck.title = "Netflix Original Shows";
+    this.allDecks.netflixDeck.title = "Netflix Originals";
     this.allDecks.fastFoodDeck = [
       "McDonald's",
       "Wendy's",
