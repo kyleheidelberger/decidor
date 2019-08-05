@@ -1,7 +1,7 @@
 <template>
     <header class='main-image'>
         <nav class='banner-container'>
-            <img class='logo' src=//i.imgur.com/LDQ128H.png?2>
+            <img class='logo' src="//i.imgur.com/tkKZV1V.png?1">
             <button class='ghost button'>Log in</button>
             <button class='fill button'>Register</button>
               <transition appear

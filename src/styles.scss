@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
 $lg: linear-gradient(to right, #7796CB 0%, #A3BCF9 51%, #7796CB 100%);
-$dlg: linear-gradient(to bottom, #2f6e9a, #424d71, #3b3146, #251b22, #000000);
+$dlg: linear-gradient(to bottom right, #2f6e9a, #335383, #383869, #371d4b, #30002b);
+$blg: linear-gradient(to bottom, #2f6e9a, #335383, #383869, #371d4b);
 $lato: 'Lato', sans-serif;
 $bw: #e6f1f7;
 
@@ -295,18 +296,18 @@ body {
   font-size: 1.3rem;
   padding: 12px 24px;
   background: transparent;
-  border: 2px solid transparent;
-  border-image: $dlg;
+  border: 3px solid transparent;
+  border-image: $blg;
   border-image-slice: 1;
   letter-spacing: 1.2px;
   font-family: $lato;
-  color: #0090B2;
+  color: #30002b;
   &:hover,
   &:focus-within {
       cursor: pointer;
-      background: $dlg;
+      background: $blg;
       border: 2px solid transparent;
-      border-image: $dlg;
+      border-image: $blg;
       border-image-slice: 1;
       color: #fff;
   }
@@ -319,9 +320,9 @@ body {
     text-transform: uppercase;
     font-size: 1.3rem;
     padding: 12px 24px;
-    background: $dlg;
+    background: $blg;
     border: 2px solid transparent;
-    border-image: $dlg;
+    border-image: $blg;
     border-image-slice: 1;
     color: #fff;
 }
