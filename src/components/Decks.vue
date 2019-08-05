@@ -40,10 +40,14 @@
       <ChoiceLogic :choices="allDecks.yelpBusinesses" />
     </div>
 
-    <div v-for="(business, index) in businesses" :key="`${business}${index}`" class="yelp-business">
+    <div
+      v-for="(business, index) in allDecks.yelpBusinesses"
+      :key="`${business}${index}`"
+      class="yelp-business"
+    >
       <!-- <a :href="business.url"> -->
       {{ business.name }}
-      <img :src="business.image_url" class="yelp-business-image" />
+      <img :src="business.imageURL" class="yelp-business-image" />
       <!-- </a> -->
     </div>
   </section>
@@ -83,7 +87,7 @@ export default {
       hiddenBusiness: true,
       hiddenNetflix: true,
       hiddenFood: true,
-      hiddenSearch: true,
+      hiddenSearch: true
     };
   },
   mounted() {
@@ -149,6 +153,9 @@ export default {
         this.hiddenSearch = false;
       }
     },
+    // getSearchParam(key) {
+
+    // },
     getBusinesses() {
       let apiURL = buildURL(this.cityName);
 
