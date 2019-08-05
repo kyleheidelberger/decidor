@@ -11,5 +11,6 @@ urlpatterns = [
   # url(r'^$', TemplateView.as_view(template_name='index.html')),
   path('index/', views.index, name='home'),
   path('api', views.names),
-  path('accounts/', include('registration.backends.default.urls')),
+  # path('accounts/', include('registration.backends.default.urls')),
+  path('accounts/', include('allauth.urls')),
 ]
