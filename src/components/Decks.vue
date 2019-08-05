@@ -18,8 +18,9 @@
                     <img class="deckImage" :src="deck.image" />
                 </div>
             </div>
-      </button>
-
+        </button>
+      </div>
+    </transition>
       <div v-if="!hiddenSearch" class="searchBar">
         <input type="text" v-model.lazy="cityName" v-on:change="getBusinesses" placeholder="City" />
         <button @click="getBusinesses">Get Businesses</button>
@@ -28,33 +29,47 @@
           You are currently looking in: {{ cityName }}
         </p>
       </div>
-    </div>
-    </transition>
-    <div v-if="!hiddenNetflix">
-      <!-- <ChoiceLogic 
-        v-for='(deck, key) in allDecks'
-        :key='`${deck}${key}`'
-      :choices='deck'/>-->
-      <ChoiceLogic :choices="allDecks.netflixDeck" />
-    </div>
+
+      <div v-if="!hiddenNetflix">
+        <transition appear
+        name='enlorge'>
+        <!-- <ChoiceLogic 
+          v-for='(deck, key) in allDecks'
+          :key='`${deck}${key}`'
+        :choices='deck'/>-->
+        <ChoiceLogic :choices="allDecks.netflixDeck" />
+        </transition>
+      </div>
 
       <div v-if="!hiddenFood">
+        <transition appear
+        name='enlorge'>
         <ChoiceLogic :choices="allDecks.fastFoodDeck" />
       <!-- <ChoiceLogic :choices='fastFoodDeck'/> -->
+        </transition>
     </div>
 
     <div v-if="!hiddenActivity">
+        <transition appear
+        name='enlorge'>
       <ChoiceLogic :choices="allDecks.activityDeck" />
+        </transition>
       <!-- <ChoiceLogic :choices='fastFoodDeck'/> -->
     </div>
 
     <div v-if="!hiddenFoodTypes">
+      <transition appear
+        name='enlorge'>
       <ChoiceLogic :choices="allDecks.foodTypesDeck" />
       <!-- <ChoiceLogic :choices='fastFoodDeck'/> -->
+      </transition>
     </div>
 
     <div v-if="!hiddenBusiness">
+      <transition appear
+        name='enlorge'>
       <ChoiceLogic :choices="allDecks.yelpBusinesses" />
+      </transition>
     </div>
 
     <div
