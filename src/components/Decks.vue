@@ -1,5 +1,7 @@
 <template>
   <section class="deck">
+  <transition appear
+  name="bounce">
     <div class="container">
       <button
         id="deckButton"
@@ -9,8 +11,13 @@
         @click="sendKey(key)"
         :class="{ hiddenDick: hiddenDeck }"
       >
-        <img class="deckImage" :src="deck.image" />
-        <span>{{deck.title}}</span>
+          <div class='deck-container'>
+          <h2 class='deckTitle'>{{deck.title}}</h2>
+            <div
+            class='overlay'>
+              <img class="deckImage" :src="deck.image" />
+          </div>
+      </div>
       </button>
 
       <div v-if="!hiddenSearch" class="searchBar">
@@ -21,45 +28,60 @@
           You are currently looking in: {{ cityName }}
         </p>
       </div>
-    </div>
 
-    <div v-if="!hiddenNetflix">
-      <!-- <ChoiceLogic 
-        v-for='(deck, key) in allDecks'
-        :key='`${deck}${key}`'
-      :choices='deck'/>-->
-      <ChoiceLogic :choices="allDecks.netflixDeck" />
-    </div>
+      <div v-if="!hiddenNetflix">
+        <transition appear
+        name='enlorge'>
+        <!-- <ChoiceLogic 
+          v-for='(deck, key) in allDecks'
+          :key='`${deck}${key}`'
+        :choices='deck'/>-->
+        <ChoiceLogic :choices="allDecks.netflixDeck" />
+        </transition>
+      </div>
 
-    <div v-if="!hiddenFood">
-      <ChoiceLogic :choices="allDecks.fastFoodDeck" />
+      <div v-if="!hiddenFood">
+        <transition appear
+        name='enlorge'>
+        <ChoiceLogic :choices="allDecks.fastFoodDeck" />
       <!-- <ChoiceLogic :choices='fastFoodDeck'/> -->
+        </transition>
     </div>
 
     <div v-if="!hiddenActivity">
+        <transition appear
+        name='enlorge'>
       <ChoiceLogic :choices="allDecks.activityDeck" />
+        </transition>
       <!-- <ChoiceLogic :choices='fastFoodDeck'/> -->
     </div>
 
     <div v-if="!hiddenFoodTypes">
+      <transition appear
+        name='enlorge'>
       <ChoiceLogic :choices="allDecks.foodTypesDeck" />
       <!-- <ChoiceLogic :choices='fastFoodDeck'/> -->
+      </transition>
     </div>
 
     <div v-if="!hiddenBusiness">
+      <transition appear
+        name='enlorge'>
       <ChoiceLogic :choices="allDecks.yelpRestaurants" />
+      </transition>
     </div>
 
     <div
       v-for="(business, index) in allDecks.yelpRestaurants"
       :key="`${business}${index}`"
-      class="yelp-business"
-    >
+      class="yelp-business">
       <a :href="business.url" target="_blank">
         {{ business.name }}
         <img :src="business.imageURL" class="yelp-business-image" />
       </a>
     </div>
+    </div>
+    </transition>
   </section>
 </template>
 
@@ -135,7 +157,7 @@ export default {
     ];
     this.allDecks.netflixDeck.image =
       "https://cdn.vox-cdn.com/thumbor/AwKSiDyDnwy_qoVdLPyoRPUPo00=/39x0:3111x2048/1400x1400/filters:focal(39x0:3111x2048):format(png)/cdn.vox-cdn.com/uploads/chorus_image/image/49901753/netflixlogo.0.0.png";
-    this.allDecks.netflixDeck.title = "Netflix Original Shows";
+    this.allDecks.netflixDeck.title = "Netflix Originals";
     this.allDecks.fastFoodDeck = [
       "McDonald's",
       "Wendy's",
@@ -202,16 +224,16 @@ export default {
     // this.allDecks.businesses = [];
     this.allDecks.yelpRestaurants.image =
       "https://portal.restodata.ca/delice/gallery/images/Square/01_delice-_375-2018-03-21.jpg";
-    this.allDecks.yelpRestaurants.title = "Restaurants Near Me";
+    this.allDecks.yelpRestaurants.title = "Restaurants";
     this.allDecks.yelpShops.image =
       "https://s3-eu-west-1.amazonaws.com/brussels-images/content/gallery/visit/article/shopping-brussels-2018_sq_640.jpg";
-    this.allDecks.yelpShops.title = "Shops Near Me";
+    this.allDecks.yelpShops.title = "Shops";
     this.allDecks.yelpArts.image =
       "https://wearewingard.com/wp-content/uploads/2018/04/cummermuseum-1920x1080-gallery3-768x768.jpg";
-    this.allDecks.yelpArts.title = "Arts & Entertainment Near Me";
+    this.allDecks.yelpArts.title = "Arts & Entertainment";
     this.allDecks.yelpParks.image =
       "https://www.discoverdurham.com/imager/s3_us-east-1_amazonaws_com/durham-2019/images/Nature-Science/DUKE_GARDENS_BRIDGE_aea8419375870281fb13854150585c99.jpg";
-    this.allDecks.yelpParks.title = "Parks Near Me";
+    this.allDecks.yelpParks.title = "Parks";
   },
   methods: {
     sendKey(key) {
