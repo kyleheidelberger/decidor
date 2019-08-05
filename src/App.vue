@@ -1,16 +1,18 @@
 <template>
   <main id="app">
-    <Decks />
+    <router-link to="landing">Landing</router-link>
+    <router-link to="decks">Decks</router-link>
+    <router-link to="choicelogic">Choice Logic</router-link>
+    <a href="">Register</a>
+    <router-view/>
   </main>
 </template>
 
 <script>
-import Decks from "./components/Decks.vue";
+
 
 export default {
   name: "app",
-  components: {
-    Decks
-  }
+  
 };
 </script>

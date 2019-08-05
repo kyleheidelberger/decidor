@@ -37,7 +37,8 @@ ALLOWED_HOSTS = ['decidor.herokuapp.com', 'localhost', 'localhost:8080']
 
 INSTALLED_APPS = [
     'django.contrib.sites',
-    'registration','django.contrib.admin',
+    'registration',
+    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
