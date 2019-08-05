@@ -9,7 +9,6 @@
         @click="sendKey(key)"
         :class="{ hiddenDick: hiddenDeck }"
       >
-        <!-- {{ key }} -->
         <img class="deckImage" :src="deck.image" />
         <span>{{deck.title}}</span>
       </button>
@@ -56,10 +55,10 @@
       :key="`${business}${index}`"
       class="yelp-business"
     >
-      <!-- <a :href="business.url"> -->
-      {{ business.name }}
-      <img :src="business.imageURL" class="yelp-business-image" />
-      <!-- </a> -->
+      <a :href="business.url" target="_blank">
+        {{ business.name }}
+        <img :src="business.imageURL" class="yelp-business-image" />
+      </a>
     </div>
   </section>
 </template>
@@ -73,10 +72,6 @@ const yelpBaseURL =
   "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?";
 const apiKey =
   "SM6pJx7LlCeKgElTpKU3PgsBDvqZud92PBBhqRBOEunqL9az6MmnAN9GUf4_mjjQva10STsyAlOs6RacEdskjV3qx7X_SjhqtpFVY0G0KzKvDoXcb4s-X2eZHOc5XXYx";
-
-// function buildURL(url, searchingFor, location) {
-//   return `${yelpBaseURL}${this.searchingFor}&location=${this.cityName}`;
-// }
 
 export default {
   name: "Decks",
@@ -234,20 +229,18 @@ export default {
       } else if (key.includes("foodTypesDeck")) {
         this.hiddenFoodTypes = false;
       } else {
-        // console.log("businesses else", this.businesses);
         this.hiddenSearch = false;
       }
     },
     getSearchParam(key) {
       if (key.includes("yelpRestaurants")) {
-        this.searchingFor = "categories=food,all";
-        console.log(this.searchingFor);
+        this.searchingFor = "categories=food";
       } else if (key.includes("yelpShops")) {
         this.searchingFor = "categories=shopping,all";
       } else if (key.includes("yelpArts")) {
-        this.searchingFor = "categories=arts,all";
+        this.searchingFor = "categories=arts,aquariums,localflavor";
       } else if (key.includes("yelpParks")) {
-        this.searchingFor = "categories=active,parks";
+        this.searchingFor = "categories=parks,dog_parks,skate_parks";
       }
     },
     buildURL(url, searchingFor, location) {
@@ -255,9 +248,7 @@ export default {
     },
     getBusinesses(key) {
       let apiURL = this.buildURL(yelpBaseURL, this.searchingFor, this.cityName);
-      console.log(this.searchingFor);
 
-      // Object.keys(this.allDecks).forEach(async (key) => {
       axios
         .get(apiURL, {
           headers: {
@@ -272,7 +263,6 @@ export default {
         .catch(error => {
           console.log(error);
         });
-      // })
     },
     filterBusinesses() {
       this.allDecks.businesses.map(business => {
@@ -291,8 +281,6 @@ export default {
         this.hiddenSearch = true;
         return this.allDecks.yelpRestaurants;
       });
-      // for (let business of this.allDecks.businesses) {
-      // assigns data from fetch businesses to variables:
     }
   }
 };
