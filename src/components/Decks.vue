@@ -173,7 +173,7 @@ export default {
       "Domino's"
     ];
     this.allDecks.fastFoodDeck.image =
-      "https://youngwomenshealth.org/wp-content/uploads/2014/02/fast-food.jpg";
+      "https://nationaltoday.com/wp-content/uploads/2019/07/national-french-fry-day.jpg";
     this.allDecks.fastFoodDeck.title = "Fast Food Chains";
     this.allDecks.activityDeck = [
       "Play a Sport",
@@ -220,14 +220,14 @@ export default {
       "German"
     ];
     this.allDecks.foodTypesDeck.image =
-      "https://cafedelites.com/wp-content/uploads/2019/01/Chinese-Lemon-Chicken-IMAGE-42-500x500.jpg";
+      "https://images.britcdn.com/wp-content/uploads/2016/05/raw-vegan-pad-thai-ohsheglows-sq.jpg";
     this.allDecks.foodTypesDeck.title = "Food Types";
     // this.allDecks.businesses = [];
     this.allDecks.yelpRestaurants.image =
       "https://portal.restodata.ca/delice/gallery/images/Square/01_delice-_375-2018-03-21.jpg";
     this.allDecks.yelpRestaurants.title = "Restaurants";
     this.allDecks.yelpShops.image =
-      "https://s3-eu-west-1.amazonaws.com/brussels-images/content/gallery/visit/article/shopping-brussels-2018_sq_640.jpg";
+      "https://www.bwiairport.com/sites/default/files/styles/square_xsml/public/2017-06/stores.jpg";
     this.allDecks.yelpShops.title = "Shops";
     this.allDecks.yelpArts.image =
       "https://wearewingard.com/wp-content/uploads/2018/04/cummermuseum-1920x1080-gallery3-768x768.jpg";
