@@ -58,6 +58,19 @@ LOGIN_REDIRECT_URL = '/decks/'
 ACCOUNT_ACTIVATION_DAYS = 7 
 # One-week activation window; you may, of course, use a different value.
 
+# Email
+DEFAULT_FROM_EMAIL = "webmaster@decidor.herokuapp.com"
+
+SENDGRID_API_KEY = os.getenv('SENDGRID_API_KEY')
+if SENDGRID_API_KEY:
+    EMAIL_HOST = 'smtp.sendgrid.net'
+    EMAIL_HOST_USER = 'apikey'
+    EMAIL_HOST_PASSWORD = SENDGRID_API_KEY
+    EMAIL_PORT = 587
+    EMAIL_USE_TLS = True
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
