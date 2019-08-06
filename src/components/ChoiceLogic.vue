@@ -1,19 +1,20 @@
 <template>
   <section class="buttons-container" id="choice-logic">
+  <h1 class='this-or-that'>Which do you prefer?</h1>
     <button
       v-for="(option, index) in options"
       :key="`${option}${index}`"
       @click="selectOption(index)"
       class="option-buttons"
       :disabled="validated"
-      :class="{ finalChoice: onlyChoice }"
-    >
-      <div class="cardContainer">
-        <h2 class="cardTitle">{{option.title}}</h2>
-        <div class="">
-          <img class="cardImage" :src="option.card_image" />
+      :class="{ finalChoice: onlyChoice }">
+      <transition appear
+        name='enlorge'>
+        <div class="cardContainer">
+          <h2 class="cardTitle">{{option.title}}</h2>
+            <img class="cardImage" :src="option.card_image" />
         </div>
-      </div>
+      </transition>
     </button>
   </section>
 </template>

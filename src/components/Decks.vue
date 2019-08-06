@@ -1,14 +1,12 @@
 <template>
   <section class="deck">
-  <h1 class='decks-info'>Your decks</h1>
+  <h1 v-if="!hiddenNav" class='decks-info'>Your decks</h1>
 
   <transition appear
   name="bounce">
     <div class="container">
 
-  <div v-if="!hiddenNav" class='centerDeckInfo'>
-    <h2 class='deckInfo'>Starter Decks</h2>
-  </div>
+    <h2 v-if="!hiddenNav" class='deckInfo'>Starter Decks</h2>
       <button
         id="deckButton"
         v-for="(deck, key) in allDecks"
@@ -16,7 +14,7 @@
         class="deckButton"
         @click="sendKey(key)"
         :class="{ hiddenDick: hiddenDeck }">
-          <div class='deck-container'>
+          <div class='deck-container deck-grid'>
           <h2 class='deckTitle'>{{deck.title}}</h2>
             <div
             class='overlay'>
@@ -25,9 +23,7 @@
       </div>
       </button>
 
-  <div v-if="!hiddenNav" class='centerDeckInfo'>
-    <h2 class='deckInfo'>Local Decks</h2>
-  </div>
+    <h2 v-if="!hiddenNav" class='deckInfo2'>Local Decks</h2>
       <button
       id="deckButton"
       v-for="(deck, key) in yelpDecks"
@@ -35,7 +31,7 @@
       class="deckButton"
       @click="sendKey(key)"
       :class="{ hiddenDick: hiddenDeck }">
-        <div class='deck-container'>
+        <div class='deck-container deck-grid'>
           <h2 class='deckTitle'>{{deck.title}}</h2>
             <div
             class='overlay'>
@@ -54,45 +50,33 @@
       </div>
 
       <div v-if="!hiddenNetflix">
-        <transition appear
-        name='enlorge'>
+
         <!-- <ChoiceLogic 
           v-for='(deck, key) in allDecks'
           :key='`${deck}${key}`'
         :choices='deck'/>-->
         <ChoiceLogic :choices="allDecks.netflixDeck" />
-        </transition>
       </div>
 
       <div v-if="!hiddenFood">
-        <transition appear
-        name='enlorge'>
+
         <ChoiceLogic :choices="allDecks.fastFoodDeck" />
       <!-- <ChoiceLogic :choices='fastFoodDeck'/> -->
-        </transition>
     </div>
 
     <div v-if="!hiddenActivity">
-        <transition appear
-        name='enlorge'>
+
       <ChoiceLogic :choices="allDecks.activityDeck" />
-        </transition>
       <!-- <ChoiceLogic :choices='fastFoodDeck'/> -->
     </div>
 
     <div v-if="!hiddenFoodTypes">
-      <transition appear
-        name='enlorge'>
       <ChoiceLogic :choices="allDecks.foodTypesDeck" />
       <!-- <ChoiceLogic :choices='fastFoodDeck'/> -->
-      </transition>
     </div>
 
     <div v-if="!hiddenBusiness">
-      <transition appear
-        name='enlorge'>
       <ChoiceLogic :choices="yelpDecks.yelpRestaurants" />
-      </transition>
     </div>
 
     <div
@@ -173,7 +157,6 @@ export default {
       {title: "Queer Eye", card_image: "http://static.tvgcdn.net/feed/1/548/118938548.jpg"},
       {title: "Stranger Things", card_image: "https://images-na.ssl-images-amazon.com/images/I/71OB1IywjLL._SY679_.jpg"},
       {title: "Bojack Horseman", card_image: "https://i.pinimg.com/originals/91/df/30/91df30f6063a67073293864aba9357a9.jpg"},
-      {title: "Orange is the New Black", card_image: "http://static.tvgcdn.net/feed/1/44/118464044.jpg"},
       {title: "Unbreakable Kimmy Schmidt", card_image: "https://m.media-amazon.com/images/M/MV5BMTgyNTQyNjUwN15BMl5BanBnXkFtZTgwNjMwNjUzNzM@._V1_.jpg"},
       {title: "American Vandal", card_image: "https://static2.showtimes.com/poster/540x800/american-vandal-netflix-119343.jpg"},
       {title: "Mindhunter", card_image: "https://static.tvgcdn.net/feed/1/2/thumbs/118553002_1197x1596.jpg"},
