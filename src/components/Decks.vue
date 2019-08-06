@@ -5,6 +5,10 @@
   <transition appear
   name="bounce">
     <div class="container">
+
+  <div class='centerDeckInfo'>
+    <h2 class='deckInfo'>Starter Decks</h2>
+  </div>
       <button
         id="deckButton"
         v-for="(deck, key) in allDecks"
@@ -13,6 +17,25 @@
         @click="sendKey(key)"
         :class="{ hiddenDick: hiddenDeck }">
           <div class='deck-container'>
+          <h2 class='deckTitle'>{{deck.title}}</h2>
+            <div
+            class='overlay'>
+              <img class="deckImage" :src="deck.image" />
+          </div>
+      </div>
+      </button>
+
+  <div class='centerDeckInfo'>
+    <h2 class='deckInfo'>Local Decks</h2>
+  </div>
+      <button
+      id="deckButton"
+      v-for="(deck, key) in yelpDecks"
+      :key="`${deck}${key}`"
+      class="deckButton"
+      @click="sendKey(key)"
+      :class="{ hiddenDick: hiddenDeck }">
+        <div class='deck-container'>
           <h2 class='deckTitle'>{{deck.title}}</h2>
             <div
             class='overlay'>
@@ -75,10 +98,13 @@
     <div
       v-for="(business, index) in allDecks.yelpRestaurants"
       :key="`${business}${index}`"
-      class="yelp-business">
-      <a :href="business.url" target="_blank">
-        {{ business.name }}
-        <img :src="business.imageURL" class="yelp-business-image" />
+      class='deck-container'>
+      <!-- <a :href="business.url" target="_blank"> -->
+        <h2 class='deckTitle'>{{ business.name }}</h2>
+          <div class='overlay'>
+            <img :src="business.imageURL" class="deckImage" />
+          </div>
+        </h2>
       </a>
     </div>
     </div>
@@ -108,6 +134,8 @@ export default {
         fastFoodDeck: [],
         activityDeck: [],
         foodTypesDeck: [],
+      },
+      yelpDecks: {
         yelpRestaurants: [],
         yelpShops: [],
         yelpArts: [],
@@ -223,18 +251,18 @@ export default {
       "https://cafedelites.com/wp-content/uploads/2019/01/Chinese-Lemon-Chicken-IMAGE-42-500x500.jpg";
     this.allDecks.foodTypesDeck.title = "Food Types";
     // this.allDecks.businesses = [];
-    this.allDecks.yelpRestaurants.image =
+    this.yelpDecks.yelpRestaurants.image =
       "https://portal.restodata.ca/delice/gallery/images/Square/01_delice-_375-2018-03-21.jpg";
-    this.allDecks.yelpRestaurants.title = "Restaurants";
-    this.allDecks.yelpShops.image =
+    this.yelpDecks.yelpRestaurants.title = "Restaurants";
+    this.yelpDecks.yelpShops.image =
       "https://s3-eu-west-1.amazonaws.com/brussels-images/content/gallery/visit/article/shopping-brussels-2018_sq_640.jpg";
-    this.allDecks.yelpShops.title = "Shops";
-    this.allDecks.yelpArts.image =
+    this.yelpDecks.yelpShops.title = "Shops";
+    this.yelpDecks.yelpArts.image =
       "https://wearewingard.com/wp-content/uploads/2018/04/cummermuseum-1920x1080-gallery3-768x768.jpg";
-    this.allDecks.yelpArts.title = "Arts & Entertainment";
-    this.allDecks.yelpParks.image =
+    this.yelpDecks.yelpArts.title = "Arts & Entertainment";
+    this.yelpDecks.yelpParks.image =
       "https://www.discoverdurham.com/imager/s3_us-east-1_amazonaws_com/durham-2019/images/Nature-Science/DUKE_GARDENS_BRIDGE_aea8419375870281fb13854150585c99.jpg";
-    this.allDecks.yelpParks.title = "Parks";
+    this.yelpDecks.yelpParks.title = "Parks";
   },
   methods: {
     sendKey(key) {

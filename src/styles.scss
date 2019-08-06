@@ -216,9 +216,9 @@ body {
     // margin: 0 auto;
 }
 .deckImage {
-    margin-top: 40%;
-    height: 200px;
-    width: 200px;
+    margin-top: 20%;
+    max-height: 200px;
+    max-width: 200px;
     // filter: blur(2.5px);
     // opacity: 0.80;
     border: 2px solid black;
@@ -453,8 +453,12 @@ body {
 //     padding-left: 9%;
 // }
 
-.hi-dawn {
-    padding-top: 20px;
+.centerDeckInfo {
+    display: flex;
+    justify-content: center;
+}
+.deckInfo {
+    padding: 20px;
     text-align: center;
     font-size: 2rem;
     background: $blg;
