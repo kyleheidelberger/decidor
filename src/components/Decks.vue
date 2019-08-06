@@ -1,5 +1,7 @@
 <template>
   <section class="deck">
+  <h1 class='decks-info'>Your decks</h1>
+
   <transition appear
   name="bounce">
     <div class="container">
@@ -9,8 +11,7 @@
         :key="`${deck}${key}`"
         class="deckButton"
         @click="sendKey(key)"
-        :class="{ hiddenDick: hiddenDeck }"
-      >
+        :class="{ hiddenDick: hiddenDeck }">
           <div class='deck-container'>
           <h2 class='deckTitle'>{{deck.title}}</h2>
             <div

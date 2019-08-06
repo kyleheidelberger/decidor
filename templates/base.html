@@ -24,12 +24,14 @@
         {% else %}
         <button class='ghost button'><a href="{% url 'account_login' %}">Login</a></button>
         <button class='fill button'><a href="{% url 'account_signup' %}">Register</a></button>
-        <button class='fill button'><a href="{% url 'decks' %}">Decks</a></button>
         {% endif %}
     </nav>
 </header>
 
 <body>
+    {% if request.user.is_authenticated %}
+        <h2 class='hi-dawn'>Welcome, {{request.user}}!</h2>
+    {% endif %}
     {% block content %}
     {% endblock %}
 </body>

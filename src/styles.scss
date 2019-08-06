@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 $lg: linear-gradient(to right, #7796CB 0%, #A3BCF9 51%, #7796CB 100%);
 $dlg: linear-gradient(to bottom right, #2f6e9a, #335383, #383869, #371d4b, #30002b);
 $blg: linear-gradient(to bottom, #2f6e9a, #335383, #383869, #371d4b);
 $lato: 'Lato', sans-serif;
+$mon: 'Montserrat', sans-serif;
 $bw: #e6f1f7;
 
 * {
@@ -169,9 +171,9 @@ body {
     align-self: center;
     z-index: 100;
     position: absolute;
-    font-size: 500%;
+    font-size: 4.5rem;
     color: white;
-    font-family: $lato;
+    font-family: $mon;
     text-shadow: 0 1px 0 #ccc, 
     0 2px 0 #c9c9c9,
     0 3px 0 #bbb,
@@ -197,6 +199,7 @@ body {
 .deck-container {
     display: flex;
     justify-content: center;
+    padding: 40px;
 }
 .deckTitle {
     font-size: 0.9rem;
@@ -232,10 +235,11 @@ body {
     content: '';
     z-index: 99;
     border-radius: 10px;
-    top: -2%;
-    left: 0;
-    right: 0;
-    margin-left: 3%;
+    top: -45px;
+    // top: 0;
+    // left: 0;
+    // right: 0;
+    // margin-left: 3%;
     width: 200px;
     height: 100%;
     position: absolute;
@@ -412,4 +416,50 @@ body {
 
 .secondaryAction {
     padding-top: 30px;
+}
+
+.decks-info {
+    background: $blg;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding-top: 80px;
+    font-size: 4rem;
+    text-align: center;
+    // color: #fff;
+    font-family: $mon;
+    // text-shadow: 0 1px 0 #ccc, 
+    // 0 2px 0 #c9c9c9,
+    // 0 3px 0 #bbb,
+    // 0 4px 0 #b9b9b9,
+    // 0 5px 0 #aaa,
+    // 0 6px 1px rgba(0,0,0,.1),
+    // 0 0 5px rgba(0,0,0,.1),
+    // 0 1px 3px rgba(0,0,0,.3),
+    // 0 3px 5px rgba(0,0,0,.2),
+    // 0 5px 10px rgba(0,0,0,.25),
+    // // 0 10px 10px rgba(0,0,0,.2),
+    // // 0 20px 20px rgba(0,0,0,.15);
+}
+
+// .starter {
+//     padding-top: 20px;
+//     font-family: $lato;
+//     font-size: 2rem;
+//     background: $blg;
+//     background-clip: text;
+//     -webkit-background-clip: text;
+//     -webkit-text-fill-color: transparent;
+//     padding-left: 9%;
+// }
+
+.hi-dawn {
+    padding-top: 20px;
+    text-align: center;
+    font-size: 2rem;
+    background: $blg;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: $lato;
 }
