@@ -6,8 +6,15 @@
       @click="selectOption(index)"
       class="option-buttons"
       :disabled="validated"
-      :class="{ finalChoice: onlyChoice }">
-    {{option}}</button>
+      :class="{ finalChoice: onlyChoice }"
+    >
+      <div class="cardContainer">
+        <h2 class="cardTitle">{{option.title}}</h2>
+        <div class="">
+          <img class="cardImage" :src="option.card_image" />
+        </div>
+      </div>
+    </button>
   </section>
 </template>
 
@@ -17,9 +24,9 @@ export default {
   name: "ChoiceLogic",
   props: {
     choices: {
-      type: Array,
+      type: Object,
       default() {
-        return [];
+        return [{ title: String, card_image: String }];
       }
     }
   },
