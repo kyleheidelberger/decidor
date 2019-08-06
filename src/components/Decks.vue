@@ -6,7 +6,7 @@
   name="bounce">
     <div class="container">
 
-  <div class='centerDeckInfo'>
+  <div v-if="!hiddenNav" class='centerDeckInfo'>
     <h2 class='deckInfo'>Starter Decks</h2>
   </div>
       <button
@@ -25,7 +25,7 @@
       </div>
       </button>
 
-  <div class='centerDeckInfo'>
+  <div v-if="!hiddenNav" class='centerDeckInfo'>
     <h2 class='deckInfo'>Local Decks</h2>
   </div>
       <button
@@ -151,7 +151,8 @@ export default {
       hiddenFood: true,
       hiddenActivity: true,
       hiddenFoodTypes: true,
-      hiddenSearch: true
+      hiddenSearch: true,
+      hiddenNav: false,
     };
   },
   mounted() {
@@ -285,6 +286,7 @@ export default {
     },
     getCardsOnClick(key) {
       this.hiddenDeck = true;
+      this.hiddenNav = true;
       if (key.includes("netflixDeck")) {
         this.hiddenNetflix = false;
       } else if (key.includes("fastFoodDeck")) {
