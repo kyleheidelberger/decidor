@@ -9,7 +9,7 @@
       :class="{ finalChoice: onlyChoice }"
     >
       <div class="cardContainer">
-        <h2 class="deckTitle">{{option.title}}</h2>
+        <h2 class="cardTitle">{{option.title}}</h2>
         <div class="">
           <img class="cardImage" :src="option.card_image" />
         </div>

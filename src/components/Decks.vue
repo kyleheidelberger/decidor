@@ -175,7 +175,7 @@ export default {
       {title: "Bojack Horseman", card_image: "https://i.pinimg.com/originals/91/df/30/91df30f6063a67073293864aba9357a9.jpg"},
       {title: "Orange is the New Black", card_image: "http://static.tvgcdn.net/feed/1/44/118464044.jpg"},
       {title: "Unbreakable Kimmy Schmidt", card_image: "https://m.media-amazon.com/images/M/MV5BMTgyNTQyNjUwN15BMl5BanBnXkFtZTgwNjMwNjUzNzM@._V1_.jpg"},
-      {title: "American Vandal", card_image: "http://bcexcelsior.com/wp-content/uploads/2017/09/american_vandal-214x300.jpg"},
+      {title: "American Vandal", card_image: "https://static2.showtimes.com/poster/540x800/american-vandal-netflix-119343.jpg"},
       {title: "Mindhunter", card_image: "https://static.tvgcdn.net/feed/1/2/thumbs/118553002_1197x1596.jpg"},
       {title: "Russian Doll", card_image: "https://m.media-amazon.com/images/M/MV5BYmViMjdhZmQtODIyZi00Mzc4LWFhNTItOTk4NGM1NGU0ZDZjXkEyXkFqcGdeQXVyNjc2NTQzMjU@._V1_.jpg"},
       {title: "Master of None", card_image: "https://ih0.redbubble.net/image.511228335.0654/flat,550x550,075,f.u1.jpg"},

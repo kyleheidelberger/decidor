@@ -489,6 +489,23 @@ body {
     padding: 40px;
 }
 
+.cardTitle {
+    font-size: 1.5rem;
+    z-index: 100;
+    position: absolute;
+    top: 750px;
+    font-family: $lato;
+    align-self: flex-end;
+    // color: #fff;
+    color: black;
+    padding-bottom: 10px;	
+    text-shadow: 2px 2px 0px rgba(0,0,0,0.3);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    // text-align: center;
+    // margin: 0 auto;
+}
+
 // this isn't being used right now -Kyle
 .card-overlay:before {
     content: '';
