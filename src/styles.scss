@@ -335,7 +335,7 @@ body {
 .logo {
     max-width: 260px;
     align-items: center;
-    margin-right: 80%;
+    margin-right: 75%;
 }
 .top-rect {
     background: $dlg;
@@ -400,4 +400,16 @@ body {
 .center-title {
     display: flex;
     justify-content: center;
+}
+
+.socialaccount_providers {
+    list-style-type: none;
+}
+
+.socialaccount_ballot {
+    padding: 20px;
+}
+
+.secondaryAction {
+    padding-top: 30px;
 }

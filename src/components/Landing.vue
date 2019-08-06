@@ -1,9 +1,9 @@
 <template>
   <div class='center-title'>
-    <transition appear
-    name='roll'>
+    <!-- <transition appear
+    name='roll'> -->
       <h1 class='title'>What are we going to do today?</h1>
-    </transition>
+    <!-- </transition> -->
   <div class='top-rect'></div>
                     <!-- <img class='header-image' :src='mainImageSrc'/> -->
     </div>

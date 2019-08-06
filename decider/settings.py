@@ -171,10 +171,11 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 
+ACCOUNT_LOGOUT_ON_GET = True
+
 try:
     from local_settings import *
 except ImportError:
     pass
-
 
 
