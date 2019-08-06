@@ -1,5 +1,6 @@
 <template>
   <section class="buttons-container" id="choice-logic">
+  <h1 class='this-or-that'>Which do you prefer?</h1>
     <button
       v-for="(option, index) in options"
       :key="`${option}${index}`"
@@ -7,7 +8,14 @@
       class="option-buttons"
       :disabled="validated"
       :class="{ finalChoice: onlyChoice }">
-    {{option}}</button>
+      <transition appear
+        name='enlorge'>
+        <div class="cardContainer">
+          <h2 class="cardTitle">{{option.title}}</h2>
+            <img class="cardImage" :src="option.card_image" />
+        </div>
+      </transition>
+    </button>
   </section>
 </template>
 
@@ -17,9 +25,9 @@ export default {
   name: "ChoiceLogic",
   props: {
     choices: {
-      type: Array,
+      type: Object,
       default() {
-        return [];
+        return [{ title: String, card_image: String }];
       }
     }
   },

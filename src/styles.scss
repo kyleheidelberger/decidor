@@ -26,33 +26,35 @@ body {
     margin-top: 60px;
 }
 .option-buttons {
-    cursor: pointer;
-    flex: 1 1;
-    padding: 10px;
-    margin: 10px;
-    text-align: center;
-    font-size: 2.5rem;
-    letter-spacing: 0.2rem;
-    text-transform: uppercase;
-    transition: 0.5s;
-    background-size: 200% auto;
-    color: white;
-    text-shadow: 2px 0px 10px rgba(0,0,0,0.4);
-    box-shadow: 0 0 20px #eee;
-    border-radius: 10px;
+    background: transparent;
     border: none;
-    border-radius: 15px;
-    background-image: $lg;
-    &:hover:not(.finalChoice),
-    &:focus-within {
-        background-position: right center;
-    }
+    // cursor: pointer;
+    // flex: 1 1;
+    // padding: 10px;
+    // margin: 10px;
+    // text-align: center;
+    // font-size: 2.5rem;
+    // letter-spacing: 0.2rem;
+    // text-transform: uppercase;
+    // transition: 0.5s;
+    // background-size: 200% auto;
+    // color: white;
+    // text-shadow: 2px 0px 10px rgba(0,0,0,0.4);
+    // box-shadow: 0 0 20px #eee;
+    // border-radius: 10px;
+    // border: none;
+    // border-radius: 15px;
+    // background-image: $lg;
+    // &:hover:not(.finalChoice),
+    // &:focus-within {
+    //     background-position: right center;
+    // }
+    // max-height: 200px;
 }
 
 .finalChoice {
-    padding: 25px;
-    font-size: 4rem;
-    letter-spacing: 3rem;
+    max-height: 600px;
+    max-width: 600px;
 }
 
 .hiddenDick {
@@ -518,6 +520,76 @@ body {
     position: absolute;
     bottom: 0;
 }
+
+// styling the cards
+.cardImage {
+    margin-top: 20%;
+    max-height: 500px;
+    max-width: 500px;
+    // max-width: 260px;
+    border: 2px solid black;
+    border-radius: 10px;
+    z-index: 1;
+    position: relative;
+}
+
+.cardContainer {
+    display: flex;
+    justify-content: center;
+    margin-left: 100%;
+    margin-top: 30%;
+    padding-left: 150px;
+}
+
+.this-or-that {
+    background: $bt;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 4rem;
+    z-index: 100;
+    position: absolute;
+    letter-spacing: 0.5px;
+    font-family: $mon;
+    margin-top: 40px;
+    margin-left: 32%;
+    margin-bottom: 40%;
+
+}
+.cardTitle {
+    font-size: 1.5rem;
+    z-index: 100;
+    position: absolute;
+    margin-top: 40px;
+    font-family: $lato;
+    align-self: flex-end;
+    // color: #fff;
+    color: black;
+    padding-bottom: 10px;	
+    text-shadow: 2px 2px 0px rgba(0,0,0,0.3);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    // text-align: center;
+    // margin: 0 auto;
+}
+
+// // this isn't being used right now -Kyle
+// .card-overlay:before {
+//     content: '';
+//     z-index: 99;
+//     border-radius: 10px;
+//     top: -58px;
+//     // top: 0;
+//     // left: 0;
+//     // right: 0;
+//     // margin-left: 3%;
+//     width: 260px;
+//     height: 95%;
+//     position: absolute;
+//     display: inline-block;
+//     background: linear-gradient(0deg, rgba(0, 0, 0, 0.6) 0%, 
+//     rgba(0, 0, 0, 0.18) 36%, rgba(0, 0, 0, 0) 46%), 
+//     // box-shadow: 0 20px 30px rgba(0,0,0,0.2);
+// }
 
 @media only screen and (max-width: 768px) {
     .container {
