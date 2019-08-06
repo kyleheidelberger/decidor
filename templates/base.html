@@ -17,7 +17,7 @@
 </head>
 <header>
     <nav class='banner-container'>
-        <img class='logo' src="https://i.imgur.com/O6G4X6B.png?1"/>
+        <img class='logo' src="https://i.imgur.com/O6G4X6B.png" />
         {% if request.user.is_authenticated %}
         <a href="{% url 'account_logout' %}">Logout</a>
         {% else %}
