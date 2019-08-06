@@ -6,9 +6,7 @@
   name="bounce">
     <div class="container">
 
-  <div class='centerDeckInfo'>
-    <h2 class='deckInfo'>Starter Decks</h2>
-  </div>
+    <h2>Starter Decks</h2>
       <button
         id="deckButton"
         v-for="(deck, key) in allDecks"
@@ -16,7 +14,7 @@
         class="deckButton"
         @click="sendKey(key)"
         :class="{ hiddenDick: hiddenDeck }">
-          <div class='deck-container'>
+          <div class='deck-container deck-grid'>
           <h2 class='deckTitle'>{{deck.title}}</h2>
             <div
             class='overlay'>
@@ -25,9 +23,7 @@
       </div>
       </button>
 
-  <div class='centerDeckInfo'>
-    <h2 class='deckInfo'>Local Decks</h2>
-  </div>
+    <h2 class='deckInfo2'>Local Decks</h2>
       <button
       id="deckButton"
       v-for="(deck, key) in yelpDecks"
@@ -35,7 +31,7 @@
       class="deckButton"
       @click="sendKey(key)"
       :class="{ hiddenDick: hiddenDeck }">
-        <div class='deck-container'>
+        <div class='deck-container deck-grid'>
           <h2 class='deckTitle'>{{deck.title}}</h2>
             <div
             class='overlay'>
@@ -151,7 +147,8 @@ export default {
       hiddenFood: true,
       hiddenActivity: true,
       hiddenFoodTypes: true,
-      hiddenSearch: true
+      hiddenSearch: true,
+      hiddenStarter: false
     };
   },
   mounted() {
@@ -271,6 +268,7 @@ export default {
     },
     getCardsOnClick(key) {
       this.hiddenDeck = true;
+      this.hiddenStarter = true;
       if (key.includes("netflixDeck")) {
         this.hiddenNetflix = false;
       } else if (key.includes("fastFoodDeck")) {

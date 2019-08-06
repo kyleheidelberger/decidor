@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 $lg: linear-gradient(to right, #7796CB 0%, #A3BCF9 51%, #7796CB 100%);
-$dlg: linear-gradient(to bottom right, #2f6e9a, #335383, #383869, #371d4b, #30002b);
-$blg: linear-gradient(to bottom, #2f6e9a, #335383, #383869, #371d4b);
+$br: linear-gradient(to bottom right, #2f7e97, #236087, #2b426f, #332350, #30002b);
+$bt: linear-gradient(to bottom, #2f7e97, #236087, #2b426f, #332350, #30002b);
+$btn: linear-gradient(to bottom, #2f7e97, #236087, #2b426f, #30002b);
 $lato: 'Lato', sans-serif;
 $mon: 'Montserrat', sans-serif;
 $bw: #e6f1f7;
@@ -67,9 +68,16 @@ body {
 }
 
 .container {
-    display: flex;
+    // display: grid;
+    // flex-wrap: wrap;
     justify-content: center;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 200px 200px 200px 200px;
+    grid-gap: 60px;
+    grid-template-areas:
+    "header header header header"
+    "content content content content"
+    "header2 header2 header2 header2";
 }
 
 // .netflixTitle {
@@ -94,11 +102,11 @@ body {
     z-index: 1;
 }
 
-.yelpLogo {
-    height: 200px;
-    filter: blur(1px);
+// .yelpLogo {
+//     height: 200px;
+//     filter: blur(1px);
     // opacity: 0.80;
-}
+// }
 
 // .yelpDeckTitle {
 //     cursor: pointer;
@@ -157,13 +165,8 @@ body {
     // -webkit-filter: brightness(60%);
 }
 
-.button {
-    z-index: 99;
-    position: absolute;
-}
-
 .title {
-    // background: $dlg;
+    // background: $br;
     // background-clip: text;
     // -webkit-background-clip: text;
     // -webkit-text-fill-color: transparent;
@@ -216,7 +219,7 @@ body {
     // margin: 0 auto;
 }
 .deckImage {
-    margin-top: 20%;
+    // margin-top: 20%;
     max-height: 200px;
     max-width: 200px;
     // filter: blur(2.5px);
@@ -247,6 +250,12 @@ body {
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.8) 0%, 
     rgba(0, 0, 0, 0.18) 36%, rgba(0, 0, 0, 0) 46%), 
     // box-shadow: 0 20px 30px rgba(0,0,0,0.2);
+}
+
+.container {
+    &:nth-child(2) {
+        grid-area: content;
+    }
 }
 
 @keyframes bounce-in-right {
@@ -299,14 +308,15 @@ body {
 //   }
 
 .ghost {
+  position: absolute;
   margin-top: 2%;
-  margin-left: 28%;
+  margin-left: 20%;
   text-transform: uppercase;
   font-size: 1.3rem;
   padding: 12px 24px;
   background: transparent;
   border: 2px solid transparent;
-  border-image: $blg;
+  border-image: $btn;
   border-image-slice: 1;
   letter-spacing: 1.2px;
   font-family: $lato;
@@ -314,24 +324,25 @@ body {
   &:hover,
   &:focus-within {
       cursor: pointer;
-      background: $blg;
+      background: $btn;
       border: 2px solid transparent;
-      border-image: $blg;
+      border-image: $btn;
       border-image-slice: 1;
       color: #fff;
   }
 }
 
 .fill {
+    position: absolute;
     margin-top: 2%;
     font-family: $lato;
-    margin-left: 43%;
+    margin-left: 34%;
     text-transform: uppercase;
     font-size: 1.3rem;
     padding: 12px 24px;
-    background: $blg;
+    background: $btn;
     border: 2px solid transparent;
-    border-image: $blg;
+    border-image: $btn;
     border-image-slice: 1;
     color: #fff;
 }
@@ -342,7 +353,7 @@ body {
     margin-right: 75%;
 }
 .top-rect {
-    background: $dlg;
+    background: $br;
     width: 100%;
     z-index: 2;
     position: absolute;
@@ -363,7 +374,6 @@ body {
     bottom: -40%;
     left: 50%;
     margin-left: -4000px;
-    -webkit-transform: rotate(-8deg);
     transform: rotate(-8deg);
 }
 
@@ -419,7 +429,7 @@ body {
 }
 
 .decks-info {
-    background: $blg;
+    background: $bt;
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -446,24 +456,90 @@ body {
 //     padding-top: 20px;
 //     font-family: $lato;
 //     font-size: 2rem;
-//     background: $blg;
+//     background: $bt;
 //     background-clip: text;
 //     -webkit-background-clip: text;
 //     -webkit-text-fill-color: transparent;
 //     padding-left: 9%;
 // }
 
-.centerDeckInfo {
-    display: flex;
-    justify-content: center;
-}
+// .centerDeckInfo {
+//     display: flex;
+//     justify-content: center;
+// }
 .deckInfo {
-    padding: 20px;
-    text-align: center;
-    font-size: 2rem;
-    background: $blg;
+    z-index: 99;
+    margin-top: 60px;
+    // align-self: flex-start;
+    // text-align: center;
+    font-size: 2.5rem;
+    background: $bt;
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-family: $lato;
+    grid-area: header;
+    position: relative;
+    display: block;
+}
+
+.deckInfo2 {
+    z-index: 99;
+    // align-self: flex-start;
+    // text-align: center;
+    font-size: 2.5rem;
+    background: $bt;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: $lato;
+    grid-area: header2;
+    border-bottom: none;
+    position: relative;
+    display: block;
+}
+
+.deckInfo2:after {
+    content: '';
+    background: $br;
+    display: block;
+    height: 2.5px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+
+.deckInfo:after {
+    content: '';
+    background: $br;
+    display: block;
+    height: 2.5px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+
+@media only screen and (max-width: 768px) {
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .ghost {
+        padding: 4px 8px;
+        margin-left: -3%;
+    }
+
+    .fill {
+        padding: 4px 8px;
+    }
+
+    .decks-info {
+        font-size: 3.5rem;
+    }
+
+    .title {
+        padding-top: 50%;
+        font-size: 1.5rem;
+    }
 }

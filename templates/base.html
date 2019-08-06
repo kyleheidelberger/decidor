@@ -19,11 +19,11 @@
     <nav class='banner-container'>
         <img class='logo' src="https://i.imgur.com/O6G4X6B.png?1"/>
         {% if request.user.is_authenticated %}
-        <button class='fill button'><a href="{% url 'decks' %}">Decks</a></button>
-        <button class='ghost button'><a href="{% url 'account_logout' %}">Logout</a></button>
+        <button class='fill'><a href="{% url 'decks' %}">Decks</a></button>
+        <button class='ghost'><a href="{% url 'account_logout' %}">Logout</a></button>
         {% else %}
-        <button class='ghost button'><a href="{% url 'account_login' %}">Login</a></button>
-        <button class='fill button'><a href="{% url 'account_signup' %}">Register</a></button>
+        <button class='ghost'><a href="{% url 'account_login' %}">Login</a></button>
+        <button class='fill'><a href="{% url 'account_signup' %}">Register</a></button>
         {% endif %}
     </nav>
 </header>
