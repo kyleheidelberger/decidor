@@ -31,6 +31,10 @@
       <ChoiceLogic :choices="yelpDecks.yelpRestaurants" />
     </div>
 
+    <div v-if="!hiddenBooks">
+      <ChoiceLogic :choices="apiDecks.bookDeck" />
+    </div>
+
     </div>
 
   <transition appear
@@ -55,7 +59,6 @@
 
     <h2 v-if="!hiddenNav" class='deckInfo2'>Local Decks</h2>
       <button
-      id="deckButton"
       v-for="(deck, key) in yelpDecks"
       :key="`${deck}${key}`"
       class="deckButton"
@@ -68,6 +71,22 @@
             </div>
       </div>
       </button>
+
+    <h2 v-if="!hiddenNav" class='deckInfo3'>API Decks</h2>
+      <button
+        v-for="(deck, key) in apiDecks"
+        :key="`${deck}${key}`"
+        class="deckButton"
+        @click="sendKey(key)"
+        :class="{ hiddenDick: hiddenDeck }">
+          <div class='deck-container'>
+            <h2 class='deckTitle'>{{deck.title}}</h2>
+              <div class='overlay'>
+                <img class="deckImage" :src="deck.image" />
+              </div>
+          </div>
+      </button>
+
     </div>
     </transition>
   </section>
@@ -84,6 +103,8 @@ const yelpBaseURL =
   "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?";
 const apiKey =
   "SM6pJx7LlCeKgElTpKU3PgsBDvqZud92PBBhqRBOEunqL9az6MmnAN9GUf4_mjjQva10STsyAlOs6RacEdskjV3qx7X_SjhqtpFVY0G0KzKvDoXcb4s-X2eZHOc5XXYx";
+
+const bookBaseURL = "https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=4QC7YMXjnIWo1dTtGFpj5itZlVDPvbOk";
 
 export default {
   name: "Decks",
@@ -104,16 +125,21 @@ export default {
         yelpArts: [],
         yelpParks: []
       },
+      apiDecks: {
+        bookDeck: []
+      },
       // hiddenCards: true,
       cityName: "",
       searchingFor: "",
       hiddenDeck: false,
       businesses: [],
+      results: [],
       hiddenBusiness: true,
       hiddenNetflix: true,
       hiddenFood: true,
       hiddenActivity: true,
       hiddenFoodTypes: true,
+      hiddenBooks: true,
       hiddenSearch: true,
       hiddenNav: false
     };
@@ -550,6 +576,8 @@ export default {
     this.yelpDecks.yelpParks.image =
       "https://www.discoverdurham.com/imager/s3_us-east-1_amazonaws_com/durham-2019/images/Nature-Science/DUKE_GARDENS_BRIDGE_aea8419375870281fb13854150585c99.jpg";
     this.yelpDecks.yelpParks.title = "Parks";
+    this.apiDecks.bookDeck.image = "https://decidor.s3.amazonaws.com/books.jpeg";
+    this.apiDecks.bookDeck.title = "NYT Books";
   },
   methods: {
     sendKey(key) {
@@ -567,6 +595,8 @@ export default {
         this.hiddenActivity = false;
       } else if (key.includes("foodTypesDeck")) {
         this.hiddenFoodTypes = false;
+      } else if (key.includes("bookDeck")) {
+        this.getBookList();
       } else {
         this.hiddenSearch = false;
       }
@@ -597,6 +627,7 @@ export default {
         })
         .then(response => {
           this.yelpDecks.businesses = response.data.businesses;
+          console.log("yelpresults:", this.yelpDecks.businesses)
           this.filterBusinesses(this.yelpDecks.businesses);
           this.hiddenBusiness = false;
         })
@@ -621,7 +652,39 @@ export default {
         this.hiddenSearch = true;
         return this.yelpDecks.yelpRestaurants;
       });
-    }
+    },
+    getBookList(key) {
+     axios
+        .get(bookBaseURL, {
+          // headers: {
+          //   method: GET,
+          // }
+        })
+        .then(response => {
+          this.apiDecks.results = response.data.results;
+          console.log("results:", this.apiDecks.results);
+          this.filterBooks(this.apiDecks.results);
+          this.hiddenBooks = false;
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    },
+    filterBooks() {
+      this.apiDecks.results.books.map(book => {
+        let bookTitle = book.title;
+        let bookAuthor = book.author;
+        let bookCover = book.book_image;
+    
+        this.apiDecks.bookDeck.push({
+          title: bookTitle,
+          card_image: bookCover,
+        });
+        this.apiDecks.results = [];
+        console.log("bookDeck:", this.apiDecks.bookDeck)
+        return this.apiDecks.bookDeck;
+      });
+    },
   }
 };
 </script>
