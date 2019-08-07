@@ -82,7 +82,7 @@ const yelpBaseURL =
   "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?";
 const apiKey =
   "SM6pJx7LlCeKgElTpKU3PgsBDvqZud92PBBhqRBOEunqL9az6MmnAN9GUf4_mjjQva10STsyAlOs6RacEdskjV3qx7X_SjhqtpFVY0G0KzKvDoXcb4s-X2eZHOc5XXYx";
-const databaseBaseURL = "http://127.0.0.1:8000/starterdecks/"
+const databaseBaseURL = "/starterdecks/"
 
 export default {
   name: "Decks",
