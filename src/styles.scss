@@ -231,6 +231,7 @@ body {
     max-width: 200px;
     // filter: blur(2.5px);
     // opacity: 0.80;
+    outline: none;
     border: 2px solid black;
     border-radius: 10px;
     z-index: 1;
@@ -314,6 +315,7 @@ body {
 //     animation-name: fade-in-up;
 //   }
 .ghost {
+//   margin-left: 40px;
 //   position: absolute;
   margin-top: 3%;
 //   margin-left: 800px;
@@ -567,8 +569,8 @@ body {
 .cardImage {
     cursor: pointer;
     outline: none;
-    height: 500px;
-    width: 400px;
+    max-height: 500px;
+    max-width: 400px;
     // max-width: 260px;
     border: 2px solid black;
     border-radius: 10px;
