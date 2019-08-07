@@ -6,6 +6,7 @@ import Decks from './components/Decks'
 // import router from './router'
 import './styles.scss'
 
+Vue.config.devtools = true
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
