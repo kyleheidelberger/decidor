@@ -17,30 +17,44 @@
 
       <div v-if="!hiddenFood">
         <ChoiceLogic :choices="allDecks.fastFoodDeck" />
-    </div>
+      </div>
 
-    <div v-if="!hiddenActivity">
-      <ChoiceLogic :choices="allDecks.activityDeck" />
-    </div>
+      <div v-if="!hiddenActivity">
+        <ChoiceLogic :choices="allDecks.activityDeck" />
+      </div>
 
-    <div v-if="!hiddenFoodTypes">
-      <ChoiceLogic :choices="allDecks.foodTypesDeck" />
-    </div>
+      <div v-if="!hiddenFoodTypes">
+        <ChoiceLogic :choices="allDecks.foodTypesDeck" />
+      </div>
 
-    <div v-if="!hiddenBusiness">
-      <ChoiceLogic :choices="yelpDecks.yelpRestaurants" />
-    </div>
-
-    </div>
+      <div v-if="!hiddenBusiness">
+        <ChoiceLogic :choices="yelpDecks.yelpRestaurants" />
+      </div>
 
   <transition appear
   name="bounce">
     <div class="container">
 
-    <h2 v-if="!hiddenNav" class='deckInfo'>Starter Decks</h2>
-      <button
+      <h2 v-if="!hiddenNav" class='deckInfo'>Starter Decks</h2>
+        <button
+          id="deckButton"
+          v-for="(deck, key) in allDecks"
+          :key="`${deck}${key}`"
+          class="deckButton"
+          @click="sendKey(key)"
+          :class="{ hiddenDick: hiddenDeck }">
+            <div class='deck-container'>
+              <h2 class='deckTitle'>{{deck.title}}</h2>
+                <div class='overlay'>
+                  <img class="deckImage" :src="deck.image" />
+                </div>
+            </div>
+        </button>
+
+      <h2 v-if="!hiddenNav" class='deckInfo2'>Local Decks</h2>
+        <button
         id="deckButton"
-        v-for="(deck, key) in allDecks"
+        v-for="(deck, key) in yelpDecks"
         :key="`${deck}${key}`"
         class="deckButton"
         @click="sendKey(key)"
@@ -51,22 +65,6 @@
                 <img class="deckImage" :src="deck.image" />
               </div>
           </div>
-      </button>
-
-    <h2 v-if="!hiddenNav" class='deckInfo2'>Local Decks</h2>
-      <button
-      id="deckButton"
-      v-for="(deck, key) in yelpDecks"
-      :key="`${deck}${key}`"
-      class="deckButton"
-      @click="sendKey(key)"
-      :class="{ hiddenDick: hiddenDeck }">
-        <div class='deck-container'>
-          <h2 class='deckTitle'>{{deck.title}}</h2>
-            <div class='overlay'>
-              <img class="deckImage" :src="deck.image" />
-            </div>
-      </div>
       </button>
     </div>
     </transition>
