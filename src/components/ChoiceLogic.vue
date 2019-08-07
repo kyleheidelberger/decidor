@@ -1,22 +1,23 @@
 <template>
-  <section class="buttons-container" id="choice-logic">
-  <h1 class='this-or-that'>Which do you prefer?</h1>
-    <button
-      v-for="(option, index) in options"
-      :key="`${option}${index}`"
-      @click="selectOption(index)"
-      class="option-buttons"
-      :disabled="validated"
-      :class="{ finalChoice: onlyChoice }">
-      <transition appear
-        name='enlorge'>
-        <div class="cardContainer">
-            <img class="cardImage" :src="option.card_image" />
-            <h2 class="cardTitle">
-          {{option.title}}</h2>
-        </div>
-      </transition>
-    </button>
+  <section class="buttons-container or" id="choice-logic">
+    <h1 class='this-or-that'>Which do you prefer?</h1>
+       <progress class="progress" id="progress-bar" value="0" max="1"></progress>
+          <button
+            v-for="(option, index) in options"
+            :key="`${option}${index}`"
+            @click="selectOption(index), setProgressBar()"
+            class="option-buttons"
+            :disabled="validated"
+            :class="{ finalChoice: onlyChoice }">
+            <transition appear
+              name='enlorge'>
+              <div class="cardContainer">
+                  <img class="cardImage" :src="option.card_image" />
+                  <h2 class="cardTitle">
+                {{option.title}}</h2>
+              </div>
+            </transition>
+          </button>
   </section>
 </template>
 
@@ -48,20 +49,32 @@ export default {
     this.setOptions();
   },
   methods: {
+    setProgressBar() {
+      let progressBar = document.querySelector('#progress-bar');
+      progressBar.max = (this.copyChoiceList.length)
+      console.log('copyChoiceList:', this.copyChoiceList.length)
+        // while (this.copyChoiceList.length > 1) {
+        //   console.log('copychoicelist', this.copyChoiceList.length)
+        for (let preference in this.preferences) {
+            console.log('preference:', preference)
+            progressBar.value = this.preferences.length
+            console.log('progressBarValue:', progressBar.value)
+        }
+    },
     setOptions() {
       this.endIndex = this.currentIndex + 2;
-      console.log("pref:", this.preferences);
+      // console.log("pref:", this.preferences);
       this.options = this.copyChoiceList.slice(
         this.currentIndex,
         this.endIndex
       );
-      console.log("before:", this.endIndex);
+      // console.log("before:", this.endIndex);
     },
     selectOption(index) {
       this.currentIndex = this.currentIndex + 2;
       const toAdd = this.options[index];
       this.preferences.push(toAdd);
-      console.log("copychoicelist:", this.copyChoiceList);
+      // console.log("copychoicelist:", this.copyChoiceList);
       if (this.endIndex >= this.copyChoiceList.length - 1) {
         if (this.endIndex != this.copyChoiceList.length) {
           this.preferences.push(
@@ -71,7 +84,7 @@ export default {
         this.currentIndex = 0;
         this.copyChoiceList = this.preferences;
         this.preferences = [];
-        console.log("after:", this.endIndex);
+        // console.log("after:", this.endIndex);
       }
       if (this.copyChoiceList.length === 1) {
         this.onlyChoice = true;

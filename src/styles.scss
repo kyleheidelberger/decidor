@@ -77,8 +77,8 @@ body {
     // flex-wrap: wrap;
     justify-content: center;
     display: grid;
-    grid-template-columns: 200px 200px 200px 200px;
-    grid-gap: 60px;
+    grid-template-columns: repeat(4, 15%);
+    grid-gap: 5%;
     grid-template-areas:
     "header header header header"
     "content content content content"
@@ -200,10 +200,22 @@ body {
 }
 
 .banner-container {
-    display: flex;
-    justify-content: space-evenly;
-    max-width: 800px;
+    justify-content: center;
+    margin-top: 2%;
+    // width: 800px;
+    // margin-left: 12.5%;
+    display: grid;
+    // grid-template-rows: 50px;
+    grid-template-columns: repeat(5, 10%);
+    // grid-template-columns: fit-content(40%);
+    grid-gap: 77px;
+    grid-template-areas:
+    "logo empty empty gbtn fbtn";
 }
+
+// .base-head {
+//     width: 800px;
+// }
 
 .deck-container {
     display: flex;
@@ -317,7 +329,7 @@ body {
 .ghost {
 //   margin-left: 40px;
 //   position: absolute;
-  margin-top: 3%;
+//   margin-top: 3%;
 //   margin-left: 800px;
   text-transform: uppercase;
   font-size: 1.3rem;
@@ -328,6 +340,7 @@ body {
   border-image-slice: 1;
   letter-spacing: 1.2px;
   font-family: $lato;
+  grid-area: gbtn;
   color: #30002b;
   &:hover,
   &:focus-within {
@@ -342,7 +355,8 @@ body {
 
 .fill {
     // align-self: flex-start;
-    margin-top: 3%;
+    grid-area: fbtn;
+    // margin-top: 3%;
     font-family: $lato;
     text-transform: uppercase;
     font-size: 1.3rem;
@@ -353,10 +367,12 @@ body {
     border-image-slice: 1;
     color: #fff;
 }
-
 .logo {
-    margin-left: 80px;
-    width: 160px;
+    background-image: url('images/decidor.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    // width: 60%;
+    grid-area: logo;
 }
 
 .top-rect {
@@ -565,6 +581,13 @@ body {
     bottom: 0;
 }
 
+.or {
+  background-image: url('images/OR-Plum-Blue.png');
+  background-size: 15%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 // styling the cards
 .cardImage {
     cursor: pointer;
@@ -575,18 +598,22 @@ body {
     border: 2px solid black;
     border-radius: 10px;
     grid-area: img;
+    // position: absolute;
     // z-index: 1;
     // position: relative;
 }
 
 .buttons-container {
     // max-width: 800px;
+    margin-top: 7%;
     justify-content: center;
     display: grid;
-    grid-template-rows: 125px;
-    grid-template-columns: 400px 400px;
-    grid-gap: 60px;
+    grid-template-rows: 100px;
+    grid-template-columns: repeat(2, 400px);
+    grid-row-gap: 50px;
+    grid-column-gap: 300px;
     grid-template-areas:
+    "progbar progbar"
     "kyle kyle"
     "img img"
     "title title";
@@ -599,7 +626,6 @@ body {
     font-size: 4rem;
     grid-area: kyle;
     text-align: center;
-    margin-bottom: 0;
     // z-index: 100;
     // position: absolute;
     letter-spacing: 0.5px;
@@ -619,6 +645,37 @@ body {
     text-align: center;
     grid-area: title;
     // margin: 0 auto;
+}
+
+.progress {
+  grid-area: progbar;
+}
+progress {
+  width: 100%;
+  margin-top: 20px;
+}
+progress[value] {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: white;
+  color: #2b426f;
+  height: 10px;
+}
+progress[value]::-webkit-progress-bar {
+  background-color: white;
+  border-radius: 2px;
+  color: #2b426f;
+  -webkit-transition : width 0.5s ease;
+   -moz-transition : width 0.5s ease;
+     -o-transition : width 0.5s ease;
+        transition : width 0.5s ease;
+}
+progress::-webkit-progress-value {
+  background-color: #2b426f;
+  -webkit-transition : width 0.5s ease;
+  -moz-transition : width 0.5s ease;
+    -o-transition : width 0.5s ease;
+       transition : width 0.5s ease;
 }
 
 // // this isn't being used right now -Kyle
