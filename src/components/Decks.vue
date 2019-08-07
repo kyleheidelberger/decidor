@@ -1,96 +1,78 @@
 <template>
   <section class="deck">
-    <h1 v-if="!hiddenNav" class="decks-info">Your decks</h1>
-
-    <transition appear name="bounce">
-      <div class="container">
-        <h2 v-if="!hiddenNav" class="deckInfo">Starter Decks</h2>
-        <button
-          id="deckButton"
-          v-for="(deck, key) in allDecks"
-          :key="`${deck}${key}`"
-          class="deckButton"
-          @click="sendKey(key)"
-          :class="{ hiddenDick: hiddenDeck }"
-        >
-          <div class="deck-container deck-grid">
-            <h2 class="deckTitle">{{deck.title}}</h2>
-            <div class="overlay">
-              <img class="deckImage" :src="deck.image" />
-            </div>
-          </div>
-        </button>
-
-        <h2 v-if="!hiddenNav" class="deckInfo2">Local Decks</h2>
-        <button
-          id="deckButton"
-          v-for="(deck, key) in yelpDecks"
-          :key="`${deck}${key}`"
-          class="deckButton"
-          @click="sendKey(key)"
-          :class="{ hiddenDick: hiddenDeck }"
-        >
-          <div class="deck-container deck-grid">
-            <h2 class="deckTitle">{{deck.title}}</h2>
-            <div class="overlay">
-              <img class="deckImage" :src="deck.image" />
-            </div>
-          </div>
-        </button>
-
-        <div v-if="!hiddenSearch" class="searchBar">
-          <input type="text" v-model.lazy="cityName" v-on:change="getBusinesses" placeholder="City" />
-          <button @click="getBusinesses">Get Businesses</button>
-          <p>
-            Input your current location.
-            You are currently looking in: {{ cityName }}
-          </p>
-        </div>
-
-        <div v-if="!hiddenNetflix">
-          <!-- <ChoiceLogic 
-          v-for='(deck, key) in allDecks'
-          :key='`${deck}${key}`'
-          :choices='deck'/>-->
-          <ChoiceLogic :choices="allDecks.netflixDeck" />
-        </div>
-
-        <div v-if="!hiddenFood">
-          <ChoiceLogic :choices="allDecks.fastFoodDeck" />
-          <!-- <ChoiceLogic :choices='fastFoodDeck'/> -->
-        </div>
-
-        <div v-if="!hiddenActivity">
-          <ChoiceLogic :choices="allDecks.activityDeck" />
-          <!-- <ChoiceLogic :choices='fastFoodDeck'/> -->
-        </div>
-
-        <div v-if="!hiddenFoodTypes">
-          <ChoiceLogic :choices="allDecks.foodTypesDeck" />
-          <!-- <ChoiceLogic :choices='fastFoodDeck'/> -->
-        </div>
-
-        <div v-if="!hiddenBusiness">
-          <ChoiceLogic :choices="yelpDecks.yelpRestaurants" />
-        </div>
-
-        <!-- <div
-          v-for="(business, index) in yelpDecks.yelpRestaurants"
-          :key="`${business}${index}`"
-          class="cardContainer"
-        >
-          <a :href="business.url" target="_blank">
-            <h2 class="cardTitle">{{ business.title }}</h2>
-            <div>
-              <img :src="business.card_image" class="cardImage" />
-            </div>
-          </a>
-        </div>-->
+  <h1 v-if="!hiddenNav" class='decks-info'>Your decks</h1>
+  
+      <div v-if="!hiddenSearch" class="searchBar">
+        <input type="text" v-model.lazy="cityName" v-on:change="getBusinesses" placeholder="City" />
+        <button @click="getBusinesses">Get Businesses</button>
+        <p>
+          Input your current location.
+          You are currently looking in: {{ cityName }}
+        </p>
       </div>
->>>>>>> 773083d822669b25b35d4619a184aac3e0e55054
+
+      <div v-if="!hiddenNetflix">
+        <ChoiceLogic :choices="allDecks.netflixDeck" />
+      </div>
+
+      <div v-if="!hiddenFood">
+        <ChoiceLogic :choices="allDecks.fastFoodDeck" />
+    </div>
+
+    <div v-if="!hiddenActivity">
+      <ChoiceLogic :choices="allDecks.activityDeck" />
+    </div>
+
+    <div v-if="!hiddenFoodTypes">
+      <ChoiceLogic :choices="allDecks.foodTypesDeck" />
+    </div>
+
+    <div v-if="!hiddenBusiness">
+      <ChoiceLogic :choices="yelpDecks.yelpRestaurants" />
+    </div>
+
+    </div>
+
+  <transition appear
+  name="bounce">
+    <div class="container">
+
+    <h2 v-if="!hiddenNav" class='deckInfo'>Starter Decks</h2>
+      <button
+        id="deckButton"
+        v-for="(deck, key) in allDecks"
+        :key="`${deck}${key}`"
+        class="deckButton"
+        @click="sendKey(key)"
+        :class="{ hiddenDick: hiddenDeck }">
+          <div class='deck-container'>
+            <h2 class='deckTitle'>{{deck.title}}</h2>
+              <div class='overlay'>
+                <img class="deckImage" :src="deck.image" />
+              </div>
+          </div>
+      </button>
+
+    <h2 v-if="!hiddenNav" class='deckInfo2'>Local Decks</h2>
+      <button
+      id="deckButton"
+      v-for="(deck, key) in yelpDecks"
+      :key="`${deck}${key}`"
+      class="deckButton"
+      @click="sendKey(key)"
+      :class="{ hiddenDick: hiddenDeck }">
+        <div class='deck-container'>
+          <h2 class='deckTitle'>{{deck.title}}</h2>
+            <div class='overlay'>
+              <img class="deckImage" :src="deck.image" />
+            </div>
+      </div>
+      </button>
+    </div>
     </transition>
   </section>
 </template>
+
 
 <script>
 import ChoiceLogic from "./ChoiceLogic";
@@ -564,7 +546,7 @@ export default {
     this.yelpDecks.yelpShops.title = "Shops";
     this.yelpDecks.yelpArts.image =
       "https://wearewingard.com/wp-content/uploads/2018/04/cummermuseum-1920x1080-gallery3-768x768.jpg";
-    this.yelpDecks.yelpArts.title = "Arts & Entertainment";
+    this.yelpDecks.yelpArts.title = "Entertainment";
     this.yelpDecks.yelpParks.image =
       "https://www.discoverdurham.com/imager/s3_us-east-1_amazonaws_com/durham-2019/images/Nature-Science/DUKE_GARDENS_BRIDGE_aea8419375870281fb13854150585c99.jpg";
     this.yelpDecks.yelpParks.title = "Parks";
