@@ -31,8 +31,6 @@
       <ChoiceLogic :choices="yelpDecks.yelpRestaurants" />
     </div>
 
-    </div>
-
   <transition appear
   name="bounce">
     <div class="container">
