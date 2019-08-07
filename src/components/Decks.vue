@@ -74,18 +74,18 @@
           <ChoiceLogic :choices="yelpDecks.yelpRestaurants" />
         </div>
 
-        <div
+        <!-- <div
           v-for="(business, index) in yelpDecks.yelpRestaurants"
           :key="`${business}${index}`"
-          class="deck-container"
+          class="cardContainer"
         >
-          <!-- <a :href="business.url" target="_blank"> -->
-          <h2 class="deckTitle">{{ business.name }}</h2>
-          <div>
-            <img :src="business.imageURL" class="deckImage" />
-          </div>
-          <!-- </a> -->
-        </div>
+          <a :href="business.url" target="_blank">
+            <h2 class="cardTitle">{{ business.title }}</h2>
+            <div>
+              <img :src="business.card_image" class="cardImage" />
+            </div>
+          </a>
+        </div>-->
       </div>
     </transition>
   </section>
@@ -615,6 +615,7 @@ export default {
         .then(response => {
           this.yelpDecks.businesses = response.data.businesses;
           this.filterBusinesses(this.yelpDecks.businesses);
+          this.hiddenBusiness = false;
         })
         .catch(error => {
           console.log(error);
@@ -624,13 +625,13 @@ export default {
       this.yelpDecks.businesses.map(business => {
         let businessName = business.name;
         let businessImageURL = business.image_url;
-        let businessRating = business.rating;
+        // let businessRating = business.rating;
         let businessURL = business.url;
 
         this.yelpDecks.yelpRestaurants.push({
-          name: businessName,
-          imageURL: businessImageURL,
-          rating: businessRating,
+          title: businessName,
+          card_image: businessImageURL,
+          // rating: businessRating,
           url: businessURL
         });
         this.yelpDecks.businesses = [];
