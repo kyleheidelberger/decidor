@@ -10,6 +10,7 @@ class StarterDeckViewSet(viewsets.ModelViewSet):
     API endpoint that allows StarterDecks to be viewed or edited.
     """
     queryset = StarterDeck.objects.all()
+    # queryset = StarterDeck.objects.filter(card__title='netflix')
     serializer_class = StarterDeckSerializer
 
 
