@@ -12,6 +12,11 @@ $bw: #e6f1f7;
     box-sizing: border-box;
     margin: 0;
 }
+
+*:focus {
+    outline: none;
+}
+
 a {
     text-decoration: none;
     color: inherit;
