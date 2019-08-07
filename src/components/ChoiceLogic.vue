@@ -11,8 +11,9 @@
       <transition appear
         name='enlorge'>
         <div class="cardContainer">
-          <h2 class="cardTitle">{{option.title}}</h2>
             <img class="cardImage" :src="option.card_image" />
+            <h2 class="cardTitle">
+          {{option.title}}</h2>
         </div>
       </transition>
     </button>
