@@ -157,7 +157,7 @@ export default {
     // this.allDecks[key] = await axios.get
     // }
     // });
-
+  
     this.allDecks.netflixDeck = [
       {
         title: "Queer Eye",
@@ -655,11 +655,7 @@ export default {
     },
     getBookList(key) {
      axios
-        .get(bookBaseURL, {
-          // headers: {
-          //   method: GET,
-          // }
-        })
+        .get(bookBaseURL)
         .then(response => {
           this.apiDecks.results = response.data.results;
           console.log("results:", this.apiDecks.results);
@@ -674,14 +670,15 @@ export default {
       this.apiDecks.results.books.map(book => {
         let bookTitle = book.title;
         let bookAuthor = book.author;
+        let bookDescription = book.description;
         let bookCover = book.book_image;
     
         this.apiDecks.bookDeck.push({
           title: bookTitle,
+          description: bookDescription;
           card_image: bookCover,
         });
         this.apiDecks.results = [];
-        console.log("bookDeck:", this.apiDecks.bookDeck)
         return this.apiDecks.bookDeck;
       });
     },
