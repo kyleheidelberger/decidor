@@ -1,12 +1,11 @@
 <template>
   <section class="buttons-container or" id="choice-logic">
-    <!-- <progress id="progress-bar" value="0" max="1"></progress> -->
-      <h1 class='this-or-that'>Which do you prefer?</h1>
-        <!-- <div class='or'></div> -->
+    <h1 class='this-or-that'>Which do you prefer?</h1>
+       <progress class="progress" id="progress-bar" value="0" max="1"></progress>
           <button
             v-for="(option, index) in options"
             :key="`${option}${index}`"
-            @click="selectOption(index)"
+            @click="selectOption(index), setProgressBar()"
             class="option-buttons"
             :disabled="validated"
             :class="{ finalChoice: onlyChoice }">
@@ -50,17 +49,18 @@ export default {
     this.setOptions();
   },
   methods: {
-    // setProgressBar() {
-    //   let progressBar = document.querySelector('#progress-bar');
-    //     // while (this.copyChoiceList.length > 1) {
-    //     //   console.log('copychoicelist', this.copyChoiceList.length)
-    //       for (let preference in this.preferences) {
-    //           console.log(preference)
-    //           progressBar.value = +1;
-    //           console.log(progressBar.value)
-    //         }
-        // }
-    // },
+    setProgressBar() {
+      let progressBar = document.querySelector('#progress-bar');
+      progressBar.max = (this.copyChoiceList.length)
+      console.log('copyChoiceList:', this.copyChoiceList.length)
+        // while (this.copyChoiceList.length > 1) {
+        //   console.log('copychoicelist', this.copyChoiceList.length)
+        for (let preference in this.preferences) {
+            console.log('preference:', preference)
+            progressBar.value = this.preferences.length
+            console.log('progressBarValue:', progressBar.value)
+        }
+    },
     setOptions() {
       this.endIndex = this.currentIndex + 2;
       // console.log("pref:", this.preferences);
