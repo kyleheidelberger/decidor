@@ -82,7 +82,7 @@ const yelpBaseURL =
   "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?";
 const apiKey =
   "SM6pJx7LlCeKgElTpKU3PgsBDvqZud92PBBhqRBOEunqL9az6MmnAN9GUf4_mjjQva10STsyAlOs6RacEdskjV3qx7X_SjhqtpFVY0G0KzKvDoXcb4s-X2eZHOc5XXYx";
-const databaseBaseURL = "/starterdecks/"
+const databaseBaseURL = "https://decidor.herokuapp.com/starterdecks/"
 
 export default {
   name: "Decks",
@@ -137,274 +137,15 @@ export default {
     this.allDecks.netflixDeck = [];
     this.allDecks.netflixDeck.image ="https://cdn.vox-cdn.com/thumbor/AwKSiDyDnwy_qoVdLPyoRPUPo00=/39x0:3111x2048/1400x1400/filters:focal(39x0:3111x2048):format(png)/cdn.vox-cdn.com/uploads/chorus_image/image/49901753/netflixlogo.0.0.png";
     this.allDecks.netflixDeck.title = "Netflix Originals";
-    this.allDecks.fastFoodDeck = [
-      {
-        title: "McDonald's",
-        card_image:
-          "https://upload.wikimedia.org/wikipedia/commons/3/36/McDonald%27s_Golden_Arches.svg"
-      },
-      {
-        title: "Chick-Fil-A",
-        card_image:
-          "https://upload.wikimedia.org/wikipedia/en/0/02/Chick-fil-A_Logo.svg"
-      },
-      {
-        title: "Wendy's",
-        card_image:
-          "https://upload.wikimedia.org/wikipedia/en/6/66/Wendy%27s_logo_2012.svg"
-      },
-      {
-        title: "Burger King",
-        card_image:
-          "https://upload.wikimedia.org/wikipedia/commons/3/3a/Burger_King_Logo.svg"
-      },
-      {
-        title: "Bojangles",
-        card_image:
-          "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimg1.southernliving.timeinc.net%2Fsites%2Fdefault%2Ffiles%2Fstyles%2F4_3_horizontal_-_1200x900%2Fpublic%2Fimage%2F2018%2F07%2Fmain%2Fddul_zmv4aauhhf.jpg%3Fitok%3DAWbx6bKH%261532464651&w=400&c=sc&poi=face&q=85"
-      },
-      {
-        title: "Subway",
-        card_image:
-          "https://upload.wikimedia.org/wikipedia/commons/5/5c/Subway_2016_logo.svg"
-      },
-      {
-        title: "Sonic",
-        card_image:
-          "https://upload.wikimedia.org/wikipedia/en/d/df/Sonic_Drive-In_logo.svg"
-      },
-      {
-        title: "Taco Bell",
-        card_image:
-          "https://upload.wikimedia.org/wikipedia/en/b/b3/Taco_Bell_2016.svg"
-      },
-      {
-        title: "Arby's",
-        card_image:
-          "https://upload.wikimedia.org/wikipedia/en/f/f4/Arby%27s_logo.svg"
-      },
-      {
-        title: "Moe's",
-        card_image:
-          "http://laxteams.net/files_public/1/1097/files/2013_Sponsors/Moes_button_over_green.jpg"
-      },
-      {
-        title: "Pizza Hut",
-        card_image:
-          "https://upload.wikimedia.org/wikipedia/commons/7/73/Pizza_Hut_1967-1999_logo.svg"
-      },
-      {
-        title: "Domino's",
-        card_image:
-          "https://upload.wikimedia.org/wikipedia/commons/3/3e/Domino%27s_pizza_logo.svg"
-      },
-      {
-        title: "KFC",
-        card_image:
-          "https://upload.wikimedia.org/wikipedia/en/b/bf/KFC_logo.svg"
-      },
-      {
-        title: "Papa John's",
-        card_image:
-          "https://upload.wikimedia.org/wikipedia/commons/f/f0/Papa_John%27s_Logo_2019.svg"
-      },
-      {
-        title: "Chipotle",
-        card_image:
-          "https://upload.wikimedia.org/wikipedia/en/3/3b/Chipotle_Mexican_Grill_logo.svg"
-      },
-      {
-        title: "Popeye's",
-        card_image:
-          "https://upload.wikimedia.org/wikipedia/en/b/bc/Popeyes_Louisiana_Kitchen.svg"
-      },
-      {
-        title: "Jersey Mike's",
-        card_image:
-          "https://upload.wikimedia.org/wikipedia/en/9/91/Jersey_Mike%27s_logo.svg"
-      }
-    ];
+    this.allDecks.fastFoodDeck = [];
     this.allDecks.fastFoodDeck.image =
       "https://nationaltoday.com/wp-content/uploads/2019/07/national-french-fry-day.jpg";
     this.allDecks.fastFoodDeck.title = "Fast Food Chains";
-    this.allDecks.activityDeck = [
-      {
-        title: "Play a Sport",
-        card_image:
-          "https://blog.playo.co/wp-content/uploads/2016/12/Ultimate-frisbee.jpg"
-      },
-      {
-        title: "Go to the Movies",
-        card_image:
-          "https://blindgossip.com/wp-content/uploads/2018/05/couple-popcorn-movies.jpg"
-      },
-      {
-        title: "Go to a Park",
-        card_image:
-          "https://static8.depositphotos.com/1000857/922/i/950/depositphotos_9226599-stock-photo-central-park-new-york-beautiful.jpg"
-      },
-      {
-        title: "Go out to Eat",
-        card_image:
-          "https://www.smallbizdaily.com/wp-content/uploads/2016/08/ThinkstockPhotos-466378405.jpg"
-      },
-      {
-        title: "Read a Book",
-        card_image:
-          "https://static.jeffbullas.com/wp-content/uploads/2016/01/7-Inspiring-books.jpg"
-      },
-      {
-        title: "Go Bowling",
-        card_image:
-          "http://tenpins-more.com/resources/2017_Material/Glow-in-the-Dark.png?timestamp=1493587484666"
-      },
-      {
-        title: "Go for a Walk/Hike",
-        card_image: "https://www.cincynature.org/media/images/trail2_img-52.jpg"
-      },
-      {
-        title: "Try a New Recipe",
-        card_image:
-          "https://news.flinders.edu.au/wp-content/uploads/2018/06/healthy-cooking-at-home.jpg"
-      },
-      {
-        title: "Go to the Gym",
-        card_image:
-          "https://www.virginactive.com.au/images/library/Blog/Media/Workoutready_730x411.jpg"
-      },
-      {
-        title: "Ride a Bike",
-        card_image:
-          "https://static.wixstatic.com/media/cb0988_778b1e8d3cc741178850d634059a5421~mv2.jpg"
-      },
-      {
-        title: "Go Shopping",
-        card_image:
-          "https://thenypost.files.wordpress.com/2018/06/men-shopping-masculine.jpg?quality=90&strip=all&w=618&h=410&crop=1"
-      },
-      {
-        title: "Start Learning a New Skill",
-        card_image:
-          "https://www.merries.co.id/uploads/2015/10/Benarkah-Anak-Belajar-Bahasa-Asing-Tidak-Mudah-Frustasi.jpg"
-      },
-      {
-        title: "Go out for a Drink",
-        card_image:
-          "https://wgme.com/resources/media/4361daf4-9cae-4271-8334-3e95c5efbf13-large16x9_GettyImages1060456922.jpg?1564659754622"
-      },
-      {
-        title: "Plan a Vacation",
-        card_image:
-          "https://radioimg.s3.amazonaws.com/womcfm/styles/delta__775x515/s3/Vacation.jpg?itok=kYmnrvXA"
-      },
-      {
-        title: "Draw, Color, or Paint",
-        card_image:
-          "https://img.freepik.com/free-photo/human-hand-holding-origami-bird-craft-product_23-2148188394.jpg?size=626&ext=jpg"
-      },
-      {
-        title: "Do Yoga",
-        card_image:
-          "https://media3.s-nbcnews.com/j/newscms/2019_29/2940406/190719-yoga-stock-mn-1505_4f11f09072135a3989a050bdd89fdcfb.fit-760w.jpg"
-      },
-      {
-        title: "Play a Board Game",
-        card_image:
-          "https://www.idaho-jones.com/wp-content/uploads/chesstime-1254x627.jpg"
-      }
-    ];
+    this.allDecks.activityDeck = [];
     this.allDecks.activityDeck.image =
       "https://blindgossip.com/wp-content/uploads/2018/05/couple-popcorn-movies.jpg";
     this.allDecks.activityDeck.title = "Activities";
-    this.allDecks.foodTypesDeck = [
-      {
-        title: "American",
-        card_image:
-          "http://pngimg.com/uploads/burger_sandwich/burger_sandwich_PNG4114.png"
-      },
-      {
-        title: "Chinese",
-        card_image:
-          "https://www.pngkey.com/png/full/48-486539_fantastic-chinese-and-beijing-cuisine-in-grays-from.png"
-      },
-      {
-        title: "Thai",
-        card_image:
-          "https://www.sccpre.cat/mypng/full/165-1658915_pad-thai-chicken-thai-food-transparent-background.png"
-      },
-      {
-        title: "Italian",
-        card_image:
-          "http://www.pngmart.com/files/5/Spaghetti-PNG-Transparent-Image.png"
-      },
-      {
-        title: "Mexican",
-        card_image: "https://ui-ex.com/images/taco-transparent-background-6.png"
-      },
-      {
-        title: "Japanese",
-        card_image:
-          "https://www.suviche.com/static/sitefiles/menu_manager/cilantro_roll1.png"
-      },
-      {
-        title: "Seafood",
-        card_image: "https://longfordpc.com/images/seafood-clipart-chips-15.png"
-      },
-      {
-        title: "Barbecue",
-        card_image:
-          "https://webstockreview.net/images/grill-clipart-bbq-chicken-3.png"
-      },
-      {
-        title: "Indian",
-        card_image: "http://pluspng.com/img-png/meat-curry-700.png"
-      },
-      {
-        title: "Pizza",
-        card_image: "http://www.pngmart.com/files/1/Cheese-Pizza.png"
-      },
-      {
-        title: "Korean",
-        card_image: "https://tchol.org/images/kimchi-png-2.png"
-      },
-      {
-        title: "Cuban",
-        card_image:
-          "https://www.pngkey.com/png/full/206-2062130_nuestras-empanadas-empanadas-salteas-png.png"
-      },
-      {
-        title: "Mediterranean",
-        card_image:
-          "https://www.chrisanthidis.gr/en/assets/components/phpthumbof/cache/40.b6f57f458e1d7ac994e539f631c2897b.png"
-      },
-      {
-        title: "French",
-        card_image:
-          "https://peoplepng.com/wp-content/uploads/2019/02/quiche-png-2.png"
-      },
-      {
-        title: "Jamaican",
-        card_image: "https://i.dlpng.com/static/png/3950128_thumb.png"
-      },
-      {
-        title: "Middle Eastern",
-        card_image: "https://www.pngarts.com/files/4/Falafel-PNG-Pic.png"
-      },
-      {
-        title: "Steakhouse",
-        card_image: "http://pluspng.com/img-png/png-steak-steak-png-500.png"
-      },
-      {
-        title: "Spanish",
-        card_image:
-          "https://pngimage.net/wp-content/uploads/2018/06/tapas-png-5.png"
-      },
-      {
-        title: "Pub",
-        card_image:
-          "http://pluspng.com/img-png/fish-and-chips-png-hd-fish-png-fish-and-chips-png-500.png"
-      }
-    ];
+    this.allDecks.foodTypesDeck = [];
     this.allDecks.foodTypesDeck.image =
       "https://images.britcdn.com/wp-content/uploads/2016/05/raw-vegan-pad-thai-ohsheglows-sq.jpg";
     this.allDecks.foodTypesDeck.title = "Food Types";
@@ -499,11 +240,14 @@ export default {
         .then(response => {
           this.database = response.data.results;
           console.log("results", this.database)
-          this.filterDatabase(this.database)
+          this.makeNetflixDeck(this.database)
+          this.makeFastFoodDeck(this.database)
+          this.makeActivityDeck(this.database)
+          this.makeFoodTypesDeck(this.database)
         })
     },
-    filterDatabase() {
-      this.database[0].card_set.map(card => {
+    makeNetflixDeck() {
+      this.database[1].card_set.map(card => {
         console.log(card)
         let cardTitle = card.title;
         let cardImage = card.card_image;
@@ -517,6 +261,57 @@ export default {
         });
         console.log("netflixDeck:", this.allDecks.netflixDeck)
         return this.allDecks.netflixDeck;
+      })
+    },
+    makeFastFoodDeck() {
+      this.database[0].card_set.map(card => {
+        console.log(card)
+        let cardTitle = card.title;
+        let cardImage = card.card_image;
+        let cardDeck = card.deck;
+        let cardDescription = card.description;
+
+        this.allDecks.fastFoodDeck.push({
+          title: cardTitle,
+          card_image: cardImage,
+          description: card.description,
+        });
+        console.log("fastFoodDeck:", this.allDecks.fastFoodDeck)
+        return this.allDecks.fastFoodDeck;
+      })
+    },
+    makeActivityDeck() {
+      this.database[3].card_set.map(card => {
+        console.log(card)
+        let cardTitle = card.title;
+        let cardImage = card.card_image;
+        let cardDeck = card.deck;
+        let cardDescription = card.description;
+
+        this.allDecks.activityDeck.push({
+          title: cardTitle,
+          card_image: cardImage,
+          description: card.description,
+        });
+        console.log("activityDeck:", this.allDecks.activityDeck)
+        return this.allDecks.activityDeck;
+      })
+    },
+    makeFoodTypesDeck() {
+      this.database[4].card_set.map(card => {
+        console.log(card)
+        let cardTitle = card.title;
+        let cardImage = card.card_image;
+        let cardDeck = card.deck;
+        let cardDescription = card.description;
+
+        this.allDecks.foodTypesDeck.push({
+          title: cardTitle,
+          card_image: cardImage,
+          description: card.description,
+        });
+        console.log("foodTypesDeck:", this.allDecks.foodTypesDeck)
+        return this.allDecks.foodTypesDeck;
       })
     },
   }
