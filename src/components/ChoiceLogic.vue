@@ -51,14 +51,17 @@ export default {
   methods: {
     setProgressBar() {
       let progressBar = document.querySelector('#progress-bar');
-      progressBar.max = (this.copyChoiceList.length)
+      progressBar.max = (this.copyChoiceList.length / 2)
       console.log('copyChoiceList:', this.copyChoiceList.length)
-        // while (this.copyChoiceList.length > 1) {
-        //   console.log('copychoicelist', this.copyChoiceList.length)
         for (let preference in this.preferences) {
             console.log('preference:', preference)
+            console.log('progressBarMax:', progressBar.max)
             progressBar.value = this.preferences.length
             console.log('progressBarValue:', progressBar.value)
+            console.log('copyChoiceList:', this.copyChoiceList.length)
+            if (progressBar.max === (progressBar.value + 1)) {
+                progressBar.value === 0;
+            }
         }
     },
     setOptions() {
