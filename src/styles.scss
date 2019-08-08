@@ -85,12 +85,12 @@ body {
     // flex-wrap: wrap;
     justify-content: center;
     display: grid;
-    grid-template-columns: repeat(4, 15%);
+    grid-template-columns: repeat(6, 10%);
     grid-gap: 5%;
     grid-template-areas:
-    "header header header header"
-    "content content content content"
-    "header2 header2 header2 header2";
+    "header header header header header header"
+    "content content content content content content"
+    "header2 header2 header2 header2 header2 header2";
 }
 
 // .netflixTitle {
@@ -712,6 +712,7 @@ body {
     bottom: 0;
 }
 
+
 .or {
   background-image: url('images/OR-Plum-Blue.png');
   background-size: 15%;
@@ -779,6 +780,14 @@ body {
     text-align: center;
     grid-area: title;
     // margin: 0 auto;
+}
+
+.cardContainer {
+  background: hotpink;
+  height: 570px;
+  width: 440px;
+  padding: 20px;
+  border-radius: 50px;
 }
 
 .progress {
