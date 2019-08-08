@@ -45,6 +45,7 @@ export default {
     };
   },
   mounted() {
+    this.shuffle(this.choices);
     this.copyChoiceList = this.choices;
     this.setOptions();
   },
@@ -52,29 +53,21 @@ export default {
     setProgressBar() {
       let progressBar = document.querySelector('#progress-bar');
       progressBar.max = (this.copyChoiceList.length)
-      console.log('copyChoiceList:', this.copyChoiceList.length)
-        // while (this.copyChoiceList.length > 1) {
-        //   console.log('copychoicelist', this.copyChoiceList.length)
         for (let preference in this.preferences) {
-            console.log('preference:', preference)
             progressBar.value = this.preferences.length
-            console.log('progressBarValue:', progressBar.value)
         }
     },
     setOptions() {
       this.endIndex = this.currentIndex + 2;
-      // console.log("pref:", this.preferences);
       this.options = this.copyChoiceList.slice(
         this.currentIndex,
         this.endIndex
       );
-      // console.log("before:", this.endIndex);
     },
     selectOption(index) {
       this.currentIndex = this.currentIndex + 2;
       const toAdd = this.options[index];
       this.preferences.push(toAdd);
-      // console.log("copychoicelist:", this.copyChoiceList);
       if (this.endIndex >= this.copyChoiceList.length - 1) {
         if (this.endIndex != this.copyChoiceList.length) {
           this.preferences.push(
@@ -84,14 +77,23 @@ export default {
         this.currentIndex = 0;
         this.copyChoiceList = this.preferences;
         this.preferences = [];
-        // console.log("after:", this.endIndex);
       }
       if (this.copyChoiceList.length === 1) {
         this.onlyChoice = true;
         this.validated = true;
       }
       this.setOptions();
-    }
+    },
+  shuffle(choices) {
+  var m = choices.length, t, i;
+  while (m) {
+    i = Math.floor(Math.random() * m--);
+    t = choices[m];
+    choices[m] = choices[i];
+    choices[i] = t;
+  }
+  return choices;
+  } 
   }
 };
 </script>
