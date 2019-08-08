@@ -38,16 +38,16 @@
       <ChoiceLogic :choices="allDecks.activityDeck" />
     </div>
 
-    <div v-if="!hiddenActivity">
-      <ChoiceLogic :choices="allDecks.activityDeck" />
-    </div>
-
     <div v-if="!hiddenFoodTypes">
       <ChoiceLogic :choices="allDecks.foodTypesDeck" />
     </div>
 
     <div v-if="!hiddenMilkshakes">
       <ChoiceLogic :choices="allDecks.cookoutMilkshakes" />
+    </div>
+
+    <div v-if="!hiddenNetflixFilms">
+      <ChoiceLogic :choices="allDecks.netflixFilmsDeck" />
     </div>
 
     <div v-if="!hiddenBusiness">
@@ -153,7 +153,8 @@ export default {
         fastFoodDeck: [],
         activityDeck: [],
         foodTypesDeck: [],
-        cookoutMilkshakes: []
+        cookoutMilkshakes:[],
+        netflixFilmsDeck: [],
       },
       yelpDecks: {
         yelpRestaurants: [],
@@ -190,55 +191,39 @@ export default {
       hiddenNav: false,
       hiddenMilkshakes: true,
       hiddenMovies: true
+      hiddenNetflixFilms: true,
     };
   },
   mounted() {
     this.buildLocalApi();
-    // this.getTodaysDate();
-    this.allDecks.netflixDeck = [];
-    this.allDecks.netflixDeck.image =
-      "https://cdn.vox-cdn.com/thumbor/AwKSiDyDnwy_qoVdLPyoRPUPo00=/39x0:3111x2048/1400x1400/filters:focal(39x0:3111x2048):format(png)/cdn.vox-cdn.com/uploads/chorus_image/image/49901753/netflixlogo.0.0.png";
-    this.allDecks.netflixDeck.title = "Netflix Originals";
-    this.allDecks.fastFoodDeck = [];
-    this.allDecks.fastFoodDeck.image =
-      "https://nationaltoday.com/wp-content/uploads/2019/07/national-french-fry-day.jpg";
+    console.log(this.database)
+    this.allDecks.netflixDeck.image = "https://decidor.s3.amazonaws.com/netflix_logo.jpeg";
+    this.allDecks.netflixDeck.title = "Netflix Shows";
+    this.allDecks.fastFoodDeck.image = "https://decidor.s3.amazonaws.com/national-french-fry-day.jpg";
     this.allDecks.fastFoodDeck.title = "Fast Food Chains";
-    this.allDecks.activityDeck = [];
-    this.allDecks.activityDeck.image =
-      "https://blindgossip.com/wp-content/uploads/2018/05/couple-popcorn-movies.jpg";
+    this.allDecks.activityDeck.image = "https://decidor.s3.amazonaws.com/couple-popcorn-movies.jpg";
     this.allDecks.activityDeck.title = "Activities";
-    this.allDecks.foodTypesDeck = [];
-    this.allDecks.foodTypesDeck.image =
-      "https://images.britcdn.com/wp-content/uploads/2016/05/raw-vegan-pad-thai-ohsheglows-sq.jpg";
+    this.allDecks.foodTypesDeck.image = "https://decidor.s3.amazonaws.com/foodtypes.jpeg";
     this.allDecks.foodTypesDeck.title = "Food Types";
-    // this.allDecks.businesses = [];
-    this.yelpDecks.yelpRestaurants.image =
-      "https://portal.restodata.ca/delice/gallery/images/Square/01_delice-_375-2018-03-21.jpg";
+    this.yelpDecks.yelpRestaurants.image = "https://decidor.s3.amazonaws.com/restaurants.jpeg";
     this.yelpDecks.yelpRestaurants.title = "Restaurants";
-    this.yelpDecks.yelpShops.image =
-      "https://www.bwiairport.com/sites/default/files/styles/square_xsml/public/2017-06/stores.jpg";
+    this.yelpDecks.yelpShops.image = "https://decidor.s3.amazonaws.com/shops.jpeg";
     this.yelpDecks.yelpShops.title = "Shops";
-    this.yelpDecks.yelpArts.image =
-      "https://wearewingard.com/wp-content/uploads/2018/04/cummermuseum-1920x1080-gallery3-768x768.jpg";
+    this.yelpDecks.yelpArts.image = "https://decidor.s3.amazonaws.com/arts.jpeg";
     this.yelpDecks.yelpArts.title = "Entertainment";
-    this.yelpDecks.yelpParks.image =
-      "https://www.discoverdurham.com/imager/s3_us-east-1_amazonaws_com/durham-2019/images/Nature-Science/DUKE_GARDENS_BRIDGE_aea8419375870281fb13854150585c99.jpg";
+    this.yelpDecks.yelpParks.image = "https://decidor.s3.amazonaws.com/parks.jpeg";
     this.yelpDecks.yelpParks.title = "Parks";
-    this.apiDecks.fictionDeck.image =
-      "http://media.shelf-awareness.com/theshelf/2018_Edit_Content/nyt_books_logo_010418.jpg";
+    this.apiDecks.fictionDeck.image = "https://decidor.s3.amazonaws.com/NYT_yellow_square.png";
     this.apiDecks.fictionDeck.title = "Fiction";
-    this.apiDecks.nonFictionDeck.image =
-      "https://www.wellerbookworks.com/sites/wellerbookworks.com/files/libro%20playlist-nytimes.jpg";
+    this.apiDecks.nonFictionDeck.image = "https://decidor.s3.amazonaws.com/NYT_blue_square.png";
     this.apiDecks.nonFictionDeck.title = "Non-Fiction";
-    this.yelpDecks.custom.title = "Custom Yelp";
-    this.yelpDecks.custom.image =
-      "https://blog.yelp.com/wp-content/themes/yelpblog-updated/images/yelp-avatar.png";
     this.allDecks.cookoutMilkshakes.title = "Cookout Milkshakes";
-    this.allDecks.cookoutMilkshakes.image =
-      "https://s3.amazonaws.com/secretsaucefiles/photos/images/000/106/478/large/530-350x350.jpg?1485364962";
+    this.allDecks.cookoutMilkshakes.image = "https://decidor.s3.amazonaws.com/cookoutmilkshake.jpeg";
+    this.allDecks.netflixFilmsDeck.title = "Netflix Films";
+    this.allDecks.netflixFilmsDeck.image = "https://decidor.s3.amazonaws.com/netflix_logo.jpeg"
     this.apiDecks.inTheaters.title = "In Theaters Now";
     this.apiDecks.inTheaters.image =
-      "https://akns-images.eonline.com/eol_images/Entire_Site/2019318/rs_600x600-190418142838-toy-story-4-1.jpg?fit=around|700:700&crop=700:700;center,top&output-quality=90";
+      "https://decidor.s3.amazonaws.com/toy_story.jpeg";
   },
   methods: {
     sendKey(key) {
@@ -259,6 +244,8 @@ export default {
         this.hiddenFoodTypes = false;
       } else if (key.includes("cookoutMilkshakes")) {
         this.hiddenMilkshakes = false;
+      } else if (key.includes("netflixFilmsDeck")) {
+        this.hiddenNetflixFilms = false;
       } else if (key.includes("yelp")) {
         this.hiddenSearch = false;
       } else if (key.includes("custom")) {
@@ -307,7 +294,6 @@ export default {
           this.hiddenBusiness = false;
         })
         .catch(error => {
-          console.log(error);
         });
     },
     filterBusinesses() {
@@ -357,7 +343,6 @@ export default {
           this.filterFictionBooks(this.results);
         })
         .catch(error => {
-          console.log(error);
         });
     },
     filterFictionBooks() {
@@ -393,7 +378,6 @@ export default {
           this.filterNonFictionBooks(this.results);
         })
         .catch(error => {
-          console.log(error);
         });
     },
     filterNonFictionBooks() {
@@ -469,13 +453,16 @@ export default {
     buildLocalApi() {
       axios.get(databaseBaseURL).then(response => {
         this.database = response.data.results;
+        console.log(this.database);
         this.makeNetflixDeck(this.database);
         this.makeFastFoodDeck(this.database);
         this.makeActivityDeck(this.database);
         this.makeFoodTypesDeck(this.database);
         this.makeCookoutMilkshakesDeck(this.database);
+        this.makeNetflixFilmsDeck(this.database)
       });
     },
+    
     makeNetflixDeck() {
       this.database[1].card_set.map(card => {
         let cardTitle = card.title;
@@ -522,7 +509,7 @@ export default {
       });
     },
     makeFoodTypesDeck() {
-      this.database[4].card_set.map(card => {
+      this.database[5].card_set.map(card => {
         let cardTitle = card.title;
         let cardImage = card.card_image;
         let cardDeck = card.deck;
@@ -537,7 +524,7 @@ export default {
       });
     },
     makeCookoutMilkshakesDeck() {
-      this.database[5].card_set.map(card => {
+      this.database[4].card_set.map(card => {
         let cardTitle = card.title;
         let cardImage = card.card_image;
         let cardDeck = card.deck;
@@ -550,7 +537,22 @@ export default {
         });
         return this.allDecks.cookoutMilkshakes;
       });
-    }
+    },
+    makeNetflixFilmsDeck() {
+      this.database[2].card_set.map(card => {
+        let cardTitle = card.title;
+        let cardImage = card.card_image;
+        let cardDeck = card.deck;
+        let cardDescription = card.description;
+
+        this.allDecks.netflixFilmsDeck.push({
+          title: cardTitle,
+          card_image: cardImage,
+          description: card.description
+        });
+        return this.allDecks.netflixFilmsDeck;
+      });
+    },
   }
 };
 </script>
