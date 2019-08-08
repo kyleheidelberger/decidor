@@ -62,6 +62,10 @@
       <ChoiceLogic :choices="apiDecks.nonFictionDeck" />
     </div>
 
+    <div v-if="!hiddenMovies">
+      <ChoiceLogic :choices="apiDecks.inTheaters" />
+    </div>
+
     <transition appear name="bounce">
       <div class="container">
         <h2 v-if="!hiddenNav" class="deckInfo">Starter Decks</h2>
@@ -133,6 +137,10 @@ const databaseBaseURL = "https://decidor.herokuapp.com/starterdecks/";
 const bookBaseURL = `https://api.nytimes.com/svc/books/v3/lists/current/`;
 const nytApiKey = `4QC7YMXjnIWo1dTtGFpj5itZlVDPvbOk`;
 
+const movieBaseURL =
+  "https://api.internationalshowtimes.com/v4/movies/?limit=20";
+const movieApiKey = "LafOf9zLcvERnGpF3IBU85w8txyALDvH";
+
 export default {
   name: "Decks",
   components: {
@@ -145,7 +153,7 @@ export default {
         fastFoodDeck: [],
         activityDeck: [],
         foodTypesDeck: [],
-        cookoutMilkshakes:[],
+        cookoutMilkshakes: []
       },
       yelpDecks: {
         yelpRestaurants: [],
@@ -156,7 +164,8 @@ export default {
       },
       apiDecks: {
         fictionDeck: [],
-        nonFictionDeck: []
+        nonFictionDeck: [],
+        inTheaters: []
       },
       database: [],
       // hiddenCards: true,
@@ -167,6 +176,7 @@ export default {
       hiddenDeck: false,
       businesses: [],
       results: [],
+      movies: [],
       hiddenBusiness: true,
       hiddenNetflix: true,
       hiddenFood: true,
@@ -178,6 +188,7 @@ export default {
       hiddenCustomSearch: true,
       hiddenNav: false,
       hiddenMilkshakes: true,
+      hiddenMovies: true
     };
   },
   mounted() {
@@ -212,16 +223,20 @@ export default {
       "https://www.discoverdurham.com/imager/s3_us-east-1_amazonaws_com/durham-2019/images/Nature-Science/DUKE_GARDENS_BRIDGE_aea8419375870281fb13854150585c99.jpg";
     this.yelpDecks.yelpParks.title = "Parks";
     this.apiDecks.fictionDeck.image =
-      "https://decidor.s3.amazonaws.com/books.jpeg";
-    this.apiDecks.fictionDeck.title = "NYT Fiction";
+      "http://media.shelf-awareness.com/theshelf/2018_Edit_Content/nyt_books_logo_010418.jpg";
+    this.apiDecks.fictionDeck.title = "Fiction";
     this.apiDecks.nonFictionDeck.image =
-      "https://decidor.s3.amazonaws.com/books.jpeg";
-    this.apiDecks.nonFictionDeck.title = "NYT Non-Fiction";
+      "https://www.wellerbookworks.com/sites/wellerbookworks.com/files/libro%20playlist-nytimes.jpg";
+    this.apiDecks.nonFictionDeck.title = "Non-Fiction";
     this.yelpDecks.custom.title = "Custom Yelp";
     this.yelpDecks.custom.image =
       "https://blog.yelp.com/wp-content/themes/yelpblog-updated/images/yelp-avatar.png";
     this.allDecks.cookoutMilkshakes.title = "Cookout Milkshakes";
-    this.allDecks.cookoutMilkshakes.image = "https://s3.amazonaws.com/secretsaucefiles/photos/images/000/106/478/large/530-350x350.jpg?1485364962";
+    this.allDecks.cookoutMilkshakes.image =
+      "https://s3.amazonaws.com/secretsaucefiles/photos/images/000/106/478/large/530-350x350.jpg?1485364962";
+    this.apiDecks.inTheaters.title = "In Theaters Now";
+    this.apiDecks.inTheaters.image =
+      "https://akns-images.eonline.com/eol_images/Entire_Site/2019318/rs_600x600-190418142838-toy-story-4-1.jpg?fit=around|700:700&crop=700:700;center,top&output-quality=90";
   },
   methods: {
     sendKey(key) {
@@ -246,6 +261,8 @@ export default {
         this.hiddenSearch = false;
       } else if (key.includes("custom")) {
         this.hiddenCustomSearch = false;
+      } else if (key.includes("inTheaters")) {
+        this.getMovies();
       }
     },
     getSearchParam(key) {
@@ -395,6 +412,43 @@ export default {
         return this.apiDecks.nonFictionDeck;
       });
     },
+    // buildMovieURL(url, location) {
+    //   return `${movieBaseURL}${this.searchingFor}&location=${this.cityName}`;
+    // },
+    getMovies() {
+      // let movieApiURL = this.buildMovieURL(movieBaseURL, this.cityName);
+      // console.log(movieApiURL);
+
+      axios
+        .get(movieBaseURL, {
+          headers: {
+            Authorization: `Token ${movieApiKey}`
+          }
+        })
+        .then(response => {
+          this.apiDecks.movies = response.data.movies;
+          this.filterMovies(this.apiDecks.movies);
+          this.hiddenMovies = false;
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    },
+    filterMovies() {
+      this.apiDecks.movies.map(movie => {
+        let movieTitle = movie.title;
+        let movieDescription = movie.slug;
+        let movieCover = movie.poster_image_thumbnail;
+
+        this.apiDecks.inTheaters.push({
+          title: movieTitle,
+          description: movieDescription,
+          card_image: movieCover
+        });
+        this.apiDecks.movies = [];
+        return this.apiDecks.inTheaters;
+      });
+    },
     buildLocalApi() {
       axios.get(databaseBaseURL).then(response => {
         this.database = response.data.results;
@@ -479,7 +533,7 @@ export default {
         });
         return this.allDecks.cookoutMilkshakes;
       });
-    },
+    }
   }
 };
 </script>
