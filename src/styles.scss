@@ -4,6 +4,7 @@ $lg: linear-gradient(to right, #7796CB 0%, #A3BCF9 51%, #7796CB 100%);
 $br: linear-gradient(to bottom right, #2f7e97, #236087, #2b426f, #332350, #30002b);
 $bt: linear-gradient(to bottom, #2f7e97, #236087, #2b426f, #332350, #30002b);
 $btn: linear-gradient(to bottom, #2f7e97, #236087, #2b426f, #30002b);
+$nav: linear-gradient(to bottom,rgb(51,35,80) 90%, rgba(51,35,80,0));
 $lato: 'Lato', sans-serif;
 $mon: 'Montserrat', sans-serif;
 $bw: #e6f1f7;
@@ -19,12 +20,19 @@ a {
 }
 
 body {
-    background: $bw;
+    background: $br no-repeat center center fixed;
+    background-size: cover;
 }
 // .buttons-container {
 //     display: flex;
 //     justify-content: space-around;
 //     margin-top: 60px;
+// }
+
+// :root {
+//   --img-1: url(images/damien-petit.jpg);
+//   --img-2: url(images/erik-witsoe.jpg);
+//   --img-3: url(images/pavan-trikutam.jpg);
 // }
 .option-buttons {
     background: transparent;
@@ -160,62 +168,43 @@ body {
     margin: 20px;
 }
 
-// .header-image {
-//     height: cover;
-//     width: 100%;
-//     position: relative;
-//     z-index: 1;
-//     background: transparent;
-//     filter: brightness(60%);
-//     // -webkit-filter: brightness(60%);
-// }
-
-.title {
-    // background: $br;
-    // background-clip: text;
-    // -webkit-background-clip: text;
-    // -webkit-text-fill-color: transparent;
-    margin-top: 20%;
-    align-self: center;
-    z-index: 100;
-    position: absolute;
-    font-size: 4.5rem;
-    color: white;
-    font-family: $mon;
-    text-shadow: 0 1px 0 #ccc, 
-    0 2px 0 #c9c9c9,
-    0 3px 0 #bbb,
-    0 4px 0 #b9b9b9,
-    0 5px 0 #aaa,
-    0 6px 1px rgba(0,0,0,.1),
-    0 0 5px rgba(0,0,0,.1),
-    0 1px 3px rgba(0,0,0,.3),
-    0 3px 5px rgba(0,0,0,.2),
-    0 5px 10px rgba(0,0,0,.25),
-    0 10px 10px rgba(0,0,0,.2),
-    0 20px 20px rgba(0,0,0,.15);
-// text-shadow: -10px 10px 0px #00e6e6,
-//                  -20px 20px 0px #01cccc,
-//                  -30px 30px 0px #00bdbd;
+.header-image {
+    // background-size: contain;
+    // height: cover;
+    width: 800px;
+    height: 800px;
+    position: relative;
+    margin: 0 auto;
+    // z-index: 1;
+    // background-image: var(--img-1);
+    // background: transparent;
+    // filter: brightness(95%);
+    // -webkit-filter: brightness(60%);
 }
 
 .banner-container {
-    justify-content: center;
-    margin-top: 2%;
-    // width: 800px;
+    // justify-content: center;
+    // justify-content: space-around;
+    width: 78%;
+    // margin-top: 2%;
     // margin-left: 12.5%;
-    display: grid;
+    display: flex;
     // grid-template-rows: 50px;
-    grid-template-columns: repeat(5, 10%);
+    // grid-template-columns: repeat(3, 10%);
     // grid-template-columns: fit-content(40%);
-    grid-gap: 77px;
-    grid-template-areas:
-    "logo empty empty gbtn fbtn";
+    // grid-gap: 77px;
+    // grid-template-areas:
+    // "logo gbtn fbtn";
 }
 
-// .base-head {
-//     width: 800px;
-// }
+.base-head {
+  background: $nav;
+  padding: 20px;
+  display: flex;
+  height: 110px;
+  justify-content: center;
+  // background-color: #a5beee;
+}
 
 .deck-container {
     display: flex;
@@ -224,13 +213,13 @@ body {
 }
 
 .deckTitle {
+    padding-bottom: 10px;
     font-size: 0.9rem;
-    z-index: 100;
+    z-index: 3;
     position: absolute;
     font-family: $lato;
     align-self: flex-end;
     color: #fff;
-    padding-bottom: 10px;	
     text-shadow: 2px 2px 0px rgba(0,0,0,0.3);
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -238,13 +227,14 @@ body {
     // margin: 0 auto;
 }
 .deckImage {
+    filter: drop-shadow(8px 5px 5px rgb(48, 0, 43));
     // margin-top: 20%;
     max-height: 200px;
     max-width: 200px;
     // filter: blur(2.5px);
     // opacity: 0.80;
     outline: none;
-    border: 2px solid black;
+    // border: 1px solid rgba(48,0,43,0.1);
     border-radius: 10px;
     z-index: 1;
     position: relative;
@@ -256,9 +246,10 @@ body {
 
 .overlay:before {
     content: '';
-    z-index: 99;
+    z-index: 2;
     border-radius: 10px;
-    top: -45px;
+    // top: -45px;
+    top: -15%;
     // top: 0;
     // left: 0;
     // right: 0;
@@ -267,8 +258,8 @@ body {
     height: 100%;
     position: absolute;
     display: inline-block;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.8) 0%, 
-    rgba(0, 0, 0, 0.18) 36%, rgba(0, 0, 0, 0) 46%), 
+    background: linear-gradient(0deg, rgba(48, 0, 43, 0.8) 0%, 
+    rgba(48, 0, 43, 0.18) 36%, rgba(48, 0, 43, 0) 46%), 
     // box-shadow: 0 20px 30px rgba(0,0,0,0.2);
 }
 
@@ -311,6 +302,36 @@ body {
     animation: bounce-in-right 0.5s; 
  }
 
+@keyframes fade-in-out {
+  0% {
+    opacity:1;
+  }
+  17% {
+    opacity:1;
+  }
+  25% {
+    opacity:0;
+  }
+  92% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+
+#header-img-container img:nth-of-type(1) {
+  animation-delay: 6s;
+}
+#header-img-container img:nth-of-type(2) {
+  animation-delay: 4s;
+}
+#header-img-container img:nth-of-type(3) {
+  animation-delay: 2s;
+}
+#header-img-container img:nth-of-type(4) {
+  animation-delay: 0;
+}
 // @keyframes fade-in-up {
 //     from {
 //       opacity: 0;
@@ -332,73 +353,115 @@ body {
 //   margin-top: 3%;
 //   margin-left: 800px;
   text-transform: uppercase;
-  font-size: 1.3rem;
-  padding: 8px 16px;
-  background: transparent;
-  border: 2px solid transparent;
-  border-image: $btn;
-  border-image-slice: 1;
+  // font-size: 1.3rem;
+  // padding: 8px 16px;
+  // background: transparent;
+  // border: 2px solid transparent;
+  // border-image: $btn;
+  // border-image-slice: 1;
   letter-spacing: 1.2px;
+  // font-family: $lato;
+  // grid-area: gbtn;
+  // color: #30002b;
+  font-size: 1rem;
+  display: block;
   font-family: $lato;
-  grid-area: gbtn;
-  color: #30002b;
+  width: 150px;
+  align-self: center;
+  // height: 45px;
+  padding: 8px;
+  margin-right: 5%;
+  color: #fff;
+  border: 1px solid #fff;
+  border-radius: 40px;
+  text-align: center;
+  outline: none;
+  text-decoration: none;
+  transition: background-color 0.1s ease-out,
+  color 0.2s ease-out;
   &:hover,
   &:focus-within {
-      cursor: pointer;
-      background: $btn;
-      border: 2px solid transparent;
-      border-image: $btn;
-      border-image-slice: 1;
-      color: #fff;
+      // cursor: pointer;
+      // background: $btn;
+      // border: 2px solid transparent;
+      // border-image: $btn;
+      // border-image-slice: 1;
+      // color: #fff;
+      background-color: #fff;
+      color: rgb(51,35,80);
+      transition: background-color 0.2s ease-in,
+      color 0.3s ease-in;
   }
 }
 
 .fill {
+  border: 1px solid #fff;
+  border-radius: 40px;
+  background-color: #fff;
+  font-size: 1rem;
+  display: block;
+  color: rgb(51,35,80);
+  font-family: $lato;
+  width: 150px;
+  padding: 8px;
+  text-align: center;
+  outline: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  // height: 45px;
+  // align-items: center;
+  align-self: center;
+
     // align-self: flex-start;
-    grid-area: fbtn;
+    // grid-area: fbtn;
     // margin-top: 3%;
-    font-family: $lato;
-    text-transform: uppercase;
-    font-size: 1.3rem;
-    padding: 8px 16px;
-    background: $btn;
-    border: 2px solid transparent;
-    border-image: $btn;
-    border-image-slice: 1;
-    color: #fff;
+    // font-family: $lato;
+    // text-transform: uppercase;
+    // font-size: 1.3rem;
+    // padding: 8px 16px;
+    // background: $btn;
+    // border: 2px solid transparent;
+    // border-image: $btn;
+    // border-image-slice: 1;
+    // color: #fff;
 }
 .logo {
     background-image: url('images/decidor.png');
-    background-size: contain;
+    background-size: 200px auto;
     background-repeat: no-repeat;
-    // width: 60%;
+    // width: 100%;
+    width: 100%;
+    height: 100%;
     grid-area: logo;
+    -webkit-filter: brightness(0%) invert(100%);
+    filter: brightness(0%) invert(100%);
 }
 
-.top-rect {
-    background: $br;
-    width: 100%;
-    z-index: 2;
-    position: absolute;
-    top: 100px;
-    left: 0;
-    overflow: hidden;
-    padding-top: 500px;
-}
+// .top-rect {
+//     background: $br;
+//     width: 100%;
+//     z-index: 2;
+//     position: absolute;
+//     top: 100px;
+//     left: 0;
+//     overflow: hidden;
+//     padding-top: 500px;
+// }
   
-.top-rect:after {
-    content: "";
-    display: block;
-    background: $bw;
-    height: 450px;
-    width: 9600px;
-    position: absolute;
-    z-index: 1;
-    bottom: -40%;
-    left: 50%;
-    margin-left: -4000px;
-    transform: rotate(-8deg);
-}
+// .top-rect:after {
+//     content: "";
+//     display: block;
+//     background: rgba(0, 0, 0, 0.2);
+//     height: 450px;
+//     width: 9600px;
+//     position: absolute;
+//     z-index: 1;
+//     bottom: -40%;
+//     left: 50%;
+//     margin-left: -4000px;
+//     transform: rotate(-8deg);
+// }
 
 @keyframes enlorge {
 0% {
@@ -473,11 +536,63 @@ body {
   transform-origin: center;
 }
 
-.center-title {
-    display: flex;
-    justify-content: center;
+.title {
+  // background: $br;
+  // background-clip: text;
+  // -webkit-background-clip: text;
+  // -webkit-text-fill-color: transparent;
+  margin-top: 20%;
+  grid-area: easy;
+  align-self: center;
+  // z-index: 100;
+  // position: absolute;
+  font-size: 4.5rem;
+  color: white;
+  font-family: $mon;
+  text-shadow: 0 1px 0 #ccc, 
+  0 2px 0 #c9c9c9,
+  0 3px 0 #bbb,
+  0 4px 0 #b9b9b9,
+  0 5px 0 #aaa,
+  0 6px 1px rgba(0,0,0,.1),
+  0 0 5px rgba(0,0,0,.1),
+  0 1px 3px rgba(0,0,0,.3),
+  0 3px 5px rgba(0,0,0,.2),
+  0 5px 10px rgba(0,0,0,.25),
+  0 10px 10px rgba(0,0,0,.2),
+  0 20px 20px rgba(0,0,0,.15);
+// text-shadow: -10px 10px 0px #00e6e6,
+//                  -20px 20px 0px #01cccc,
+//                  -30px 30px 0px #00bdbd;
 }
 
+
+.center-title {
+    display: grid;
+    justify-content: center;
+    grid-template-rows: 50px;
+    grid-template-columns: repeat(2, 400px);
+    grid-template-columns: fit-content(80%);
+    grid-row-gap: 40%;
+    grid-template-areas:
+    "easy easy"
+    "chart chart";
+}
+
+.bracket-logic {
+  // background-image: url('images/bracket-logic.png');
+  // background-position: center;
+  // background-size: 400px;
+  height: auto;
+  width: 800px;
+  -webkit-filter: invert(100%);
+  filter: invert(100%);
+  display: block;
+  align-self: center;
+  grid-area: chart;
+  // z-index: 2;
+  // position: absolute;
+}
 .socialaccount_providers {
     list-style-type: none;
 }
@@ -491,15 +606,29 @@ body {
 }
 
 .decks-info {
-    background: $bt;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    // background: $bt;
+    // background-clip: text;
+    // -webkit-background-clip: text;
+    // -webkit-text-fill-color: transparent;
+    color: #fff;
     padding-top: 80px;
-    font-size: 4rem;
+    font-size: 4.5rem;
     text-align: center;
     // color: #fff;
-    font-family: $mon;
+    font-family: $lato;
+    padding-bottom: 10px;
+    text-shadow: 0 1px 0 #ccc, 
+    0 2px 0 #c9c9c9,
+    0 3px 0 #bbb,
+    0 4px 0 #b9b9b9,
+    0 5px 0 #aaa,
+    0 6px 1px rgba(0,0,0,.1),
+    0 0 5px rgba(0,0,0,.1),
+    0 1px 3px rgba(0,0,0,.3),
+    0 3px 5px rgba(0,0,0,.2),
+    0 5px 10px rgba(0,0,0,.25),
+    0 10px 10px rgba(0,0,0,.2),
+    0 20px 20px rgba(0,0,0,.15);
     // text-shadow: 0 1px 0 #ccc, 
     // 0 2px 0 #c9c9c9,
     // 0 3px 0 #bbb,
@@ -531,14 +660,15 @@ body {
 // }
 .deckInfo {
     // z-index: 99;
-    margin-top: 60px;
+    margin-top: 10%;
     // align-self: flex-start;
     // text-align: center;
     font-size: 2.5rem;
-    background: $bt;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #fff;
+    // background: $bt;
+    // background-clip: text;
+    // -webkit-background-clip: text;
+    // -webkit-text-fill-color: transparent;
     font-family: $lato;
     grid-area: header;
     position: relative;
@@ -550,10 +680,11 @@ body {
     // align-self: flex-start;
     // text-align: center;
     font-size: 2.5rem;
-    background: $bt;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #fff;
+    // background: $bt;
+    // background-clip: text;
+    // -webkit-background-clip: text;
+    // -webkit-text-fill-color: transparent;
     font-family: $lato;
     grid-area: header2;
     border-bottom: none;
@@ -563,9 +694,9 @@ body {
 
 .deckInfo2:after {
     content: '';
-    background: $br;
+    background: #fff;
     display: block;
-    height: 2.5px;
+    height: 2px;
     width: 100%;
     position: absolute;
     bottom: 0;
@@ -573,9 +704,9 @@ body {
 
 .deckInfo:after {
     content: '';
-    background: $br;
+    background: #fff;
     display: block;
-    height: 2.5px;
+    height: 2px;
     width: 100%;
     position: absolute;
     bottom: 0;
@@ -587,6 +718,8 @@ body {
   background-size: 15%;
   background-repeat: no-repeat;
   background-position: center;
+  // -webkit-filter: brightness(0%) invert(100%);
+  // filter: brightness(0%) invert(100%);
 }
 
 // styling the cards
@@ -596,7 +729,7 @@ body {
     max-height: 500px;
     max-width: 400px;
     // max-width: 260px;
-    border: 2px solid black;
+    border: 2px solid rgb(48,0,43);
     border-radius: 10px;
     grid-area: img;
     // position: absolute;
@@ -614,16 +747,17 @@ body {
     grid-row-gap: 50px;
     grid-column-gap: 300px;
     grid-template-areas:
-    "progbar progbar"
     "kyle kyle"
+    "progbar progbar"
     "img img"
     "title title";
 }
 
 .this-or-that {
-    background: $br;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    // background: $br;
+    // background-clip: text;
+    // -webkit-text-fill-color: transparent;
+    color: #fff;
     font-size: 4rem;
     grid-area: kyle;
     text-align: center;
@@ -637,8 +771,8 @@ body {
     // margin-top: 40px;
     font-family: $lato;
     align-self: flex-end;
-    // color: #fff;
-    color: #236087;
+    color: #fff;
+    // color: #236087;
     padding-bottom: 10px;	
     text-shadow: 2px 2px 0px rgba(0,0,0,0.3);
     letter-spacing: 0.1em;
@@ -662,6 +796,13 @@ body {
 progress {
   width: 100%;
   margin-top: 20px;
+  overflow: hidden;
+  border: 1px solid #bbbbbb;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  -webkit-box-shadow: 0px 2px 4px #555555;
+  -moz-box-shadow: 0px 2px 4px #555555;
+  box-shadow: 0px 2px 4px #555555;  
 }
 progress[value] {
   -webkit-appearance: none;
