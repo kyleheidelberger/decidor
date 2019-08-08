@@ -190,7 +190,7 @@ export default {
       hiddenCustomSearch: true,
       hiddenNav: false,
       hiddenMilkshakes: true,
-      hiddenMovies: true
+      hiddenMovies: true,
       hiddenNetflixFilms: true,
     };
   },
