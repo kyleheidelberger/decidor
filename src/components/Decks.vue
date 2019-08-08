@@ -382,7 +382,6 @@ export default {
     buildLocalApi() {
       axios.get(databaseBaseURL).then(response => {
         this.database = response.data.results;
-        console.log("results", this.database);
         this.makeNetflixDeck(this.database);
         this.makeFastFoodDeck(this.database);
         this.makeActivityDeck(this.database);
@@ -392,7 +391,6 @@ export default {
     },
     makeNetflixDeck() {
       this.database[1].card_set.map(card => {
-        console.log(card);
         let cardTitle = card.title;
         let cardImage = card.card_image;
         let cardDeck = card.deck;
@@ -403,13 +401,11 @@ export default {
           card_image: cardImage,
           description: card.description
         });
-        console.log("netflixDeck:", this.allDecks.netflixDeck);
         return this.allDecks.netflixDeck;
       });
     },
     makeFastFoodDeck() {
       this.database[0].card_set.map(card => {
-        console.log(card);
         let cardTitle = card.title;
         let cardImage = card.card_image;
         let cardDeck = card.deck;
@@ -420,13 +416,11 @@ export default {
           card_image: cardImage,
           description: card.description
         });
-        console.log("fastFoodDeck:", this.allDecks.fastFoodDeck);
         return this.allDecks.fastFoodDeck;
       });
     },
     makeActivityDeck() {
       this.database[3].card_set.map(card => {
-        console.log(card);
         let cardTitle = card.title;
         let cardImage = card.card_image;
         let cardDeck = card.deck;
@@ -437,13 +431,11 @@ export default {
           card_image: cardImage,
           description: card.description
         });
-        console.log("activityDeck:", this.allDecks.activityDeck);
         return this.allDecks.activityDeck;
       });
     },
     makeFoodTypesDeck() {
       this.database[4].card_set.map(card => {
-        console.log(card);
         let cardTitle = card.title;
         let cardImage = card.card_image;
         let cardDeck = card.deck;
@@ -454,13 +446,11 @@ export default {
           card_image: cardImage,
           description: card.description
         });
-        console.log("foodTypesDeck:", this.allDecks.foodTypesDeck);
         return this.allDecks.foodTypesDeck;
       });
     },
     makeCookoutMilkshakesDeck() {
       this.database[5].card_set.map(card => {
-        console.log(card);
         let cardTitle = card.title;
         let cardImage = card.card_image;
         let cardDeck = card.deck;
@@ -471,7 +461,6 @@ export default {
           card_image: cardImage,
           description: card.description
         });
-        console.log("cookoutMilkshakes:", this.allDecks.cookoutMilkshakes);
         return this.allDecks.cookoutMilkshakes;
       });
     },
