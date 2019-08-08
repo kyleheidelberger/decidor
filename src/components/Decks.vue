@@ -138,7 +138,7 @@ const bookBaseURL = `https://api.nytimes.com/svc/books/v3/lists/current/`;
 const nytApiKey = `4QC7YMXjnIWo1dTtGFpj5itZlVDPvbOk`;
 
 const movieBaseURL =
-  "https://api.internationalshowtimes.com/v4/movies/?fields=title,slug,poster_image.flat&limit=20";
+  "https://api.internationalshowtimes.com/v4/movies/?fields=title,slug,poster_image.flat&limit=20&countries=US&release_date_to=";
 const movieApiKey = "LafOf9zLcvERnGpF3IBU85w8txyALDvH";
 
 export default {
@@ -173,6 +173,7 @@ export default {
       searchingFor: "",
       book_category: "",
       searchTerm: "",
+      formattedDate: "",
       hiddenDeck: false,
       businesses: [],
       results: [],
@@ -193,6 +194,7 @@ export default {
   },
   mounted() {
     this.buildLocalApi();
+    // this.getTodaysDate();
     this.allDecks.netflixDeck = [];
     this.allDecks.netflixDeck.image =
       "https://cdn.vox-cdn.com/thumbor/AwKSiDyDnwy_qoVdLPyoRPUPo00=/39x0:3111x2048/1400x1400/filters:focal(39x0:3111x2048):format(png)/cdn.vox-cdn.com/uploads/chorus_image/image/49901753/netflixlogo.0.0.png";
@@ -412,22 +414,36 @@ export default {
         return this.apiDecks.nonFictionDeck;
       });
     },
-    // buildMovieURL(url, location) {
-    //   return `${movieBaseURL}${this.searchingFor}&location=${this.cityName}`;
-    // },
-    getMovies() {
-      // let movieApiURL = this.buildMovieURL(movieBaseURL, this.cityName);
-      // console.log(movieApiURL);
+    buildMovieURL(url) {
+      let todaysDate = new Date();
+      let month = ("0" + (todaysDate.getMonth() + 1)).slice(-2);
+      let date = ("0" + todaysDate.getDate()).slice(-2);
+      let year = todaysDate.getFullYear();
+      let formattedDate = year + "-" + month + "-" + date;
+      console.log("todaysDate:", formattedDate);
+
+      let startDate = new Date();
+      let sDate = ("0" + startDate.getDate()).slice(-2);
+      let sMonth = ("0" + startDate.getMonth()).slice(-2);
+      let sYear = startDate.getFullYear();
+      let monthAgoDate = sYear + "-" + sMonth + "-" + sDate;
+      console.log("monthAgoDate:", monthAgoDate);
+
+      return `${movieBaseURL}${formattedDate}&release_date_from=${monthAgoDate}`;
+    },
+    getMovies(formattedDate) {
+      let movieApiURL = this.buildMovieURL(movieBaseURL);
+      console.log("url", movieApiURL);
 
       axios
-        .get(movieBaseURL, {
+        .get(movieApiURL, {
           headers: {
             Authorization: `Token ${movieApiKey}`
           }
         })
         .then(response => {
           this.apiDecks.movies = response.data.movies;
-          console.log(response.data.movies)
+          console.log(response.data.movies);
           this.filterMovies(this.apiDecks.movies);
           this.hiddenMovies = false;
         })
