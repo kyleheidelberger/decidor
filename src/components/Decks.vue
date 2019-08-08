@@ -11,6 +11,21 @@
       </p>
     </div>
 
+    <div v-if="!hiddenCustomSearch" class="searchBar">
+      <input type="text" v-model.lazy="cityName" placeholder="City" />
+      <input
+        type="text"
+        v-model.lazy="searchTerm"
+        v-on:change="getBusinesses"
+        placeholder="What are you looking for?"
+      />
+      <button @click="getBusinesses">Get Businesses</button>
+      <p>
+        Input your current location.
+        You are currently looking for {{ searchTerm }} in {{ cityName }}.
+      </p>
+    </div>
+
     <div v-if="!hiddenNetflix">
       <ChoiceLogic :choices="allDecks.netflixDeck" />
     </div>
@@ -131,7 +146,8 @@ export default {
         yelpRestaurants: [],
         yelpShops: [],
         yelpArts: [],
-        yelpParks: []
+        yelpParks: [],
+        custom: []
       },
       apiDecks: {
         fictionDeck: [],
@@ -142,6 +158,7 @@ export default {
       cityName: "",
       searchingFor: "",
       book_category: "",
+      searchTerm: "",
       hiddenDeck: false,
       businesses: [],
       results: [],
@@ -153,23 +170,11 @@ export default {
       hiddenFictionBooks: true,
       hiddenNonFictionBooks: true,
       hiddenSearch: true,
+      hiddenCustomSearch: true,
       hiddenNav: false
     };
   },
   mounted() {
-    // this.getBusinesses(this.cityName);
-    // Object.keys(this.allDecks).forEach(async (key) => {
-
-    //   console.log(key, this.allDecks[key]);
-    // axios.get('api/').then(response => {
-    //   app.netflixDeck = response.data.netflixDeck;
-    // })
-    // axios call to populate
-    // try {
-    // this.allDecks[key] = await axios.get
-    // }
-    // });
-
     this.buildLocalApi();
     this.allDecks.netflixDeck = [];
     this.allDecks.netflixDeck.image =
@@ -206,6 +211,9 @@ export default {
     this.apiDecks.nonFictionDeck.image =
       "https://decidor.s3.amazonaws.com/books.jpeg";
     this.apiDecks.nonFictionDeck.title = "NYT Non-Fiction";
+    this.yelpDecks.custom.title = "Custom Yelp";
+    this.yelpDecks.custom.image =
+      "https://blog.yelp.com/wp-content/themes/yelpblog-updated/images/yelp-avatar.png";
   },
   methods: {
     sendKey(key) {
@@ -226,6 +234,8 @@ export default {
         this.hiddenFoodTypes = false;
       } else if (key.includes("yelp")) {
         this.hiddenSearch = false;
+      } else if (key.includes("custom")) {
+        this.hiddenCustomSearch = false;
       }
     },
     getSearchParam(key) {
@@ -242,12 +252,18 @@ export default {
     buildYelpURL(url, searchingFor, location) {
       return `${yelpBaseURL}${this.searchingFor}&location=${this.cityName}`;
     },
-    getBusinesses(key) {
+    getBusinesses() {
+      if (!this.hiddenCustomSearch) {
+        console.log("searchTerm:", this.searchTerm);
+        this.searchingFor = `categories=${this.searchTerm}`;
+      }
+
       let apiURL = this.buildYelpURL(
         yelpBaseURL,
         this.searchingFor,
         this.cityName
       );
+      console.log(apiURL);
 
       axios
         .get(apiURL, {
@@ -258,7 +274,6 @@ export default {
         })
         .then(response => {
           this.yelpDecks.businesses = response.data.businesses;
-          console.log("yelpresults:", this.yelpDecks.businesses);
           this.filterBusinesses(this.yelpDecks.businesses);
           this.hiddenBusiness = false;
         })
@@ -281,6 +296,7 @@ export default {
         });
         this.yelpDecks.businesses = [];
         this.hiddenSearch = true;
+        this.hiddenCustomSearch = true;
         return this.yelpDecks.yelpRestaurants;
       });
     },
@@ -372,7 +388,6 @@ export default {
     buildLocalApi() {
       axios.get(databaseBaseURL).then(response => {
         this.database = response.data.results;
-        console.log("results", this.database);
         this.makeNetflixDeck(this.database);
         this.makeFastFoodDeck(this.database);
         this.makeActivityDeck(this.database);
@@ -381,7 +396,6 @@ export default {
     },
     makeNetflixDeck() {
       this.database[1].card_set.map(card => {
-        console.log(card);
         let cardTitle = card.title;
         let cardImage = card.card_image;
         let cardDeck = card.deck;
@@ -392,13 +406,11 @@ export default {
           card_image: cardImage,
           description: card.description
         });
-        console.log("netflixDeck:", this.allDecks.netflixDeck);
         return this.allDecks.netflixDeck;
       });
     },
     makeFastFoodDeck() {
       this.database[0].card_set.map(card => {
-        console.log(card);
         let cardTitle = card.title;
         let cardImage = card.card_image;
         let cardDeck = card.deck;
@@ -409,13 +421,11 @@ export default {
           card_image: cardImage,
           description: card.description
         });
-        console.log("fastFoodDeck:", this.allDecks.fastFoodDeck);
         return this.allDecks.fastFoodDeck;
       });
     },
     makeActivityDeck() {
       this.database[3].card_set.map(card => {
-        console.log(card);
         let cardTitle = card.title;
         let cardImage = card.card_image;
         let cardDeck = card.deck;
@@ -426,13 +436,11 @@ export default {
           card_image: cardImage,
           description: card.description
         });
-        console.log("activityDeck:", this.allDecks.activityDeck);
         return this.allDecks.activityDeck;
       });
     },
     makeFoodTypesDeck() {
       this.database[4].card_set.map(card => {
-        console.log(card);
         let cardTitle = card.title;
         let cardImage = card.card_image;
         let cardDeck = card.deck;
@@ -443,7 +451,6 @@ export default {
           card_image: cardImage,
           description: card.description
         });
-        console.log("foodTypesDeck:", this.allDecks.foodTypesDeck);
         return this.allDecks.foodTypesDeck;
       });
     }
