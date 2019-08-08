@@ -46,26 +46,31 @@ export default {
   },
   mounted() {
     this.copyChoiceList = this.choices;
+
     this.setOptions();
+    // console.log("currentIndex", this.currentIndex)
+    // console.log("endIndex", this.endIndex)
+    // console.log(document.querySelector('#progress-bar').value)
   },
   methods: {
     setProgressBar() {
       let progressBar = document.querySelector('#progress-bar');
-      progressBar.max = (this.copyChoiceList.length / 2)
-      console.log('copyChoiceList:', this.copyChoiceList.length)
-        for (let preference in this.preferences) {
-            console.log('preference:', preference)
-            console.log('progressBarMax:', progressBar.max)
-            progressBar.value = this.preferences.length
-            console.log('progressBarValue:', progressBar.value)
-            console.log('copyChoiceList:', this.copyChoiceList.length)
-            if (progressBar.max === (progressBar.value + 1)) {
-                progressBar.value === 0;
-            }
-        }
+      progressBar.max = Math.round(((this.copyChoiceList.length / 2) - 1));
+      // console.log('preferences length:', this.preferences.length)
+      progressBar.value = this.preferences.length
+      // console.log('progressBarValue:', progressBar.value)
+      // console.log('progressBarMax:', progressBar.max)
+      // console.log('copyChoiceList:', this.copyChoiceList.length)
+        // for (let preference in this.preferences) {
+            // console.log('copyChoiceList:', this.copyChoiceList.length)
+            // if (progressBar.max === (progressBar.value + 1)) {
+            //     progressBar.value === 0;
+            // }
+        // }
     },
     setOptions() {
       this.endIndex = this.currentIndex + 2;
+      // console.log("end index:", this.endIndex)
       // console.log("pref:", this.preferences);
       this.options = this.copyChoiceList.slice(
         this.currentIndex,
@@ -77,7 +82,8 @@ export default {
       this.currentIndex = this.currentIndex + 2;
       const toAdd = this.options[index];
       this.preferences.push(toAdd);
-      // console.log("copychoicelist:", this.copyChoiceList);
+      console.log("end index:", this.endIndex)
+      console.log("copy choice list length:", this.copyChoiceList.length);
       if (this.endIndex >= this.copyChoiceList.length - 1) {
         if (this.endIndex != this.copyChoiceList.length) {
           this.preferences.push(
@@ -87,6 +93,7 @@ export default {
         this.currentIndex = 0;
         this.copyChoiceList = this.preferences;
         this.preferences = [];
+        // console.log("end index after preferences cleared:", this.endIndex)
         // console.log("after:", this.endIndex);
       }
       if (this.copyChoiceList.length === 1) {
