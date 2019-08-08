@@ -138,7 +138,7 @@ const bookBaseURL = `https://api.nytimes.com/svc/books/v3/lists/current/`;
 const nytApiKey = `4QC7YMXjnIWo1dTtGFpj5itZlVDPvbOk`;
 
 const movieBaseURL =
-  "https://api.internationalshowtimes.com/v4/movies/?limit=20";
+  "https://api.internationalshowtimes.com/v4/movies/?fields=title,slug,poster_image.flat&limit=20";
 const movieApiKey = "LafOf9zLcvERnGpF3IBU85w8txyALDvH";
 
 export default {
@@ -427,6 +427,7 @@ export default {
         })
         .then(response => {
           this.apiDecks.movies = response.data.movies;
+          console.log(response.data.movies)
           this.filterMovies(this.apiDecks.movies);
           this.hiddenMovies = false;
         })
@@ -438,7 +439,7 @@ export default {
       this.apiDecks.movies.map(movie => {
         let movieTitle = movie.title;
         let movieDescription = movie.slug;
-        let movieCover = movie.poster_image_thumbnail;
+        let movieCover = movie.poster_image;
 
         this.apiDecks.inTheaters.push({
           title: movieTitle,
