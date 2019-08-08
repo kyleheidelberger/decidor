@@ -1,23 +1,22 @@
 <template>
   <section class="buttons-container or" id="choice-logic">
-    <h1 class='this-or-that'>Which do you prefer?</h1>
-       <progress class="progress" id="progress-bar" value="0" max="1"></progress>
-          <button
-            v-for="(option, index) in options"
-            :key="`${option}${index}`"
-            @click="selectOption(index), setProgressBar()"
-            class="option-buttons"
-            :disabled="validated"
-            :class="{ finalChoice: onlyChoice }">
-            <transition appear
-              name='enlorge'>
-              <div class="cardContainer">
-                  <img class="cardImage" :src="option.card_image" />
-                  <h2 class="cardTitle">
-                {{option.title}}</h2>
-              </div>
-            </transition>
-          </button>
+    <h1 class="this-or-that">Which do you prefer?</h1>
+    <progress class="progress" id="progress-bar" value="0" max="1"></progress>
+    <button
+      v-for="(option, index) in options"
+      :key="`${option}${index}`"
+      @click="selectOption(index), setProgressBar()"
+      class="option-buttons"
+      :disabled="validated"
+      :class="{ finalChoice: onlyChoice }"
+    >
+      <transition appear name="enlorge">
+        <div class="cardContainer">
+          <img class="cardImage" :src="option.card_image" />
+          <h2 class="cardTitle">{{option.title}}</h2>
+        </div>
+      </transition>
+    </button>
   </section>
 </template>
 
@@ -45,6 +44,7 @@ export default {
     };
   },
   mounted() {
+    this.shuffle(this.choices);
     this.copyChoiceList = this.choices;
 
     this.setOptions();
@@ -76,7 +76,6 @@ export default {
         this.currentIndex,
         this.endIndex
       );
-      // console.log("before:", this.endIndex);
     },
     selectOption(index) {
       this.currentIndex = this.currentIndex + 2;
@@ -101,6 +100,18 @@ export default {
         this.validated = true;
       }
       this.setOptions();
+    },
+    shuffle(choices) {
+      var m = choices.length,
+        t,
+        i;
+      while (m) {
+        i = Math.floor(Math.random() * m--);
+        t = choices[m];
+        choices[m] = choices[i];
+        choices[i] = t;
+      }
+      return choices;
     }
   }
 };
