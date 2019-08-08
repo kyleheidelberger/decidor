@@ -31,6 +31,10 @@
       <ChoiceLogic :choices="allDecks.foodTypesDeck" />
     </div>
 
+    <div v-if="!hiddenMilkshakes">
+      <ChoiceLogic :choices="allDecks.cookoutMilkshakes" />
+    </div>
+
     <div v-if="!hiddenBusiness">
       <ChoiceLogic :choices="yelpDecks.yelpRestaurants" />
     </div>
@@ -125,7 +129,8 @@ export default {
         netflixDeck: [],
         fastFoodDeck: [],
         activityDeck: [],
-        foodTypesDeck: []
+        foodTypesDeck: [],
+        cookoutMilkshakes:[],
       },
       yelpDecks: {
         yelpRestaurants: [],
@@ -153,7 +158,8 @@ export default {
       hiddenFictionBooks: true,
       hiddenNonFictionBooks: true,
       hiddenSearch: true,
-      hiddenNav: false
+      hiddenNav: false,
+      hiddenMilkshakes: true,
     };
   },
   mounted() {
@@ -206,6 +212,8 @@ export default {
     this.apiDecks.nonFictionDeck.image =
       "https://decidor.s3.amazonaws.com/books.jpeg";
     this.apiDecks.nonFictionDeck.title = "NYT Non-Fiction";
+    this.allDecks.cookoutMilkshakes.title = "Cookout Milkshakes";
+    this.allDecks.cookoutMilkshakes.image = "https://s3.amazonaws.com/secretsaucefiles/photos/images/000/106/478/large/530-350x350.jpg?1485364962";
   },
   methods: {
     sendKey(key) {
@@ -224,9 +232,11 @@ export default {
         this.hiddenActivity = false;
       } else if (key.includes("foodTypesDeck")) {
         this.hiddenFoodTypes = false;
+      } else if (key.includes("cookoutMilkshakes")) {
+        this.hiddenMilkshakes = false;
       } else if (key.includes("yelp")) {
         this.hiddenSearch = false;
-      }
+      } 
     },
     getSearchParam(key) {
       if (key.includes("yelpRestaurants")) {
@@ -377,6 +387,7 @@ export default {
         this.makeFastFoodDeck(this.database);
         this.makeActivityDeck(this.database);
         this.makeFoodTypesDeck(this.database);
+        this.makeCookoutMilkshakesDeck(this.database);
       });
     },
     makeNetflixDeck() {
@@ -446,7 +457,24 @@ export default {
         console.log("foodTypesDeck:", this.allDecks.foodTypesDeck);
         return this.allDecks.foodTypesDeck;
       });
-    }
+    },
+    makeCookoutMilkshakesDeck() {
+      this.database[5].card_set.map(card => {
+        console.log(card);
+        let cardTitle = card.title;
+        let cardImage = card.card_image;
+        let cardDeck = card.deck;
+        let cardDescription = card.description;
+
+        this.allDecks.cookoutMilkshakes.push({
+          title: cardTitle,
+          card_image: cardImage,
+          description: card.description
+        });
+        console.log("cookoutMilkshakes:", this.allDecks.cookoutMilkshakes);
+        return this.allDecks.cookoutMilkshakes;
+      });
+    },
   }
 };
 </script>
