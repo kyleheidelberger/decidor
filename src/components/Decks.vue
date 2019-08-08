@@ -153,8 +153,8 @@ export default {
         fastFoodDeck: [],
         activityDeck: [],
         foodTypesDeck: [],
-        cookoutMilkshakes:[],
-        netflixFilmsDeck: [],
+        cookoutMilkshakes: [],
+        netflixFilmsDeck: []
       },
       yelpDecks: {
         yelpRestaurants: [],
@@ -191,36 +191,51 @@ export default {
       hiddenNav: false,
       hiddenMilkshakes: true,
       hiddenMovies: true,
-      hiddenNetflixFilms: true,
+      hiddenNetflixFilms: true
     };
   },
   mounted() {
     this.buildLocalApi();
-    console.log(this.database)
-    this.allDecks.netflixDeck.image = "https://decidor.s3.amazonaws.com/netflix_logo.jpeg";
+    console.log(this.database);
+    this.allDecks.netflixDeck.image =
+      "https://decidor.s3.amazonaws.com/netflix_logo.jpeg";
     this.allDecks.netflixDeck.title = "Netflix Shows";
-    this.allDecks.fastFoodDeck.image = "https://decidor.s3.amazonaws.com/national-french-fry-day.jpg";
+    this.allDecks.fastFoodDeck.image =
+      "https://decidor.s3.amazonaws.com/national-french-fry-day.jpg";
     this.allDecks.fastFoodDeck.title = "Fast Food Chains";
-    this.allDecks.activityDeck.image = "https://decidor.s3.amazonaws.com/couple-popcorn-movies.jpg";
+    this.allDecks.activityDeck.image =
+      "https://decidor.s3.amazonaws.com/couple-popcorn-movies.jpg";
     this.allDecks.activityDeck.title = "Activities";
-    this.allDecks.foodTypesDeck.image = "https://decidor.s3.amazonaws.com/foodtypes.jpeg";
+    this.allDecks.foodTypesDeck.image =
+      "https://decidor.s3.amazonaws.com/foodtypes.jpeg";
     this.allDecks.foodTypesDeck.title = "Food Types";
-    this.yelpDecks.yelpRestaurants.image = "https://decidor.s3.amazonaws.com/restaurants.jpeg";
+    this.yelpDecks.yelpRestaurants.image =
+      "https://decidor.s3.amazonaws.com/restaurants.jpeg";
     this.yelpDecks.yelpRestaurants.title = "Restaurants";
-    this.yelpDecks.yelpShops.image = "https://decidor.s3.amazonaws.com/shops.jpeg";
+    this.yelpDecks.yelpShops.image =
+      "https://decidor.s3.amazonaws.com/shops.jpeg";
     this.yelpDecks.yelpShops.title = "Shops";
-    this.yelpDecks.yelpArts.image = "https://decidor.s3.amazonaws.com/arts.jpeg";
+    this.yelpDecks.yelpArts.image =
+      "https://decidor.s3.amazonaws.com/arts.jpeg";
     this.yelpDecks.yelpArts.title = "Entertainment";
-    this.yelpDecks.yelpParks.image = "https://decidor.s3.amazonaws.com/parks.jpeg";
+    this.yelpDecks.yelpParks.image =
+      "https://decidor.s3.amazonaws.com/parks.jpeg";
     this.yelpDecks.yelpParks.title = "Parks";
-    this.apiDecks.fictionDeck.image = "https://decidor.s3.amazonaws.com/NYT_yellow_square.png";
+    this.yelpDecks.custom.title = "Custom Yelp";
+    this.yelpDecks.custom.image =
+      "https://decidor.s3.amazonaws.com/yelp-avatar.png";
+    this.apiDecks.fictionDeck.image =
+      "https://decidor.s3.amazonaws.com/NYT_yellow_square.png";
     this.apiDecks.fictionDeck.title = "Fiction";
-    this.apiDecks.nonFictionDeck.image = "https://decidor.s3.amazonaws.com/NYT_blue_square.png";
+    this.apiDecks.nonFictionDeck.image =
+      "https://decidor.s3.amazonaws.com/NYT_blue_square.png";
     this.apiDecks.nonFictionDeck.title = "Non-Fiction";
     this.allDecks.cookoutMilkshakes.title = "Cookout Milkshakes";
-    this.allDecks.cookoutMilkshakes.image = "https://decidor.s3.amazonaws.com/cookoutmilkshake.jpeg";
+    this.allDecks.cookoutMilkshakes.image =
+      "https://decidor.s3.amazonaws.com/cookoutmilkshake.jpeg";
     this.allDecks.netflixFilmsDeck.title = "Netflix Films";
-    this.allDecks.netflixFilmsDeck.image = "https://decidor.s3.amazonaws.com/netflix_logo.jpeg"
+    this.allDecks.netflixFilmsDeck.image =
+      "https://decidor.s3.amazonaws.com/netflix_logo.jpeg";
     this.apiDecks.inTheaters.title = "In Theaters Now";
     this.apiDecks.inTheaters.image =
       "https://decidor.s3.amazonaws.com/toy_story.jpeg";
@@ -293,8 +308,7 @@ export default {
           this.filterBusinesses(this.yelpDecks.businesses);
           this.hiddenBusiness = false;
         })
-        .catch(error => {
-        });
+        .catch(error => {});
     },
     filterBusinesses() {
       this.yelpDecks.businesses.map(business => {
@@ -342,8 +356,7 @@ export default {
           this.hiddenFictionBooks = false;
           this.filterFictionBooks(this.results);
         })
-        .catch(error => {
-        });
+        .catch(error => {});
     },
     filterFictionBooks() {
       this.results.books.map(book => {
@@ -377,8 +390,7 @@ export default {
           this.hiddenNonFictionBooks = false;
           this.filterNonFictionBooks(this.results);
         })
-        .catch(error => {
-        });
+        .catch(error => {});
     },
     filterNonFictionBooks() {
       this.results.books.map(book => {
@@ -459,10 +471,10 @@ export default {
         this.makeActivityDeck(this.database);
         this.makeFoodTypesDeck(this.database);
         this.makeCookoutMilkshakesDeck(this.database);
-        this.makeNetflixFilmsDeck(this.database)
+        this.makeNetflixFilmsDeck(this.database);
       });
     },
-    
+
     makeNetflixDeck() {
       this.database[1].card_set.map(card => {
         let cardTitle = card.title;
@@ -552,7 +564,7 @@ export default {
         });
         return this.allDecks.netflixFilmsDeck;
       });
-    },
+    }
   }
 };
 </script>
