@@ -230,7 +230,7 @@ export default {
     },
     getSearchParam(key) {
       if (key.includes("yelpRestaurants")) {
-        this.searchingFor = "categories=food";
+        this.searchingFor = "categories=restaurants";
       } else if (key.includes("yelpShops")) {
         this.searchingFor = "categories=shopping,all";
       } else if (key.includes("yelpArts")) {
