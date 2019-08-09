@@ -12,8 +12,14 @@
     >
       <transition appear name="enlorge">
         <div class="cardContainer">
-          <img class="cardImage" :src="option.card_image" />
-          <h2 class="cardTitle">{{option.title}}</h2>
+          <div v-if="!onlyChoice">
+            <img class="cardImage" :src="option.card_image" />
+            <h2 class="cardTitle">{{option.title}}</h2>
+          </div>
+          <a v-if="onlyChoice" :href="option.url" target="_blank">
+            <img class="cardImage" :src="option.card_image" />
+            <h2 class="cardTitle">{{option.title}}</h2>
+          </a>
         </div>
       </transition>
     </button>
@@ -51,8 +57,8 @@ export default {
 
     this.setOptions();
 
-    let progressBar = document.querySelector('#progress-bar');
-    console.log('progress bar', progressBar)
+    let progressBar = document.querySelector("#progress-bar");
+    console.log("progress bar", progressBar);
     progressBar.max = this.calculateTotalChoices();
     // console.log("currentIndex", this.currentIndex)
     // console.log("endIndex", this.endIndex)
@@ -66,10 +72,10 @@ export default {
       while (round != 1) {
         choicesPerRound = choicesPerRound - round;
         round = Math.floor(choicesPerRound / 2);
-        this.totalNumChoices += round
+        this.totalNumChoices += round;
         // console.log(round)
       }
-      return this.totalNumChoices
+      return this.totalNumChoices;
     },
     setOptions() {
       this.endIndex = this.currentIndex + 2;
@@ -79,16 +85,16 @@ export default {
         this.currentIndex,
         this.endIndex
       );
-      this.clicks ++
-      console.log(this.clicks)
+      this.clicks++;
+      console.log(this.clicks);
     },
     selectOption(index) {
       this.currentIndex = this.currentIndex + 2;
       const toAdd = this.options[index];
       this.preferences.push(toAdd);
-      let progressBar = document.querySelector('#progress-bar');
-      progressBar.value = this.clicks
-      console.log('progress bar', progressBar)
+      let progressBar = document.querySelector("#progress-bar");
+      progressBar.value = this.clicks;
+      console.log("progress bar", progressBar);
       // console.log("end index:", this.endIndex)
       // console.log("copy choice list length:", this.copyChoiceList.length);
       if (this.endIndex >= this.copyChoiceList.length - 1) {
