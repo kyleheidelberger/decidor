@@ -139,7 +139,7 @@ const yelpBaseURL =
   "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?";
 const yelpApiKey =
   "SM6pJx7LlCeKgElTpKU3PgsBDvqZud92PBBhqRBOEunqL9az6MmnAN9GUf4_mjjQva10STsyAlOs6RacEdskjV3qx7X_SjhqtpFVY0G0KzKvDoXcb4s-X2eZHOc5XXYx";
-const databaseBaseURL = "https://decidor.herokuapp.com/starterdecks/";
+const databaseBaseURL = "//decidor.herokuapp.com/starterdecks/";
 
 const bookBaseURL = `https://api.nytimes.com/svc/books/v3/lists/current/`;
 const nytApiKey = `4QC7YMXjnIWo1dTtGFpj5itZlVDPvbOk`;
@@ -207,47 +207,43 @@ export default {
     this.buildLocalApi();
     console.log(this.database);
     this.allDecks.netflixDeck.image =
-      "https://decidor.s3.amazonaws.com/netflix_logo.jpeg";
+      "//decidor.s3.amazonaws.com/netflix_logo.jpeg";
     this.allDecks.netflixDeck.title = "Netflix Shows";
     this.allDecks.fastFoodDeck.image =
-      "https://decidor.s3.amazonaws.com/national-french-fry-day.jpg";
+      "//decidor.s3.amazonaws.com/national-french-fry-day.jpg";
     this.allDecks.fastFoodDeck.title = "Fast Food Chains";
     this.allDecks.activityDeck.image =
-      "https://decidor.s3.amazonaws.com/couple-popcorn-movies.jpg";
+      "//decidor.s3.amazonaws.com/couple-popcorn-movies.jpg";
     this.allDecks.activityDeck.title = "Activities";
     this.allDecks.foodTypesDeck.image =
-      "https://decidor.s3.amazonaws.com/foodtypes.jpeg";
+      "//decidor.s3.amazonaws.com/foodtypes.jpeg";
     this.allDecks.foodTypesDeck.title = "Food Types";
     this.yelpDecks.yelpRestaurants.image =
-      "https://decidor.s3.amazonaws.com/restaurants.jpeg";
+      "//decidor.s3.amazonaws.com/restaurants.jpeg";
     this.yelpDecks.yelpRestaurants.title = "Restaurants";
-    this.yelpDecks.yelpShops.image =
-      "https://decidor.s3.amazonaws.com/shops.jpeg";
+    this.yelpDecks.yelpShops.image = "//decidor.s3.amazonaws.com/shops.jpeg";
     this.yelpDecks.yelpShops.title = "Shops";
-    this.yelpDecks.yelpArts.image =
-      "https://decidor.s3.amazonaws.com/arts.jpeg";
+    this.yelpDecks.yelpArts.image = "//decidor.s3.amazonaws.com/arts.jpeg";
     this.yelpDecks.yelpArts.title = "Entertainment";
-    this.yelpDecks.yelpParks.image =
-      "https://decidor.s3.amazonaws.com/parks.jpeg";
+    this.yelpDecks.yelpParks.image = "//decidor.s3.amazonaws.com/parks.jpeg";
     this.yelpDecks.yelpParks.title = "Parks";
     this.yelpDecks.custom.title = "Custom Yelp";
-    this.yelpDecks.custom.image =
-      "https://decidor.s3.amazonaws.com/yelp-avatar.png";
+    this.yelpDecks.custom.image = "//decidor.s3.amazonaws.com/yelp-avatar.png";
     this.apiDecks.fictionDeck.image =
-      "https://decidor.s3.amazonaws.com/NYT_yellow_square.png";
+      "//decidor.s3.amazonaws.com/NYT_yellow_square.png";
     this.apiDecks.fictionDeck.title = "Fiction";
     this.apiDecks.nonFictionDeck.image =
-      "https://decidor.s3.amazonaws.com/NYT_blue_square.png";
+      "//decidor.s3.amazonaws.com/NYT_blue_square.png";
     this.apiDecks.nonFictionDeck.title = "Non-Fiction";
     this.allDecks.cookoutMilkshakes.title = "Cookout Milkshakes";
     this.allDecks.cookoutMilkshakes.image =
-      "https://decidor.s3.amazonaws.com/cookoutmilkshake.jpeg";
+      "//decidor.s3.amazonaws.com/cookoutmilkshake.jpeg";
     this.allDecks.netflixFilmsDeck.title = "Netflix Films";
     this.allDecks.netflixFilmsDeck.image =
-      "https://decidor.s3.amazonaws.com/netflix_logo.jpeg";
+      "//decidor.s3.amazonaws.com/netflix_logo.jpeg";
     this.apiDecks.inTheaters.title = "In Theaters Now";
     this.apiDecks.inTheaters.image =
-      "https://decidor.s3.amazonaws.com/toy_story.jpeg";
+      "//decidor.s3.amazonaws.com/toy_story.jpeg";
   },
   methods: {
     sendKey(key) {
