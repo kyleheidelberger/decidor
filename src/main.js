@@ -11,7 +11,10 @@ Vue.config.productionTip = false
 
 /* eslint-disable no-new */
 new Vue({
-  el: '#app',  
+  // created () {
+  //   AOS.init()
+  // },
+  el: '#app',
   components: { App },
   // template: '<App/>',
   render: function(createElement) {
