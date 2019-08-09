@@ -4,17 +4,33 @@
 
     <div v-if="!hiddenSearch" class="searchBar">
       <p class="searchPrompt">Where would you like to find choices ?</p>
-      <input
-        class="input"
-        type="text"
-        v-model.lazy="cityName"
-        v-on:change="getBusinesses"
-        placeholder="Address, City, Zip Code, etc..."
-      />
-      <button class="searchButton" @click="getBusinesses">Get Choices</button>
+      <div>
+        <input
+          class="input"
+          type="text"
+          v-model.lazy="cityName"
+          v-on:change="getBusinesses"
+          placeholder=" Address, City, Zip Code, etc..."
+        />
+        <button class="searchButton" @click="getBusinesses">Get Choices</button>
+      </div>
+      <img class="orLogo" src="//decidor.s3.amazonaws.com/OR_solid_white.png" />
+      <!-- <p class="searchPrompt">OR</p> -->
+      <button class="locationButton" @click="getLocation()">Get My Location For Me</button>
     </div>
 
     <div v-if="!hiddenCustomSearch" class="searchBar">
+      <div>
+      <p class="searchPrompt">What are you looking for ?</p>
+      <input
+        class="input"
+        type="text"
+        v-model.lazy="searchTerm"
+        v-on:change="getBusinesses"
+        placeholder=" Coffee, bookstores, etc..."
+      />
+      </div>
+      <div>
       <p class="searchPrompt">Where would you like to find choices ?</p>
       <input
         class="input"
@@ -22,15 +38,11 @@
         v-model.lazy="cityName"
         placeholder="Address, City, Zip Code, etc..."
       />
-      <p class="searchPrompt">What are you looking for ?</p>
-      <input
-        class="input"
-        type="text"
-        v-model.lazy="searchTerm"
-        v-on:change="getBusinesses"
-        placeholder="Coffee, bookstores, etc..."
-      />
       <button class="searchButton" @click="getBusinesses">Get Choices</button>
+      </div>
+      <img class="orLogo" src="//decidor.s3.amazonaws.com/OR_solid_white.png" />
+      <!-- <p class="searchPrompt">OR</p> -->
+      <button class="locationButton" @click="getLocation()">Get My Location For Me</button>
     </div>
 
     <div v-if="!hiddenNetflix">
@@ -200,7 +212,9 @@ export default {
       hiddenMilkshakes: true,
       hiddenMovies: true,
       hiddenNetflixFilms: true,
-      formattedSearch: ""
+      formattedSearch: "",
+      lat: "",
+      lon: ""
     };
   },
   mounted() {
@@ -275,6 +289,18 @@ export default {
         this.getMovies();
       }
     },
+    getLocation: function() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(this.showPosition);
+      } else {
+        this.error = "Geolocation is not supported.";
+      }
+    },
+    showPosition: function(position) {
+      this.lat = position.coords.latitude;
+      this.lon = position.coords.longitude;
+      this.getLatLonBusinesses();
+    },
     getSearchParam(key) {
       if (key.includes("yelpRestaurants")) {
         this.searchingFor = "categories=restaurants";
@@ -286,8 +312,41 @@ export default {
         this.searchingFor = "categories=parks,dog_parks,skate_parks";
       }
     },
+    buildLatLonURL(url, searchingfor, lat, lon) {
+      return `${yelpBaseURL}${this.searchingFor}&latitude=${this.lat}&longitude=${this.lon}`;
+    },
     buildYelpURL(url, searchingFor, location) {
       return `${yelpBaseURL}${this.searchingFor}&location=${this.cityName}`;
+    },
+    getLatLonBusinesses() {
+      if (!this.hiddenCustomSearch) {
+        console.log("searchTerm:", this.searchTerm);
+        this.formattedSearch = this.searchTerm;
+        this.formattedSearch = this.formattedSearch.replace(" ", "+");
+        this.searchingFor = `term=${this.formattedSearch}`;
+      }
+
+      let apiURL = this.buildLatLonURL(
+        yelpBaseURL,
+        this.searchingFor,
+        this.lat,
+        this.lon
+      );
+      console.log(apiURL);
+
+      axios
+        .get(apiURL, {
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            Authorization: `Bearer ${yelpApiKey}`
+          }
+        })
+        .then(response => {
+          this.yelpDecks.businesses = response.data.businesses;
+          this.filterBusinesses(this.yelpDecks.businesses);
+          this.hiddenBusiness = false;
+        })
+        .catch(error => {});
     },
     getBusinesses() {
       if (!this.hiddenCustomSearch) {
