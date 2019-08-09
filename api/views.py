@@ -30,3 +30,6 @@ def index(request):
 
 def decks(request):
     return render(request, 'decks.html')
+
+def confetti(request):
+    return render(request, 'confetti.html')

@@ -19,4 +19,5 @@ urlpatterns = [
   path('decks/', views.decks, name='decks'),
   path('', include(router.urls)),
   path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+  path('confetti/', views.confetti, name='confetti'),
 ]

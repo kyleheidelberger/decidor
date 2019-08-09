@@ -5,7 +5,7 @@
     <button
       v-for="(option, index) in options"
       :key="`${option}${index}`"
-      @click="selectOption(index)"
+      @click="selectOption(index), triggerConfetti()"
       class="option-buttons"
       :disabled="validated"
       :class="{ finalChoice: onlyChoice }"
@@ -28,6 +28,11 @@
 
 
 <script>
+import Vue from 'vue'
+import VueConfetti from 'vue-confetti'
+
+Vue.use(VueConfetti)
+
 export default {
   name: "ChoiceLogic",
   props: {
@@ -65,6 +70,11 @@ export default {
     // console.log(document.querySelector('#progress-bar').value)
   },
   methods: {
+    triggerConfetti() {
+      if (this.onlyChoice === true) {
+        this.$confetti.start({})
+      }
+    },
     calculateTotalChoices() {
       let round = 0;
       let choicesPerRound = this.copyChoiceList.length;
