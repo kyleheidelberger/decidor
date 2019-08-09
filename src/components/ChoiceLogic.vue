@@ -54,6 +54,7 @@ export default {
     let progressBar = document.querySelector('#progress-bar');
     console.log('progress bar', progressBar)
     progressBar.max = this.calculateTotalChoices();
+    console.log('progress bar max:', progressBar.max)
     // console.log("currentIndex", this.currentIndex)
     // console.log("endIndex", this.endIndex)
     // console.log(document.querySelector('#progress-bar').value)
@@ -80,7 +81,7 @@ export default {
         this.endIndex
       );
       this.clicks ++
-      console.log(this.clicks)
+      console.log('number of clicks:', this.clicks)
     },
     selectOption(index) {
       this.currentIndex = this.currentIndex + 2;
@@ -88,6 +89,7 @@ export default {
       this.preferences.push(toAdd);
       let progressBar = document.querySelector('#progress-bar');
       progressBar.value = this.clicks
+      console.log('progress bar value:', progressBar.value)
       console.log('progress bar', progressBar)
       // console.log("end index:", this.endIndex)
       // console.log("copy choice list length:", this.copyChoiceList.length);

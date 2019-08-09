@@ -6,6 +6,8 @@ import Decks from './components/Decks'
 // import router from './router'
 import './styles.scss'
 
+import 'aos/dist/aos.css'
+
 Vue.config.devtools = true
 Vue.config.productionTip = false
 

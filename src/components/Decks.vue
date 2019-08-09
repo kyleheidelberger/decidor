@@ -1,126 +1,126 @@
 <template>
-  <section class="deck">
-    <!-- <h1 v-if="!hiddenNav" class="decks-info">Your decks</h1> -->
+  <div class='all-deck-container'>
+    <h1 v-if="!hiddenNav" class="this-or-that">Make a decision</h1>
+      <section data-aos="fade" class="deck">
 
-    <div v-if="!hiddenSearch" class="searchBar">
-      <input type="text" v-model.lazy="cityName" v-on:change="getBusinesses" placeholder="City" />
-      <button @click="getBusinesses">Get Businesses</button>
-      <p>
-        Input your current location.
-        You are currently looking in: {{ cityName }}
-      </p>
-    </div>
+        <div v-if="!hiddenSearch" class="searchBar">
+          <input type="text" v-model.lazy="cityName" v-on:change="getBusinesses" placeholder="City" />
+          <button @click="getBusinesses">Get Businesses</button>
+          <p>
+            Input your current location.
+            You are currently looking in: {{ cityName }}
+          </p>
+        </div>
 
-    <div v-if="!hiddenCustomSearch" class="searchBar">
-      <input type="text" v-model.lazy="cityName" placeholder="City" />
-      <input
-        type="text"
-        v-model.lazy="searchTerm"
-        v-on:change="getBusinesses"
-        placeholder="What are you looking for?"
-      />
-      <button @click="getBusinesses">Get Businesses</button>
-      <p>
-        Input your current location.
-        You are currently looking for {{ searchTerm }} in {{ cityName }}.
-      </p>
-    </div>
+        <div v-if="!hiddenCustomSearch" class="searchBar">
+          <input type="text" v-model.lazy="cityName" placeholder="City" />
+          <input
+            type="text"
+            v-model.lazy="searchTerm"
+            v-on:change="getBusinesses"
+            placeholder="What are you looking for?"
+          />
+          <button @click="getBusinesses">Get Businesses</button>
+          <p>
+            Input your current location.
+            You are currently looking for {{ searchTerm }} in {{ cityName }}.
+          </p>
+        </div>
 
-    <div v-if="!hiddenNetflix">
-      <ChoiceLogic :choices="allDecks.netflixDeck" />
-    </div>
+        <div v-if="!hiddenNetflix">
+          <ChoiceLogic :choices="allDecks.netflixDeck" />
+        </div>
 
-    <div v-if="!hiddenFood">
-      <ChoiceLogic :choices="allDecks.fastFoodDeck" />
-    </div>
+        <div v-if="!hiddenFood">
+          <ChoiceLogic :choices="allDecks.fastFoodDeck" />
+        </div>
 
-    <div v-if="!hiddenActivity">
-      <ChoiceLogic :choices="allDecks.activityDeck" />
-    </div>
+        <div v-if="!hiddenActivity">
+          <ChoiceLogic :choices="allDecks.activityDeck" />
+        </div>
 
-    <div v-if="!hiddenFoodTypes">
-      <ChoiceLogic :choices="allDecks.foodTypesDeck" />
-    </div>
+        <div v-if="!hiddenFoodTypes">
+          <ChoiceLogic :choices="allDecks.foodTypesDeck" />
+        </div>
 
-    <div v-if="!hiddenMilkshakes">
-      <ChoiceLogic :choices="allDecks.cookoutMilkshakes" />
-    </div>
+        <div v-if="!hiddenMilkshakes">
+          <ChoiceLogic :choices="allDecks.cookoutMilkshakes" />
+        </div>
 
-    <div v-if="!hiddenNetflixFilms">
-      <ChoiceLogic :choices="allDecks.netflixFilmsDeck" />
-    </div>
+        <div v-if="!hiddenNetflixFilms">
+          <ChoiceLogic :choices="allDecks.netflixFilmsDeck" />
+        </div>
 
-    <div v-if="!hiddenBusiness">
-      <ChoiceLogic :choices="yelpDecks.yelpRestaurants" />
-    </div>
+        <div v-if="!hiddenBusiness">
+          <ChoiceLogic :choices="yelpDecks.yelpRestaurants" />
+        </div>
 
-    <div v-if="!hiddenFictionBooks">
-      <ChoiceLogic :choices="apiDecks.fictionDeck" />
-    </div>
+        <div v-if="!hiddenFictionBooks">
+          <ChoiceLogic :choices="apiDecks.fictionDeck" />
+        </div>
 
-    <div v-if="!hiddenNonFictionBooks">
-      <ChoiceLogic :choices="apiDecks.nonFictionDeck" />
-    </div>
+        <div v-if="!hiddenNonFictionBooks">
+          <ChoiceLogic :choices="apiDecks.nonFictionDeck" />
+        </div>
 
-    <div v-if="!hiddenMovies">
-      <ChoiceLogic :choices="apiDecks.inTheaters" />
-    </div>
+        <div v-if="!hiddenMovies">
+          <ChoiceLogic :choices="apiDecks.inTheaters" />
+        </div>
 
-    <transition appear name="bounce">
-      <div 
-      :class="{hiddenContainer: hiddenContainer}"
-      class="container">
-        <h2 v-if="!hiddenNav" class="deckInfo">Starter Decks</h2>
-        <button
-          id="deckButton"
-          v-for="(deck, key) in allDecks"
-          :key="`${deck}${key}`"
-          class="deckButton"
-          @click="sendKey(key)"
-          :class="{ hiddenDick: hiddenDeck }"
-        >
-          <div class="deck-container">
-            <h2 class="deckTitle">{{deck.title}}</h2>
-            <div class="overlay">
-              <img class="deckImage" :src="deck.image" />
-            </div>
+          <div 
+          :class="{hiddenContainer: hiddenContainer}"
+          class="container">
+            <!-- <h2 v-if="!hiddenNav" class="deckInfo">Starter Decks</h2> -->
+            <button
+              id="deckButton"
+              v-for="(deck, key) in allDecks"
+              :key="`${deck}${key}`"
+              class="deckButton"
+              @click="sendKey(key)"
+              :class="{ hiddenDick: hiddenDeck }"
+            >
+              <div data-aos="fade" class="deck-container">
+                <h2 class="deckTitle">{{deck.title}}</h2>
+                <div class="overlay">
+                  <img class="deckImage" :src="deck.image" />
+                </div>
+              </div>
+            </button>
+
+            <!-- <h2 v-if="!hiddenNav" class="deckInfo">Local Decks</h2> -->
+            <button
+              v-for="(deck, key) in yelpDecks"
+              :key="`${deck}${key}`"
+              class="deckButton"
+              @click="sendKey(key)"
+              :class="{ hiddenDick: hiddenDeck }"
+            >
+              <div data-aos="fade" class="deck-container">
+                <h2 class="deckTitle">{{deck.title}}</h2>
+                <div class="overlay">
+                  <img class="deckImage" :src="deck.image" />
+                </div>
+              </div>
+            </button>
+
+            <!-- <h2 v-if="!hiddenNav" class="deckInfo">API Decks</h2> -->
+            <button
+              v-for="(deck, key) in apiDecks"
+              :key="`${deck}${key}`"
+              class="deckButton"
+              @click="sendKey(key)"
+              :class="{ hiddenDick: hiddenDeck }"
+            >
+              <div data-aos="fade-up" class="deck-container">
+                <h2 class="deckTitle">{{deck.title}}</h2>
+                <div class="overlay">
+                  <img class="deckImage" :src="deck.image" />
+                </div>
+              </div>
+            </button>
           </div>
-        </button>
-
-        <h2 v-if="!hiddenNav" class="deckInfo">Local Decks</h2>
-        <button
-          v-for="(deck, key) in yelpDecks"
-          :key="`${deck}${key}`"
-          class="deckButton"
-          @click="sendKey(key)"
-          :class="{ hiddenDick: hiddenDeck }"
-        >
-          <div class="deck-container">
-            <h2 class="deckTitle">{{deck.title}}</h2>
-            <div class="overlay">
-              <img class="deckImage" :src="deck.image" />
-            </div>
-          </div>
-        </button>
-
-        <h2 v-if="!hiddenNav" class="deckInfo">API Decks</h2>
-        <button
-          v-for="(deck, key) in apiDecks"
-          :key="`${deck}${key}`"
-          class="deckButton"
-          @click="sendKey(key)"
-          :class="{ hiddenDick: hiddenDeck }"
-        >
-          <div class="deck-container">
-            <h2 class="deckTitle">{{deck.title}}</h2>
-            <div class="overlay">
-              <img class="deckImage" :src="deck.image" />
-            </div>
-          </div>
-        </button>
-      </div>
-    </transition>
-  </section>
+      </section>
+  </div>
 </template>
 
 
@@ -197,6 +197,9 @@ export default {
       hiddenNetflixFilms: true,
       formattedSearch: ""
     };
+  },
+  created() {
+     AOS.init()
   },
   mounted() {
     this.buildLocalApi();

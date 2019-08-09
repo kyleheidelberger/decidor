@@ -1,17 +1,21 @@
 <script>
-import Landing from "./components/Landing.vue";
+import Decks from "./components/Decks.vue";
+import AOS from 'aos'
 
 export default {
+  created () {
+  AOS.init()
+},
   name: "app",
   components: {
-    Landing,
+    Decks,
   }
 };
 </script>
 
 <template>
   <main id="app">
-    <Landing />
+    <Decks />
   </main>
 
 </template>
