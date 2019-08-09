@@ -68,9 +68,6 @@ body {
     text-align: center;
 }
 
-.hiddenDick {
-    display: none;
-}
 
 .deckButton {
     cursor: pointer;
@@ -80,7 +77,11 @@ body {
     z-index: 1;
     background: transparent;
     width: 25%;
-    display: block;
+    display: block;    //this is what is making the decks show up on the choices page
+}
+
+.hiddenDick {
+  display: none;
 }
 
 .container {
@@ -99,6 +100,11 @@ body {
     // "header2 header2 header2 header2 header2 header2";
 }
 
+.hiddenContainer {
+  width: 0;
+  height: 0;
+  display: none;
+}
 // .netflixTitle {
 //     cursor: pointer;
 //     font-family: 'Lato', sans-serif;
@@ -761,13 +767,13 @@ body {
     // margin: 0 auto;
 }
 
-.cardContainer {
-  background: hotpink;
-  height: 570px;
-  width: 440px;
-  padding: 20px;
-  border-radius: 50px;
-}
+// .cardContainer {
+//   // background: hotpink;
+//   // height: 570px;
+//   // width: 440px;
+//   // padding: 20px;
+//   // border-radius: 50px;
+// }
 
 .progress {
   grid-area: progbar;

@@ -67,7 +67,9 @@
     </div>
 
     <transition appear name="bounce">
-      <div class="container">
+      <div 
+      :class="{hiddenContainer: hiddenContainer}"
+      class="container">
         <h2 v-if="!hiddenNav" class="deckInfo">Starter Decks</h2>
         <button
           id="deckButton"
@@ -176,6 +178,7 @@ export default {
       searchTerm: "",
       formattedDate: "",
       hiddenDeck: false,
+      hiddenContainer: false,
       businesses: [],
       results: [],
       movies: [],
@@ -249,6 +252,7 @@ export default {
     },
     getCardsOnClick(key) {
       this.hiddenDeck = true;
+      this.hiddenContainer = true;
       this.hiddenNav = true;
       if (key.includes("netflixDeck")) {
         this.hiddenNetflix = false;
