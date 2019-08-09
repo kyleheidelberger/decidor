@@ -5,7 +5,7 @@
     <button
       v-for="(option, index) in options"
       :key="`${option}${index}`"
-      @click="selectOption(index), setProgressBar()"
+      @click="selectOption(index)"
       class="option-buttons"
       :disabled="validated"
       :class="{ finalChoice: onlyChoice }"
@@ -40,7 +40,9 @@ export default {
       currentIndex: 0,
       preferences: [],
       copyChoiceList: [],
-      endIndex: 2
+      endIndex: 2,
+      totalNumChoices: 0,
+      clicks: 0
     };
   },
   mounted() {
@@ -48,25 +50,26 @@ export default {
     this.copyChoiceList = this.choices;
 
     this.setOptions();
+
+    let progressBar = document.querySelector('#progress-bar');
+    console.log('progress bar', progressBar)
+    progressBar.max = this.calculateTotalChoices();
     // console.log("currentIndex", this.currentIndex)
     // console.log("endIndex", this.endIndex)
     // console.log(document.querySelector('#progress-bar').value)
   },
   methods: {
-    setProgressBar() {
-      let progressBar = document.querySelector('#progress-bar');
-      progressBar.max = Math.round(((this.copyChoiceList.length / 2) - 1));
-      // console.log('preferences length:', this.preferences.length)
-      progressBar.value = this.preferences.length
-      // console.log('progressBarValue:', progressBar.value)
-      // console.log('progressBarMax:', progressBar.max)
-      // console.log('copyChoiceList:', this.copyChoiceList.length)
-        // for (let preference in this.preferences) {
-            // console.log('copyChoiceList:', this.copyChoiceList.length)
-            // if (progressBar.max === (progressBar.value + 1)) {
-            //     progressBar.value === 0;
-            // }
-        // }
+    calculateTotalChoices() {
+      let round = 0;
+      let choicesPerRound = this.copyChoiceList.length;
+      // console.log(round)
+      while (round != 1) {
+        choicesPerRound = choicesPerRound - round;
+        round = Math.floor(choicesPerRound / 2);
+        this.totalNumChoices += round
+        // console.log(round)
+      }
+      return this.totalNumChoices
     },
     setOptions() {
       this.endIndex = this.currentIndex + 2;
@@ -76,13 +79,18 @@ export default {
         this.currentIndex,
         this.endIndex
       );
+      this.clicks ++
+      console.log(this.clicks)
     },
     selectOption(index) {
       this.currentIndex = this.currentIndex + 2;
       const toAdd = this.options[index];
       this.preferences.push(toAdd);
-      console.log("end index:", this.endIndex)
-      console.log("copy choice list length:", this.copyChoiceList.length);
+      let progressBar = document.querySelector('#progress-bar');
+      progressBar.value = this.clicks
+      console.log('progress bar', progressBar)
+      // console.log("end index:", this.endIndex)
+      // console.log("copy choice list length:", this.copyChoiceList.length);
       if (this.endIndex >= this.copyChoiceList.length - 1) {
         if (this.endIndex != this.copyChoiceList.length) {
           this.preferences.push(
