@@ -172,7 +172,7 @@ body {
 // }
 
 .searchBar {
-    margin: 20px;
+    margin: 15px;
     display: flex;
     justify-content: center;
     max-width: 80%;
@@ -238,6 +238,12 @@ body {
   // height: 45px;
   // align-items: center;
   align-self: center;
+}
+
+.orLogo {
+  max-width: 20%;
+  align-self: center;
+  margin-bottom: 25px;
 }
 
 .header-image {
@@ -765,7 +771,7 @@ body {
 
 
 .or {
-  background-image: url('images/OR-Plum-Blue.png');
+  background-image: url('//decidor.s3.amazonaws.com/OR_solid_white.png');
   background-size: 15%;
   background-repeat: no-repeat;
   background-position: center;

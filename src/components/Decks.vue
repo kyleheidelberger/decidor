@@ -14,11 +14,13 @@
         />
         <button class="searchButton" @click="getBusinesses">Get Choices</button>
       </div>
-      <p class="searchPrompt">OR</p>
+      <img class="orLogo" src="//decidor.s3.amazonaws.com/OR_solid_white.png" />
+      <!-- <p class="searchPrompt">OR</p> -->
       <button class="locationButton" @click="getLocation()">Get My Location For Me</button>
     </div>
 
     <div v-if="!hiddenCustomSearch" class="searchBar">
+      <div>
       <p class="searchPrompt">What are you looking for ?</p>
       <input
         class="input"
@@ -27,6 +29,8 @@
         v-on:change="getBusinesses"
         placeholder=" Coffee, bookstores, etc..."
       />
+      </div>
+      <div>
       <p class="searchPrompt">Where would you like to find choices ?</p>
       <input
         class="input"
@@ -35,8 +39,10 @@
         placeholder="Address, City, Zip Code, etc..."
       />
       <button class="searchButton" @click="getBusinesses">Get Choices</button>
-      <p class="searchPrompt">OR</p>
-      <button class="locationButton" @click="getLocation()">Get My Location</button>
+      </div>
+      <img class="orLogo" src="//decidor.s3.amazonaws.com/OR_solid_white.png" />
+      <!-- <p class="searchPrompt">OR</p> -->
+      <button class="locationButton" @click="getLocation()">Get My Location For Me</button>
     </div>
 
     <div v-if="!hiddenNetflix">
