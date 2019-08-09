@@ -21,24 +21,24 @@
 
     <div v-if="!hiddenCustomSearch" class="searchBar">
       <div>
-      <p class="searchPrompt">What are you looking for ?</p>
-      <input
-        class="input"
-        type="text"
-        v-model.lazy="searchTerm"
-        v-on:change="getBusinesses"
-        placeholder=" Coffee, bookstores, etc..."
-      />
+        <p class="searchPrompt">What are you looking for ?</p>
+        <input
+          class="input"
+          type="text"
+          v-model.lazy="searchTerm"
+          v-on:change="getBusinesses"
+          placeholder=" Coffee, bookstores, etc..."
+        />
       </div>
       <div>
-      <p class="searchPrompt">Where would you like to find choices ?</p>
-      <input
-        class="input"
-        type="text"
-        v-model.lazy="cityName"
-        placeholder="Address, City, Zip Code, etc..."
-      />
-      <button class="searchButton" @click="getBusinesses">Get Choices</button>
+        <p class="searchPrompt">Where would you like to find choices ?</p>
+        <input
+          class="input"
+          type="text"
+          v-model.lazy="cityName"
+          placeholder="Address, City, Zip Code, etc..."
+        />
+        <button class="searchButton" @click="getBusinesses">Get Choices</button>
       </div>
       <img class="orLogo" src="//decidor.s3.amazonaws.com/OR_solid_white.png" />
       <!-- <p class="searchPrompt">OR</p> -->
@@ -155,7 +155,7 @@ const bookBaseURL = `https://api.nytimes.com/svc/books/v3/lists/current/`;
 const nytApiKey = `4QC7YMXjnIWo1dTtGFpj5itZlVDPvbOk`;
 
 const movieBaseURL =
-  "https://api.internationalshowtimes.com/v4/movies/?fields=title,slug,poster_image.flat&limit=20&countries=US&release_date_to=";
+  "https://api.internationalshowtimes.com/v4/movies/?fields=title,slug,poster_image.flat&limit=22&countries=US&release_date_to=";
 const movieApiKey = "LafOf9zLcvERnGpF3IBU85w8txyALDvH";
 
 export default {
@@ -513,7 +513,10 @@ export default {
         });
     },
     filterMovies() {
-      this.apiDecks.movies.map(movie => {
+      let filteredMovies = this.apiDecks.movies.filter(
+        movie => movie.poster_image !== null
+      );
+      filteredMovies.map(movie => {
         let movieTitle = movie.title;
         let movieDescription = movie.slug;
         let movieCover = movie.poster_image;
@@ -523,6 +526,7 @@ export default {
           description: movieDescription,
           card_image: movieCover
         });
+        filteredMovies = [];
         this.apiDecks.movies = [];
         return this.apiDecks.inTheaters;
       });
