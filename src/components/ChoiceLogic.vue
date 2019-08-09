@@ -1,6 +1,7 @@
 <template>
   <section class="buttons-container or" id="choice-logic">
-    <h1 class="this-or-that">Which do you prefer?</h1>
+    <h1 v-if="!onlyChoice" class="this-or-that">Which do you prefer?</h1>
+    <h1 v-if="onlyChoice" class="this-or-that">Great Choice!</h1>
     <progress class="progress" id="progress-bar" value="0" max="1"></progress>
     <button
       v-for="(option, index) in options"
@@ -70,9 +71,11 @@ export default {
     // console.log(document.querySelector('#progress-bar').value)
   },
   methods: {
+
     triggerConfetti() {
       if (this.onlyChoice === true) {
-        this.$confetti.start({})
+        this.$confetti.start({});
+
       }
     },
     calculateTotalChoices() {
