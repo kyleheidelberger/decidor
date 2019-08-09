@@ -228,7 +228,7 @@ export default {
     this.allDecks.fastFoodDeck.title = "Fast Food Chains";
     this.allDecks.activityDeck.image =
       "//decidor.s3.amazonaws.com/couple-popcorn-movies.jpg";
-    this.allDecks.activityDeck.title = "Activities";
+    this.allDecks.activityDeck.title = "Date Night";
     this.allDecks.foodTypesDeck.image =
       "//decidor.s3.amazonaws.com/foodtypes.jpeg";
     this.allDecks.foodTypesDeck.title = "Food Types";
