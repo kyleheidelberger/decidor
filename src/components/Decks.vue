@@ -1,6 +1,6 @@
 <template>
   <section class="deck">
-    <h1 v-if="!hiddenNav" class="decks-info">Your decks</h1>
+    <!-- <h1 v-if="!hiddenNav" class="decks-info">Your decks</h1> -->
 
     <div v-if="!hiddenSearch" class="searchBar">
       <input type="text" v-model.lazy="cityName" v-on:change="getBusinesses" placeholder="City" />
@@ -85,7 +85,7 @@
           </div>
         </button>
 
-        <h2 v-if="!hiddenNav" class="deckInfo2">Local Decks</h2>
+        <h2 v-if="!hiddenNav" class="deckInfo">Local Decks</h2>
         <button
           v-for="(deck, key) in yelpDecks"
           :key="`${deck}${key}`"
@@ -101,7 +101,7 @@
           </div>
         </button>
 
-        <h2 v-if="!hiddenNav" class="deckInfo3">API Decks</h2>
+        <h2 v-if="!hiddenNav" class="deckInfo">API Decks</h2>
         <button
           v-for="(deck, key) in apiDecks"
           :key="`${deck}${key}`"
