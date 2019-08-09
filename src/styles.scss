@@ -69,8 +69,6 @@ body {
 }
 
 
-
-
 .deckButton {
     cursor: pointer;
     align-self: center;
@@ -102,6 +100,11 @@ body {
     // "header2 header2 header2 header2 header2 header2";
 }
 
+.hiddenContainer {
+  width: 0;
+  height: 0;
+  display: none;
+}
 // .netflixTitle {
 //     cursor: pointer;
 //     font-family: 'Lato', sans-serif;

@@ -67,7 +67,9 @@
     </div>
 
     <transition appear name="bounce">
-      <div class="container" :class="{hiddenDick: hiddenContainer}">
+      <div 
+      :class="{hiddenContainer: hiddenContainer}"
+      class="container">
         <h2 v-if="!hiddenNav" class="deckInfo">Starter Decks</h2>
         <button
           id="deckButton"
