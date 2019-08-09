@@ -85,9 +85,8 @@
       <ChoiceLogic :choices="apiDecks.inTheaters" />
     </div>
 
-    <transition appear name="bounce">
       <div :class="{hiddenContainer: hiddenContainer}" class="container">
-        <h2 v-if="!hiddenNav" class="deckInfo">Starter Decks</h2>
+        <!-- <h2 v-if="!hiddenNav" class="deckInfo">Starter Decks</h2> -->
         <button
           id="deckButton"
           v-for="(deck, key) in allDecks"
@@ -104,7 +103,7 @@
           </div>
         </button>
 
-        <h2 v-if="!hiddenNav" class="deckInfo">Local Decks</h2>
+        <!-- <h2 v-if="!hiddenNav" class="deckInfo">Local Decks</h2> -->
         <button
           v-for="(deck, key) in yelpDecks"
           :key="`${deck}${key}`"
@@ -120,7 +119,7 @@
           </div>
         </button>
 
-        <h2 v-if="!hiddenNav" class="deckInfo">API Decks</h2>
+        <!-- <h2 v-if="!hiddenNav" class="deckInfo">API Decks</h2> -->
         <button
           v-for="(deck, key) in apiDecks"
           :key="`${deck}${key}`"
@@ -136,7 +135,6 @@
           </div>
         </button>
       </div>
-    </transition>
   </section>
 </template>
 

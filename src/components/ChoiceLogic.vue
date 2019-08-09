@@ -58,40 +58,26 @@ export default {
       preferences: [],
       copyChoiceList: [],
       endIndex: 2,
-      totalNumChoices: 0,
       clicks: 0
     };
   },
   mounted() {
     this.shuffle(this.choices);
     this.copyChoiceList = this.choices;
-
-    this.setOptions();
-
     let progressBar = document.querySelector("#progress-bar");
     console.log("progress bar", progressBar);
-    progressBar.max = this.calculateTotalChoices();
+    progressBar.max = this.choices.length - 1;
     // console.log("currentIndex", this.currentIndex)
     // console.log("endIndex", this.endIndex)
-    // console.log(document.querySelector('#progress-bar').value)
+    console.log(document.querySelector('#progress-bar').value)
+    console.log(document.querySelector('#progress-bar').max)
+    this.setOptions();
   },
   methods: {
     triggerConfetti() {
       if (this.onlyChoice === true) {
         this.$confetti.start({});
       }
-    },
-    calculateTotalChoices() {
-      let round = 0;
-      let choicesPerRound = this.copyChoiceList.length;
-      // console.log(round)
-      while (round != 1) {
-        choicesPerRound = choicesPerRound - round;
-        round = Math.floor(choicesPerRound / 2);
-        this.totalNumChoices += round;
-        // console.log(round)
-      }
-      return this.totalNumChoices;
     },
     setOptions() {
       this.endIndex = this.currentIndex + 2;
