@@ -1,7 +1,12 @@
 <template>
   <section class="buttons-container or" id="choice-logic">
     <h1 v-if="!onlyChoice" class="this-or-that">Which do you prefer?</h1>
-    <h1 v-if="onlyChoice" class="this-or-that">Great Choice!</h1>
+    <div v-if="onlyChoice" class="this-or-that">
+      <h1
+        v-for="(option, index) in options"
+        :key="`${option}${index}`"
+      >{{option.title}}! Great Choice!</h1>
+    </div>
     <progress class="progress" id="progress-bar" value="0" max="1"></progress>
     <button
       v-for="(option, index) in options"
@@ -29,10 +34,10 @@
 
 
 <script>
-import Vue from 'vue'
-import VueConfetti from 'vue-confetti'
+import Vue from "vue";
+import VueConfetti from "vue-confetti";
 
-Vue.use(VueConfetti)
+Vue.use(VueConfetti);
 
 export default {
   name: "ChoiceLogic",
@@ -71,11 +76,9 @@ export default {
     // console.log(document.querySelector('#progress-bar').value)
   },
   methods: {
-
     triggerConfetti() {
       if (this.onlyChoice === true) {
         this.$confetti.start({});
-
       }
     },
     calculateTotalChoices() {
