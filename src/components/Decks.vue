@@ -3,27 +3,34 @@
     <!-- <h1 v-if="!hiddenNav" class="decks-info">Your decks</h1> -->
 
     <div v-if="!hiddenSearch" class="searchBar">
-      <input type="text" v-model.lazy="cityName" v-on:change="getBusinesses" placeholder="City" />
-      <button @click="getBusinesses">Get Businesses</button>
-      <p>
-        Input your current location.
-        You are currently looking in: {{ cityName }}
-      </p>
+      <p class="searchPrompt">Where would you like to find choices ?</p>
+      <input
+        class="input"
+        type="text"
+        v-model.lazy="cityName"
+        v-on:change="getBusinesses"
+        placeholder="Address, City, Zip Code, etc..."
+      />
+      <button class="searchButton" @click="getBusinesses">Get Choices</button>
     </div>
 
     <div v-if="!hiddenCustomSearch" class="searchBar">
-      <input type="text" v-model.lazy="cityName" placeholder="City" />
+      <p class="searchPrompt">Where would you like to find choices ?</p>
       <input
+        class="input"
+        type="text"
+        v-model.lazy="cityName"
+        placeholder="Address, City, Zip Code, etc..."
+      />
+      <p class="searchPrompt">What are you looking for ?</p>
+      <input
+        class="input"
         type="text"
         v-model.lazy="searchTerm"
         v-on:change="getBusinesses"
-        placeholder="What are you looking for?"
+        placeholder="Coffee, bookstores, etc..."
       />
-      <button @click="getBusinesses">Get Businesses</button>
-      <p>
-        Input your current location.
-        You are currently looking for {{ searchTerm }} in {{ cityName }}.
-      </p>
+      <button class="searchButton" @click="getBusinesses">Get Choices</button>
     </div>
 
     <div v-if="!hiddenNetflix">
@@ -67,9 +74,7 @@
     </div>
 
     <transition appear name="bounce">
-      <div 
-      :class="{hiddenContainer: hiddenContainer}"
-      class="container">
+      <div :class="{hiddenContainer: hiddenContainer}" class="container">
         <h2 v-if="!hiddenNav" class="deckInfo">Starter Decks</h2>
         <button
           id="deckButton"
