@@ -191,7 +191,8 @@ export default {
       hiddenNav: false,
       hiddenMilkshakes: true,
       hiddenMovies: true,
-      hiddenNetflixFilms: true
+      hiddenNetflixFilms: true,
+      formattedSearch: ""
     };
   },
   mounted() {
@@ -286,7 +287,9 @@ export default {
     getBusinesses() {
       if (!this.hiddenCustomSearch) {
         console.log("searchTerm:", this.searchTerm);
-        this.searchingFor = `categories=${this.searchTerm}`;
+        this.formattedSearch = this.searchTerm;
+        this.formattedSearch = this.formattedSearch.replace(" ", "+");
+        this.searchingFor = `term=${this.formattedSearch}`;
       }
 
       let apiURL = this.buildYelpURL(
