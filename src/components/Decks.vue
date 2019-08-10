@@ -59,6 +59,10 @@
       <button class="locationButton" @click="getMovieLocation()">Get My Location For Me</button>
     </div>
 
+    <div v-if="!hiddenMovies">
+      <ChoiceLogic :choices="allDecks.inTheaters" />
+    </div>
+
     <div v-if="!hiddenNetflix">
       <ChoiceLogic :choices="allDecks.netflixDeck" />
     </div>
@@ -67,12 +71,16 @@
       <ChoiceLogic :choices="allDecks.netflixFilmsDeck" />
     </div>
 
-    <div v-if="!hiddenFood">
-      <ChoiceLogic :choices="allDecks.fastFoodDeck" />
-    </div>
-
     <div v-if="!hiddenActivity">
       <ChoiceLogic :choices="allDecks.activityDeck" />
+    </div>
+
+    <div v-if="!hiddenBusiness">
+      <ChoiceLogic :choices="allDecks.yelpRestaurants" />
+    </div>
+
+    <div v-if="!hiddenFood">
+      <ChoiceLogic :choices="allDecks.fastFoodDeck" />
     </div>
 
     <div v-if="!hiddenFoodTypes">
@@ -83,20 +91,12 @@
       <ChoiceLogic :choices="allDecks.cookoutMilkshakes" />
     </div>
 
-    <div v-if="!hiddenBusiness">
-      <ChoiceLogic :choices="allDecks.yelpRestaurants" />
-    </div>
-
     <div v-if="!hiddenFictionBooks">
       <ChoiceLogic :choices="allDecks.fictionDeck" />
     </div>
 
     <div v-if="!hiddenNonFictionBooks">
       <ChoiceLogic :choices="allDecks.nonFictionDeck" />
-    </div>
-
-    <div v-if="!hiddenMovies">
-      <ChoiceLogic :choices="allDecks.inTheaters" />
     </div>
 
     <div :class="{hiddenContainer: hiddenContainer}" class="container">
@@ -154,12 +154,12 @@ export default {
         inTheaters: [],
         netflixDeck: [],
         netflixFilmsDeck: [],
-        yelpArts: [],
+        activityDeck: [],
         yelpRestaurants: [],
         foodTypesDeck: [],
         fastFoodDeck: [],
         cookoutMilkshakes: [],
-        activityDeck: [],
+        yelpArts: [],
         yelpShops: [],
         yelpParks: [],
         custom: [],
@@ -202,44 +202,44 @@ export default {
   mounted() {
     this.buildLocalApi();
     console.log(this.database);
-    this.allDecks.netflixDeck.image =
-      "//decidor.s3.amazonaws.com/netflix_logo.jpeg";
-    this.allDecks.netflixDeck.title = "Netflix Shows";
-    this.allDecks.fastFoodDeck.image =
-      "//decidor.s3.amazonaws.com/national-french-fry-day.jpg";
-    this.allDecks.fastFoodDeck.title = "Fast Food Chains";
-    this.allDecks.activityDeck.image =
-      "//decidor.s3.amazonaws.com/couple-popcorn-movies.jpg";
-    this.allDecks.activityDeck.title = "Date Night";
-    this.allDecks.foodTypesDeck.image =
-      "//decidor.s3.amazonaws.com/foodtypes.jpeg";
-    this.allDecks.foodTypesDeck.title = "Types of Cuisine";
-    this.allDecks.yelpRestaurants.image =
-      "//decidor.s3.amazonaws.com/restaurants.jpeg";
-    this.allDecks.yelpRestaurants.title = "Restaurants";
-    this.allDecks.yelpShops.image = "//decidor.s3.amazonaws.com/shops.jpeg";
-    this.allDecks.yelpShops.title = "Shops";
-    this.allDecks.yelpArts.image = "//decidor.s3.amazonaws.com/arts.jpeg";
-    this.allDecks.yelpArts.title = "Entertainment";
-    this.allDecks.yelpParks.image = "//decidor.s3.amazonaws.com/parks.jpeg";
-    this.allDecks.yelpParks.title = "Parks";
-    this.allDecks.custom.title = "Custom Yelp";
-    this.allDecks.custom.image = "//decidor.s3.amazonaws.com/yelp-avatar.png";
-    this.allDecks.fictionDeck.image =
-      "//decidor.s3.amazonaws.com/NYT_yellow_square.png";
-    this.allDecks.fictionDeck.title = "Fiction";
-    this.allDecks.nonFictionDeck.image =
-      "//decidor.s3.amazonaws.com/NYT_blue_square.png";
-    this.allDecks.nonFictionDeck.title = "Non-Fiction";
-    this.allDecks.cookoutMilkshakes.title = "Cookout Milkshakes";
-    this.allDecks.cookoutMilkshakes.image =
-      "//decidor.s3.amazonaws.com/cookoutmilkshake.jpeg";
-    this.allDecks.netflixFilmsDeck.title = "Netflix Films";
-    this.allDecks.netflixFilmsDeck.image =
-      "//decidor.s3.amazonaws.com/netflix_white.png";
     this.allDecks.inTheaters.title = "In Theaters Now";
     this.allDecks.inTheaters.image =
       "//decidor.s3.amazonaws.com/toy_story.jpeg";
+    this.allDecks.netflixDeck.title = "Netflix Shows";
+    this.allDecks.netflixDeck.image =
+      "//decidor.s3.amazonaws.com/netflix_logo.jpeg";
+    this.allDecks.netflixFilmsDeck.title = "Netflix Films";
+    this.allDecks.netflixFilmsDeck.image =
+      "//decidor.s3.amazonaws.com/netflix_white.png";
+    this.allDecks.activityDeck.title = "Date Night";
+    this.allDecks.activityDeck.image =
+      "//decidor.s3.amazonaws.com/couple-popcorn-movies.jpg";
+    this.allDecks.yelpRestaurants.title = "Restaurants";
+    this.allDecks.yelpRestaurants.image =
+      "//decidor.s3.amazonaws.com/restaurants.jpeg";
+    this.allDecks.foodTypesDeck.title = "Types of Cuisine";
+    this.allDecks.foodTypesDeck.image =
+      "//decidor.s3.amazonaws.com/foodtypes.jpeg";
+    this.allDecks.fastFoodDeck.title = "Fast Food Chains";
+    this.allDecks.fastFoodDeck.image =
+      "//decidor.s3.amazonaws.com/national-french-fry-day.jpg";
+    this.allDecks.cookoutMilkshakes.title = "Cookout Milkshakes";
+    this.allDecks.cookoutMilkshakes.image =
+      "//decidor.s3.amazonaws.com/cookoutmilkshake.jpeg";
+    this.allDecks.yelpArts.title = "Explore Your Area";
+    this.allDecks.yelpArts.image = "//decidor.s3.amazonaws.com/arts.jpeg";
+    this.allDecks.yelpShops.title = "Shops";
+    this.allDecks.yelpShops.image = "//decidor.s3.amazonaws.com/shops.jpeg";
+    this.allDecks.yelpParks.title = "Parks";
+    this.allDecks.yelpParks.image = "//decidor.s3.amazonaws.com/parks.jpeg";
+    this.allDecks.custom.title = "Custom Yelp";
+    this.allDecks.custom.image = "//decidor.s3.amazonaws.com/yelp-avatar.png";
+    this.allDecks.fictionDeck.title = "Fiction";
+    this.allDecks.fictionDeck.image =
+      "//decidor.s3.amazonaws.com/NYT_yellow_square.png";
+    this.allDecks.nonFictionDeck.title = "Non-Fiction";
+    this.allDecks.nonFictionDeck.image =
+      "//decidor.s3.amazonaws.com/NYT_blue_square.png";
   },
   methods: {
     sendKey(key) {
@@ -482,12 +482,12 @@ export default {
     },
     getMovieLocation: function() {
       if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(this.showPosition);
+        navigator.geolocation.getCurrentPosition(this.showMoviePosition);
       } else {
         this.error = "Geolocation is not supported.";
       }
     },
-    showPosition: function(position) {
+    showMoviePosition: function(position) {
       this.lat = position.coords.latitude;
       this.lon = position.coords.longitude;
       this.makeMovieLatLonURL();
