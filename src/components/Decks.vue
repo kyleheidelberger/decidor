@@ -49,6 +49,10 @@
       <ChoiceLogic :choices="allDecks.netflixDeck" />
     </div>
 
+    <div v-if="!hiddenNetflixFilms">
+      <ChoiceLogic :choices="allDecks.netflixFilmsDeck" />
+    </div>
+
     <div v-if="!hiddenFood">
       <ChoiceLogic :choices="allDecks.fastFoodDeck" />
     </div>
@@ -65,24 +69,20 @@
       <ChoiceLogic :choices="allDecks.cookoutMilkshakes" />
     </div>
 
-    <div v-if="!hiddenNetflixFilms">
-      <ChoiceLogic :choices="allDecks.netflixFilmsDeck" />
-    </div>
-
     <div v-if="!hiddenBusiness">
-      <ChoiceLogic :choices="yelpDecks.yelpRestaurants" />
+      <ChoiceLogic :choices="allDecks.yelpRestaurants" />
     </div>
 
     <div v-if="!hiddenFictionBooks">
-      <ChoiceLogic :choices="apiDecks.fictionDeck" />
+      <ChoiceLogic :choices="allDecks.fictionDeck" />
     </div>
 
     <div v-if="!hiddenNonFictionBooks">
-      <ChoiceLogic :choices="apiDecks.nonFictionDeck" />
+      <ChoiceLogic :choices="allDecks.nonFictionDeck" />
     </div>
 
     <div v-if="!hiddenMovies">
-      <ChoiceLogic :choices="apiDecks.inTheaters" />
+      <ChoiceLogic :choices="allDecks.inTheaters" />
     </div>
 
     <div :class="{hiddenContainer: hiddenContainer}" class="container">
@@ -90,38 +90,6 @@
       <button
         id="deckButton"
         v-for="(deck, key) in allDecks"
-        :key="`${deck}${key}`"
-        class="deckButton"
-        @click="sendKey(key)"
-        :class="{ hiddenDick: hiddenDeck }"
-      >
-        <div class="deck-container">
-          <h2 class="deckTitle">{{deck.title}}</h2>
-          <div class="overlay">
-            <img class="deckImage" :src="deck.image" />
-          </div>
-        </div>
-      </button>
-
-      <!-- <h2 v-if="!hiddenNav" class="deckInfo">Local Decks</h2> -->
-      <button
-        v-for="(deck, key) in yelpDecks"
-        :key="`${deck}${key}`"
-        class="deckButton"
-        @click="sendKey(key)"
-        :class="{ hiddenDick: hiddenDeck }"
-      >
-        <div class="deck-container">
-          <h2 class="deckTitle">{{deck.title}}</h2>
-          <div class="overlay">
-            <img class="deckImage" :src="deck.image" />
-          </div>
-        </div>
-      </button>
-
-      <!-- <h2 v-if="!hiddenNav" class="deckInfo">API Decks</h2> -->
-      <button
-        v-for="(deck, key) in apiDecks"
         :key="`${deck}${key}`"
         class="deckButton"
         @click="sendKey(key)"
@@ -171,16 +139,12 @@ export default {
         fastFoodDeck: [],
         activityDeck: [],
         foodTypesDeck: [],
-        cookoutMilkshakes: []
-      },
-      yelpDecks: {
+        cookoutMilkshakes: [],
         yelpRestaurants: [],
         yelpShops: [],
         yelpArts: [],
         yelpParks: [],
-        custom: []
-      },
-      apiDecks: {
+        custom: [],
         fictionDeck: [],
         nonFictionDeck: [],
         inTheaters: []
@@ -230,31 +194,31 @@ export default {
     this.allDecks.foodTypesDeck.image =
       "//decidor.s3.amazonaws.com/foodtypes.jpeg";
     this.allDecks.foodTypesDeck.title = "Food Types";
-    this.yelpDecks.yelpRestaurants.image =
+    this.allDecks.yelpRestaurants.image =
       "//decidor.s3.amazonaws.com/restaurants.jpeg";
-    this.yelpDecks.yelpRestaurants.title = "Restaurants";
-    this.yelpDecks.yelpShops.image = "//decidor.s3.amazonaws.com/shops.jpeg";
-    this.yelpDecks.yelpShops.title = "Shops";
-    this.yelpDecks.yelpArts.image = "//decidor.s3.amazonaws.com/arts.jpeg";
-    this.yelpDecks.yelpArts.title = "Entertainment";
-    this.yelpDecks.yelpParks.image = "//decidor.s3.amazonaws.com/parks.jpeg";
-    this.yelpDecks.yelpParks.title = "Parks";
-    this.yelpDecks.custom.title = "Custom Yelp";
-    this.yelpDecks.custom.image = "//decidor.s3.amazonaws.com/yelp-avatar.png";
-    this.apiDecks.fictionDeck.image =
+    this.allDecks.yelpRestaurants.title = "Restaurants";
+    this.allDecks.yelpShops.image = "//decidor.s3.amazonaws.com/shops.jpeg";
+    this.allDecks.yelpShops.title = "Shops";
+    this.allDecks.yelpArts.image = "//decidor.s3.amazonaws.com/arts.jpeg";
+    this.allDecks.yelpArts.title = "Entertainment";
+    this.allDecks.yelpParks.image = "//decidor.s3.amazonaws.com/parks.jpeg";
+    this.allDecks.yelpParks.title = "Parks";
+    this.allDecks.custom.title = "Custom Yelp";
+    this.allDecks.custom.image = "//decidor.s3.amazonaws.com/yelp-avatar.png";
+    this.allDecks.fictionDeck.image =
       "//decidor.s3.amazonaws.com/NYT_yellow_square.png";
-    this.apiDecks.fictionDeck.title = "Fiction";
-    this.apiDecks.nonFictionDeck.image =
+    this.allDecks.fictionDeck.title = "Fiction";
+    this.allDecks.nonFictionDeck.image =
       "//decidor.s3.amazonaws.com/NYT_blue_square.png";
-    this.apiDecks.nonFictionDeck.title = "Non-Fiction";
+    this.allDecks.nonFictionDeck.title = "Non-Fiction";
     this.allDecks.cookoutMilkshakes.title = "Cookout Milkshakes";
     this.allDecks.cookoutMilkshakes.image =
       "//decidor.s3.amazonaws.com/cookoutmilkshake.jpeg";
     this.allDecks.netflixFilmsDeck.title = "Netflix Films";
     this.allDecks.netflixFilmsDeck.image =
       "//decidor.s3.amazonaws.com/netflix_white.png";
-    this.apiDecks.inTheaters.title = "In Theaters Now";
-    this.apiDecks.inTheaters.image =
+    this.allDecks.inTheaters.title = "In Theaters Now";
+    this.allDecks.inTheaters.image =
       "//decidor.s3.amazonaws.com/toy_story.jpeg";
   },
   methods: {
@@ -340,8 +304,8 @@ export default {
           }
         })
         .then(response => {
-          this.yelpDecks.businesses = response.data.businesses;
-          this.filterBusinesses(this.yelpDecks.businesses);
+          this.allDecks.businesses = response.data.businesses;
+          this.filterBusinesses(this.allDecks.businesses);
           this.hiddenBusiness = false;
         })
         .catch(error => {});
@@ -369,29 +333,29 @@ export default {
           }
         })
         .then(response => {
-          this.yelpDecks.businesses = response.data.businesses;
-          this.filterBusinesses(this.yelpDecks.businesses);
+          this.allDecks.businesses = response.data.businesses;
+          this.filterBusinesses(this.allDecks.businesses);
           this.hiddenBusiness = false;
         })
         .catch(error => {});
     },
     filterBusinesses() {
-      this.yelpDecks.businesses.map(business => {
+      this.allDecks.businesses.map(business => {
         let businessName = business.name;
         let businessImageURL = business.image_url;
         // let businessRating = business.rating;
         let businessURL = business.url;
 
-        this.yelpDecks.yelpRestaurants.push({
+        this.allDecks.yelpRestaurants.push({
           title: businessName,
           card_image: businessImageURL,
           // rating: businessRating,
           url: businessURL
         });
-        this.yelpDecks.businesses = [];
+        this.allDecks.businesses = [];
         this.hiddenSearch = true;
         this.hiddenCustomSearch = true;
-        return this.yelpDecks.yelpRestaurants;
+        return this.allDecks.yelpRestaurants;
       });
     },
     getBookCategory(key) {
@@ -431,14 +395,14 @@ export default {
         let bookCover = book.book_image;
         let bookURL = book.amazon_product_url;
 
-        this.apiDecks.fictionDeck.push({
+        this.allDecks.fictionDeck.push({
           title: bookTitle,
           description: bookDescription,
           card_image: bookCover,
           url: bookURL
         });
         this.results = [];
-        return this.apiDecks.fictionDeck;
+        return this.allDecks.fictionDeck;
       });
     },
     getNonFictionBookList(key) {
@@ -465,14 +429,14 @@ export default {
         let bookCover = book.book_image;
         let bookURL = book.amazon_product_url;
 
-        this.apiDecks.nonFictionDeck.push({
+        this.allDecks.nonFictionDeck.push({
           title: bookTitle,
           description: bookDescription,
           card_image: bookCover,
           url: bookURL
         });
         this.results = [];
-        return this.apiDecks.nonFictionDeck;
+        return this.allDecks.nonFictionDeck;
       });
     },
     buildMovieURL(url) {
@@ -503,9 +467,9 @@ export default {
           }
         })
         .then(response => {
-          this.apiDecks.movies = response.data.movies;
+          this.allDecks.movies = response.data.movies;
           console.log(response.data.movies);
-          this.filterMovies(this.apiDecks.movies);
+          this.filterMovies(this.allDecks.movies);
           this.hiddenMovies = false;
         })
         .catch(error => {
@@ -513,7 +477,7 @@ export default {
         });
     },
     filterMovies() {
-      let filteredMovies = this.apiDecks.movies.filter(
+      let filteredMovies = this.allDecks.movies.filter(
         movie => movie.poster_image !== null
       );
       filteredMovies.map(movie => {
@@ -521,14 +485,14 @@ export default {
         let movieDescription = movie.slug;
         let movieCover = movie.poster_image;
 
-        this.apiDecks.inTheaters.push({
+        this.allDecks.inTheaters.push({
           title: movieTitle,
           description: movieDescription,
           card_image: movieCover
         });
         filteredMovies = [];
-        this.apiDecks.movies = [];
-        return this.apiDecks.inTheaters;
+        this.allDecks.movies = [];
+        return this.allDecks.inTheaters;
       });
     },
     buildLocalApi() {
@@ -575,7 +539,7 @@ export default {
       });
     },
     makeActivityDeck() {
-      this.database[3].card_set.map(card => {
+      this.database[2].card_set.map(card => {
         let cardTitle = card.title;
         let cardImage = card.card_image;
         let cardDeck = card.deck;
@@ -590,7 +554,7 @@ export default {
       });
     },
     makeFoodTypesDeck() {
-      this.database[5].card_set.map(card => {
+      this.database[4].card_set.map(card => {
         let cardTitle = card.title;
         let cardImage = card.card_image;
         let cardDeck = card.deck;
@@ -605,7 +569,7 @@ export default {
       });
     },
     makeCookoutMilkshakesDeck() {
-      this.database[4].card_set.map(card => {
+      this.database[3].card_set.map(card => {
         let cardTitle = card.title;
         let cardImage = card.card_image;
         let cardDeck = card.deck;
@@ -620,7 +584,7 @@ export default {
       });
     },
     makeNetflixFilmsDeck() {
-      this.database[2].card_set.map(card => {
+      this.database[15].card_set.map(card => {
         let cardTitle = card.title;
         let cardImage = card.card_image;
         let cardDeck = card.deck;
