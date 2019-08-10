@@ -14,6 +14,7 @@ class Card (models.Model):
     description = models.CharField(max_length=250, null=True, blank=True)
     deck = models.ForeignKey(to=StarterDeck, on_delete=models.CASCADE)
     card_image = models.FileField()
+    url = models.URLField(null=True, blank=True)
 
     def __str__(self):
         return self.title
