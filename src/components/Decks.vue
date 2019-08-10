@@ -85,56 +85,56 @@
       <ChoiceLogic :choices="apiDecks.inTheaters" />
     </div>
 
-      <div :class="{hiddenContainer: hiddenContainer}" class="container">
-        <!-- <h2 v-if="!hiddenNav" class="deckInfo">Starter Decks</h2> -->
-        <button
-          id="deckButton"
-          v-for="(deck, key) in allDecks"
-          :key="`${deck}${key}`"
-          class="deckButton"
-          @click="sendKey(key)"
-          :class="{ hiddenDick: hiddenDeck }"
-        >
-          <div class="deck-container">
-            <h2 class="deckTitle">{{deck.title}}</h2>
-            <div class="overlay">
-              <img class="deckImage" :src="deck.image" />
-            </div>
+    <div :class="{hiddenContainer: hiddenContainer}" class="container">
+      <!-- <h2 v-if="!hiddenNav" class="deckInfo">Starter Decks</h2> -->
+      <button
+        id="deckButton"
+        v-for="(deck, key) in allDecks"
+        :key="`${deck}${key}`"
+        class="deckButton"
+        @click="sendKey(key)"
+        :class="{ hiddenDick: hiddenDeck }"
+      >
+        <div class="deck-container">
+          <h2 class="deckTitle">{{deck.title}}</h2>
+          <div class="overlay">
+            <img class="deckImage" :src="deck.image" />
           </div>
-        </button>
+        </div>
+      </button>
 
-        <!-- <h2 v-if="!hiddenNav" class="deckInfo">Local Decks</h2> -->
-        <button
-          v-for="(deck, key) in yelpDecks"
-          :key="`${deck}${key}`"
-          class="deckButton"
-          @click="sendKey(key)"
-          :class="{ hiddenDick: hiddenDeck }"
-        >
-          <div class="deck-container">
-            <h2 class="deckTitle">{{deck.title}}</h2>
-            <div class="overlay">
-              <img class="deckImage" :src="deck.image" />
-            </div>
+      <!-- <h2 v-if="!hiddenNav" class="deckInfo">Local Decks</h2> -->
+      <button
+        v-for="(deck, key) in yelpDecks"
+        :key="`${deck}${key}`"
+        class="deckButton"
+        @click="sendKey(key)"
+        :class="{ hiddenDick: hiddenDeck }"
+      >
+        <div class="deck-container">
+          <h2 class="deckTitle">{{deck.title}}</h2>
+          <div class="overlay">
+            <img class="deckImage" :src="deck.image" />
           </div>
-        </button>
+        </div>
+      </button>
 
-        <!-- <h2 v-if="!hiddenNav" class="deckInfo">API Decks</h2> -->
-        <button
-          v-for="(deck, key) in apiDecks"
-          :key="`${deck}${key}`"
-          class="deckButton"
-          @click="sendKey(key)"
-          :class="{ hiddenDick: hiddenDeck }"
-        >
-          <div class="deck-container">
-            <h2 class="deckTitle">{{deck.title}}</h2>
-            <div class="overlay">
-              <img class="deckImage" :src="deck.image" />
-            </div>
+      <!-- <h2 v-if="!hiddenNav" class="deckInfo">API Decks</h2> -->
+      <button
+        v-for="(deck, key) in apiDecks"
+        :key="`${deck}${key}`"
+        class="deckButton"
+        @click="sendKey(key)"
+        :class="{ hiddenDick: hiddenDeck }"
+      >
+        <div class="deck-container">
+          <h2 class="deckTitle">{{deck.title}}</h2>
+          <div class="overlay">
+            <img class="deckImage" :src="deck.image" />
           </div>
-        </button>
-      </div>
+        </div>
+      </button>
+    </div>
   </section>
 </template>
 
@@ -167,11 +167,11 @@ export default {
     return {
       allDecks: {
         netflixDeck: [],
+        netflixFilmsDeck: [],
         fastFoodDeck: [],
         activityDeck: [],
         foodTypesDeck: [],
-        cookoutMilkshakes: [],
-        netflixFilmsDeck: []
+        cookoutMilkshakes: []
       },
       yelpDecks: {
         yelpRestaurants: [],
@@ -252,7 +252,7 @@ export default {
       "//decidor.s3.amazonaws.com/cookoutmilkshake.jpeg";
     this.allDecks.netflixFilmsDeck.title = "Netflix Films";
     this.allDecks.netflixFilmsDeck.image =
-      "//decidor.s3.amazonaws.com/netflix_logo.jpeg";
+      "//decidor.s3.amazonaws.com/netflix_white.png";
     this.apiDecks.inTheaters.title = "In Theaters Now";
     this.apiDecks.inTheaters.image =
       "//decidor.s3.amazonaws.com/toy_story.jpeg";
