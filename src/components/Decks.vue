@@ -59,6 +59,10 @@
       <button class="locationButton" @click="getMovieLocation()">Get My Location For Me</button>
     </div>
 
+    <div v-if="!hiddenMovies">
+      <ChoiceLogic :choices="allDecks.inTheaters" />
+    </div>
+
     <div v-if="!hiddenNetflix">
       <ChoiceLogic :choices="allDecks.netflixDeck" />
     </div>
@@ -67,12 +71,12 @@
       <ChoiceLogic :choices="allDecks.netflixFilmsDeck" />
     </div>
 
-    <div v-if="!hiddenFood">
-      <ChoiceLogic :choices="allDecks.fastFoodDeck" />
+    <div v-if="!hiddenNewOnNetflix">
+      <ChoiceLogic :choices="allDecks.newOnNetflix" />
     </div>
 
-    <div v-if="!hiddenActivity">
-      <ChoiceLogic :choices="allDecks.activityDeck" />
+    <div v-if="!hiddenFood">
+      <ChoiceLogic :choices="allDecks.fastFoodDeck" />
     </div>
 
     <div v-if="!hiddenFoodTypes">
@@ -87,16 +91,16 @@
       <ChoiceLogic :choices="allDecks.yelpRestaurants" />
     </div>
 
+    <div v-if="!hiddenActivity">
+      <ChoiceLogic :choices="allDecks.activityDeck" />
+    </div>
+
     <div v-if="!hiddenFictionBooks">
       <ChoiceLogic :choices="allDecks.fictionDeck" />
     </div>
 
     <div v-if="!hiddenNonFictionBooks">
       <ChoiceLogic :choices="allDecks.nonFictionDeck" />
-    </div>
-
-    <div v-if="!hiddenMovies">
-      <ChoiceLogic :choices="allDecks.inTheaters" />
     </div>
 
     <div :class="{hiddenContainer: hiddenContainer}" class="container">
@@ -152,9 +156,9 @@ export default {
     return {
       allDecks: {
         inTheaters: [],
+        newOnNetflix: [],
         netflixDeck: [],
         netflixFilmsDeck: [],
-        yelpArts: [],
         yelpRestaurants: [],
         foodTypesDeck: [],
         fastFoodDeck: [],
@@ -162,6 +166,7 @@ export default {
         activityDeck: [],
         yelpShops: [],
         yelpParks: [],
+        yelpArts: [],
         custom: [],
         fictionDeck: [],
         nonFictionDeck: []
@@ -194,6 +199,7 @@ export default {
       hiddenMilkshakes: true,
       hiddenMovies: true,
       hiddenNetflixFilms: true,
+      hiddenNewOnNetflix: true,
       formattedSearch: "",
       lat: "",
       lon: ""
@@ -202,9 +208,18 @@ export default {
   mounted() {
     this.buildLocalApi();
     console.log(this.database);
+    this.allDecks.inTheaters.title = "In Theaters Now";
+    this.allDecks.inTheaters.image =
+      "//decidor.s3.amazonaws.com/toy_story.jpeg";
     this.allDecks.netflixDeck.image =
       "//decidor.s3.amazonaws.com/netflix_logo.jpeg";
     this.allDecks.netflixDeck.title = "Netflix Shows";
+    this.allDecks.netflixFilmsDeck.title = "Netflix Films";
+    this.allDecks.newOnNetflix.title = "New on Netflix";
+    this.allDecks.newOnNetflix.image =
+      "//decidor.s3.amazonaws.com/netflix_logo.jpeg";
+    this.allDecks.netflixFilmsDeck.image =
+      "//decidor.s3.amazonaws.com/netflix_white.png";
     this.allDecks.fastFoodDeck.image =
       "//decidor.s3.amazonaws.com/national-french-fry-day.jpg";
     this.allDecks.fastFoodDeck.title = "Fast Food Chains";
@@ -234,12 +249,6 @@ export default {
     this.allDecks.cookoutMilkshakes.title = "Cookout Milkshakes";
     this.allDecks.cookoutMilkshakes.image =
       "//decidor.s3.amazonaws.com/cookoutmilkshake.jpeg";
-    this.allDecks.netflixFilmsDeck.title = "Netflix Films";
-    this.allDecks.netflixFilmsDeck.image =
-      "//decidor.s3.amazonaws.com/netflix_white.png";
-    this.allDecks.inTheaters.title = "In Theaters Now";
-    this.allDecks.inTheaters.image =
-      "//decidor.s3.amazonaws.com/toy_story.jpeg";
   },
   methods: {
     sendKey(key) {
@@ -269,6 +278,9 @@ export default {
         this.hiddenCustomSearch = false;
       } else if (key.includes("inTheaters")) {
         this.hiddenMovieSearch = false;
+      } else if (key.includes("newOnNetflix")) {
+        // this.hiddenNewOnNetflix = false;
+        this.getNewNetflix();
       }
     },
     getLocation: function() {
@@ -654,6 +666,71 @@ export default {
           description: card.description
         });
         return this.allDecks.netflixFilmsDeck;
+      });
+    },
+    getNewNetflix() {
+      // axios
+      //   .get(
+      //     "https://unogs-unogs-v1.p.rapidapi.com/aaapi.cgi/?daysback=7&countryid=US&page=1",
+      //     {
+      //       headers: {
+      //         "x-rapidapi-host": "unogs-unogs-v1.p.rapidapi.com",
+      //         "x-rapidapi-key":
+      //           "55f88db0b0mshd3d98254fd80a3cp18fd3djsnb6351a4cb8a0"
+      //       }
+      //     }
+      //   )
+      //   .then(response => {
+      //     this.allDecks.movies = response.data.items;
+      //     console.log(response.data.items);
+      //     this.filterNetflixMovies(this.allDecks.movies);
+      //     this.hiddenNewOnNetflix = false;
+      //   })
+      //   .catch(error => {
+      //     console.log(error);
+      //   });
+      var unirest = require("unirest");
+
+      var req = unirest(
+        "GET",
+        "https://unogs-unogs-v1.p.rapidapi.com/aaapi.cgi"
+      );
+
+      req.query({
+        q: "get:new7:US",
+        p: "1",
+        t: "ns",
+        st: "adv"
+      });
+
+      req.headers({
+        "x-rapidapi-host": "unogs-unogs-v1.p.rapidapi.com",
+        "x-rapidapi-key": "55f88db0b0mshd3d98254fd80a3cp18fd3djsnb6351a4cb8a0"
+      });
+
+      req.end(function(res) {
+        if (res.error) throw new Error(res.error);
+
+        console.log(res.body);
+      });
+    },
+    filterNetflixMovies() {
+      let filteredMovies = this.allDecks.movies.filter(
+        movie => largeimage !== ""
+      );
+      filteredMovies.map(netflix => {
+        let title = netflix.title;
+        let description = netflix.synopsis;
+        let image = movie.largeimage;
+
+        this.allDecks.inTheaters.push({
+          title: title,
+          description: description,
+          card_image: image
+        });
+        filteredMovies = [];
+        this.allDecks.items = [];
+        return this.allDecks.newonNetflix;
       });
     }
   }
