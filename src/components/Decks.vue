@@ -147,8 +147,7 @@ export default {
         yelpParks: [],
         custom: [],
         fictionDeck: [],
-        nonFictionDeck: [],
-        
+        nonFictionDeck: []
       },
       database: [],
       // hiddenCards: true,
@@ -194,7 +193,7 @@ export default {
     this.allDecks.activityDeck.title = "Date Night";
     this.allDecks.foodTypesDeck.image =
       "//decidor.s3.amazonaws.com/foodtypes.jpeg";
-    this.allDecks.foodTypesDeck.title = "Food Types";
+    this.allDecks.foodTypesDeck.title = "Types of Cuisine";
     this.allDecks.yelpRestaurants.image =
       "//decidor.s3.amazonaws.com/restaurants.jpeg";
     this.allDecks.yelpRestaurants.title = "Restaurants";
