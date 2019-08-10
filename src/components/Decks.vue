@@ -584,7 +584,7 @@ export default {
       });
     },
     makeNetflixFilmsDeck() {
-      this.database[15].card_set.map(card => {
+      this.database[5].card_set.map(card => {
         let cardTitle = card.title;
         let cardImage = card.card_image;
         let cardDeck = card.deck;
