@@ -482,12 +482,12 @@ export default {
     },
     getMovieLocation: function() {
       if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(this.showPosition);
+        navigator.geolocation.getCurrentPosition(this.showMoviePosition);
       } else {
         this.error = "Geolocation is not supported.";
       }
     },
-    showPosition: function(position) {
+    showMoviePosition: function(position) {
       this.lat = position.coords.latitude;
       this.lon = position.coords.longitude;
       this.makeMovieLatLonURL();
