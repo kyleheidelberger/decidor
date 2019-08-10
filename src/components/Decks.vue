@@ -572,12 +572,15 @@ export default {
         let cardImage = card.card_image;
         let cardDeck = card.deck;
         let cardDescription = card.description;
+        let cardURL = card.url;
 
         this.allDecks.netflixDeck.push({
           title: cardTitle,
           card_image: cardImage,
-          description: card.description
+          description: cardDescription,
+          url: cardURL
         });
+        console.log(this.allDecks.netflixDeck);
         return this.allDecks.netflixDeck;
       });
     },
@@ -587,11 +590,13 @@ export default {
         let cardImage = card.card_image;
         let cardDeck = card.deck;
         let cardDescription = card.description;
+        let cardURL = card.url;
 
         this.allDecks.fastFoodDeck.push({
           title: cardTitle,
           card_image: cardImage,
-          description: card.description
+          description: cardDescription,
+          url: cardURL
         });
         return this.allDecks.fastFoodDeck;
       });
@@ -602,11 +607,13 @@ export default {
         let cardImage = card.card_image;
         let cardDeck = card.deck;
         let cardDescription = card.description;
+        let cardURL = card.url;
 
         this.allDecks.activityDeck.push({
           title: cardTitle,
           card_image: cardImage,
-          description: card.description
+          description: cardDescription,
+          url: cardURL
         });
         return this.allDecks.activityDeck;
       });
@@ -617,11 +624,13 @@ export default {
         let cardImage = card.card_image;
         let cardDeck = card.deck;
         let cardDescription = card.description;
+        let cardURL = card.url;
 
         this.allDecks.foodTypesDeck.push({
           title: cardTitle,
           card_image: cardImage,
-          description: card.description
+          description: cardDescription,
+          url: cardURL
         });
         return this.allDecks.foodTypesDeck;
       });
@@ -632,11 +641,13 @@ export default {
         let cardImage = card.card_image;
         let cardDeck = card.deck;
         let cardDescription = card.description;
+        let cardURL = card.url;
 
         this.allDecks.cookoutMilkshakes.push({
           title: cardTitle,
           card_image: cardImage,
-          description: card.description
+          description: cardDescription,
+          url: cardURL
         });
         return this.allDecks.cookoutMilkshakes;
       });
@@ -647,11 +658,13 @@ export default {
         let cardImage = card.card_image;
         let cardDeck = card.deck;
         let cardDescription = card.description;
+        let cardURL = card.url;
 
         this.allDecks.netflixFilmsDeck.push({
           title: cardTitle,
           card_image: cardImage,
-          description: card.description
+          description: cardDescription,
+          url: cardURL
         });
         return this.allDecks.netflixFilmsDeck;
       });
