@@ -88,6 +88,7 @@
       <div :class="{hiddenContainer: hiddenContainer}" class="container">
         <!-- <h2 v-if="!hiddenNav" class="deckInfo">Starter Decks</h2> -->
         <button
+          data-aos="fade-up"
           id="deckButton"
           v-for="(deck, key) in allDecks"
           :key="`${deck}${key}`"

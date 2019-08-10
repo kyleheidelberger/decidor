@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 $lg: linear-gradient(to right, #7796CB 0%, #A3BCF9 51%, #7796CB 100%);
-$br: linear-gradient(to bottom right, #2f7e97, #236087, #2b426f, #332350, #30002b);
-$bt: linear-gradient(to bottom, #2f7e97, #236087, #2b426f, #332350, #30002b);
+$match: linear-gradient(to bottom right, #FA7268, #EA6084, #CB5B9D, #9E5EAD, #6461B1, #0061A8);
+$blah: linear-gradient(to bottom right, #FA7267, #BC827B, #FFF6F4, #F3EED9);
+$skip: linear-gradient(to bottom right, #FA7268, #FFBDEE, #FA86B6, #BF5081);
+$br: radial-gradient(#FFC371, #FA7268);
 $btn: linear-gradient(to bottom, #2f7e97, #236087, #2b426f, #30002b);
 $nav: linear-gradient(to bottom,rgb(51,35,80) 90%, rgba(51,35,80,0));
 $lato: 'Lato', sans-serif;
@@ -276,7 +278,7 @@ body {
 }
 
 .base-head {
-  background: $nav;
+  // background: $nav;
   padding: 20px;
   display: flex;
   height: 110px;
@@ -466,7 +468,7 @@ body {
       // border-image-slice: 1;
       // color: #fff;
       background-color: #fff;
-      color: rgb(51,35,80);
+      color: #FA7268;
       transition: background-color 0.2s ease-in,
       color 0.3s ease-in;
   }
@@ -478,7 +480,7 @@ body {
   background-color: #fff;
   font-size: 1rem;
   display: block;
-  color: rgb(51,35,80);
+  color: #FA7268;
   font-family: $lato;
   width: 150px;
   padding: 8px;
