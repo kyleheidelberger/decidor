@@ -45,6 +45,17 @@
 
     <div v-if="!hiddenMovieSearch" class="searchBar">
       <p class="searchPrompt">Where would you like to find movies ?</p>
+      <div>
+        <input
+          class="input"
+          type="text"
+          v-model.lazy="cityName"
+          v-on:change="getCityID()"
+          placeholder=" City Name"
+        />
+        <button class="searchButton" @click="getCityID">Get Choices</button>
+      </div>
+      <img class="orLogo" src="//decidor.s3.amazonaws.com/OR_solid_white.png" />
       <button class="locationButton" @click="getMovieLocation()">Get My Location For Me</button>
     </div>
 
@@ -129,6 +140,9 @@ const movieBaseURL =
   "https://api.internationalshowtimes.com/v4/movies/?fields=title,slug,poster_image.flat&countries=US&release_date_to=";
 const movieApiKey = "LafOf9zLcvERnGpF3IBU85w8txyALDvH";
 
+const movieCityURL =
+  "https://api.internationalshowtimes.com/v4/cities/?countries=US&";
+
 export default {
   name: "Decks",
   components: {
@@ -158,12 +172,14 @@ export default {
       searchingFor: "",
       book_category: "",
       searchTerm: "",
-      formattedDate: "",
       hiddenDeck: false,
       hiddenContainer: false,
       businesses: [],
       results: [],
       movies: [],
+      cities: [],
+      cityID: "",
+      movieLocation: "",
       hiddenBusiness: true,
       hiddenNetflix: true,
       hiddenFood: true,
@@ -443,6 +459,27 @@ export default {
         return this.allDecks.nonFictionDeck;
       });
     },
+    getCityID() {
+      let completeCityURL = movieCityURL + "query=" + this.cityName;
+      console.log("url", completeCityURL);
+
+      axios
+        .get(completeCityURL, {
+          headers: {
+            Authorization: `Token ${movieApiKey}`
+          }
+        })
+        .then(response => {
+          this.cities = response.data.cities;
+          console.log(response.data.cities);
+          this.cityID = this.cities[0].id;
+          console.log("cityID=", this.cityID);
+          this.makeMovieCityURL();
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    },
     getMovieLocation: function() {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(this.showPosition);
@@ -453,27 +490,31 @@ export default {
     showPosition: function(position) {
       this.lat = position.coords.latitude;
       this.lon = position.coords.longitude;
+      this.makeMovieLatLonURL();
+    },
+    makeMovieLatLonURL(url) {
+      this.movieLocation = `&location=${this.lat},${this.lon}`;
       this.getMovies();
     },
-    buildMovieURL(url) {
+    makeMovieCityURL() {
+      this.movieLocation = `&city_ids=${this.cityID}`;
+      this.getMovies();
+    },
+    getMovies() {
       let todaysDate = new Date();
       let month = ("0" + (todaysDate.getMonth() + 1)).slice(-2);
       let date = ("0" + todaysDate.getDate()).slice(-2);
       let year = todaysDate.getFullYear();
       let formattedDate = year + "-" + month + "-" + date;
-      console.log("todaysDate:", formattedDate);
 
       let startDate = new Date();
       let sDate = ("0" + startDate.getDate()).slice(-2);
       let sMonth = ("0" + (startDate.getMonth() - 1)).slice(-2);
       let sYear = startDate.getFullYear();
       let twoMonthsAgoDate = sYear + "-" + sMonth + "-" + sDate;
-      console.log("twoMonthsAgoDate:", twoMonthsAgoDate);
 
-      return `${movieBaseURL}${formattedDate}&release_date_from=${twoMonthsAgoDate}&location=${this.lat},${this.lon}`;
-    },
-    getMovies(formattedDate) {
-      let movieApiURL = this.buildMovieURL(movieBaseURL);
+      let movieApiURL = `${movieBaseURL}${formattedDate}&release_date_from=${twoMonthsAgoDate}`;
+      movieApiURL = movieApiURL + this.movieLocation;
       console.log("url", movieApiURL);
 
       axios
