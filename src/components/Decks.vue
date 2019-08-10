@@ -15,7 +15,6 @@
         <button class="searchButton" @click="getBusinesses">Get Choices</button>
       </div>
       <img class="orLogo" src="//decidor.s3.amazonaws.com/OR_solid_white.png" />
-      <!-- <p class="searchPrompt">OR</p> -->
       <button class="locationButton" @click="getLocation()">Get My Location For Me</button>
     </div>
 
@@ -41,8 +40,12 @@
         <button class="searchButton" @click="getBusinesses">Get Choices</button>
       </div>
       <img class="orLogo" src="//decidor.s3.amazonaws.com/OR_solid_white.png" />
-      <!-- <p class="searchPrompt">OR</p> -->
       <button class="locationButton" @click="getLocation()">Get My Location For Me</button>
+    </div>
+
+    <div v-if="!hiddenMovieSearch" class="searchBar">
+      <p class="searchPrompt">Where would you like to find movies ?</p>
+      <button class="locationButton" @click="getMovieLocation()">Get My Location For Me</button>
     </div>
 
     <div v-if="!hiddenNetflix">
@@ -123,7 +126,7 @@ const bookBaseURL = `https://api.nytimes.com/svc/books/v3/lists/current/`;
 const nytApiKey = `4QC7YMXjnIWo1dTtGFpj5itZlVDPvbOk`;
 
 const movieBaseURL =
-  "https://api.internationalshowtimes.com/v4/movies/?fields=title,slug,poster_image.flat&limit=22&countries=US&release_date_to=";
+  "https://api.internationalshowtimes.com/v4/movies/?fields=title,slug,poster_image.flat&countries=US&release_date_to=";
 const movieApiKey = "LafOf9zLcvERnGpF3IBU85w8txyALDvH";
 
 export default {
@@ -170,6 +173,7 @@ export default {
       hiddenNonFictionBooks: true,
       hiddenSearch: true,
       hiddenCustomSearch: true,
+      hiddenMovieSearch: true,
       hiddenNav: false,
       hiddenMilkshakes: true,
       hiddenMovies: true,
@@ -248,7 +252,7 @@ export default {
       } else if (key.includes("custom")) {
         this.hiddenCustomSearch = false;
       } else if (key.includes("inTheaters")) {
-        this.getMovies();
+        this.hiddenMovieSearch = false;
       }
     },
     getLocation: function() {
@@ -439,6 +443,18 @@ export default {
         return this.allDecks.nonFictionDeck;
       });
     },
+    getMovieLocation: function() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(this.showPosition);
+      } else {
+        this.error = "Geolocation is not supported.";
+      }
+    },
+    showPosition: function(position) {
+      this.lat = position.coords.latitude;
+      this.lon = position.coords.longitude;
+      this.getMovies();
+    },
     buildMovieURL(url) {
       let todaysDate = new Date();
       let month = ("0" + (todaysDate.getMonth() + 1)).slice(-2);
@@ -449,12 +465,12 @@ export default {
 
       let startDate = new Date();
       let sDate = ("0" + startDate.getDate()).slice(-2);
-      let sMonth = ("0" + startDate.getMonth()).slice(-2);
+      let sMonth = ("0" + (startDate.getMonth() - 1)).slice(-2);
       let sYear = startDate.getFullYear();
-      let monthAgoDate = sYear + "-" + sMonth + "-" + sDate;
-      console.log("monthAgoDate:", monthAgoDate);
+      let twoMonthsAgoDate = sYear + "-" + sMonth + "-" + sDate;
+      console.log("twoMonthsAgoDate:", twoMonthsAgoDate);
 
-      return `${movieBaseURL}${formattedDate}&release_date_from=${monthAgoDate}`;
+      return `${movieBaseURL}${formattedDate}&release_date_from=${twoMonthsAgoDate}&location=${this.lat},${this.lon}`;
     },
     getMovies(formattedDate) {
       let movieApiURL = this.buildMovieURL(movieBaseURL);
@@ -471,6 +487,7 @@ export default {
           console.log(response.data.movies);
           this.filterMovies(this.allDecks.movies);
           this.hiddenMovies = false;
+          this.hiddenMovieSearch = true;
         })
         .catch(error => {
           console.log(error);
