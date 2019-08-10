@@ -134,20 +134,21 @@ export default {
   data: () => {
     return {
       allDecks: {
+        inTheaters: [],
         netflixDeck: [],
         netflixFilmsDeck: [],
-        fastFoodDeck: [],
-        activityDeck: [],
-        foodTypesDeck: [],
-        cookoutMilkshakes: [],
-        yelpRestaurants: [],
-        yelpShops: [],
         yelpArts: [],
+        yelpRestaurants: [],
+        foodTypesDeck: [],
+        fastFoodDeck: [],
+        cookoutMilkshakes: [],
+        activityDeck: [],
+        yelpShops: [],
         yelpParks: [],
         custom: [],
         fictionDeck: [],
         nonFictionDeck: [],
-        inTheaters: []
+        
       },
       database: [],
       // hiddenCards: true,
