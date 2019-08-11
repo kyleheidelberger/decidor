@@ -175,10 +175,11 @@ body {
 .banner-container {
     // justify-content: center;
     // justify-content: space-around;
-    width: 80%;
+    width: 95%;
     // margin-top: 2%;
     // margin-left: 12.5%;
     display: flex;
+    justify-content: space-between;
     // grid-template-rows: 50px;
     // grid-template-columns: repeat(3, 10%);
     // grid-template-columns: fit-content(40%);
@@ -194,6 +195,11 @@ body {
   height: 110px;
   justify-content: center;
   // background-color: #a5beee;
+}
+
+.nav-buttons {
+  display: flex;
+  justify-content: center;
 }
 
 

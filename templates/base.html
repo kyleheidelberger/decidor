@@ -19,10 +19,13 @@
 <header class='base-head' role="banner">
     <nav class='banner-container' role="navigation">
         <div class="logo">
-            <a href="{% url 'decks' %}"><img src="//decidor.s3.us-east-2.amazonaws.com/decidor_logo.png" alt="Decidor Logo" /></a>
+            <a href="{% url 'decks' %}"><img src="//decidor.s3.us-east-2.amazonaws.com/decidor_logo.png"
+                    alt="Decidor Logo" /></a>
         </div>
-        <a class='ghost'>Info</a>
-        <a class='fill' href="{% url 'decks' %}">Decks</a>
+        <div class="nav-buttons">
+            <a class='ghost' href="{% url 'info' %}">Info</a>
+            <a class='ghost' href="{% url 'decks' %}">Decks</a>
+        </div>
     </nav>
 </header>
 

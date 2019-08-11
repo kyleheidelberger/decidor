@@ -22,8 +22,6 @@ class CardViewSet(viewsets.ModelViewSet):
     serializer_class = CardSerializer
 
 # Create your views here.
-def names(request):
-    return JsonResponse({'names': ['William', 'Rod', 'Grant']})
 
 def index(request):
     return render(request, 'index.html')
