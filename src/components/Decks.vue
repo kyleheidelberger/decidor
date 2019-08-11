@@ -1,9 +1,8 @@
 <template>
   <section class="deck" role="main">
-    <!-- <h1 v-if="!hiddenNav" class="decks-info">Your decks</h1> -->
 
     <div v-if="!hiddenSearch" class="searchBar">
-      <label class="searchPrompt" for="location-search">Where would you like to find choices ?</label>
+      <label class="searchPrompt" for="location-search">Where would you like to find choices?</label>
       <div>
         <input
           class="input"
@@ -21,7 +20,7 @@
 
     <div v-if="!hiddenCustomSearch" class="searchBar">
       <div>
-        <label class="searchPrompt" for="custom-term-search">What are you looking for ?</label>
+        <label class="searchPrompt" for="custom-term-search">What are you looking for?</label>
         <input
           class="input"
           id="custom-term-search"
@@ -50,7 +49,7 @@
     </div>
 
     <div v-if="!hiddenMovieSearch" class="searchBar">
-      <label class="searchPrompt" for="movie-location-search">Where would you like to find movies ?</label>
+      <label class="searchPrompt" for="movie-location-search">Where would you like to find movies?</label>
       <div>
         <input
           class="input"
@@ -106,23 +105,30 @@
       <ChoiceLogic :choices="allDecks.nonFictionDeck" />
     </div>
 
-    <div :class="{hiddenContainer: hiddenContainer}" class="container">
-      <!-- <h2 v-if="!hiddenNav" class="deckInfo">Starter Decks</h2> -->
-      <button
-        v-for="(deck, key) in allDecks"
-        :key="`${deck}${key}`"
-        class="deckButton"
-        @click="sendKey(key)"
-        :class="{ hiddenDick: hiddenDeck }"
-      >
-        <div class="deck-container">
-          <h2 class="deckTitle">{{deck.title}}</h2>
-          <div class="overlay">
-            <img class="deckImage" :src="deck.image" :alt="deck.description" />
-          </div>
-        </div>
-      </button>
+    <div v-if="!hiddenMovies">
+      <ChoiceLogic :choices="allDecks.inTheaters" />
     </div>
+  <transition appear
+  name="bounce">
+      <div id='deckContainer' :class="{hiddenContainer: hiddenContainer}" class="deck-grid">
+        <!-- <h2 v-if="!hiddenNav" class="deckInfo">Starter Decks</h2> -->
+        <button
+          v-for="(deck, key) in allDecks"
+          :key="`${deck}${key}`"
+          class="deckButton"
+          @click="sendKey(key)"
+          :class="{ hiddenDick: hiddenDeck }"
+        >
+          <div
+          class="deck-container">
+            <h2 class="deckTitle">{{deck.title}}</h2>
+            <div class="overlay">
+              <img class="deckImage" :src="deck.image" :alt="deck.description" />
+            </div>
+          </div>
+        </button>
+      </div>
+    </transition>
   </section>
 </template>
 
