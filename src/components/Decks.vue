@@ -118,7 +118,7 @@
         <div class="deck-container">
           <h2 class="deckTitle">{{deck.title}}</h2>
           <div class="overlay">
-            <img class="deckImage" :src="deck.image" :alt="deck.title" />
+            <img class="deckImage" :src="deck.image" :alt="deck.description" />
           </div>
         </div>
       </button>
@@ -131,7 +131,7 @@
 import ChoiceLogic from "./ChoiceLogic";
 
 import axios from "axios";
-import { callbackify } from "util";
+// import { callbackify } from "util";
 
 const yelpBaseURL =
   "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?";
@@ -211,41 +211,69 @@ export default {
     this.allDecks.inTheaters.title = "In Theaters Now";
     this.allDecks.inTheaters.image =
       "//decidor.s3.amazonaws.com/toy_story.jpeg";
+    this.allDecks.inTheaters.description =
+      "A collection of movies currently in theaters";
     this.allDecks.netflixDeck.title = "Netflix Shows";
     this.allDecks.netflixDeck.image =
       "//decidor.s3.amazonaws.com/netflix_logo.jpeg";
+    this.allDecks.netflixDeck.description =
+      "A collection of popular Netflix Original Series";
     this.allDecks.netflixFilmsDeck.title = "Netflix Films";
     this.allDecks.netflixFilmsDeck.image =
       "//decidor.s3.amazonaws.com/netflix_white.png";
+    this.allDecks.netflixFilmsDeck.description =
+      "A collection of popular Netflix Original Films";
     this.allDecks.activityDeck.title = "Date Night";
     this.allDecks.activityDeck.image =
       "//decidor.s3.amazonaws.com/couple-popcorn-movies.jpg";
+    this.allDecks.activityDeck.description =
+      "A collection of activities for couples on a date";
     this.allDecks.yelpRestaurants.title = "Restaurants";
     this.allDecks.yelpRestaurants.image =
       "//decidor.s3.amazonaws.com/restaurants.jpeg";
+    this.allDecks.yelpRestaurants.description =
+      "A collection of restaurants near your location";
     this.allDecks.foodTypesDeck.title = "Types of Cuisine";
     this.allDecks.foodTypesDeck.image =
       "//decidor.s3.amazonaws.com/foodtypes.jpeg";
+    this.allDecks.foodTypesDeck.description =
+      "A collection of various regional and ethnic cuisines";
     this.allDecks.fastFoodDeck.title = "Fast Food Chains";
     this.allDecks.fastFoodDeck.image =
       "//decidor.s3.amazonaws.com/national-french-fry-day.jpg";
+    this.allDecks.fastFoodDeck.description =
+      "A collection of popular US fast food and fast casual chain resturants";
     this.allDecks.cookoutMilkshakes.title = "Cookout Milkshakes";
     this.allDecks.cookoutMilkshakes.image =
       "//decidor.s3.amazonaws.com/cookoutmilkshake.jpeg";
+    this.allDecks.cookoutMilkshakes.description =
+      "A complete collection of all the flavors of milkshake available at the Southern US chain restaurant Cook Out";
     this.allDecks.yelpArts.title = "Explore Your Area";
     this.allDecks.yelpArts.image = "//decidor.s3.amazonaws.com/arts.jpeg";
+    this.allDecks.yelpArts.description =
+      "A collection of attractions and local hotspots near your location";
     this.allDecks.yelpShops.title = "Shops";
     this.allDecks.yelpShops.image = "//decidor.s3.amazonaws.com/shops.jpeg";
+    this.allDecks.yelpShops.description =
+      "A collection of shops near your location";
     this.allDecks.yelpParks.title = "Parks";
     this.allDecks.yelpParks.image = "//decidor.s3.amazonaws.com/parks.jpeg";
+    this.allDecks.yelpParks.description =
+      "A collection of public parks, skate parks, and dog parks near your location";
     this.allDecks.custom.title = "Custom Yelp";
     this.allDecks.custom.image = "//decidor.s3.amazonaws.com/yelp-avatar.png";
+    this.allDecks.custom.description =
+      "A collection that you can create using your own search term and location";
     this.allDecks.fictionDeck.title = "Fiction";
     this.allDecks.fictionDeck.image =
       "//decidor.s3.amazonaws.com/NYT_yellow_square.png";
+    this.allDecks.fictionDeck.description =
+      "A collection of the New York Times most recent Hardcover Fiction BestSelling Books";
     this.allDecks.nonFictionDeck.title = "Non-Fiction";
     this.allDecks.nonFictionDeck.image =
       "//decidor.s3.amazonaws.com/NYT_blue_square.png";
+    this.allDecks.nonFictionDeck.description =
+      "A collection of the New York Times most recent Hardcover Non-Fiction BestSelling Books";
   },
   methods: {
     sendKey(key) {
@@ -573,7 +601,7 @@ export default {
     },
 
     makeNetflixDeck() {
-      this.database[1].card_set.map(card => {
+      this.database[0].card_set.map(card => {
         let cardTitle = card.title;
         let cardImage = card.card_image;
         let cardDeck = card.deck;
@@ -591,7 +619,7 @@ export default {
       });
     },
     makeFastFoodDeck() {
-      this.database[0].card_set.map(card => {
+      this.database[2].card_set.map(card => {
         let cardTitle = card.title;
         let cardImage = card.card_image;
         let cardDeck = card.deck;
@@ -608,7 +636,7 @@ export default {
       });
     },
     makeActivityDeck() {
-      this.database[2].card_set.map(card => {
+      this.database[3].card_set.map(card => {
         let cardTitle = card.title;
         let cardImage = card.card_image;
         let cardDeck = card.deck;
@@ -642,7 +670,7 @@ export default {
       });
     },
     makeCookoutMilkshakesDeck() {
-      this.database[3].card_set.map(card => {
+      this.database[5].card_set.map(card => {
         let cardTitle = card.title;
         let cardImage = card.card_image;
         let cardDeck = card.deck;
@@ -659,7 +687,7 @@ export default {
       });
     },
     makeNetflixFilmsDeck() {
-      this.database[5].card_set.map(card => {
+      this.database[1].card_set.map(card => {
         let cardTitle = card.title;
         let cardImage = card.card_image;
         let cardDeck = card.deck;
