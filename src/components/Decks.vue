@@ -14,7 +14,7 @@
         />
         <button class="searchButton" @click="getBusinesses">Get Choices</button>
       </div>
-      <img class="orLogo" src="//decidor.s3.amazonaws.com/OR_solid_white.png" />
+      <img class="orLogo" src="//decidor.s3.amazonaws.com/OR_solid_white.png" alt="OR" />
       <button class="locationButton" @click="getLocation()">Get My Location For Me</button>
     </div>
 
@@ -39,7 +39,7 @@
         />
         <button class="searchButton" @click="getBusinesses">Get Choices</button>
       </div>
-      <img class="orLogo" src="//decidor.s3.amazonaws.com/OR_solid_white.png" />
+      <img class="orLogo" src="//decidor.s3.amazonaws.com/OR_solid_white.png" alt="OR" />
       <button class="locationButton" @click="getLocation()">Get My Location For Me</button>
     </div>
 
@@ -55,7 +55,7 @@
         />
         <button class="searchButton" @click="getCityID">Get Choices</button>
       </div>
-      <img class="orLogo" src="//decidor.s3.amazonaws.com/OR_solid_white.png" />
+      <img class="orLogo" src="//decidor.s3.amazonaws.com/OR_solid_white.png" alt="OR" />
       <button class="locationButton" @click="getMovieLocation()">Get My Location For Me</button>
     </div>
 
@@ -112,7 +112,7 @@
         <div class="deck-container">
           <h2 class="deckTitle">{{deck.title}}</h2>
           <div class="overlay">
-            <img class="deckImage" :src="deck.image" />
+            <img class="deckImage" :src="deck.image" :alt="deck.title" />
           </div>
         </div>
       </button>

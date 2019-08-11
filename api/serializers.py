@@ -11,7 +11,7 @@ class StarterDeckSerializer(serializers.ModelSerializer):
     card_set = CardSerializer(many=True, read_only=True)
     class Meta:
         model = StarterDeck
-        fields = ['title', 'deck_image', 'card_set']
+        fields = ['title', 'description', 'deck_image', 'card_set']
         read_only_fields = ['title', 'deck_image', 'card_set']
 
 

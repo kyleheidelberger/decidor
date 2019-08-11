@@ -4,6 +4,7 @@ from django.db import models
 class StarterDeck (models.Model):
     title = models.CharField(max_length=100)
     deck_image = models.FileField()
+    description = models.CharField(max_length=250, null=True, blank=True)
     
     def __str__(self):
         return self.title
