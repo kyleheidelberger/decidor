@@ -26,6 +26,26 @@ body {
     background: $br no-repeat center center fixed;
     background-size: cover;
 }
+
+.page-title {
+    color: #fff;
+    font-size: 3.5rem;
+    text-align: center;
+    letter-spacing: 0.5px;
+    font-family: $mon;
+    padding: .5em .5em 1em .5em;
+    text-shadow: 1px 1px 2px black;
+}
+
+#how-decidor-works {
+  min-width: 300px;
+}
+
+#decks-button {
+  min-width: 150px;
+ 
+}
+
 .option-buttons {
     background: transparent;
     border: none;
@@ -48,7 +68,7 @@ body {
     z-index: 1;
     background: transparent;
     width: 25%;
-    display: block;    //this is what is making the decks show up on the choices page
+    display: block;
 }
 
 .hiddenDick {
@@ -339,12 +359,13 @@ body {
 //     animation-name: fade-in-up;
 //   }
 .ghost {
+  min-height: 50px;
   text-transform: uppercase;
   letter-spacing: 1.2px;
   font-size: 1rem;
   display: block;
   font-family: $lato;
-  width: 150px;
+  // width: 150px;
   align-self: center;
   padding: 8px;
   margin-right: 5%;
@@ -740,6 +761,7 @@ body {
     letter-spacing: 0.5px;
     font-family: $mon;
 }
+
 .cardTitle {
     font-size: 1.5rem;
     // margin-top: 40px;
