@@ -3,7 +3,7 @@
     <!-- <h1 v-if="!hiddenNav" class="decks-info">Your decks</h1> -->
 
     <div v-if="!hiddenSearch" class="searchBar">
-      <p class="searchPrompt">Where would you like to find choices ?</p>
+      <p class="searchPrompt">Where would you like to find choices?</p>
       <div>
         <input
           class="input"
@@ -20,7 +20,7 @@
 
     <div v-if="!hiddenCustomSearch" class="searchBar">
       <div>
-        <p class="searchPrompt">What are you looking for ?</p>
+        <p class="searchPrompt">What are you looking for?</p>
         <input
           class="input"
           type="text"
@@ -30,7 +30,7 @@
         />
       </div>
       <div>
-        <p class="searchPrompt">Where would you like to find choices ?</p>
+        <p class="searchPrompt">Where would you like to find choices?</p>
         <input
           class="input"
           type="text"
@@ -44,7 +44,7 @@
     </div>
 
     <div v-if="!hiddenMovieSearch" class="searchBar">
-      <p class="searchPrompt">Where would you like to find movies ?</p>
+      <p class="searchPrompt">Where would you like to find movies?</p>
       <div>
         <input
           class="input"
@@ -99,57 +99,7 @@
       <ChoiceLogic :choices="allDecks.inTheaters" />
     </div>
 
-<<<<<<< HEAD
-      <div :class="{hiddenContainer: hiddenContainer}" class="container">
-        <!-- <h2 v-if="!hiddenNav" class="deckInfo">Starter Decks</h2> -->
-        <button
-          data-aos="fade-up"
-          id="deckButton"
-          v-for="(deck, key) in allDecks"
-          :key="`${deck}${key}`"
-          class="deckButton"
-          @click="sendKey(key)"
-          :class="{ hiddenDick: hiddenDeck }"
-        >
-          <div class="deck-container">
-            <h2 class="deckTitle">{{deck.title}}</h2>
-            <div class="overlay">
-              <img class="deckImage" :src="deck.image" />
-            </div>
-          </div>
-        </button>
-
-        <!-- <h2 v-if="!hiddenNav" class="deckInfo">Local Decks</h2> -->
-        <button
-          v-for="(deck, key) in yelpDecks"
-          :key="`${deck}${key}`"
-          class="deckButton"
-          @click="sendKey(key)"
-          :class="{ hiddenDick: hiddenDeck }"
-        >
-          <div class="deck-container">
-            <h2 class="deckTitle">{{deck.title}}</h2>
-            <div class="overlay">
-              <img class="deckImage" :src="deck.image" />
-            </div>
-          </div>
-        </button>
-
-        <!-- <h2 v-if="!hiddenNav" class="deckInfo">API Decks</h2> -->
-        <button
-          v-for="(deck, key) in apiDecks"
-          :key="`${deck}${key}`"
-          class="deckButton"
-          @click="sendKey(key)"
-          :class="{ hiddenDick: hiddenDeck }"
-        >
-          <div class="deck-container">
-            <h2 class="deckTitle">{{deck.title}}</h2>
-            <div class="overlay">
-              <img class="deckImage" :src="deck.image" />
-            </div>
-=======
-    <div :class="{hiddenContainer: hiddenContainer}" class="container">
+    <div id='deckContainer' :class="{hiddenContainer: hiddenContainer}" class="deck-grid">
       <!-- <h2 v-if="!hiddenNav" class="deckInfo">Starter Decks</h2> -->
       <button
         id="deckButton"
@@ -163,7 +113,6 @@
           <h2 class="deckTitle">{{deck.title}}</h2>
           <div class="overlay">
             <img class="deckImage" :src="deck.image" />
->>>>>>> a9afcdb78c3e8be3df05ac17f807694ad3d2f026
           </div>
         </div>
       </button>
