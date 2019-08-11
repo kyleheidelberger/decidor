@@ -1,4 +1,6 @@
 <template>
+<section>
+  <h1>What can we help you decide?</h1>
   <section class="deck" role="main">
     <div v-if="!hiddenSearch" class="searchBar">
       <label class="searchPrompt" for="location-search">Where would you like to find choices?</label>
@@ -124,6 +126,7 @@
       </div>
     </transition>
   </section>
+</section>
 </template>
 
 
