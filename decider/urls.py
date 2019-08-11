@@ -12,12 +12,9 @@ router.register(r'cards', views.CardViewSet)
 
 urlpatterns = [
   path('admin/', admin.site.urls),
-  path('', RedirectView.as_view(url='index/')),
-  path('index/', views.index, name='home'),
-  path('api', views.names),
-  path('accounts/', include('allauth.urls')),
-  path('decks/', views.decks, name='decks'),
-  path('', include(router.urls)),
-  path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-  path('confetti/', views.confetti, name='confetti'),
+  path('', views.decks, name='decks'),
+  path('index/', views.index, name='info'),
+  # path('accounts/', include('allauth.urls')),
+  # path('', include(router.urls)),
+  # path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]
