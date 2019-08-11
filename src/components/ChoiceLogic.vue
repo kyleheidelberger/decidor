@@ -67,10 +67,6 @@ export default {
     let progressBar = document.querySelector("#progress-bar");
     console.log("progress bar", progressBar);
     progressBar.max = this.choices.length - 1;
-    // console.log("currentIndex", this.currentIndex)
-    // console.log("endIndex", this.endIndex)
-    console.log(document.querySelector("#progress-bar").value);
-    console.log(document.querySelector("#progress-bar").max);
     this.setOptions();
   },
   methods: {
@@ -81,8 +77,6 @@ export default {
     },
     setOptions() {
       this.endIndex = this.currentIndex + 2;
-      // console.log("end index:", this.endIndex)
-      // console.log("pref:", this.preferences);
       this.options = this.copyChoiceList.slice(
         this.currentIndex,
         this.endIndex
@@ -96,9 +90,6 @@ export default {
       this.preferences.push(toAdd);
       let progressBar = document.querySelector("#progress-bar");
       progressBar.value = this.clicks;
-      console.log("progress bar", progressBar);
-      // console.log("end index:", this.endIndex)
-      // console.log("copy choice list length:", this.copyChoiceList.length);
       if (this.endIndex >= this.copyChoiceList.length - 1) {
         if (this.endIndex != this.copyChoiceList.length) {
           this.preferences.push(
@@ -108,8 +99,6 @@ export default {
         this.currentIndex = 0;
         this.copyChoiceList = this.preferences;
         this.preferences = [];
-        // console.log("end index after preferences cleared:", this.endIndex)
-        // console.log("after:", this.endIndex);
       }
       if (this.copyChoiceList.length === 1) {
         this.onlyChoice = true;
