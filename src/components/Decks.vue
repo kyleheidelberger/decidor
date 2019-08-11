@@ -131,7 +131,7 @@
 import ChoiceLogic from "./ChoiceLogic";
 
 import axios from "axios";
-import { callbackify } from "util";
+// import { callbackify } from "util";
 
 const yelpBaseURL =
   "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?";
@@ -573,7 +573,7 @@ export default {
     },
 
     makeNetflixDeck() {
-      this.database[1].card_set.map(card => {
+      this.database[0].card_set.map(card => {
         let cardTitle = card.title;
         let cardImage = card.card_image;
         let cardDeck = card.deck;
@@ -591,7 +591,7 @@ export default {
       });
     },
     makeFastFoodDeck() {
-      this.database[0].card_set.map(card => {
+      this.database[2].card_set.map(card => {
         let cardTitle = card.title;
         let cardImage = card.card_image;
         let cardDeck = card.deck;
@@ -608,7 +608,7 @@ export default {
       });
     },
     makeActivityDeck() {
-      this.database[2].card_set.map(card => {
+      this.database[3].card_set.map(card => {
         let cardTitle = card.title;
         let cardImage = card.card_image;
         let cardDeck = card.deck;
@@ -642,7 +642,7 @@ export default {
       });
     },
     makeCookoutMilkshakesDeck() {
-      this.database[3].card_set.map(card => {
+      this.database[5].card_set.map(card => {
         let cardTitle = card.title;
         let cardImage = card.card_image;
         let cardDeck = card.deck;
@@ -659,7 +659,7 @@ export default {
       });
     },
     makeNetflixFilmsDeck() {
-      this.database[5].card_set.map(card => {
+      this.database[1].card_set.map(card => {
         let cardTitle = card.title;
         let cardImage = card.card_image;
         let cardDeck = card.deck;
