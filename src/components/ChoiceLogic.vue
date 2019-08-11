@@ -24,7 +24,7 @@
           </div>
           <a v-if="onlyChoice" :href="option.url" target="_blank">
             <img class="cardImage" :src="option.card_image" :alt="option.description" />
-            <h2 class="cardTitle">{{option.title}}</h2>
+            <!-- <h2 class="cardTitle">{{option.title}}</h2> -->
           </a>
         </div>
       </transition>

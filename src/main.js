@@ -11,9 +11,6 @@ Vue.config.productionTip = false
 
 /* eslint-disable no-new */
 new Vue({
-  // created () {
-  //   AOS.init()
-  // },
   el: '#app',
   components: { App },
   // template: '<App/>',
