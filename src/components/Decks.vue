@@ -25,7 +25,6 @@
           id="custom-term-search"
           type="text"
           v-model.lazy="searchTerm"
-          v-on:change="getBusinesses"
           placeholder=" Coffee, bookstores, etc..."
         />
       </div>
@@ -39,6 +38,7 @@
           id="custom-location-search"
           type="text"
           v-model.lazy="cityName"
+          v-on:change="getBusinesses"
           placeholder="Address, City, Zip Code, etc..."
         />
         <button class="searchButton" @click="getBusinesses">Get Choices</button>
@@ -207,7 +207,6 @@ export default {
   },
   mounted() {
     this.buildLocalApi();
-    console.log(this.database);
     this.allDecks.inTheaters.title = "In Theaters Now";
     this.allDecks.inTheaters.image =
       "//decidor.s3.amazonaws.com/toy_story.jpeg";
@@ -336,7 +335,6 @@ export default {
     },
     getLatLonBusinesses() {
       if (!this.hiddenCustomSearch) {
-        console.log("searchTerm:", this.searchTerm);
         this.formattedSearch = this.searchTerm;
         this.formattedSearch = this.formattedSearch.replace(" ", "+");
         this.searchingFor = `term=${this.formattedSearch}`;
@@ -348,7 +346,6 @@ export default {
         this.lat,
         this.lon
       );
-      console.log(apiURL);
 
       axios
         .get(apiURL, {
@@ -366,7 +363,6 @@ export default {
     },
     getBusinesses() {
       if (!this.hiddenCustomSearch) {
-        console.log("searchTerm:", this.searchTerm);
         this.formattedSearch = this.searchTerm;
         this.formattedSearch = this.formattedSearch.replace(" ", "+");
         this.searchingFor = `term=${this.formattedSearch}`;
@@ -377,7 +373,6 @@ export default {
         this.searchingFor,
         this.cityName
       );
-      console.log(apiURL);
 
       axios
         .get(apiURL, {
@@ -388,13 +383,17 @@ export default {
         })
         .then(response => {
           this.allDecks.businesses = response.data.businesses;
+          console.log(response.data.businesses);
           this.filterBusinesses(this.allDecks.businesses);
           this.hiddenBusiness = false;
         })
         .catch(error => {});
     },
     filterBusinesses() {
-      this.allDecks.businesses.map(business => {
+      let filteredBusinesses = this.allDecks.businesses.filter(
+        business => business.image_url !== ""
+      );
+      filteredBusinesses.map(business => {
         let businessName = business.name;
         let businessImageURL = business.image_url;
         // let businessRating = business.rating;
@@ -406,6 +405,7 @@ export default {
           // rating: businessRating,
           url: businessURL
         });
+        filteredBusinesses = [];
         this.allDecks.businesses = [];
         this.hiddenSearch = true;
         this.hiddenCustomSearch = true;
@@ -495,7 +495,6 @@ export default {
     },
     getCityID() {
       let completeCityURL = movieCityURL + "query=" + this.cityName;
-      console.log("url", completeCityURL);
 
       axios
         .get(completeCityURL, {
@@ -505,9 +504,7 @@ export default {
         })
         .then(response => {
           this.cities = response.data.cities;
-          console.log(response.data.cities);
           this.cityID = this.cities[0].id;
-          console.log("cityID=", this.cityID);
           this.makeMovieCityURL();
         })
         .catch(error => {
@@ -527,7 +524,7 @@ export default {
       this.makeMovieLatLonURL();
     },
     makeMovieLatLonURL(url) {
-      this.movieLocation = `&location=${this.lat},${this.lon}`;
+      this.movieLocation = `&location=${this.lat},${this.lon}&distance=30`;
       this.getMovies();
     },
     makeMovieCityURL() {
@@ -549,7 +546,6 @@ export default {
 
       let movieApiURL = `${movieBaseURL}${formattedDate}&release_date_from=${twoMonthsAgoDate}`;
       movieApiURL = movieApiURL + this.movieLocation;
-      console.log("url", movieApiURL);
 
       axios
         .get(movieApiURL, {
@@ -590,7 +586,6 @@ export default {
     buildLocalApi() {
       axios.get(databaseBaseURL).then(response => {
         this.database = response.data.results;
-        console.log(this.database);
         this.makeNetflixDeck(this.database);
         this.makeFastFoodDeck(this.database);
         this.makeActivityDeck(this.database);
@@ -614,7 +609,6 @@ export default {
           description: cardDescription,
           url: cardURL
         });
-        console.log(this.allDecks.netflixDeck);
         return this.allDecks.netflixDeck;
       });
     },
