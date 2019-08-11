@@ -1,6 +1,6 @@
 <template>
   <section>
-    <h1>What can we help you decide?</h1>
+    <h1 class="page-title">What can we help you decide?</h1>
     <section class="deck" role="main">
       <div v-if="!hiddenSearch" class="searchBar">
         <label class="searchPrompt" for="location-search">Where would you like to find choices?</label>
@@ -262,8 +262,8 @@ export default {
     this.allDecks.yelpParks.image = "//decidor.s3.amazonaws.com/parks.jpeg";
     this.allDecks.yelpParks.description =
       "A collection of public parks, skate parks, and dog parks near your location";
-    this.allDecks.custom.title = "Custom Yelp";
-    this.allDecks.custom.image = "//decidor.s3.amazonaws.com/yelp-avatar.jpeg";
+    this.allDecks.custom.title = "Custom Search";
+    this.allDecks.custom.image = "//decidor.s3.amazonaws.com/custom.jpeg";
     this.allDecks.custom.description =
       "A collection that you can create using your own search term and location";
     this.allDecks.fictionDeck.title = "Fiction";
