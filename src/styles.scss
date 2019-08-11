@@ -1,8 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 $lg: linear-gradient(to right, #7796CB 0%, #A3BCF9 51%, #7796CB 100%);
-$br: linear-gradient(to bottom right, #2f7e97, #236087, #2b426f, #332350, #30002b);
-$bt: linear-gradient(to bottom, #2f7e97, #236087, #2b426f, #332350, #30002b);
+$match: linear-gradient(to bottom right, #FA7268, #EA6084, #CB5B9D, #9E5EAD, #6461B1, #0061A8);
+$blah: linear-gradient(to bottom right, #FA7267, #BC827B, #FFF6F4, #F3EED9);
+$skip: linear-gradient(to bottom right, #FA7268, #FFBDEE, #FA86B6, #BF5081);
+$br: radial-gradient(circle farthest-side,#83EAF1, #63A4FF);
+$warmth: radial-gradient(circle farthest-side, #fceabb, #FFC371);
 $btn: linear-gradient(to bottom, #2f7e97, #236087, #2b426f, #30002b);
 $nav: linear-gradient(to bottom,rgb(51,35,80) 90%, rgba(51,35,80,0));
 $lato: 'Lato', sans-serif;
@@ -23,49 +26,17 @@ body {
     background: $br no-repeat center center fixed;
     background-size: cover;
 }
-// .buttons-container {
-//     display: flex;
-//     justify-content: space-around;
-//     margin-top: 60px;
-// }
-
-// :root {
-//   --img-1: url(images/damien-petit.jpg);
-//   --img-2: url(images/erik-witsoe.jpg);
-//   --img-3: url(images/pavan-trikutam.jpg);
-// }
 .option-buttons {
     background: transparent;
     border: none;
-    // cursor: pointer;
-    // flex: 1 1;
-    // padding: 10px;
-    // margin: 10px;
-    // text-align: center;
-    // font-size: 2.5rem;
-    // letter-spacing: 0.2rem;
-    // text-transform: uppercase;
-    // transition: 0.5s;
-    // background-size: 200% auto;
-    // color: white;
-    // text-shadow: 2px 0px 10px rgba(0,0,0,0.4);
-    // box-shadow: 0 0 20px #eee;
-    // border-radius: 10px;
-    // border: none;
-    // border-radius: 15px;
-    // background-image: $lg;
-    // &:hover:not(.finalChoice),
-    // &:focus-within {
-    //     background-position: right center;
-    // }
-    // max-height: 200px;
 }
 
 .finalChoice {
-    animation: jello 3s infinite;
+    animation: jello 2s infinite;
     cursor: default;
-    margin-left: 50%;
+    margin-left: 85%;
     text-align: center;
+
 }
 
 
@@ -84,20 +55,24 @@ body {
   display: none;
 }
 
-.container {
+.deck-grid {
     // display: grid;
     // flex-wrap: wrap;
+    // justify-content: center;
+    // display: flex;
+    // width: 75%;
+    // flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    // align-self: stretch;
+    // justify-items: center;
     justify-content: center;
-    display: flex;
-    width: 75%;
-    flex-wrap: wrap;
-    // display: grid;
-    // grid-template-columns: repeat(6, 10%);
-    // grid-gap: 5%;
-    // grid-template-areas:
-    // "header header header header header header"
-    // "content content content content content content"
-    // "header2 header2 header2 header2 header2 header2";
+    grid-gap: 10%;
+}
+
+.deck-container {
+  margin: 0 auto;
+  // justify-content: center;
 }
 
 .hiddenContainer {
@@ -105,73 +80,82 @@ body {
   height: 0;
   display: none;
 }
-// .netflixTitle {
-//     cursor: pointer;
-//     font-family: 'Lato', sans-serif;
-//     position: absolute;
-//     z-index: 100;
-//     font-size: 2.5rem;
-//     border-bottom: 1.5px solid white;
-//     text-shadow: 2px 2px 2px #000;
-//     box-shadow: 0 4px 2px -2px #000;
-//     align-self: center;
-//     color: white;
-//     letter-spacing: 2.5px;
-//     text-transform: uppercase;
-// }
-
-// .yelpDeckButton {
-//     cursor: pointer;
-//     border: none;
-//     position: relative;
-//     z-index: 1;
-// }
-
-// .yelpDeckTitle {
-//     cursor: pointer;
-//     font-family: $lato;
-//     position: absolute;
-//     z-index: 100;
-//     font-size: 2.5rem;
-//     border-bottom: 1.5px solid white;
-//     text-shadow: 2px 2px 2px #000;
-//     box-shadow: 0 4px 2px -2px #000;
-//     align-self: center;
-//     color: white;
-//     letter-spacing: 2.5px;
-//     text-transform: uppercase;
-// }
-
-// .yelp-business {
-//     cursor: pointer;
-//     // flex: 1 1;
-//     padding: 10px;
-//     margin: 10px;
-//     text-align: center;
-//     font-size: 2.5rem;
-//     letter-spacing: 0.2rem;
-//     text-transform: uppercase;
-//     transition: 0.5s;
-//     background-size: 200% auto;
-//     color: white;
-//     text-shadow: 2px 0px 10px rgba(0,0,0,0.4);
-//     box-shadow: 0 0 20px #eee;
-//     border-radius: 10px;
-//     border: none;
-//     border-radius: 15px;
-//     background-image: $lg;
-//     &:hover:not(.finalChoice),
-//     &:focus-within {
-//         background-position: right center;
-//     }
-// }
-
-// .yelp-business-image {
-//     height: 200px;
-// }
 
 .searchBar {
-    margin: 20px;
+    margin: 15px;
+    display: flex;
+    justify-content: center;
+    max-width: 80%;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.searchPrompt {
+  color: #fff;
+  font-size: 2rem;
+  letter-spacing: 1px;
+  font-family: $mon;
+  margin: 15px;
+  text-align: center;
+}
+
+.input {
+  border-radius: 10px;
+  font-size: 2em;
+  margin: 1em;
+  min-width: 600px;
+  border: none;
+  max-width: 800px;
+  filter: drop-shadow(8px 5px 5px #1979ff);
+}
+
+.searchButton {
+  cursor: pointer;
+  border: 1px solid #fff;
+  border-radius: 40px;
+  background-color: #fff;
+  font-size: 1rem;
+  // display: block;
+  color: #63A4FF;
+  font-family: $lato;
+  width: 150px;
+  padding: 8px;
+  text-align: center;
+  outline: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  // height: 45px;
+  // align-items: center;
+  align-self: center;
+}
+
+.locationButton {
+  cursor: pointer;
+  border: 1px solid #fff;
+  border-radius: 40px;
+  background-color: #fff;
+  font-size: 1rem;
+  // display: block;
+  margin-top: 20px;
+  color: #63A4FF;
+  font-family: $lato;
+  width: 300px;
+  padding: 8px;
+  text-align: center;
+  outline: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  // height: 45px;
+  // align-items: center;
+  align-self: center;
+}
+
+.orLogo {
+  max-width: 20%;
+  align-self: center;
+  margin-bottom: 25px;
 }
 
 .header-image {
@@ -191,7 +175,7 @@ body {
 .banner-container {
     // justify-content: center;
     // justify-content: space-around;
-    width: 78%;
+    width: 80%;
     // margin-top: 2%;
     // margin-left: 12.5%;
     display: flex;
@@ -204,7 +188,7 @@ body {
 }
 
 .base-head {
-  background: $nav;
+  // background: $nav;
   padding: 20px;
   display: flex;
   height: 110px;
@@ -212,28 +196,23 @@ body {
   // background-color: #a5beee;
 }
 
-.deck-container {
-    display: flex;
-    justify-content: center;
-    padding: 40px;
-}
 
 .deckTitle {
-    padding-bottom: 10px;
+    padding-bottom: 8px;
     font-size: 0.9rem;
     z-index: 3;
+    width: 200px;
+    bottom: 0;
     position: absolute;
     font-family: $lato;
-    align-self: flex-end;
     color: #fff;
     text-shadow: 2px 2px 0px rgba(0,0,0,0.3);
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    // text-align: center;
-    // margin: 0 auto;
+    text-align: center;
 }
 .deckImage {
-    filter: drop-shadow(8px 5px 5px rgb(48, 0, 43));
+    filter: drop-shadow(8px 5px 5px #1979ff);
     // margin-top: 20%;
     max-height: 200px;
     max-width: 200px;
@@ -255,8 +234,8 @@ body {
     z-index: 2;
     border-radius: 10px;
     // top: -45px;
-    top: -15%;
-    // top: 0;
+    // top: -5%;
+    top: -3px;
     // left: 0;
     // right: 0;
     // margin-left: 3%;
@@ -264,8 +243,8 @@ body {
     height: 100%;
     position: absolute;
     display: inline-block;
-    background: linear-gradient(0deg, rgba(48, 0, 43, 0.8) 0%, 
-    rgba(48, 0, 43, 0.18) 36%, rgba(48, 0, 43, 0) 46%), 
+    background: linear-gradient(0deg, rgba(7, 41, 89, 0.8) 0%, 
+    rgba(7, 41, 89, 0.18) 36%, rgba(7, 41, 89, 0) 46%), 
     // box-shadow: 0 20px 30px rgba(0,0,0,0.2);
 }
 
@@ -354,27 +333,13 @@ body {
 //     animation-name: fade-in-up;
 //   }
 .ghost {
-//   margin-left: 40px;
-//   position: absolute;
-//   margin-top: 3%;
-//   margin-left: 800px;
   text-transform: uppercase;
-  // font-size: 1.3rem;
-  // padding: 8px 16px;
-  // background: transparent;
-  // border: 2px solid transparent;
-  // border-image: $btn;
-  // border-image-slice: 1;
   letter-spacing: 1.2px;
-  // font-family: $lato;
-  // grid-area: gbtn;
-  // color: #30002b;
   font-size: 1rem;
   display: block;
   font-family: $lato;
   width: 150px;
   align-self: center;
-  // height: 45px;
   padding: 8px;
   margin-right: 5%;
   color: #fff;
@@ -383,22 +348,38 @@ body {
   text-align: center;
   outline: none;
   text-decoration: none;
-  transition: background-color 0.1s ease-out,
-  color 0.2s ease-out;
-  &:hover,
+  position: relative;
+  &:before {
+    -webkit-transition: 0.4s all ease;
+    transition: 0.4s all ease;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    right: 50%;
+    bottom: 0;
+    opacity: 0;
+    content: '';
+    color: #63A4FF;
+    background-color: #fff;
+    z-index:-2;
+    border-radius: 40px;
+  }
+  &:hover, 
   &:focus-within {
-      // cursor: pointer;
-      // background: $btn;
-      // border: 2px solid transparent;
-      // border-image: $btn;
-      // border-image-slice: 1;
-      // color: #fff;
-      background-color: #fff;
-      color: rgb(51,35,80);
-      transition: background-color 0.2s ease-in,
-      color 0.3s ease-in;
+    color: #63A4FF;
+    -webkit-transition: 0.4s all ease;
+    transition: 0.4s all ease;
+    &:before {
+      -webkit-transition: 0.4s all ease;
+      transition: 0.4s all ease;
+      left: 0;
+      right: 0;
+      opacity: 1;
+      border-radius: 40px;
+    }
   }
 }
+
 
 .fill {
   border: 1px solid #fff;
@@ -406,7 +387,7 @@ body {
   background-color: #fff;
   font-size: 1rem;
   display: block;
-  color: rgb(51,35,80);
+  color: #63A4FF;
   font-family: $lato;
   width: 150px;
   padding: 8px;
@@ -415,6 +396,7 @@ body {
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 1.2px;
+  margin-right: 2%;
   // height: 45px;
   // align-items: center;
   align-self: center;
@@ -615,6 +597,7 @@ body {
   width: 100%;
   display: flex;
   justify-content: center;
+  margin: 0 auto;
 }
 .decks-info {
     // background: $bt;
@@ -699,7 +682,7 @@ body {
 
 
 .or {
-  background-image: url('images/OR-Plum-Blue.png');
+  background-image: url('//decidor.s3.amazonaws.com/OR_solid_white.png');
   background-size: 15%;
   background-repeat: no-repeat;
   background-position: center;
@@ -714,7 +697,7 @@ body {
     max-height: 500px;
     max-width: 400px;
     // max-width: 260px;
-    border: 2px solid rgb(48,0,43);
+    border: 2px solid #fff;
     border-radius: 10px;
     grid-area: img;
     // position: absolute;
@@ -785,28 +768,28 @@ progress {
   border: 1px solid #bbbbbb;
   -moz-border-radius: 15px;
   border-radius: 15px;
-  -webkit-box-shadow: 0px 2px 4px #555555;
-  -moz-box-shadow: 0px 2px 4px #555555;
-  box-shadow: 0px 2px 4px #555555;  
+  -webkit-box-shadow: 0px 2px 4px #1979ff;
+  -moz-box-shadow: 0px 2px 4px #1979ff;
+  box-shadow: 0px 2px 4px #1979ff;  
 }
 progress[value] {
   -webkit-appearance: none;
   appearance: none;
   background-color: white;
-  color: #2b426f;
+  color: #63A4FF;
   height: 10px;
 }
 progress[value]::-webkit-progress-bar {
   background-color: white;
   border-radius: 2px;
-  color: #2b426f;
+  color: #63A4FF;
   -webkit-transition : width 0.5s ease;
    -moz-transition : width 0.5s ease;
      -o-transition : width 0.5s ease;
         transition : width 0.5s ease;
 }
 progress::-webkit-progress-value {
-  background-color: #2b426f;
+  background-color: #63A4FF;
   -webkit-transition : width 0.5s ease;
   -moz-transition : width 0.5s ease;
     -o-transition : width 0.5s ease;

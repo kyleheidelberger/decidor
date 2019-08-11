@@ -1,6 +1,12 @@
 <template>
   <section class="buttons-container or" id="choice-logic">
-    <h1 class="this-or-that">Which do you prefer?</h1>
+    <h1 v-if="!onlyChoice" class="this-or-that">Which do you prefer?</h1>
+    <div v-if="onlyChoice" class="this-or-that">
+      <h1
+        v-for="(option, index) in options"
+        :key="`${option}${index}`"
+      >{{option.title}}! Great Choice!</h1>
+    </div>
     <progress class="progress" id="progress-bar" value="0" max="1"></progress>
     <button
       v-for="(option, index) in options"
@@ -12,8 +18,14 @@
     >
       <transition appear name="enlorge">
         <div class="cardContainer">
-          <img class="cardImage" :src="option.card_image" />
-          <h2 class="cardTitle">{{option.title}}</h2>
+          <div v-if="!onlyChoice">
+            <img class="cardImage" :src="option.card_image" :alt="option.description" />
+            <h2 class="cardTitle">{{option.title}}</h2>
+          </div>
+          <a v-if="onlyChoice" :href="option.url" target="_blank">
+            <img class="cardImage" :src="option.card_image" :alt="option.description" />
+            <!-- <h2 class="cardTitle">{{option.title}}</h2> -->
+          </a>
         </div>
       </transition>
     </button>
@@ -22,10 +34,10 @@
 
 
 <script>
-import Vue from 'vue'
-import VueConfetti from 'vue-confetti'
+import Vue from "vue";
+import VueConfetti from "vue-confetti";
 
-Vue.use(VueConfetti)
+Vue.use(VueConfetti);
 
 export default {
   name: "ChoiceLogic",
@@ -46,40 +58,26 @@ export default {
       preferences: [],
       copyChoiceList: [],
       endIndex: 2,
-      totalNumChoices: 0,
       clicks: 0
     };
   },
   mounted() {
     this.shuffle(this.choices);
     this.copyChoiceList = this.choices;
-
-    this.setOptions();
-
-    let progressBar = document.querySelector('#progress-bar');
-    console.log('progress bar', progressBar)
-    progressBar.max = this.calculateTotalChoices();
+    let progressBar = document.querySelector("#progress-bar");
+    console.log("progress bar", progressBar);
+    progressBar.max = this.choices.length - 1;
     // console.log("currentIndex", this.currentIndex)
     // console.log("endIndex", this.endIndex)
-    // console.log(document.querySelector('#progress-bar').value)
+    console.log(document.querySelector("#progress-bar").value);
+    console.log(document.querySelector("#progress-bar").max);
+    this.setOptions();
   },
   methods: {
     triggerConfetti() {
       if (this.onlyChoice === true) {
-        this.$confetti.start({})
+        this.$confetti.start({});
       }
-    },
-    calculateTotalChoices() {
-      let round = 0;
-      let choicesPerRound = this.copyChoiceList.length;
-      // console.log(round)
-      while (round != 1) {
-        choicesPerRound = choicesPerRound - round;
-        round = Math.floor(choicesPerRound / 2);
-        this.totalNumChoices += round
-        // console.log(round)
-      }
-      return this.totalNumChoices
     },
     setOptions() {
       this.endIndex = this.currentIndex + 2;
@@ -89,16 +87,16 @@ export default {
         this.currentIndex,
         this.endIndex
       );
-      this.clicks ++
-      console.log(this.clicks)
+      this.clicks++;
+      console.log(this.clicks);
     },
     selectOption(index) {
       this.currentIndex = this.currentIndex + 2;
       const toAdd = this.options[index];
       this.preferences.push(toAdd);
-      let progressBar = document.querySelector('#progress-bar');
-      progressBar.value = this.clicks
-      console.log('progress bar', progressBar)
+      let progressBar = document.querySelector("#progress-bar");
+      progressBar.value = this.clicks;
+      console.log("progress bar", progressBar);
       // console.log("end index:", this.endIndex)
       // console.log("copy choice list length:", this.copyChoiceList.length);
       if (this.endIndex >= this.copyChoiceList.length - 1) {
