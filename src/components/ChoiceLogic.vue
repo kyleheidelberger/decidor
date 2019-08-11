@@ -19,11 +19,11 @@
       <transition appear name="enlorge">
         <div class="cardContainer">
           <div v-if="!onlyChoice">
-            <img class="cardImage" :src="option.card_image" />
+            <img class="cardImage" :src="option.card_image" :alt="option.description" />
             <h2 class="cardTitle">{{option.title}}</h2>
           </div>
           <a v-if="onlyChoice" :href="option.url" target="_blank">
-            <img class="cardImage" :src="option.card_image" />
+            <img class="cardImage" :src="option.card_image" :alt="option.description" />
             <h2 class="cardTitle">{{option.title}}</h2>
           </a>
         </div>
@@ -69,8 +69,8 @@ export default {
     progressBar.max = this.choices.length - 1;
     // console.log("currentIndex", this.currentIndex)
     // console.log("endIndex", this.endIndex)
-    console.log(document.querySelector('#progress-bar').value)
-    console.log(document.querySelector('#progress-bar').max)
+    console.log(document.querySelector("#progress-bar").value);
+    console.log(document.querySelector("#progress-bar").max);
     this.setOptions();
   },
   methods: {

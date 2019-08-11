@@ -1,12 +1,13 @@
 <template>
-  <section class="deck">
+  <section class="deck" role="main">
     <!-- <h1 v-if="!hiddenNav" class="decks-info">Your decks</h1> -->
 
     <div v-if="!hiddenSearch" class="searchBar">
-      <p class="searchPrompt">Where would you like to find choices?</p>
+      <label class="searchPrompt" for="location-search">Where would you like to find choices ?</label>
       <div>
         <input
           class="input"
+          id="location-search"
           type="text"
           v-model.lazy="cityName"
           v-on:change="getBusinesses"
@@ -14,15 +15,16 @@
         />
         <button class="searchButton" @click="getBusinesses">Get Choices</button>
       </div>
-      <img class="orLogo" src="//decidor.s3.amazonaws.com/OR_solid_white.png" />
+      <img class="orLogo" src="//decidor.s3.amazonaws.com/OR_solid_white.png" alt="OR" />
       <button class="locationButton" @click="getLocation()">Get My Location For Me</button>
     </div>
 
     <div v-if="!hiddenCustomSearch" class="searchBar">
       <div>
-        <p class="searchPrompt">What are you looking for?</p>
+        <label class="searchPrompt" for="custom-term-search">What are you looking for ?</label>
         <input
           class="input"
+          id="custom-term-search"
           type="text"
           v-model.lazy="searchTerm"
           v-on:change="getBusinesses"
@@ -30,24 +32,29 @@
         />
       </div>
       <div>
-        <p class="searchPrompt">Where would you like to find choices?</p>
+        <label
+          class="searchPrompt"
+          for="custom-location-search"
+        >Where would you like to find choices ?</label>
         <input
           class="input"
+          id="custom-location-search"
           type="text"
           v-model.lazy="cityName"
           placeholder="Address, City, Zip Code, etc..."
         />
         <button class="searchButton" @click="getBusinesses">Get Choices</button>
       </div>
-      <img class="orLogo" src="//decidor.s3.amazonaws.com/OR_solid_white.png" />
+      <img class="orLogo" src="//decidor.s3.amazonaws.com/OR_solid_white.png" alt="OR" />
       <button class="locationButton" @click="getLocation()">Get My Location For Me</button>
     </div>
 
     <div v-if="!hiddenMovieSearch" class="searchBar">
-      <p class="searchPrompt">Where would you like to find movies?</p>
+      <label class="searchPrompt" for="movie-location-search">Where would you like to find movies ?</label>
       <div>
         <input
           class="input"
+          id="movie-location-search"
           type="text"
           v-model.lazy="cityName"
           v-on:change="getCityID()"
@@ -55,8 +62,12 @@
         />
         <button class="searchButton" @click="getCityID">Get Choices</button>
       </div>
-      <img class="orLogo" src="//decidor.s3.amazonaws.com/OR_solid_white.png" />
+      <img class="orLogo" src="//decidor.s3.amazonaws.com/OR_solid_white.png" alt="OR" />
       <button class="locationButton" @click="getMovieLocation()">Get My Location For Me</button>
+    </div>
+
+    <div v-if="!hiddenMovies">
+      <ChoiceLogic :choices="allDecks.inTheaters" />
     </div>
 
     <div v-if="!hiddenNetflix">
@@ -67,12 +78,16 @@
       <ChoiceLogic :choices="allDecks.netflixFilmsDeck" />
     </div>
 
-    <div v-if="!hiddenFood">
-      <ChoiceLogic :choices="allDecks.fastFoodDeck" />
-    </div>
-
     <div v-if="!hiddenActivity">
       <ChoiceLogic :choices="allDecks.activityDeck" />
+    </div>
+
+    <div v-if="!hiddenBusiness">
+      <ChoiceLogic :choices="allDecks.yelpRestaurants" />
+    </div>
+
+    <div v-if="!hiddenFood">
+      <ChoiceLogic :choices="allDecks.fastFoodDeck" />
     </div>
 
     <div v-if="!hiddenFoodTypes">
@@ -81,10 +96,6 @@
 
     <div v-if="!hiddenMilkshakes">
       <ChoiceLogic :choices="allDecks.cookoutMilkshakes" />
-    </div>
-
-    <div v-if="!hiddenBusiness">
-      <ChoiceLogic :choices="allDecks.yelpRestaurants" />
     </div>
 
     <div v-if="!hiddenFictionBooks">
@@ -102,7 +113,6 @@
     <div id='deckContainer' :class="{hiddenContainer: hiddenContainer}" class="deck-grid">
       <!-- <h2 v-if="!hiddenNav" class="deckInfo">Starter Decks</h2> -->
       <button
-        id="deckButton"
         v-for="(deck, key) in allDecks"
         :key="`${deck}${key}`"
         class="deckButton"
@@ -112,7 +122,7 @@
         <div class="deck-container">
           <h2 class="deckTitle">{{deck.title}}</h2>
           <div class="overlay">
-            <img class="deckImage" :src="deck.image" />
+            <img class="deckImage" :src="deck.image" :alt="deck.description" />
           </div>
         </div>
       </button>
@@ -125,7 +135,7 @@
 import ChoiceLogic from "./ChoiceLogic";
 
 import axios from "axios";
-import { callbackify } from "util";
+// import { callbackify } from "util";
 
 const yelpBaseURL =
   "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?";
@@ -154,12 +164,12 @@ export default {
         inTheaters: [],
         netflixDeck: [],
         netflixFilmsDeck: [],
-        yelpArts: [],
+        activityDeck: [],
         yelpRestaurants: [],
         foodTypesDeck: [],
         fastFoodDeck: [],
         cookoutMilkshakes: [],
-        activityDeck: [],
+        yelpArts: [],
         yelpShops: [],
         yelpParks: [],
         custom: [],
@@ -202,44 +212,72 @@ export default {
   mounted() {
     this.buildLocalApi();
     console.log(this.database);
-    this.allDecks.netflixDeck.image =
-      "//decidor.s3.amazonaws.com/netflix_logo.jpeg";
-    this.allDecks.netflixDeck.title = "Netflix Shows";
-    this.allDecks.fastFoodDeck.image =
-      "//decidor.s3.amazonaws.com/national-french-fry-day.jpg";
-    this.allDecks.fastFoodDeck.title = "Fast Food Chains";
-    this.allDecks.activityDeck.image =
-      "//decidor.s3.amazonaws.com/couple-popcorn-movies.jpg";
-    this.allDecks.activityDeck.title = "Date Night";
-    this.allDecks.foodTypesDeck.image =
-      "//decidor.s3.amazonaws.com/foodtypes.jpeg";
-    this.allDecks.foodTypesDeck.title = "Types of Cuisine";
-    this.allDecks.yelpRestaurants.image =
-      "//decidor.s3.amazonaws.com/restaurants.jpeg";
-    this.allDecks.yelpRestaurants.title = "Restaurants";
-    this.allDecks.yelpShops.image = "//decidor.s3.amazonaws.com/shops.jpeg";
-    this.allDecks.yelpShops.title = "Shops";
-    this.allDecks.yelpArts.image = "//decidor.s3.amazonaws.com/arts.jpeg";
-    this.allDecks.yelpArts.title = "Entertainment";
-    this.allDecks.yelpParks.image = "//decidor.s3.amazonaws.com/parks.jpeg";
-    this.allDecks.yelpParks.title = "Parks";
-    this.allDecks.custom.title = "Custom Yelp";
-    this.allDecks.custom.image = "//decidor.s3.amazonaws.com/yelp-avatar.png";
-    this.allDecks.fictionDeck.image =
-      "//decidor.s3.amazonaws.com/NYT_yellow_square.png";
-    this.allDecks.fictionDeck.title = "Fiction";
-    this.allDecks.nonFictionDeck.image =
-      "//decidor.s3.amazonaws.com/NYT_blue_square.png";
-    this.allDecks.nonFictionDeck.title = "Non-Fiction";
-    this.allDecks.cookoutMilkshakes.title = "Cookout Milkshakes";
-    this.allDecks.cookoutMilkshakes.image =
-      "//decidor.s3.amazonaws.com/cookoutmilkshake.jpeg";
-    this.allDecks.netflixFilmsDeck.title = "Netflix Films";
-    this.allDecks.netflixFilmsDeck.image =
-      "//decidor.s3.amazonaws.com/netflix_white.png";
     this.allDecks.inTheaters.title = "In Theaters Now";
     this.allDecks.inTheaters.image =
       "//decidor.s3.amazonaws.com/toy_story.jpeg";
+    this.allDecks.inTheaters.description =
+      "A collection of movies currently in theaters";
+    this.allDecks.netflixDeck.title = "Netflix Shows";
+    this.allDecks.netflixDeck.image =
+      "//decidor.s3.amazonaws.com/netflix_logo.jpeg";
+    this.allDecks.netflixDeck.description =
+      "A collection of popular Netflix Original Series";
+    this.allDecks.netflixFilmsDeck.title = "Netflix Films";
+    this.allDecks.netflixFilmsDeck.image =
+      "//decidor.s3.amazonaws.com/netflix_white.png";
+    this.allDecks.netflixFilmsDeck.description =
+      "A collection of popular Netflix Original Films";
+    this.allDecks.activityDeck.title = "Date Night";
+    this.allDecks.activityDeck.image =
+      "//decidor.s3.amazonaws.com/couple-popcorn-movies.jpg";
+    this.allDecks.activityDeck.description =
+      "A collection of activities for couples on a date";
+    this.allDecks.yelpRestaurants.title = "Restaurants";
+    this.allDecks.yelpRestaurants.image =
+      "//decidor.s3.amazonaws.com/restaurants.jpeg";
+    this.allDecks.yelpRestaurants.description =
+      "A collection of restaurants near your location";
+    this.allDecks.foodTypesDeck.title = "Types of Cuisine";
+    this.allDecks.foodTypesDeck.image =
+      "//decidor.s3.amazonaws.com/foodtypes.jpeg";
+    this.allDecks.foodTypesDeck.description =
+      "A collection of various regional and ethnic cuisines";
+    this.allDecks.fastFoodDeck.title = "Fast Food Chains";
+    this.allDecks.fastFoodDeck.image =
+      "//decidor.s3.amazonaws.com/national-french-fry-day.jpg";
+    this.allDecks.fastFoodDeck.description =
+      "A collection of popular US fast food and fast casual chain resturants";
+    this.allDecks.cookoutMilkshakes.title = "Cookout Milkshakes";
+    this.allDecks.cookoutMilkshakes.image =
+      "//decidor.s3.amazonaws.com/cookoutmilkshake.jpeg";
+    this.allDecks.cookoutMilkshakes.description =
+      "A complete collection of all the flavors of milkshake available at the Southern US chain restaurant Cook Out";
+    this.allDecks.yelpArts.title = "Explore Your Area";
+    this.allDecks.yelpArts.image = "//decidor.s3.amazonaws.com/arts.jpeg";
+    this.allDecks.yelpArts.description =
+      "A collection of attractions and local hotspots near your location";
+    this.allDecks.yelpShops.title = "Shops";
+    this.allDecks.yelpShops.image = "//decidor.s3.amazonaws.com/shops.jpeg";
+    this.allDecks.yelpShops.description =
+      "A collection of shops near your location";
+    this.allDecks.yelpParks.title = "Parks";
+    this.allDecks.yelpParks.image = "//decidor.s3.amazonaws.com/parks.jpeg";
+    this.allDecks.yelpParks.description =
+      "A collection of public parks, skate parks, and dog parks near your location";
+    this.allDecks.custom.title = "Custom Yelp";
+    this.allDecks.custom.image = "//decidor.s3.amazonaws.com/yelp-avatar.png";
+    this.allDecks.custom.description =
+      "A collection that you can create using your own search term and location";
+    this.allDecks.fictionDeck.title = "Fiction";
+    this.allDecks.fictionDeck.image =
+      "//decidor.s3.amazonaws.com/NYT_yellow_square.png";
+    this.allDecks.fictionDeck.description =
+      "A collection of the New York Times most recent Hardcover Fiction BestSelling Books";
+    this.allDecks.nonFictionDeck.title = "Non-Fiction";
+    this.allDecks.nonFictionDeck.image =
+      "//decidor.s3.amazonaws.com/NYT_blue_square.png";
+    this.allDecks.nonFictionDeck.description =
+      "A collection of the New York Times most recent Hardcover Non-Fiction BestSelling Books";
   },
   methods: {
     sendKey(key) {
@@ -482,12 +520,12 @@ export default {
     },
     getMovieLocation: function() {
       if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(this.showPosition);
+        navigator.geolocation.getCurrentPosition(this.showMoviePosition);
       } else {
         this.error = "Geolocation is not supported.";
       }
     },
-    showPosition: function(position) {
+    showMoviePosition: function(position) {
       this.lat = position.coords.latitude;
       this.lon = position.coords.longitude;
       this.makeMovieLatLonURL();
@@ -567,46 +605,53 @@ export default {
     },
 
     makeNetflixDeck() {
-      this.database[1].card_set.map(card => {
-        let cardTitle = card.title;
-        let cardImage = card.card_image;
-        let cardDeck = card.deck;
-        let cardDescription = card.description;
-
-        this.allDecks.netflixDeck.push({
-          title: cardTitle,
-          card_image: cardImage,
-          description: card.description
-        });
-        return this.allDecks.netflixDeck;
-      });
-    },
-    makeFastFoodDeck() {
       this.database[0].card_set.map(card => {
         let cardTitle = card.title;
         let cardImage = card.card_image;
         let cardDeck = card.deck;
         let cardDescription = card.description;
+        let cardURL = card.url;
 
-        this.allDecks.fastFoodDeck.push({
+        this.allDecks.netflixDeck.push({
           title: cardTitle,
           card_image: cardImage,
-          description: card.description
+          description: cardDescription,
+          url: cardURL
         });
-        return this.allDecks.fastFoodDeck;
+        console.log(this.allDecks.netflixDeck);
+        return this.allDecks.netflixDeck;
       });
     },
-    makeActivityDeck() {
+    makeFastFoodDeck() {
       this.database[2].card_set.map(card => {
         let cardTitle = card.title;
         let cardImage = card.card_image;
         let cardDeck = card.deck;
         let cardDescription = card.description;
+        let cardURL = card.url;
+
+        this.allDecks.fastFoodDeck.push({
+          title: cardTitle,
+          card_image: cardImage,
+          description: cardDescription,
+          url: cardURL
+        });
+        return this.allDecks.fastFoodDeck;
+      });
+    },
+    makeActivityDeck() {
+      this.database[3].card_set.map(card => {
+        let cardTitle = card.title;
+        let cardImage = card.card_image;
+        let cardDeck = card.deck;
+        let cardDescription = card.description;
+        let cardURL = card.url;
 
         this.allDecks.activityDeck.push({
           title: cardTitle,
           card_image: cardImage,
-          description: card.description
+          description: cardDescription,
+          url: cardURL
         });
         return this.allDecks.activityDeck;
       });
@@ -617,41 +662,47 @@ export default {
         let cardImage = card.card_image;
         let cardDeck = card.deck;
         let cardDescription = card.description;
+        let cardURL = card.url;
 
         this.allDecks.foodTypesDeck.push({
           title: cardTitle,
           card_image: cardImage,
-          description: card.description
+          description: cardDescription,
+          url: cardURL
         });
         return this.allDecks.foodTypesDeck;
       });
     },
     makeCookoutMilkshakesDeck() {
-      this.database[3].card_set.map(card => {
-        let cardTitle = card.title;
-        let cardImage = card.card_image;
-        let cardDeck = card.deck;
-        let cardDescription = card.description;
-
-        this.allDecks.cookoutMilkshakes.push({
-          title: cardTitle,
-          card_image: cardImage,
-          description: card.description
-        });
-        return this.allDecks.cookoutMilkshakes;
-      });
-    },
-    makeNetflixFilmsDeck() {
       this.database[5].card_set.map(card => {
         let cardTitle = card.title;
         let cardImage = card.card_image;
         let cardDeck = card.deck;
         let cardDescription = card.description;
+        let cardURL = card.url;
+
+        this.allDecks.cookoutMilkshakes.push({
+          title: cardTitle,
+          card_image: cardImage,
+          description: cardDescription,
+          url: cardURL
+        });
+        return this.allDecks.cookoutMilkshakes;
+      });
+    },
+    makeNetflixFilmsDeck() {
+      this.database[1].card_set.map(card => {
+        let cardTitle = card.title;
+        let cardImage = card.card_image;
+        let cardDeck = card.deck;
+        let cardDescription = card.description;
+        let cardURL = card.url;
 
         this.allDecks.netflixFilmsDeck.push({
           title: cardTitle,
           card_image: cardImage,
-          description: card.description
+          description: cardDescription,
+          url: cardURL
         });
         return this.allDecks.netflixFilmsDeck;
       });
