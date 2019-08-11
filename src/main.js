@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import Decks from './components/Decks'
+import Info from './components/Info'
 // import router from './router'
 import './styles.scss'
 
@@ -14,7 +15,7 @@ new Vue({
   el: '#app',
   components: { App },
   // template: '<App/>',
-  render: function(createElement) {
+  render: function (createElement) {
     return createElement('App', {})
   }
 })
@@ -22,7 +23,15 @@ new Vue({
 new Vue({
   el: '#decks',
   components: { Decks },
-  render: function(createElement) {
+  render: function (createElement) {
     return createElement('Decks', {})
+  }
+})
+
+new Vue({
+  el: '#info',
+  components: { Info },
+  render: function (createElement) {
+    return createElement('Info', {})
   }
 })
