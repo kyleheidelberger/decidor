@@ -65,8 +65,12 @@ export default {
     this.shuffle(this.choices);
     this.copyChoiceList = this.choices;
     let progressBar = document.querySelector("#progress-bar");
-    console.log("progress bar", progressBar);
+    // console.log("progress bar", progressBar);
     progressBar.max = this.choices.length - 1;
+    // console.log("currentIndex", this.currentIndex)
+    // console.log("endIndex", this.endIndex)
+    // console.log(document.querySelector("#progress-bar").value);
+    // console.log(document.querySelector("#progress-bar").max);
     this.setOptions();
   },
   methods: {
@@ -82,7 +86,7 @@ export default {
         this.endIndex
       );
       this.clicks++;
-      console.log(this.clicks);
+      // console.log(this.clicks);
     },
     selectOption(index) {
       this.currentIndex = this.currentIndex + 2;
@@ -90,6 +94,10 @@ export default {
       this.preferences.push(toAdd);
       let progressBar = document.querySelector("#progress-bar");
       progressBar.value = this.clicks;
+      // console.log("progress bar", progressBar);
+      // console.log("end index:", this.endIndex)
+      // console.log("copy choice list length:", this.copyChoiceList.length);
+
       if (this.endIndex >= this.copyChoiceList.length - 1) {
         if (this.endIndex != this.copyChoiceList.length) {
           this.preferences.push(
