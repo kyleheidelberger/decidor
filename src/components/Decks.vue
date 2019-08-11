@@ -1,6 +1,7 @@
 <template>
+<section>
+  <h1>What can we help you decide?</h1>
   <section class="deck" role="main">
-
     <div v-if="!hiddenSearch" class="searchBar">
       <label class="searchPrompt" for="location-search">Where would you like to find choices?</label>
       <div>
@@ -105,12 +106,8 @@
       <ChoiceLogic :choices="allDecks.nonFictionDeck" />
     </div>
 
-    <div v-if="!hiddenMovies">
-      <ChoiceLogic :choices="allDecks.inTheaters" />
-    </div>
-  <transition appear
-  name="bounce">
-      <div id='deckContainer' :class="{hiddenContainer: hiddenContainer}" class="deck-grid">
+    <transition appear name="bounce">
+      <div id="deckContainer" :class="{hiddenContainer: hiddenContainer}" class="deck-grid">
         <!-- <h2 v-if="!hiddenNav" class="deckInfo">Starter Decks</h2> -->
         <button
           v-for="(deck, key) in allDecks"
@@ -119,8 +116,7 @@
           @click="sendKey(key)"
           :class="{ hiddenDick: hiddenDeck }"
         >
-          <div
-          class="deck-container">
+          <div class="deck-container">
             <h2 class="deckTitle">{{deck.title}}</h2>
             <div class="overlay">
               <img class="deckImage" :src="deck.image" :alt="deck.description" />
@@ -130,6 +126,7 @@
       </div>
     </transition>
   </section>
+</section>
 </template>
 
 
