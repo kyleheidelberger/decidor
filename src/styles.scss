@@ -104,8 +104,9 @@ body {
   font-size: 2em;
   margin: 1em;
   min-width: 600px;
+  border: none;
   max-width: 800px;
-  box-shadow: (8px 5px 5px rgb(48, 0, 43));
+  filter: drop-shadow(8px 5px 5px #1979ff);
 }
 
 .searchButton {
@@ -115,7 +116,7 @@ body {
   background-color: #fff;
   font-size: 1rem;
   // display: block;
-  color: rgb(51,35,80);
+  color: #63A4FF;
   font-family: $lato;
   width: 150px;
   padding: 8px;
@@ -136,7 +137,8 @@ body {
   background-color: #fff;
   font-size: 1rem;
   // display: block;
-  color: rgb(51,35,80);
+  margin-top: 20px;
+  color: #63A4FF;
   font-family: $lato;
   width: 300px;
   padding: 8px;
@@ -196,12 +198,11 @@ body {
 
 
 .deckTitle {
-    // padding-bottom: 10px;
+    padding-bottom: 8px;
     font-size: 0.9rem;
     z-index: 3;
     width: 200px;
-    height: 100%;
-    align-self: end;
+    bottom: 0;
     position: absolute;
     font-family: $lato;
     color: #fff;
@@ -209,7 +210,6 @@ body {
     letter-spacing: 0.1em;
     text-transform: uppercase;
     text-align: center;
-    // margin: 0 auto;
 }
 .deckImage {
     filter: drop-shadow(8px 5px 5px #1979ff);
@@ -235,7 +235,7 @@ body {
     border-radius: 10px;
     // top: -45px;
     // top: -5%;
-    // top: 0;
+    top: -3px;
     // left: 0;
     // right: 0;
     // margin-left: 3%;
@@ -333,52 +333,53 @@ body {
 //     animation-name: fade-in-up;
 //   }
 .ghost {
-//   margin-left: 40px;
-//   position: absolute;
-//   margin-top: 3%;
-//   margin-left: 800px;
   text-transform: uppercase;
-  // font-size: 1.3rem;
-  // padding: 8px 16px;
-  // background: transparent;
-  // border: 2px solid transparent;
-  // border-image: $btn;
-  // border-image-slice: 1;
   letter-spacing: 1.2px;
-  // font-family: $lato;
-  // grid-area: gbtn;
-  // color: #30002b;
   font-size: 1rem;
   display: block;
   font-family: $lato;
   width: 150px;
   align-self: center;
-  // height: 45px;
   padding: 8px;
   margin-right: 5%;
-  // margin-left: 3%;
   color: #fff;
   border: 1px solid #fff;
   border-radius: 40px;
   text-align: center;
   outline: none;
   text-decoration: none;
-  transition: background-color 0.1s ease-out,
-  color 0.2s ease-out;
-  &:hover,
+  position: relative;
+  &:before {
+    -webkit-transition: 0.4s all ease;
+    transition: 0.4s all ease;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    right: 50%;
+    bottom: 0;
+    opacity: 0;
+    content: '';
+    color: #63A4FF;
+    background-color: #fff;
+    z-index:-2;
+    border-radius: 40px;
+  }
+  &:hover, 
   &:focus-within {
-      // cursor: pointer;
-      // background: $btn;
-      // border: 2px solid transparent;
-      // border-image: $btn;
-      // border-image-slice: 1;
-      // color: #fff;
-      background-color: #fff;
-      color: #FFC371;
-      transition: background-color 0.2s ease-in,
-      color 0.3s ease-in;
+    color: #63A4FF;
+    -webkit-transition: 0.4s all ease;
+    transition: 0.4s all ease;
+    &:before {
+      -webkit-transition: 0.4s all ease;
+      transition: 0.4s all ease;
+      left: 0;
+      right: 0;
+      opacity: 1;
+      border-radius: 40px;
+    }
   }
 }
+
 
 .fill {
   border: 1px solid #fff;

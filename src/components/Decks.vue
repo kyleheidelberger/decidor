@@ -1,6 +1,5 @@
 <template>
   <section class="deck" role="main">
-    <!-- <h1 v-if="!hiddenNav" class="decks-info">Your decks</h1> -->
 
     <div v-if="!hiddenSearch" class="searchBar">
       <label class="searchPrompt" for="location-search">Where would you like to find choices ?</label>
@@ -111,6 +110,7 @@
     </div>
 
     <div id='deckContainer' :class="{hiddenContainer: hiddenContainer}" class="deck-grid">
+
       <!-- <h2 v-if="!hiddenNav" class="deckInfo">Starter Decks</h2> -->
       <button
         v-for="(deck, key) in allDecks"
