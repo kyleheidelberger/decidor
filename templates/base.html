@@ -18,13 +18,13 @@
 </head>
 <header class='base-head' role="banner">
     <nav class='banner-container' role="navigation">
-        <div class="logo">
-            <a href="{% url 'decks' %}"><img src="//decidor.s3.us-east-2.amazonaws.com/decidor_logo.png"
+        <div class="logo-div">
+            <a href="{% url 'decks' %}"><img src="//decidor.s3.us-east-2.amazonaws.com/decidor_logo.png" class="logo"
                     alt="Decidor Logo" /></a>
         </div>
         <div class="nav-buttons">
-            <a id="how-decidor-works" class='ghost' href="{% url 'info' %}">How decidor Works</a>
-            <a id="decks-button" class='ghost' href="{% url 'decks' %}">Decks</a>
+            <a id="how-decidor-works" class='fill' href="{% url 'info' %}">How It Works</a>
+            <a id="decks-button" class='fill' href="{% url 'decks' %}">Decks</a>
         </div>
     </nav>
 </header>
@@ -36,6 +36,6 @@
     {% block content %}
     {% endblock %}
 </body>
-<footer role="contentinfo"><a href="https://a11yproject.com">Accessibility</a></footer>
+<footer class="footer" role="contentinfo"><a href="https://a11yproject.com">Accessibility</a></footer>
 
 </html>
