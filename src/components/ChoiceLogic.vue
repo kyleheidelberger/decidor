@@ -3,9 +3,10 @@
     <h1 v-if="!onlyChoice" class="this-or-that">Which do you prefer?</h1>
     <div v-if="onlyChoice" class="this-or-that">
       <h1
+        class="great-choice"
         v-for="(option, index) in options"
         :key="`${option}${index}`"
-      >{{option.title}}! Great Choice!</h1>
+      >"{{option.title}}"! Great Choice!</h1>
     </div>
     <progress v-if="!onlyChoice" class="progress" id="progress-bar" value="0" max="1"></progress>
     <button

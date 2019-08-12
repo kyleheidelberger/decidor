@@ -929,8 +929,28 @@ progress::-webkit-progress-value {
     }
 
     .buttons-container {
-      grid-column-gap: 60px;
-  }
+      grid-column-gap: 45px;
+    }
+
+    .progress {
+      width: 655px;
+      margin: 10px 100px 10px 100px;
+    }
+
+    .finalChoice {
+      margin-top: 70px;
+    }
+
+    .finalChoice .cardImage {
+      max-height: 430px;
+      max-width: 400px;
+    }
+
+    .great-choice {
+      margin-left: 20px;
+      margin-right: 20px;
+    }
+
 }
 
 // Small mobile (portrait)
@@ -1008,7 +1028,6 @@ progress::-webkit-progress-value {
   .finalChoice {
     margin-left: 0px;
     text-align: center;
-
   }
 
 
