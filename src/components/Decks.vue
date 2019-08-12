@@ -1,7 +1,7 @@
 <template>
-  <section>
+  <section class="deck-vue">
     <h1 class="page-title">What can we help you decide?</h1>
-    <section class="deck" role="main">
+    <main class="deck" role="main">
       <div v-if="!hiddenSearch" class="searchBar">
         <label class="searchPrompt" for="location-search">Where would you like to find choices?</label>
         <div>
@@ -108,7 +108,6 @@
 
       <transition appear name="bounce">
         <div id="deckContainer" :class="{hiddenContainer: hiddenContainer}" class="deck-grid">
-          <!-- <h2 v-if="!hiddenNav" class="deckInfo">Starter Decks</h2> -->
           <button
             v-for="(deck, key) in allDecks"
             :key="`${deck}${key}`"
@@ -125,7 +124,7 @@
           </button>
         </div>
       </transition>
-    </section>
+    </main>
   </section>
 </template>
 
@@ -240,17 +239,17 @@ export default {
       "//decidor.s3.amazonaws.com/foodtypes.jpeg";
     this.allDecks.foodTypesDeck.description =
       "A collection of various regional and ethnic cuisines";
-    this.allDecks.fastFoodDeck.title = "Fast Food Chains";
+    this.allDecks.fastFoodDeck.title = "Fast Food";
     this.allDecks.fastFoodDeck.image =
       "//decidor.s3.amazonaws.com/national-french-fry-day.jpg";
     this.allDecks.fastFoodDeck.description =
       "A collection of popular US fast food and fast casual chain resturants";
-    this.allDecks.cookoutMilkshakes.title = "Cookout Milkshakes";
+    this.allDecks.cookoutMilkshakes.title = "Milkshakes";
     this.allDecks.cookoutMilkshakes.image =
       "//decidor.s3.amazonaws.com/cookoutmilkshake.jpeg";
     this.allDecks.cookoutMilkshakes.description =
       "A complete collection of all the flavors of milkshake available at the Southern US chain restaurant Cook Out";
-    this.allDecks.yelpArts.title = "Explore Your Area";
+    this.allDecks.yelpArts.title = "Attractions";
     this.allDecks.yelpArts.image = "//decidor.s3.amazonaws.com/arts.jpeg";
     this.allDecks.yelpArts.description =
       "A collection of attractions and local hotspots near your location";
