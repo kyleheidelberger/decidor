@@ -34,7 +34,7 @@
           <label
             class="searchPrompt"
             for="custom-location-search"
-          >Where would you like to find choices ?</label>
+          >Where would you like to find choices?</label>
           <input
             class="input"
             id="custom-location-search"
