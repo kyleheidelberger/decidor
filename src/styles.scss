@@ -756,7 +756,7 @@ body {
 .cardImage {
     cursor: pointer;
     outline: none;
-    max-height: 500px;
+    max-height: 430px;
     max-width: 400px;
     // max-width: 260px;
     border: 2px solid #fff;
@@ -769,10 +769,10 @@ body {
 
 .buttons-container {
     // max-width: 800px;
-    margin-top: 7%;
+    margin-top: 2%;
     justify-content: center;
     display: grid;
-    grid-template-rows: 100px;
+    // grid-template-rows: 100px;
     grid-template-columns: repeat(2, 400px);
     grid-row-gap: 50px;
     grid-column-gap: 300px;
@@ -788,13 +788,19 @@ body {
     // background-clip: text;
     // -webkit-text-fill-color: transparent;
     color: #fff;
-    font-size: 4rem;
+    // font-size: 4rem;
     grid-area: kyle;
     text-align: center;
     // z-index: 100;
     // position: absolute;
     letter-spacing: 0.5px;
     font-family: $mon;
+    font-size: 3rem;
+    height: 3rem;
+    margin: 0px 0px 0px 0px;
+    // padding: 1em;
+    -webkit-filter: drop-shadow(8px 8px 8px #1979ff);
+    filter: drop-shadow(8px 8px 8px #1979ff);
 }
 
 .cardTitle {
