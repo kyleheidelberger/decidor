@@ -851,8 +851,23 @@ progress[value]::-webkit-progress-bar {
      -o-transition : width 0.5s ease;
         transition : width 0.5s ease;
 }
+progress.round2::-webkit-progress-value {
+  background-color: #BE63FF;
+}
+progress.round3::-webkit-progress-value {
+  background-color: #FFBE63;
+}
+progress.round4::-webkit-progress-value {
+  background-color: #FF63A4;
+}
+progress.round5::-webkit-progress-value {
+  background-color: #A4FF63;
+}
+progress.round6::-webkit-progress-value {
+  background-color: #FF7063;
+}
 progress::-webkit-progress-value {
-  background-color: #63A4FF;
+  background-color: #FF7063;
   -webkit-transition : width 0.5s ease;
   -moz-transition : width 0.5s ease;
     -o-transition : width 0.5s ease;
