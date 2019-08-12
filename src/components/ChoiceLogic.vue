@@ -7,7 +7,7 @@
         :key="`${option}${index}`"
       >{{option.title}}! Great Choice!</h1>
     </div>
-    <progress class="progress" id="progress-bar" value="0" max="1"></progress>
+    <progress v-if="!onlyChoice" class="progress" id="progress-bar" value="0" max="1"></progress>
     <button
       v-for="(option, index) in options"
       :key="`${option}${index}`"

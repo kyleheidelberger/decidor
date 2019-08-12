@@ -927,6 +927,10 @@ progress::-webkit-progress-value {
     .logo-div img {
       display: none
     }
+
+    .buttons-container {
+      grid-column-gap: 60px;
+  }
 }
 
 // Small mobile (portrait)
@@ -970,6 +974,7 @@ progress::-webkit-progress-value {
   .this-or-that {
     font-size: 1.4rem;
     letter-spacing: 0.2px;
+    height: 1.5rem;
   }
 
   .buttons-container {
@@ -1041,16 +1046,17 @@ progress::-webkit-progress-value {
   }
 
   #how-decidor-works {
-    min-width: 100px;
+    min-width: 120px;
   }
 
   #decks-button {
-    min-width: 80px;
+    min-width: 100px;
   }
 
   .this-or-that {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     letter-spacing: 0.2px;
+    height: 2rem;
   }
 
   .buttons-container {
