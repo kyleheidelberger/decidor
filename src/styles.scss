@@ -956,4 +956,39 @@ progress::-webkit-progress-value {
   min-width: 80px;
 }
 
+.this-or-that {
+  font-size: 1.4rem;
+  letter-spacing: 0.2px;
+}
+
+.buttons-container {
+  max-width: 415px;
+  justify-content: center;
+  align-content:center;
+  display: flex;
+  flex-direction: column;
+}
+
+.progress {
+  width: 260px;
+  margin: 10px 30px 10px 30px;
+}
+
+.or {
+  background-image: none;
+}
+
+.cardImage {
+  max-height: 200px;
+  max-width: 200px;
+}
+
+.cardTitle {
+  font-size: 1rem;
+  padding-bottom: 10px;	
+  letter-spacing: 0.1em;
+}
+
+
+
 }
