@@ -14,7 +14,9 @@ urlpatterns = [
   path('admin/', admin.site.urls),
   path('', views.decks, name='decks'),
   path('index/', views.index, name='info'),
-  # path('accounts/', include('allauth.urls')),
-  # path('', include(router.urls)),
+  path('api', views.names),
+  path('decks/', views.decks, name='decks'),
   path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+  path('accounts/', include('allauth.urls')),
+  path('', include(router.urls)),
 ]
