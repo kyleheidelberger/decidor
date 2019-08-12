@@ -472,6 +472,10 @@ body {
   transform: translateY(4px);
 }
 
+.another-choice {
+  margin: 30px;
+}
+
 .logo {
   -webkit-filter: drop-shadow(10px 10px 10px #1979ff);
   filter: drop-shadow(10px 10px 10px #1979ff);
@@ -866,6 +870,17 @@ progress::-webkit-progress-value {
   text-align: center;
 }
 
+.info-title {
+  color: #fff;
+  font-size: 3.5rem;
+  text-align: center;
+  letter-spacing: 0.5px;
+  font-family: $mon;
+  padding: 1em;
+  -webkit-filter: drop-shadow(8px 8px 8px #1979ff);
+  filter: drop-shadow(8px 8px 8px #1979ff);
+}
+
 .what-is {
   color: #fff;
   font-size: 2.5rem;
@@ -873,7 +888,6 @@ progress::-webkit-progress-value {
   letter-spacing: 0.5px;
   font-family: $mon;
   padding: .5em .5em 1em .5em;
-  // text-shadow: .5px .5px 1px black;
   text-shadow: 4px 4px 8px #1979ff;
 }
 
@@ -889,6 +903,7 @@ progress::-webkit-progress-value {
   text-align: justify;
 }
 
+// All mobile devices (smaller than tablets)
 @media only screen and (max-width: 768px) {
     .container {
         display: flex;
@@ -925,6 +940,20 @@ progress::-webkit-progress-value {
         padding-top: 50%;
         font-size: 1.5rem;
     }
+
+    .info-title {
+      font-size: 2.25rem;
+    }
+
+    .what-is {
+      font-size: 1.75rem;
+    }
+
+    .whatis-text {
+        padding: 25px;
+        font-size: 1.25rem;
+    }
+
     .deck-grid {
       grid-template-columns: 1fr;
       grid-gap: 3%;
@@ -932,45 +961,200 @@ progress::-webkit-progress-value {
     .page-title {
       font-size: 2rem;
     }
+
+    .logo-div {
+      width: 243px;
+      height: 79px;
+      background: url(//decidor.s3.us-east-2.amazonaws.com/decidor_243_79.png) left top no-repeat;
+      margin-bottom: 20px;
+    }
+    
+    .logo-div img {
+      display: none
+    }
+
+    .buttons-container {
+      grid-column-gap: 45px;
+    }
+
+    .progress {
+      width: 655px;
+      margin: 10px 100px 10px 100px;
+    }
+
+    .finalChoice {
+      margin-top: 70px;
+    }
+
+    .finalChoice .cardImage {
+      max-height: 430px;
+      max-width: 400px;
+    }
+
+    .great-choice {
+      margin-left: 40px;
+      margin-right: 40px;
+    }
+
+
 }
 
-// mobile-portrait
-@media only screen and (max-width: 415px) {
+// Small mobile (portrait)
+@media only screen and (max-width: 375px) {
 
-.page-title {
-    font-size: 1rem;
+  .page-title {
+      font-size: 1.5rem;
+      letter-spacing: 0.2px;
+      padding: .5em;
+  }
+
+  .base-head {
+    padding: 5px;
+    height: auto;
+  }
+
+  .banner-container {
+    flex-direction: column;
+    width: auto;
+    margin-top: 10px;
+    justify-content: center;
+  }
+
+  .fill {
+    min-height: .8rem;
+    letter-spacing: .5px;
+    font-size: 1.2rem;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 10px;
+  }
+
+  #how-decidor-works {
+    min-width: 100px;
+  }
+
+  #decks-button {
+    min-width: 80px;
+  }
+
+  .this-or-that {
+    font-size: 1.4rem;
     letter-spacing: 0.2px;
-    padding: .5em;
+    height: 1.5rem;
+  }
+
+  .buttons-container {
+    max-width: 415px;
+    justify-content: center;
+    align-content:center;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .progress {
+    width: 260px;
+    margin: 10px 30px 10px 30px;
+  }
+
+  .or {
+    background-image: none;
+  }
+
+  .cardImage {
+    max-height: 200px;
+    max-width: 200px;
+  }
+
+  .cardTitle {
+    font-size: 1rem;
+    padding-bottom: 10px;	
+    letter-spacing: 0.1em;
+  }
+
+  .finalChoice {
+    margin-left: 0px;
+    text-align: center;
+  }
+
+
+
 }
 
-.base-head {
-  padding: 5px;
-}
+// Large Mobile (Portrait) -- e.g. iPhone Plus
+@media only screen and (min-width: 375px) and (max-width: 420px) {
+    .page-title {
+      font-size: 1.5rem;
+      letter-spacing: 0.2px;
+      padding: 1em;
+      text-align: center;
+  }
 
-.logo-div {
-  width: 100px;
-  height: 100px;
-  background: url(//decidor.s3.us-east-2.amazonaws.com/decidor_logo_no_text100.png) left top no-repeat;
-  
-}
+  .base-head {
+    padding: 5px;
+    justify-content: center;
+    height: auto;
+  }
 
-.logo-div img {
-  display: none
-}
+  .banner-container {
+    flex-direction: column;
+    width: auto;
+    margin-top: 10px;
+  }
 
-.fill {
-  min-height: .8rem;
-  letter-spacing: .5px;
-  font-size: .7rem;
-}
+  .fill {
+    min-height: .8rem;
+    letter-spacing: .5px;
+    font-size: 1.3em;
+    margin-left: 15px;
+    margin-right: 15px;
+    padding: 10px;
+  }
 
-#how-decidor-works {
-  min-width: 100px;
-}
+  #how-decidor-works {
+    min-width: 120px;
+  }
 
-#decks-button {
-  font-size: 1rem;
-  min-width: 80px;
-}
+  #decks-button {
+    min-width: 100px;
+  }
 
+  .this-or-that {
+    font-size: 1.5rem;
+    letter-spacing: 0.2px;
+    height: 2rem;
+  }
+
+  .buttons-container {
+    max-width: 415px;
+    justify-content: center;
+    align-content:center;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .progress {
+    width: 260px;
+    margin: 10px 30px 10px 30px;
+  }
+
+  .or {
+    background-image: none;
+  }
+
+  .cardImage {
+    max-height: 275px;
+    max-width: 200px;
+  }
+
+  .cardTitle {
+    font-size: 1rem;
+    padding-bottom: 10px;	
+    letter-spacing: 0.1em;
+  }
+
+  .finalChoice {
+    margin-left: 0px;
+    text-align: center;
+
+  }
 }
