@@ -58,22 +58,26 @@ export default {
       preferences: [],
       copyChoiceList: [],
       endIndex: 2,
-      clicks: 0
+      clicks: 0, 
+      colors: ["round2", "round3", "round4", "round5", "round6",],
+      x: 0,
     };
   },
   mounted() {
     this.shuffle(this.choices);
     this.copyChoiceList = this.choices;
     let progressBar = document.querySelector("#progress-bar");
-    // console.log("progress bar", progressBar);
     progressBar.max = this.choices.length - 1;
-    // console.log("currentIndex", this.currentIndex)
-    // console.log("endIndex", this.endIndex)
-    // console.log(document.querySelector("#progress-bar").value);
-    // console.log(document.querySelector("#progress-bar").max);
     this.setOptions();
   },
   methods: {
+    changeColor (progressBar) {
+      let newColor = this.colors[this.x++];
+      if (this.preferences.length === 0){
+        progressBar.classList.add(newColor);
+        console.log(progressBar)
+      }
+    },
     triggerConfetti() {
       if (this.onlyChoice === true) {
         this.$confetti.start({});
@@ -86,7 +90,6 @@ export default {
         this.endIndex
       );
       this.clicks++;
-      // console.log(this.clicks);
     },
     selectOption(index) {
       this.currentIndex = this.currentIndex + 2;
@@ -94,9 +97,6 @@ export default {
       this.preferences.push(toAdd);
       let progressBar = document.querySelector("#progress-bar");
       progressBar.value = this.clicks;
-      // console.log("progress bar", progressBar);
-      // console.log("end index:", this.endIndex)
-      // console.log("copy choice list length:", this.copyChoiceList.length);
 
       if (this.endIndex >= this.copyChoiceList.length - 1) {
         if (this.endIndex != this.copyChoiceList.length) {
@@ -107,6 +107,8 @@ export default {
         this.currentIndex = 0;
         this.copyChoiceList = this.preferences;
         this.preferences = [];
+        console.log(progressBar)
+        this.changeColor(progressBar);
       }
       if (this.copyChoiceList.length === 1) {
         this.onlyChoice = true;
