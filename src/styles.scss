@@ -876,6 +876,29 @@ progress::-webkit-progress-value {
   text-align: center;
 }
 
+.what-is {
+  color: #fff;
+  font-size: 2.5rem;
+  text-align: center;
+  letter-spacing: 0.5px;
+  font-family: $mon;
+  padding: .5em .5em 1em .5em;
+  // text-shadow: .5px .5px 1px black;
+  text-shadow: 4px 4px 8px #1979ff;
+}
+
+.whatis-text {
+  color: #fff;
+  font-size: 1.5rem;
+  text-align: center;
+  letter-spacing: 0.5px;
+  font-family: $mon;
+  padding: 1em 10em 1em;
+  text-shadow: 1px 1px 4px #1979ff;
+  line-height: 150%;
+  text-align: justify;
+}
+
 @media only screen and (max-width: 768px) {
     .container {
         display: flex;
@@ -901,24 +924,3 @@ progress::-webkit-progress-value {
     }
 }
 
-.what-is {
-  color: #fff;
-  font-size: 2.5rem;
-  text-align: center;
-  letter-spacing: 0.5px;
-  font-family: $mon;
-  padding: .5em .5em 1em .5em;
-  text-shadow: .5px .5px 1px black;
-}
-
-.whatis-text {
-  color: #fff;
-  font-size: 1.5rem;
-  text-align: center;
-  letter-spacing: 0.5px;
-  font-family: $mon;
-  padding: 1em 15em 1em;
-  text-shadow: .5px .5px  grey;
-  line-height: 150%;
-  text-align: justify;
-}
