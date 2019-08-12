@@ -945,8 +945,8 @@ progress::-webkit-progress-value {
 
 }
 
-//  Tablet Landscape (iPad Landscape & iPad Pro Portrait --> larger)
-@media only screen and (min-width: 1024px) {
+//  Tablet Landscape (iPad Landscape & iPad Pro Portrait)
+@media only screen and (min-width: 1024px) and (max-width: 1024px) {
   .buttons-container {
     // grid-template-rows: 100px;
     grid-row-gap: 0px;
