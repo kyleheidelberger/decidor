@@ -1,6 +1,6 @@
 <template>
   <section>
-    <h1 class="page-title">What can we help you decide?</h1>
+    <h1 class="page-title" :class="{ hiddenDick:hiddenTitle }">What can we help you decide?</h1>
     <main class="deck" role="main">
       <div v-if="!hiddenSearch" class="searchBar">
         <label class="searchPrompt" for="location-search">Where would you like to find choices?</label>
@@ -106,7 +106,6 @@
         <ChoiceLogic :choices="allDecks.nonFictionDeck" />
       </div>
 
-      <transition appear name="bounce">
         <div id="deckContainer" :class="{hiddenContainer: hiddenContainer}" class="deck-grid">
           <button
             v-for="(deck, key) in allDecks"
@@ -123,7 +122,6 @@
             </div>
           </button>
         </div>
-      </transition>
     </main>
   </section>
 </template>
@@ -181,6 +179,7 @@ export default {
       book_category: "",
       searchTerm: "",
       hiddenDeck: false,
+      hiddenTitle: false,
       hiddenContainer: false,
       businesses: [],
       results: [],
@@ -284,6 +283,7 @@ export default {
     },
     getCardsOnClick(key) {
       this.hiddenDeck = true;
+      this.hiddenTitle = true;
       this.hiddenContainer = true;
       this.hiddenNav = true;
       if (key.includes("netflixDeck")) {
