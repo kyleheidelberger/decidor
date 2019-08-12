@@ -904,7 +904,7 @@ progress::-webkit-progress-value {
 }
 
 // iPad Portrait ONLY
-@media only screen and (min-width: 420px) and (max-width: 768px) {
+@media only screen and (min-width: 768px) and (max-width: 768px) {
   .buttons-container {
     grid-row-gap: 0px;
     grid-column-gap: 35px;
@@ -946,7 +946,7 @@ progress::-webkit-progress-value {
 
 }
 
-//  Tablet Landscape (iPad Landscape & iPad Pro Portrait)
+//  Tablet Landscape (iPad Landscape & iPad Pro Portrait --> larger)
 @media only screen and (min-width: 1024px) {
   .buttons-container {
     // grid-template-rows: 100px;
@@ -1247,4 +1247,96 @@ progress::-webkit-progress-value {
     text-align: center;
 
   }
+}
+
+// Landscape mobile
+@media only screen and (min-width: 420px) and (max-width: 570px) {
+
+  .page-title {
+    font-size: 1.5rem;
+    letter-spacing: 0.2px;
+    padding: .5em;
+}
+
+.base-head {
+  padding: 5px;
+  height: auto;
+}
+
+.fill {
+  min-height: .8rem;
+  letter-spacing: .5px;
+  font-size: 1.2rem;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 10px;
+}
+
+#how-decidor-works {
+  min-width: 100px;
+}
+
+#decks-button {
+  min-width: 80px;
+}
+
+.this-or-that {
+  font-size: 1.2rem;
+  letter-spacing: 0.2px;
+  height: 1.2rem;
+}
+
+.buttons-container {
+  grid-row-gap: 0px;
+  grid-column-gap: 10px;
+  grid-template-columns: repeat(2, 200px);
+  grid-template-areas:
+  "kyle kyle"
+  "progbar progbar"
+  "img img"
+  "title title"
+  "link link";
+}
+
+.progress {
+  width: 420px;
+  margin: 10px 0px 10px 0px;
+}
+
+.or {
+  background-image: none;
+}
+
+.cardImage {
+  max-height: 200px;
+  max-width: 200px;
+  margin-top: 0px;
+  margin-left: 135px;
+}
+
+.cardTitle {
+  font-size: 1rem;
+  padding-bottom: 10px;	
+  letter-spacing: 0.1em;
+}
+
+.finalChoice {
+  margin-left: 0px;
+  text-align: center;
+}
+
+.another-choice {
+  grid-area: link;
+  max-width: 500px;
+}
+
+.logo-div {
+  width: 243px;
+}
+
+.finalChoice .cardImage {
+  max-height: 200px;
+  max-width: 200px;
+}
+
 }
