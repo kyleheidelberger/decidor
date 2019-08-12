@@ -1,5 +1,5 @@
 <template>
-  <section class="deck-vue">
+  <section>
     <h1 class="page-title">What can we help you decide?</h1>
     <main class="deck" role="main">
       <div v-if="!hiddenSearch" class="searchBar">

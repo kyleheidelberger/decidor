@@ -28,11 +28,6 @@ body {
     
 }
 
-.deck-vue {
-  min-height: 100%;
-  margin-bottom: 1.5em;
-}
-
 .page-title {
     color: #fff;
     font-size: 3.5rem;
@@ -864,24 +859,16 @@ progress::-webkit-progress-value {
        transition : width 0.5s ease;
 }
 
-// // this isn't being used right now -Kyle
-// .card-overlay:before {
-//     content: '';
-//     z-index: 99;
-//     border-radius: 10px;
-//     top: -58px;
-//     // top: 0;
-//     // left: 0;
-//     // right: 0;
-//     // margin-left: 3%;
-//     width: 260px;
-//     height: 95%;
-//     position: absolute;
-//     display: inline-block;
-//     background: linear-gradient(0deg, rgba(0, 0, 0, 0.6) 0%, 
-//     rgba(0, 0, 0, 0.18) 36%, rgba(0, 0, 0, 0) 46%), 
-//     // box-shadow: 0 20px 30px rgba(0,0,0,0.2);
-// }
+.footer {
+  font-size: 1rem;
+  color: white;
+  font-family: $mon;
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
 
 @media only screen and (max-width: 768px) {
     .container {
@@ -906,15 +893,4 @@ progress::-webkit-progress-value {
         padding-top: 50%;
         font-size: 1.5rem;
     }
-}
-
-.footer {
-  font-size: 1rem;
-  color: white;
-  font-family: $mon;
-  position: absolute;
-  bottom: 0px;
-  left: 0;
-  width: 100%;
-  text-align: center;
 }
