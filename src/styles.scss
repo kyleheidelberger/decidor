@@ -889,6 +889,7 @@ progress::-webkit-progress-value {
   text-align: justify;
 }
 
+// All mobile devices (smaller than tablets)
 @media only screen and (max-width: 768px) {
     .container {
         display: flex;
@@ -917,34 +918,33 @@ progress::-webkit-progress-value {
     }
 }
 
-// mobile-portrait
-@media only screen and (max-width: 415px) {
+// Small mobile (portrait)
+@media only screen and (max-width: 375px) {
 
 .page-title {
-    font-size: 1rem;
+    font-size: 1.5rem;
     letter-spacing: 0.2px;
     padding: .5em;
 }
 
 .base-head {
   padding: 5px;
+  justify-content: center;
+  height: auto;
 }
 
-.logo-div {
-  width: 100px;
-  height: 100px;
-  background: url(//decidor.s3.us-east-2.amazonaws.com/decidor_logo_no_text100.png) left top no-repeat;
-  
-}
-
-.logo-div img {
-  display: none
+.banner-container {
+  flex-direction: column;
+  width: auto;
+  margin-top: 10px;
 }
 
 .fill {
   min-height: .8rem;
   letter-spacing: .5px;
-  font-size: .7rem;
+  font-size: 1rem;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 #how-decidor-works {
@@ -952,7 +952,6 @@ progress::-webkit-progress-value {
 }
 
 #decks-button {
-  font-size: 1rem;
   min-width: 80px;
 }
 
@@ -989,6 +988,91 @@ progress::-webkit-progress-value {
   letter-spacing: 0.1em;
 }
 
+.finalChoice {
+  margin-left: 0px;
+  text-align: center;
+
+}
 
 
+
+}
+
+// Large Mobile (Portrait) -- e.g. iPhone Plus
+@media only screen and (min-width: 375px) and (max-width: 420px) {
+  .page-title {
+    font-size: 1.5rem;
+    letter-spacing: 0.2px;
+    padding: 1em;
+    text-align: center;
+}
+
+.base-head {
+  padding: 5px;
+  justify-content: center;
+  height: auto;
+}
+
+.banner-container {
+  flex-direction: column;
+  width: auto;
+  margin-top: 10px;
+}
+
+.fill {
+  min-height: .8rem;
+  letter-spacing: .5px;
+  margin-left: 15px;
+  margin-right: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 1.5em;
+}
+
+#how-decidor-works {
+  min-width: 100px;
+}
+
+#decks-button {
+  min-width: 80px;
+}
+
+.this-or-that {
+  font-size: 1.4rem;
+  letter-spacing: 0.2px;
+}
+
+.buttons-container {
+  max-width: 415px;
+  justify-content: center;
+  align-content:center;
+  display: flex;
+  flex-direction: column;
+}
+
+.progress {
+  width: 260px;
+  margin: 10px 30px 10px 30px;
+}
+
+.or {
+  background-image: none;
+}
+
+.cardImage {
+  max-height: 275px;
+  max-width: 200px;
+}
+
+.cardTitle {
+  font-size: 1rem;
+  padding-bottom: 10px;	
+  letter-spacing: 0.1em;
+}
+
+.finalChoice {
+  margin-left: 0px;
+  text-align: center;
+
+}
 }
