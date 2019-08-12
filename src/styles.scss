@@ -903,7 +903,25 @@ progress::-webkit-progress-value {
   text-align: justify;
 }
 
-// All mobile devices (smaller than tablets)
+// Tablets ONLY
+@media only screen and (min-width: 420px) and (max-width: 768px) {
+  .buttons-container {
+    grid-template-areas:
+    "kyle kyle"
+    "progbar progbar"
+    "img img"
+    "title title"
+    "link link";
+  }
+
+  .another-choice {
+    grid-area: link;
+    max-width: 500px;
+  }
+
+}
+
+// All mobile devices - Portrait (regular iPad and smaller)
 @media only screen and (max-width: 768px) {
     .container {
         display: flex;
@@ -966,7 +984,7 @@ progress::-webkit-progress-value {
     }
 
     .finalChoice {
-      margin-top: 70px;
+      margin-top: 85px;
     }
 
     .finalChoice .cardImage {
@@ -975,9 +993,12 @@ progress::-webkit-progress-value {
     }
 
     .great-choice {
+      margin-top: 10px;
       margin-left: 40px;
       margin-right: 40px;
     }
+
+  
 
 
 }
