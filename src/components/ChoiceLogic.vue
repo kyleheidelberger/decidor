@@ -75,7 +75,6 @@ export default {
       let newColor = this.colors[this.x++];
       if (this.preferences.length === 0){
         progressBar.classList.add(newColor);
-        console.log(progressBar)
       }
     },
     triggerConfetti() {
@@ -107,7 +106,6 @@ export default {
         this.currentIndex = 0;
         this.copyChoiceList = this.preferences;
         this.preferences = [];
-        console.log(progressBar)
         this.changeColor(progressBar);
       }
       if (this.copyChoiceList.length === 1) {
