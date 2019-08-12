@@ -25,6 +25,7 @@ a {
 body {
     background: $br no-repeat center center fixed;
     background-size: cover;
+    
 }
 
 .page-title {
@@ -33,12 +34,16 @@ body {
     text-align: center;
     letter-spacing: 0.5px;
     font-family: $mon;
-    padding: .5em .5em 1em .5em;
-    text-shadow: 1px 1px 2px black;
+    padding: 1em;
+    // padding: .5em .5em 1em .5em;
+    // text-shadow: 1px 1px 2px black;
+    -webkit-filter: drop-shadow(8px 8px 8px #1979ff);
+    filter: drop-shadow(8px 8px 8px #1979ff);
 }
 
 #how-decidor-works {
-  min-width: 300px;
+  min-width: 230px;
+  // margin-right: 10%;
 }
 
 #decks-button {
@@ -49,6 +54,10 @@ body {
 .option-buttons {
     background: transparent;
     border: none;
+}
+
+.option-buttons:active {
+  transform: translateY(8px);
 }
 
 .finalChoice {
@@ -69,6 +78,10 @@ body {
     background: transparent;
     width: 25%;
     display: block;
+}
+
+.deckButton:active {
+  transform: translateY(8px);
 }
 
 .hiddenDick {
@@ -225,7 +238,7 @@ body {
 
 .deckTitle {
     padding-bottom: 8px;
-    font-size: 0.9rem;
+    font-size: 1.1rem;
     z-index: 3;
     width: 200px;
     bottom: 0;
@@ -359,10 +372,12 @@ body {
 //     animation-name: fade-in-up;
 //   }
 .ghost {
-  min-height: 50px;
+  min-height: 1.5rem;
+  display: flex;
+  flex-direction: column;
   text-transform: uppercase;
   letter-spacing: 1.2px;
-  font-size: 1rem;
+  font-size: 1.3rem;
   display: block;
   font-family: $lato;
   // width: 150px;
@@ -376,6 +391,8 @@ body {
   outline: none;
   text-decoration: none;
   position: relative;
+  -webkit-filter: drop-shadow(10px 10px 10px #1979ff);
+  filter: drop-shadow(10px 10px 10px #1979ff);
   &:before {
     -webkit-transition: 0.4s all ease;
     transition: 0.4s all ease;
@@ -409,24 +426,32 @@ body {
 
 
 .fill {
+  min-height: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  font-size: 1.3rem;
   border: 1px solid #fff;
   border-radius: 40px;
   background-color: #fff;
-  font-size: 1rem;
   display: block;
   color: #63A4FF;
   font-family: $lato;
-  width: 150px;
+  // width: 150px;
   padding: 8px;
   text-align: center;
   outline: none;
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 1.2px;
-  margin-right: 2%;
+  margin-right: 5%;
   // height: 45px;
   // align-items: center;
   align-self: center;
+  -webkit-filter: drop-shadow(10px 10px 10px #1979ff);
+  filter: drop-shadow(10px 10px 10px #1979ff);
+
 
     // align-self: flex-start;
     // grid-area: fbtn;
@@ -441,16 +466,25 @@ body {
     // border-image-slice: 1;
     // color: #fff;
 }
-.logo {
+
+.fill:active {
+  transform: translateY(4px);
+}
+
+.logo-div {
     // background-image: url('images/decidor.png');
-    background-size: 200px auto;
-    background-repeat: no-repeat;
+    // background-size: 200px auto;
+    // background-repeat: no-repeat;
     // width: 100%;
-    width: 100%;
-    height: 100%;
-    grid-area: logo;
-    -webkit-filter: brightness(0%) invert(100%);
-    filter: brightness(0%) invert(100%);
+    // height: 100%;
+    // grid-area: logo;
+    // -webkit-filter: brightness(0%) invert(100%);
+    // filter: brightness(0%) invert(100%);
+}
+
+.logo {
+  -webkit-filter: drop-shadow(10px 10px 10px #1979ff);
+  filter: drop-shadow(10px 10px 10px #1979ff);
 }
 
 // .top-rect {
@@ -626,6 +660,7 @@ body {
   justify-content: center;
   margin: 0 auto;
 }
+
 .decks-info {
     // background: $bt;
     // background-clip: text;
@@ -824,24 +859,16 @@ progress::-webkit-progress-value {
        transition : width 0.5s ease;
 }
 
-// // this isn't being used right now -Kyle
-// .card-overlay:before {
-//     content: '';
-//     z-index: 99;
-//     border-radius: 10px;
-//     top: -58px;
-//     // top: 0;
-//     // left: 0;
-//     // right: 0;
-//     // margin-left: 3%;
-//     width: 260px;
-//     height: 95%;
-//     position: absolute;
-//     display: inline-block;
-//     background: linear-gradient(0deg, rgba(0, 0, 0, 0.6) 0%, 
-//     rgba(0, 0, 0, 0.18) 36%, rgba(0, 0, 0, 0) 46%), 
-//     // box-shadow: 0 20px 30px rgba(0,0,0,0.2);
-// }
+.footer {
+  font-size: 1rem;
+  color: white;
+  font-family: $mon;
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
 
 @media only screen and (max-width: 768px) {
     .container {
