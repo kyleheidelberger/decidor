@@ -910,14 +910,27 @@ progress::-webkit-progress-value {
         flex-wrap: wrap;
     }
 
-    .ghost {
-        padding: 4px 8px;
-        margin-left: -3%;
+    .deckImage {
+      max-width: 150px;
+      max-height: 150px;
+    }
+    .overlay:before {
+      width: 150px;
     }
 
-    .fill {
-        padding: 4px 8px;
+    .deckTitle {
+      font-size: .9rem;
     }
+    // .ghost {
+    //     padding: 4px 8px;
+    //     margin-left: -3%;
+    // }
+
+    // .fill {
+    //     height: 1rem;
+    //     letter-spacing: .2px;
+    //     font-size: 2px;
+    // }
 
     .decks-info {
         font-size: 3.5rem;
@@ -943,12 +956,16 @@ progress::-webkit-progress-value {
 
     .deck-grid {
       grid-template-columns: 1fr;
+      grid-gap: 3%;
+    }
+    .page-title {
+      font-size: 2rem;
     }
 
     .logo-div {
-      width: 243px;
+      // width: 243px;
       height: 79px;
-      background: url(//decidor.s3.us-east-2.amazonaws.com/decidor_243_79.png) left top no-repeat;
+      background: url(//decidor.s3.us-east-2.amazonaws.com/decidor_243_79.png) center center no-repeat;
       margin-bottom: 20px;
     }
     
