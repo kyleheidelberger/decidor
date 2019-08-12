@@ -1250,7 +1250,7 @@ progress::-webkit-progress-value {
 }
 
 // Landscape mobile
-@media only screen and (min-width: 420px) and (max-width: 570px) {
+@media only screen and (min-width: 420px) and (max-width: 666px) {
 
   .page-title {
     font-size: 1.5rem;
@@ -1311,7 +1311,6 @@ progress::-webkit-progress-value {
   max-height: 200px;
   max-width: 200px;
   margin-top: 0px;
-  margin-left: 135px;
 }
 
 .cardTitle {
@@ -1337,6 +1336,92 @@ progress::-webkit-progress-value {
 .finalChoice .cardImage {
   max-height: 200px;
   max-width: 200px;
+  margin-left: 135px;
+}
+
+}
+
+// iPhone 6/7/8 and above Landscape
+@media only screen and (min-width: 667px) and (max-width: 767px) {
+.buttons-container {
+  grid-row-gap: 0px;
+  grid-column-gap: 0px;
+  grid-template-areas:
+  "kyle kyle"
+  "progbar progbar"
+  "img img"
+  "title title"
+  "link link";
+}
+
+.fill {
+  min-height: .8rem;
+  letter-spacing: .5px;
+  font-size: 1.2rem;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 10px;
+}
+
+#how-decidor-works {
+  min-width: 80px;
+}
+
+#decks-button {
+  min-width: 60px;
+}
+
+.another-choice {
+  grid-area: link;
+  max-width: 500px;
+  margin-left:220px;
+  margin-right: 200px;
+}
+
+.logo-div {
+  width: 243px;
+}
+
+.finalChoice {
+  margin-left: 70%;
+  margin-top: 90px;
+}
+
+.this-or-that {
+  margin-bottom: 20px;
+}
+
+.cardImage {
+  max-height: 280px;
+  max-width: 280px;
+  margin-top: 20px;
+}
+
+.cardTitle {
+  font-size: 1.2rem;
+}
+
+.this-or-that {
+  font-size: 1.7rem;
+  letter-spacing: 0.2px;
+  height: 1.5rem;
+}
+
+.progress {
+  width: 600px;
+}
+
+.cardTitle {
+  font-size: 1rem;
+  padding-bottom: 10px;	
+  letter-spacing: 0.1em;
+}
+
+.finalChoice .cardImage {
+  max-height: 300px;
+  max-width: 300px;
+  margin-left: 20px;
+  margin-top: 0px;
 }
 
 }
