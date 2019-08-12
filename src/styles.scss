@@ -903,12 +903,11 @@ progress::-webkit-progress-value {
   text-align: justify;
 }
 
-// Tablets ONLY
+// iPad Portrait ONLY
 @media only screen and (min-width: 420px) and (max-width: 768px) {
   .buttons-container {
-    // grid-template-rows: 100px;
-    grid-row-gap: 20px;
-
+    grid-row-gap: 0px;
+    grid-column-gap: 35px;
     grid-template-areas:
     "kyle kyle"
     "progbar progbar"
@@ -930,12 +929,69 @@ progress::-webkit-progress-value {
 
   .finalChoice {
     margin-left: 70%;
-    margin-top: 100px;
+    margin-top: 90px;
+  }
+
+  .this-or-that {
+    margin-bottom: 20px;
+  }
+
+  .cardImage {
+    margin-top: 20px;
+  }
+
+  .cardTitle {
+    font-size: 1.2rem;
   }
 
 }
 
-// All mobile devices - Portrait (regular iPad and smaller)
+//  Tablet Landscape (iPad Landscape & iPad Pro Portrait)
+@media only screen and (min-width: 1024px) {
+  .buttons-container {
+    // grid-template-rows: 100px;
+    grid-row-gap: 0px;
+    grid-column-gap: 200px;
+    grid-template-areas:
+    "kyle kyle"
+    "progbar progbar"
+    "img img"
+    "title title"
+    "link link";
+  }
+
+  .another-choice {
+    grid-area: link;
+    max-width: 500px;
+    margin-left:220px;
+    margin-right: 200px;
+  }
+
+  .logo-div {
+    width: 243px;
+  }
+
+  .finalChoice {
+    margin-left: 80%;
+    margin-top: 20px;
+  }
+
+  .this-or-that {
+    margin-bottom: 20px;
+  }
+
+  .cardImage {
+    margin-top: 20px;
+  }
+
+  .progress {
+    width: 800px;
+    margin: 10px 100px 10px 100px;
+  }
+  
+}
+
+// All mobile devices - Portrait (iPad Pro and smaller)
 @media only screen and (max-width: 768px) {
     .container {
         display: flex;
