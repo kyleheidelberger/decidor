@@ -25,6 +25,12 @@ a {
 body {
     background: $br no-repeat center center fixed;
     background-size: cover;
+    
+}
+
+.deck-vue {
+  min-height: 100%;
+  margin-bottom: 1.5em;
 }
 
 .page-title {
@@ -36,8 +42,8 @@ body {
     padding: 1em;
     // padding: .5em .5em 1em .5em;
     // text-shadow: 1px 1px 2px black;
-    -webkit-filter: drop-shadow(8px 8px 8px rgba(0,0,0,0.7));
-    filter: drop-shadow(8px 8px 8px rgba(0,0,0,0.7));
+    -webkit-filter: drop-shadow(8px 8px 8px #1979ff);
+    filter: drop-shadow(8px 8px 8px #1979ff);
 }
 
 #how-decidor-works {
@@ -390,8 +396,8 @@ body {
   outline: none;
   text-decoration: none;
   position: relative;
-  -webkit-filter: drop-shadow(10px 10px 10px rgba(0,0,0,0.7));
-  filter: drop-shadow(10px 10px 10px rgba(0,0,0,0.7));
+  -webkit-filter: drop-shadow(10px 10px 10px #1979ff);
+  filter: drop-shadow(10px 10px 10px #1979ff);
   &:before {
     -webkit-transition: 0.4s all ease;
     transition: 0.4s all ease;
@@ -448,8 +454,8 @@ body {
   // height: 45px;
   // align-items: center;
   align-self: center;
-  -webkit-filter: drop-shadow(10px 10px 10px rgba(0,0,0,0.7));
-  filter: drop-shadow(10px 10px 10px rgba(0,0,0,0.7));
+  -webkit-filter: drop-shadow(10px 10px 10px #1979ff);
+  filter: drop-shadow(10px 10px 10px #1979ff);
 
 
     // align-self: flex-start;
@@ -482,8 +488,8 @@ body {
 }
 
 .logo {
-  -webkit-filter: drop-shadow(10px 10px 10px rgba(0,0,0,0.7));
-  filter: drop-shadow(10px 10px 10px rgba(0,0,0,0.7));
+  -webkit-filter: drop-shadow(10px 10px 10px #1979ff);
+  filter: drop-shadow(10px 10px 10px #1979ff);
 }
 
 // .top-rect {
@@ -903,5 +909,12 @@ progress::-webkit-progress-value {
 }
 
 .footer {
-
+  font-size: 1rem;
+  color: white;
+  font-family: $mon;
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  width: 100%;
+  text-align: center;
 }
