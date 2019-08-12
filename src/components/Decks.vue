@@ -106,7 +106,6 @@
         <ChoiceLogic :choices="allDecks.nonFictionDeck" />
       </div>
 
-      <transition appear name="bounce">
         <div id="deckContainer" :class="{hiddenContainer: hiddenContainer}" class="deck-grid">
           <button
             v-for="(deck, key) in allDecks"
@@ -123,7 +122,6 @@
             </div>
           </button>
         </div>
-      </transition>
     </main>
   </section>
 </template>
