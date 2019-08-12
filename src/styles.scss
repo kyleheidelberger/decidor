@@ -906,6 +906,9 @@ progress::-webkit-progress-value {
 // Tablets ONLY
 @media only screen and (min-width: 420px) and (max-width: 768px) {
   .buttons-container {
+    // grid-template-rows: 100px;
+    grid-row-gap: 20px;
+
     grid-template-areas:
     "kyle kyle"
     "progbar progbar"
@@ -917,6 +920,12 @@ progress::-webkit-progress-value {
   .another-choice {
     grid-area: link;
     max-width: 500px;
+    margin-left:200px;
+    margin-right: 200px;
+  }
+
+  .logo-div {
+    width: 243px;
   }
 
 }
@@ -981,7 +990,6 @@ progress::-webkit-progress-value {
     }
 
     .logo-div {
-      // width: 243px;
       height: 79px;
       background: url(//decidor.s3.us-east-2.amazonaws.com/decidor_243_79.png) center center no-repeat;
       margin-bottom: 20px;
