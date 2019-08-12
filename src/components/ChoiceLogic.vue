@@ -6,7 +6,7 @@
         class="great-choice"
         v-for="(option, index) in options"
         :key="`${option}${index}`"
-      >"{{option.title}}"! Great Choice!</h1>
+      ><em>{{option.title}}!</em> Great Choice!</h1>
     </div>
     <progress v-if="!onlyChoice" class="progress" id="progress-bar" value="0" max="1"></progress>
     <button
@@ -30,6 +30,7 @@
         </div>
       </transition>
     </button>
+    <a v-if="onlyChoice" href="" class="fill another-choice">Make Another Choice</a>
   </section>
 </template>
 
