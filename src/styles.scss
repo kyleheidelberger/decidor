@@ -927,6 +927,10 @@ progress::-webkit-progress-value {
     }
     .deck-grid {
       grid-template-columns: 1fr;
+      grid-gap: 3%;
+    }
+    .page-title {
+      font-size: 2rem;
     }
 }
 
