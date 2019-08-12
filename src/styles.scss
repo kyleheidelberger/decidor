@@ -870,6 +870,17 @@ progress::-webkit-progress-value {
   text-align: center;
 }
 
+.info-title {
+  color: #fff;
+  font-size: 3.5rem;
+  text-align: center;
+  letter-spacing: 0.5px;
+  font-family: $mon;
+  padding: 1em;
+  -webkit-filter: drop-shadow(8px 8px 8px #1979ff);
+  filter: drop-shadow(8px 8px 8px #1979ff);
+}
+
 .what-is {
   color: #fff;
   font-size: 2.5rem;
@@ -877,7 +888,6 @@ progress::-webkit-progress-value {
   letter-spacing: 0.5px;
   font-family: $mon;
   padding: .5em .5em 1em .5em;
-  // text-shadow: .5px .5px 1px black;
   text-shadow: 4px 4px 8px #1979ff;
 }
 
@@ -917,6 +927,20 @@ progress::-webkit-progress-value {
         padding-top: 50%;
         font-size: 1.5rem;
     }
+
+    .info-title {
+      font-size: 2.25rem;
+    }
+
+    .what-is {
+      font-size: 1.75rem;
+    }
+
+    .whatis-text {
+        padding: 25px;
+        font-size: 1.25rem;
+    }
+
     .deck-grid {
       grid-template-columns: 1fr;
     }

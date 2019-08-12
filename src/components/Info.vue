@@ -1,6 +1,6 @@
 <template>
   <section>
-    <h1 class="page-title">Decisions made easy.</h1>
+    <h1 class="info-title">Decisions made easy.</h1>
     <h2 class="what-is">What is decidor?</h2>
       <p class="whatis-text">
         Can’t decide what to do today?  Or where to eat?  
