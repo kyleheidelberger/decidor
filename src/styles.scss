@@ -15,15 +15,9 @@ a {
     color: inherit;
 }
 
-#container {
-  min-height:100%;
-  position:relative;
-}
 body {
     background: $br no-repeat center center fixed;
     background-size: cover;
-    padding-bottom: 60px;
-    height: 100%;
 }
 
 .page-title {
@@ -860,19 +854,16 @@ progress::-webkit-progress-value {
 }
 
 .footer {
-  // font-size: 1rem;
-  // color: white;
-  // font-family: $mon;
+  font-size: 1rem;
+  color: white;
+  font-family: $mon;
   // position: absolute;
-  // bottom: 0px;
-  // left: 0;
-  // width: 100%;
-  // text-align: center;
-  position:absolute;
-  bottom:0;
-  width:100%;
-  height:60px;
-  background:#6cf;
+  bottom: 0px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  margin-top: 300px;
+  margin-bottom: 20px;
 }
 
 .info-title {

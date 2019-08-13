@@ -31,27 +31,15 @@
 </header>
 
 <body>
-    <header class='base-head' role="banner">
-        <nav class='banner-container' role="navigation">
-            <div class="logo-div">
-                <a href="{% url 'decks' %}"><img src="//decidor.s3.us-east-2.amazonaws.com/decidor_logo.png" class="logo"
-                        alt="Decidor Logo" /></a>
-            </div>
-            <div class="nav-buttons">
-                <a id="how-decidor-works" class='fill' href="{% url 'info' %}">How It Works</a>
-                <a id="decks-button" class='fill' href="{% url 'decks' %}">Decks</a>
-            </div>
-        </nav>
-    </header>
-
-    <!-- {% if request.user.is_authenticated %}
-        <h2 class='hi-dawn'>Welcome, {{request.user}}!</h2>
-    {% endif %} -->
-    {% block content %}
-    {% endblock %}
-    <footer class="footer" role="contentinfo">
-        <a href="https://a11yproject.com">Accessibility</a>
-    </footer>
+    <div>
+        {% block content %}
+        {% endblock %}
+    </div>
+    <div>
+        <footer class="footer" role="contentinfo">
+            <a href="https://a11yproject.com">Accessibility</a>
+        </footer>
+    </div>
 </body>
 
 </html>
