@@ -16,7 +16,7 @@
           <button :disabled='cityName.length < 3' class="searchButton" @click="getBusinesses">← TYPE STUFF</button>
         </div>
         <img class="orLogo" src="//decidor.s3.amazonaws.com/OR_solid_white.png" alt="OR" />
-        <button class="locationButton" :disabled='cityName.length < 3' @click="getLocation()">Get My Location For Me</button>
+        <button class="locationButton" @click="getLocation()">Get My Location For Me</button>
       </div>
 
       <div v-if="!hiddenCustomSearch">
@@ -63,7 +63,7 @@
           <button :disabled='cityName.length < 3' class="searchButton" @click="getCityID()">← TYPE STUFF</button>
         </div>
         <img class="orLogo" src="//decidor.s3.amazonaws.com/OR_solid_white.png" alt="OR" />
-        <button class="locationButton" :disabled='cityName.length < 3' @click="getMovieLocation()">Get My Location For Me</button>
+        <button class="locationButton" @click="getMovieLocation()">Get My Location For Me</button>
       </div>
 
       <div v-if="!hiddenMovies">
