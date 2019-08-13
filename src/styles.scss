@@ -902,6 +902,126 @@ progress::-webkit-progress-value {
   text-align: justify;
 }
 
+// All mobile devices
+@media only screen and (max-width: 768px) {
+  .container {
+      display: flex;
+      flex-wrap: wrap;
+  }
+
+  .deckImage {
+    max-width: 150px;
+    max-height: 150px;
+  }
+  .overlay:before {
+    width: 150px;
+  }
+
+  .deckTitle {
+    font-size: .9rem;
+  }
+  // .ghost {
+  //     padding: 4px 8px;
+  //     margin-left: -3%;
+  // }
+
+  // .fill {
+  //     height: 1rem;
+  //     letter-spacing: .2px;
+  //     font-size: 2px;
+  // }
+
+  .decks-info {
+      font-size: 3.5rem;
+  }
+
+  .title {
+      padding-top: 50%;
+      font-size: 1.5rem;
+  }
+
+  .info-title {
+    font-size: 2.25rem;
+  }
+
+  .what-is {
+    font-size: 1.75rem;
+  }
+
+  .whatis-text {
+      padding: 25px;
+      font-size: 1.25rem;
+  }
+
+  .deck-grid {
+    grid-template-columns: 1fr;
+    grid-gap: 3%;
+  }
+  .page-title {
+    font-size: 2rem;
+  }
+
+  .logo-div {
+    height: 79px;
+    background: url(//decidor.s3.us-east-2.amazonaws.com/decidor_243_79.png) center center no-repeat;
+    margin-bottom: 20px;
+  }
+  
+  .logo-div img {
+    display: none
+  }
+
+  .buttons-container {
+    grid-column-gap: 45px;
+  }
+
+  .progress {
+    width: 655px;
+    margin: 10px 100px 10px 100px;
+  }
+
+  .finalChoice {
+    margin-top: 85px;
+  }
+
+  .finalChoice .cardImage {
+    max-height: 430px;
+    max-width: 400px;
+  }
+
+  .great-choice {
+    margin-top: 10px;
+    margin-left: 40px;
+    margin-right: 40px;
+  }
+
+  .searchBar {
+    flex-wrap: nowrap;
+  }
+
+  .searchPrompt {
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 0px 15px 15px 15px;
+    
+  }
+
+  #movie-location-search {
+    min-width: 250px;
+    max-width: 250px;
+    margin: 0px 0px 20px 0px;
+  }
+
+  .orLogo {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+
+
+
+}
+
 // iPad Portrait ONLY
 @media only screen and (min-width: 768px) and (max-width: 768px) {
   .buttons-container {
@@ -932,7 +1052,7 @@ progress::-webkit-progress-value {
   }
 
   .this-or-that {
-    margin-bottom: 20px;
+    margin-bottom: 50px;
   }
 
   .cardImage {
@@ -941,6 +1061,12 @@ progress::-webkit-progress-value {
 
   .cardTitle {
     font-size: 1.2rem;
+  }
+
+  #movie-location-search {
+    min-width: 300px;
+      max-width: 300px;
+      margin: 0px 50px 20px 0px;
   }
 
 }
@@ -990,103 +1116,7 @@ progress::-webkit-progress-value {
   
 }
 
-// All mobile devices - Portrait (iPad Pro and smaller)
-@media only screen and (max-width: 768px) {
-    .container {
-        display: flex;
-        flex-wrap: wrap;
-    }
 
-    .deckImage {
-      max-width: 150px;
-      max-height: 150px;
-    }
-    .overlay:before {
-      width: 150px;
-    }
-
-    .deckTitle {
-      font-size: .9rem;
-    }
-    // .ghost {
-    //     padding: 4px 8px;
-    //     margin-left: -3%;
-    // }
-
-    // .fill {
-    //     height: 1rem;
-    //     letter-spacing: .2px;
-    //     font-size: 2px;
-    // }
-
-    .decks-info {
-        font-size: 3.5rem;
-    }
-
-    .title {
-        padding-top: 50%;
-        font-size: 1.5rem;
-    }
-
-    .info-title {
-      font-size: 2.25rem;
-    }
-
-    .what-is {
-      font-size: 1.75rem;
-    }
-
-    .whatis-text {
-        padding: 25px;
-        font-size: 1.25rem;
-    }
-
-    .deck-grid {
-      grid-template-columns: 1fr;
-      grid-gap: 3%;
-    }
-    .page-title {
-      font-size: 2rem;
-    }
-
-    .logo-div {
-      height: 79px;
-      background: url(//decidor.s3.us-east-2.amazonaws.com/decidor_243_79.png) center center no-repeat;
-      margin-bottom: 20px;
-    }
-    
-    .logo-div img {
-      display: none
-    }
-
-    .buttons-container {
-      grid-column-gap: 45px;
-    }
-
-    .progress {
-      width: 655px;
-      margin: 10px 100px 10px 100px;
-    }
-
-    .finalChoice {
-      margin-top: 85px;
-    }
-
-    .finalChoice .cardImage {
-      max-height: 430px;
-      max-width: 400px;
-    }
-
-    .great-choice {
-      margin-top: 10px;
-      margin-left: 40px;
-      margin-right: 40px;
-    }
-
-  
-
-
-}
 
 // Small mobile (portrait)
 @media only screen and (max-width: 375px) {
@@ -1163,6 +1193,11 @@ progress::-webkit-progress-value {
   .finalChoice {
     margin-left: 0px;
     text-align: center;
+  }
+
+  .great-choice {
+    margin-left: 0px;
+    margin-right: 0px;
   }
 
 
