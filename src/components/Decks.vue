@@ -16,7 +16,7 @@
           <button :disabled='cityName.length < 3' class="searchButton" @click="getBusinesses">← TYPE STUFF</button>
         </div>
         <img class="orLogo" src="//decidor.s3.amazonaws.com/OR_solid_white.png" alt="OR" />
-        <button class="locationButton" @click="getLocation()">Get My Location For Me</button>
+        <button class="locationButton" :disabled='cityName.length < 3' @click="getLocation()">Get My Location For Me</button>
       </div>
 
       <div v-if="!hiddenCustomSearch">
@@ -26,7 +26,7 @@
               class="input"
               id="custom-term-search"
               type="text"
-              v-model.lazy="searchTerm"
+              v-model="searchTerm"
               placeholder=" Coffee, bookstores, etc..."
             />
           <label
@@ -38,13 +38,14 @@
               class="input"
               id="custom-location-search"
               type="text"
-              v-model.lazy="cityName"
-              v-on:change="getBusinesses"
+              v-model="cityName"
+              v-on:keyup.enter="getBusinesses"
               placeholder="Address, City, Zip Code, etc..."
             />
-            <button id="get-choices-custom" class="searchButton" @click="getBusinesses">Get Choices</button>
+             <button id="get-choices-custom" :disabled='cityName.length && searchTerm.length < 3' class="searchButton" @click="getBusinesses">← TYPE STUFF</button>
+             <button id="get-choices-custom-2" :disabled='cityName.length && searchTerm.length < 3' class="searchButton" @click="getBusinesses">← TYPE STUFF</button>
           <img id="or-logo-custom" class="orLogo" src="//decidor.s3.amazonaws.com/OR_solid_white.png" alt="OR" />
-          <button id="location-custom-butt" class="locationButton" @click="getLocation()">Get My Location For Me</button>
+          <button id="location-custom-butt" class="locationButton" :disabled='searchTerm.length < 3' @click="getLocation()">Get My Location For Me</button>
         </article>
       </div>
 
@@ -59,10 +60,10 @@
             v-on:keyup.enter="getCityID()"
             placeholder="City Name"
           />
-          <button v-if='cityName.length >= 3' class="searchButton" @click="getCityID">Get Choices</button>
+          <button :disabled='cityName.length < 3' class="searchButton" @click="getCityID()">← TYPE STUFF</button>
         </div>
         <img class="orLogo" src="//decidor.s3.amazonaws.com/OR_solid_white.png" alt="OR" />
-        <button class="locationButton" @click="getMovieLocation()">Get My Location For Me</button>
+        <button class="locationButton" :disabled='cityName.length < 3' @click="getMovieLocation()">Get My Location For Me</button>
       </div>
 
       <div v-if="!hiddenMovies">
