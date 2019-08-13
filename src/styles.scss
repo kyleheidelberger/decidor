@@ -897,7 +897,52 @@ progress::-webkit-progress-value {
   text-align: justify;
 }
 
-// All mobile devices
+//  Tablet Landscape (iPad Landscape & iPad Pro Portrait)
+@media only screen and (min-width: 1024px) and (max-width: 1024px) {
+  .buttons-container {
+    // grid-template-rows: 100px;
+    grid-row-gap: 0px;
+    grid-column-gap: 200px;
+    grid-template-areas:
+    "kyle kyle"
+    "progbar progbar"
+    "img img"
+    "title title"
+    "link link";
+  }
+
+  .another-choice {
+    grid-area: link;
+    max-width: 500px;
+    margin-left:220px;
+    margin-right: 200px;
+  }
+
+  .logo-div {
+    width: 243px;
+  }
+
+  .finalChoice {
+    margin-left: 80%;
+    margin-top: 20px;
+  }
+
+  .this-or-that {
+    margin-bottom: 20px;
+  }
+
+  .cardImage {
+    margin-top: 20px;
+  }
+
+  .progress {
+    width: 800px;
+    margin: 10px 100px 10px 100px;
+  }
+  
+}
+
+// All mobile devices (768px and smaller)
 @media only screen and (max-width: 768px) {
   .container {
       display: flex;
@@ -995,7 +1040,7 @@ progress::-webkit-progress-value {
   }
 
   .searchPrompt {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     text-align: center;
     margin: 0px 15px 15px 15px;
     
@@ -1012,6 +1057,30 @@ progress::-webkit-progress-value {
     margin-bottom: 20px;
   }
 
+  #location-search {
+    min-width: 250px;
+    max-width: 250px;
+    margin: 0px 0px 20px 0px;
+    font-size: 1.1em;
+  }
+
+  #custom-term-search {
+    min-width: 250px;
+    max-width: 250px;
+    margin: 10px 0px 20px 0px;
+    font-size: 1.1em;
+  }
+
+  #custom-location-search {
+    min-width: 250px;
+    max-width: 250px;
+    margin: 10px 0px 20px 0px;
+    font-size: 1.1em;
+  }
+
+  .locationButton {
+    margin-top: 5px;
+  }
 
 
 
@@ -1066,12 +1135,11 @@ progress::-webkit-progress-value {
 
 }
 
-//  Tablet Landscape (iPad Landscape & iPad Pro Portrait)
-@media only screen and (min-width: 1024px) and (max-width: 1024px) {
+// iPhone 6/7/8 and above Landscape (676px-767px)
+@media only screen and (min-width: 667px) and (max-width: 767px) {
   .buttons-container {
-    // grid-template-rows: 100px;
     grid-row-gap: 0px;
-    grid-column-gap: 200px;
+    grid-column-gap: 0px;
     grid-template-areas:
     "kyle kyle"
     "progbar progbar"
@@ -1079,61 +1147,7 @@ progress::-webkit-progress-value {
     "title title"
     "link link";
   }
-
-  .another-choice {
-    grid-area: link;
-    max-width: 500px;
-    margin-left:220px;
-    margin-right: 200px;
-  }
-
-  .logo-div {
-    width: 243px;
-  }
-
-  .finalChoice {
-    margin-left: 80%;
-    margin-top: 20px;
-  }
-
-  .this-or-that {
-    margin-bottom: 20px;
-  }
-
-  .cardImage {
-    margin-top: 20px;
-  }
-
-  .progress {
-    width: 800px;
-    margin: 10px 100px 10px 100px;
-  }
   
-}
-
-
-
-// Small mobile (portrait)
-@media only screen and (max-width: 375px) {
-
-  .page-title {
-      font-size: 1.5rem;
-      letter-spacing: 0.2px;
-      padding: .5em;
-  }
-
-  .base-head {
-    padding: 5px;
-    height: auto;
-  }
-
-  .banner-container {
-    flex-direction: column;
-    width: auto;
-    margin-top: 10px;
-    justify-content: center;
-  }
-
   .fill {
     min-height: .8rem;
     letter-spacing: .5px;
@@ -1142,143 +1156,71 @@ progress::-webkit-progress-value {
     margin-right: 10px;
     padding: 10px;
   }
-
+  
   #how-decidor-works {
-    min-width: 100px;
-  }
-
-  #decks-button {
     min-width: 80px;
   }
-
+  
+  #decks-button {
+    min-width: 60px;
+  }
+  
+  .another-choice {
+    grid-area: link;
+    max-width: 500px;
+    margin-left:220px;
+    margin-right: 200px;
+  }
+  
+  .logo-div {
+    width: 243px;
+  }
+  
+  .finalChoice {
+    margin-left: 70%;
+    margin-top: 90px;
+  }
+  
   .this-or-that {
-    font-size: 1.4rem;
+    margin-bottom: 20px;
+  }
+  
+  .cardImage {
+    max-height: 280px;
+    max-width: 280px;
+    margin-top: 20px;
+  }
+  
+  .cardTitle {
+    font-size: 1.2rem;
+  }
+  
+  .this-or-that {
+    font-size: 1.7rem;
     letter-spacing: 0.2px;
     height: 1.5rem;
   }
-
-  .buttons-container {
-    max-width: 415px;
-    justify-content: center;
-    align-content:center;
-    display: flex;
-    flex-direction: column;
-  }
-
+  
   .progress {
-    width: 260px;
-    margin: 10px 30px 10px 30px;
+    width: 600px;
   }
-
-  .or {
-    background-image: none;
-  }
-
-  .cardImage {
-    max-height: 200px;
-    max-width: 200px;
-  }
-
+  
   .cardTitle {
     font-size: 1rem;
     padding-bottom: 10px;	
     letter-spacing: 0.1em;
   }
-
-  .finalChoice {
-    margin-left: 0px;
-    text-align: center;
+  
+  .finalChoice .cardImage {
+    max-height: 300px;
+    max-width: 300px;
+    margin-left: 20px;
+    margin-top: 0px;
+  }
+  
   }
 
-  .great-choice {
-    margin-left: 0px;
-    margin-right: 0px;
-  }
-
-
-
-}
-
-// Large Mobile (Portrait) -- e.g. iPhone Plus
-@media only screen and (min-width: 375px) and (max-width: 420px) {
-    .page-title {
-      font-size: 1.5rem;
-      letter-spacing: 0.2px;
-      padding: 1em;
-      text-align: center;
-  }
-
-  .base-head {
-    padding: 5px;
-    justify-content: center;
-    height: auto;
-  }
-
-  .banner-container {
-    flex-direction: column;
-    width: auto;
-    margin-top: 10px;
-  }
-
-  .fill {
-    min-height: .8rem;
-    letter-spacing: .5px;
-    font-size: 1.3em;
-    margin-left: 15px;
-    margin-right: 15px;
-    padding: 10px;
-  }
-
-  #how-decidor-works {
-    min-width: 120px;
-  }
-
-  #decks-button {
-    min-width: 100px;
-  }
-
-  .this-or-that {
-    font-size: 1.5rem;
-    letter-spacing: 0.2px;
-    height: 2rem;
-  }
-
-  .buttons-container {
-    max-width: 415px;
-    justify-content: center;
-    align-content:center;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .progress {
-    width: 260px;
-    margin: 10px 30px 10px 30px;
-  }
-
-  .or {
-    background-image: none;
-  }
-
-  .cardImage {
-    max-height: 275px;
-    max-width: 200px;
-  }
-
-  .cardTitle {
-    font-size: 1rem;
-    padding-bottom: 10px;	
-    letter-spacing: 0.1em;
-  }
-
-  .finalChoice {
-    margin-left: 0px;
-    text-align: center;
-
-  }
-}
-
-// Landscape mobile
+// Landscape mobile (420px-666px)
 @media only screen and (min-width: 420px) and (max-width: 666px) {
 
   .page-title {
@@ -1370,74 +1312,70 @@ progress::-webkit-progress-value {
 
 }
 
-// iPhone 6/7/8 and above Landscape
-@media only screen and (min-width: 667px) and (max-width: 767px) {
-.buttons-container {
-  grid-row-gap: 0px;
-  grid-column-gap: 0px;
-  grid-template-areas:
-  "kyle kyle"
-  "progbar progbar"
-  "img img"
-  "title title"
-  "link link";
+// Large Mobile (Portrait) -- e.g. iPhone Plus (375px-420px)
+@media only screen and (min-width: 375px) and (max-width: 420px) {
+  .page-title {
+    font-size: 1.5rem;
+    letter-spacing: 0.2px;
+    padding: 1em;
+    text-align: center;
+}
+
+.base-head {
+  padding: 5px;
+  justify-content: center;
+  height: auto;
+}
+
+.banner-container {
+  flex-direction: column;
+  width: auto;
+  margin-top: 10px;
 }
 
 .fill {
   min-height: .8rem;
   letter-spacing: .5px;
-  font-size: 1.2rem;
-  margin-left: 10px;
-  margin-right: 10px;
+  font-size: 1.3em;
+  margin-left: 15px;
+  margin-right: 15px;
   padding: 10px;
 }
 
 #how-decidor-works {
-  min-width: 80px;
+  min-width: 120px;
 }
 
 #decks-button {
-  min-width: 60px;
-}
-
-.another-choice {
-  grid-area: link;
-  max-width: 500px;
-  margin-left:220px;
-  margin-right: 200px;
-}
-
-.logo-div {
-  width: 243px;
-}
-
-.finalChoice {
-  margin-left: 70%;
-  margin-top: 90px;
+  min-width: 100px;
 }
 
 .this-or-that {
-  margin-bottom: 20px;
-}
-
-.cardImage {
-  max-height: 280px;
-  max-width: 280px;
-  margin-top: 20px;
-}
-
-.cardTitle {
-  font-size: 1.2rem;
-}
-
-.this-or-that {
-  font-size: 1.7rem;
+  font-size: 1.5rem;
   letter-spacing: 0.2px;
-  height: 1.5rem;
+  height: 2rem;
+}
+
+.buttons-container {
+  max-width: 415px;
+  justify-content: center;
+  align-content:center;
+  display: flex;
+  flex-direction: column;
 }
 
 .progress {
-  width: 600px;
+  width: 260px;
+  margin: 10px 30px 10px 30px;
+}
+
+.or {
+  background-image: none;
+}
+
+.cardImage {
+  max-height: 275px;
+  max-width: 200px;
 }
 
 .cardTitle {
@@ -1446,11 +1384,104 @@ progress::-webkit-progress-value {
   letter-spacing: 0.1em;
 }
 
-.finalChoice .cardImage {
-  max-height: 300px;
-  max-width: 300px;
-  margin-left: 20px;
-  margin-top: 0px;
+.finalChoice {
+  margin-left: 0px;
+  text-align: center;
+
 }
+}
+
+// Small mobile (portrait - 375px and smaller)
+@media only screen and (max-width: 375px) {
+
+  .page-title {
+      font-size: 1.5rem;
+      letter-spacing: 0.2px;
+      padding: .5em;
+  }
+
+  .base-head {
+    padding: 5px;
+    height: auto;
+  }
+
+  .banner-container {
+    flex-direction: column;
+    width: auto;
+    margin-top: 10px;
+    justify-content: center;
+  }
+
+  .fill {
+    min-height: .8rem;
+    letter-spacing: .5px;
+    font-size: 1.2rem;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 10px;
+  }
+
+  #how-decidor-works {
+    min-width: 100px;
+  }
+
+  #decks-button {
+    min-width: 80px;
+  }
+
+  .this-or-that {
+    font-size: 1.4rem;
+    letter-spacing: 0.2px;
+    height: 1.5rem;
+  }
+
+  .buttons-container {
+    max-width: 415px;
+    justify-content: center;
+    align-content:center;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .progress {
+    width: 260px;
+    margin: 10px 30px 10px 30px;
+  }
+
+  .or {
+    background-image: none;
+  }
+
+  .cardImage {
+    max-height: 200px;
+    max-width: 200px;
+  }
+
+  .cardTitle {
+    font-size: 1rem;
+    padding-bottom: 10px;	
+    letter-spacing: 0.1em;
+  }
+
+  .finalChoice {
+    margin-left: 0px;
+    text-align: center;
+  }
+
+  .great-choice {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+
+  .finalChoice .cardImage {
+    max-height: 340px;
+  }
+
+  .orLogo {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+
 
 }
