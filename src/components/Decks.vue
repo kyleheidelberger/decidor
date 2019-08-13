@@ -1,127 +1,135 @@
 <template>
 <section>
   <h1 class="page-title" :class="{ hiddenDick:hiddenTitle }">What can we help you decide?</h1>
-    <main class="deck" role="main">
-      <div v-if="!hiddenSearch" class="searchBar">
-        <label class="searchPrompt" for="location-search">Where would you like to find choices?</label>
-        <div>
+  <div class="deck">
+    <div v-if="!hiddenSearch" class="searchBar">
+      <label class="searchPrompt" for="location-search">Where would you like to find choices?</label>
+      <div>
+        <input
+          class="input"
+          id="location-search"
+          type="text"
+          v-model.lazy="cityName"
+          v-on:change="getBusinesses"
+          placeholder=" Address, City, Zip Code, etc..."
+        />
+        <button class="searchButton" @click="getBusinesses">Get Choices</button>
+      </div>
+      <img class="orLogo" src="//decidor.s3.amazonaws.com/OR_solid_white.png" alt="OR" />
+      <button class="locationButton" @click="getLocation()">Get My Location For Me</button>
+    </div>
+
+    <div v-if="!hiddenCustomSearch">
+      <article class='customSearchGrid'>
+        <label id="custom-search-head" class="searchPrompt" for="custom-term-search">What are you looking for?</label>
           <input
             class="input"
-            id="location-search"
+            id="custom-term-search"
+            type="text"
+            v-model.lazy="searchTerm"
+            placeholder=" Coffee, bookstores, etc..."
+          />
+        <label
+            class="searchPrompt"
+            for="custom-location-search"
+            id="find-choices-head"
+          >Where would you like to find choices?</label>
+          <input
+            class="input"
+            id="custom-location-search"
             type="text"
             v-model.lazy="cityName"
             v-on:change="getBusinesses"
-            placeholder=" Address, City, Zip Code, etc..."
+            placeholder="Address, City, Zip Code, etc..."
           />
-          <button class="searchButton" @click="getBusinesses">Get Choices</button>
-        </div>
-        <img class="orLogo" src="//decidor.s3.amazonaws.com/OR_solid_white.png" alt="OR" />
-        <button class="locationButton" @click="getLocation()">Get My Location For Me</button>
-      </div>
+          <button id="get-choices-custom" class="searchButton" @click="getBusinesses">Get Choices</button>
+        <img id="or-logo-custom" class="orLogo" src="//decidor.s3.amazonaws.com/OR_solid_white.png" alt="OR" />
+        <button id="location-custom-butt" class="locationButton" @click="getLocation()">Get My Location For Me</button>
+      </article>
+    </div>
 
-      <div v-if="!hiddenCustomSearch">
-        <article class='customSearchGrid'>
-          <label id="custom-search-head" class="searchPrompt" for="custom-term-search">What are you looking for?</label>
-            <input
-              class="input"
-              id="custom-term-search"
-              type="text"
-              v-model.lazy="searchTerm"
-              placeholder=" Coffee, bookstores, etc..."
-            />
-          <label
-              class="searchPrompt"
-              for="custom-location-search"
-              id="find-choices-head"
-            >Where would you like to find choices?</label>
-            <input
-              class="input"
-              id="custom-location-search"
-              type="text"
-              v-model.lazy="cityName"
-              v-on:change="getBusinesses"
-              placeholder="Address, City, Zip Code, etc..."
-            />
-            <button id="get-choices-custom" class="searchButton" @click="getBusinesses">Get Choices</button>
-          <img id="or-logo-custom" class="orLogo" src="//decidor.s3.amazonaws.com/OR_solid_white.png" alt="OR" />
-          <button id="location-custom-butt" class="locationButton" @click="getLocation()">Get My Location For Me</button>
-        </article>
+    <div v-if="!hiddenMovieSearch" class="searchBar">
+      <label class="searchPrompt" for="movie-location-search">Where would you like to find movies?</label>
+      <div>
+        <input
+          class="input"
+          id="movie-location-search"
+          type="text"
+          v-model.lazy="cityName"
+          v-on:change="getCityID()"
+          placeholder=" City Name"
+        />
+        <button class="searchButton" @click="getCityID">Get Choices</button>
       </div>
+      <img class="orLogo" src="//decidor.s3.amazonaws.com/OR_solid_white.png" alt="OR" />
+      <button class="locationButton" @click="getMovieLocation()">Get My Location For Me</button>
+    </div>
 
-      <div v-if="!hiddenMovieSearch" class="searchBar">
-        <label class="searchPrompt" for="movie-location-search">Where would you like to find movies?</label>
-        <div>
-          <input
-            class="input"
-            id="movie-location-search"
-            type="text"
-            v-model.lazy="cityName"
-            v-on:change="getCityID()"
-            placeholder=" City Name"
-          />
-          <button class="searchButton" @click="getCityID">Get Choices</button>
-        </div>
-        <img class="orLogo" src="//decidor.s3.amazonaws.com/OR_solid_white.png" alt="OR" />
-        <button class="locationButton" @click="getMovieLocation()">Get My Location For Me</button>
-      </div>
+    <div v-if="!hiddenMovies">
+      <ChoiceLogic :choices="allDecks.inTheaters" />
+    </div>
 
-      <div v-if="!hiddenMovies">
-        <ChoiceLogic :choices="allDecks.inTheaters" />
-      </div>
+    <div v-if="!hiddenNetflix">
+      <ChoiceLogic :choices="allDecks.netflixDeck" />
+    </div>
 
-      <div v-if="!hiddenNetflix">
-        <ChoiceLogic :choices="allDecks.netflixDeck" />
-      </div>
+    <div v-if="!hiddenNetflixFilms">
+      <ChoiceLogic :choices="allDecks.netflixFilmsDeck" />
+    </div>
 
-      <div v-if="!hiddenNetflixFilms">
-        <ChoiceLogic :choices="allDecks.netflixFilmsDeck" />
-      </div>
+    <div v-if="!hiddenActivity">
+      <ChoiceLogic :choices="allDecks.activityDeck" />
+    </div>
 
-      <div v-if="!hiddenActivity">
-        <ChoiceLogic :choices="allDecks.activityDeck" />
-      </div>
+    <div v-if="!hiddenBusiness">
+      <ChoiceLogic :choices="allDecks.yelpRestaurants" />
+    </div>
 
-      <div v-if="!hiddenBusiness">
-        <ChoiceLogic :choices="allDecks.yelpRestaurants" />
-      </div>
+    <div v-if="!hiddenFood">
+      <ChoiceLogic :choices="allDecks.fastFoodDeck" />
+    </div>
 
-      <div v-if="!hiddenFood">
-        <ChoiceLogic :choices="allDecks.fastFoodDeck" />
-      </div>
+    <div v-if="!hiddenFoodTypes">
+      <ChoiceLogic :choices="allDecks.foodTypesDeck" />
+    </div>
 
-      <div v-if="!hiddenFoodTypes">
-        <ChoiceLogic :choices="allDecks.foodTypesDeck" />
-      </div>
+    <div v-if="!hiddenMilkshakes">
+      <ChoiceLogic :choices="allDecks.cookoutMilkshakes" />
+    </div>
 
-      <div v-if="!hiddenMilkshakes">
-        <ChoiceLogic :choices="allDecks.cookoutMilkshakes" />
-      </div>
+    <div v-if="!hiddenFictionBooks">
+      <ChoiceLogic :choices="allDecks.fictionDeck" />
+    </div>
 
-      <div v-if="!hiddenFictionBooks">
-        <ChoiceLogic :choices="allDecks.fictionDeck" />
-      </div>
+    <div v-if="!hiddenNonFictionBooks">
+      <ChoiceLogic :choices="allDecks.nonFictionDeck" />
+    </div>
 
-      <div v-if="!hiddenNonFictionBooks">
-        <ChoiceLogic :choices="allDecks.nonFictionDeck" />
-      </div>
-
-      <div id="deckContainer" :class="{hiddenContainer: hiddenContainer}" class="deck-grid">
-        <button
-          v-for="(deck, key) in allDecks"
-          :key="`${deck}${key}`"
-          class="deckButton"
-          @click="sendKey(key)"
-          :class="{ hiddenDick: hiddenDeck }"
-        >
-          <div class="deck-container">
-            <h2 class="deckTitle">{{deck.title}}</h2>
-            <div class="overlay">
-              <img class="deckImage" :src="deck.image" :alt="deck.description" />
-            </div>
+    <div id="deckContainer" :class="{hiddenContainer: hiddenContainer}" class="deck-grid">
+      <button
+        v-for="(deck, key) in allDecks"
+        :key="`${deck}${key}`"
+        class="deckButton"
+        @click="sendKey(key)"
+        :class="{ hiddenDick: hiddenDeck }"
+      >
+        <div class="deck-container">
+          <h2 class="deckTitle">{{deck.title}}</h2>
+          <div class="overlay">
+            <img class="deckImage" :src="deck.image" :alt="deck.description" />
           </div>
-        </button>
-      </div>
-    </main>
+        </div>
+      </button>
+    </div>
+  </div>
+  <div>
+        <footer v-if="!hiddenDeck" class="footer" role="contentinfo">
+            <a href="{% url 'access' %}">Accessibility Statement</a>
+        </footer>
+        <footer v-if="hiddenDeck" class="footer-choice" role="contentinfo">
+            <a href="{% url 'access' %}">Accessibility Statement</a>
+        </footer>
+    </div>
 </section>
 </template>
 

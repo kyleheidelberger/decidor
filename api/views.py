@@ -31,3 +31,6 @@ def decks(request):
 
 def confetti(request):
     return render(request, 'confetti.html')
+
+def access(request):
+    return render(request, 'access.html')
