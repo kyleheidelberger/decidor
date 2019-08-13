@@ -16,14 +16,6 @@ a {
     color: inherit;
 }
 
-p.whatis-text a {
-  text-decoration:underline;
-}
-
-footer a {
-  text-decoration:underline;
-}
-
 body {
     background: $br no-repeat center center fixed;
     background-size: cover;
@@ -133,13 +125,13 @@ body {
 .customSearchGrid {
   display: grid;
   // grid-template-columns: 1fr;
-  grid-gap: 10%;
+  grid-row-gap: 40%;
   justify-content: center;
   grid-template-areas: 
             "a a a a"
-            "b b g g"
+            "b b b b"
             "c c c c"
-            "d h e f";       
+            "d g e f";       
 }
 
 #custom-search-head {
@@ -149,6 +141,7 @@ body {
 #custom-term-search {
   grid-area: b;
   margin: 0 auto;
+  min-width: 1000px;
 }
 
 #find-choices-head {
@@ -159,14 +152,19 @@ body {
 #custom-location-search {
   grid-area: d;
   margin: 0 auto;
-  min-width: 200px;
+  min-width: 300px;
+  margin-right: 60px;
 }
 
 #or-logo-custom {
   grid-area: e;
   width: 40px;
   margin: 0 auto;
-  margin-right: 60px;
+  margin-right: 40px;
+  margin-left: 40px;
+  font-family: 'Comfortaa';
+  font-size: 2rem;
+  color: #fff;
 }
 
 #location-custom-butt {
@@ -176,6 +174,7 @@ body {
 
 #get-choices-custom {
   grid-area: g;
+  margin-left: 20px;
   margin: 0 auto;
 }
 
@@ -188,7 +187,7 @@ body {
 .searchPrompt {
   padding: 1rem;
   color: #fff;
-  font-size: 2rem;
+  font-size: 3rem;
   letter-spacing: 1px;
   font-family: $mon;
   margin: 15px;
@@ -208,6 +207,44 @@ body {
   max-width: 800px;
   -webkit-filter: drop-shadow(6px 5px 5px #105ccc);
   filter: drop-shadow(6px 5px 5px #105ccc);
+}
+
+.searchButton2 {
+  margin-bottom: 20px;
+  border: 1px solid #fff;
+  border-radius: 40px;
+  background-color: #fff;
+  font-size: 1rem;
+  color: #105ccc;
+  // display: block;
+  // border: none;
+  // border-bottom: 2px #fff solid;
+  background-color: #FFF;
+  // color: #105ccc;
+  -webkit-filter: drop-shadow(5px 4px 4px #105ccc);
+  filter: drop-shadow(5px 4px 4px #105ccc);
+  // font-family: $lato;
+  width: 180px;
+  height: 50px;
+  // padding: 8px;
+  outline: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+	position: relative;
+	text-align: center;
+	font-weight: 700;
+	// font-size: 19px;
+	overflow: hidden;
+	// border-radius: 4px;
+	z-index: 1;
+  align-self: center;
+	// cursor: pointer;
+	transition: 0.08s ease-in;
+	font-family: 'Comfortaa';
+  &:disabled {
+    color: #696969;
+  }
 }
 
 .searchButton {
@@ -244,7 +281,7 @@ body {
 	transition: 0.08s ease-in;
 	font-family: 'Comfortaa';
 	&:after {
-	content: "GET CHOICES →";
+	content: "GET CHOICES";
   cursor: pointer;
   // box-shadow: inset 0 -1px 0 0 #fff;
 	position: absolute;
@@ -257,7 +294,7 @@ body {
 	}
 	
 	&:before {
-		content: "← TYPE STUFF";
+		content: "TYPE STUFF";
 		height: 100%;
     color: #696969;
 		width: 100%;
@@ -333,6 +370,7 @@ body {
   filter: drop-shadow(5px 4px 4px #105ccc);
   font-family: $lato;
   width: 300px;
+  height: 50px;
   padding: 8px;
   text-align: center;
   outline: none;
@@ -638,8 +676,7 @@ body {
   grid-area: link;
   max-width: 500px;
   margin-left: 300px;
-  margin-top: 10px;
-  margin-bottom: 50px;
+  margin-top: 10px
 }
 
 .logo {
@@ -1017,31 +1054,15 @@ progress::-webkit-progress-value {
 }
 
 .footer {
-  display: flex;
-  justify-content: space-around;
-  font-size: 1.5rem;
+  font-size: 1rem;
   color: white;
   font-family: $mon;
+  // position: absolute;
   bottom: 0px;
   left: 0;
   width: 100%;
   text-align: center;
   margin-top: 300px;
-  margin-bottom: 20px;
-}
-
-.footer-choice {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  font-size: 1.5rem;
-  color: white;
-  font-family: $mon;
-  bottom: 0px;
-  left: 0;
-  width: 100%;
-  text-align: center;
-  margin-top: 70px;
   margin-bottom: 20px;
 }
 
@@ -1096,16 +1117,6 @@ progress::-webkit-progress-value {
 .great-choice {
   font-size: 1em;
 }
-
-.github-logo {
-  width: 146px;
-}
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                            // START MEDIA QUERIES //
-////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    
 
 //  Tablet Landscape (iPad Landscape & iPad Pro Portrait)
 @media only screen and (min-width: 1024px) and (max-width: 1024px) {
