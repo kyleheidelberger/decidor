@@ -247,6 +247,10 @@ body {
   }
 }
 
+.searchButton:active {
+  transform: translateY(8px);
+}
+
 .searchButton {
   margin-bottom: 20px;
   border: 1px solid #fff;
@@ -383,6 +387,10 @@ body {
   &:disabled {
     color: #696969;
   }
+}
+
+.locationButton:active {
+  transform: translateY(8px);
 }
 
 .orLogo {
