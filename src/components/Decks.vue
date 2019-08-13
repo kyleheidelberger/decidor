@@ -9,55 +9,43 @@
             class="input"
             id="location-search"
             type="text"
-            v-model.lazy="cityName"
-            v-on:change="getBusinesses"
+            v-model="cityName"
+            v-on:keyup.enter="getBusinesses"
             placeholder=" Address, City, Zip Code, etc..."
           />
-          <button class="searchButton" @click="getBusinesses">Get Choices</button>
+          <button :disabled='cityName.length < 3' class="searchButton" @click="getBusinesses">← TYPE STUFF</button>
         </div>
         <img class="orLogo" src="//decidor.s3.amazonaws.com/OR_solid_white.png" alt="OR" />
-        <button class="locationButton" @click="getLocation()">Get My Location For Me</button>
+        <button class="locationButton" :disabled='cityName.length < 3' @click="getLocation()">Get My Location For Me</button>
       </div>
 
       <div v-if="!hiddenCustomSearch">
-        <article class="customSearchGrid">
+        <article class='customSearchGrid'>
+          <label id="custom-search-head" class="searchPrompt" for="custom-term-search">What are you looking for?</label>
+            <input
+              class="input"
+              id="custom-term-search"
+              type="text"
+              v-model="searchTerm"
+              placeholder=" Coffee, bookstores, etc..."
+            />
           <label
-            id="custom-search-head"
-            class="searchPrompt"
-            for="custom-term-search"
-          >What are you looking for?</label>
-          <input
-            class="input"
-            id="custom-term-search"
-            type="text"
-            v-model.lazy="searchTerm"
-            placeholder=" Coffee, bookstores, etc..."
-          />
-          <label
-            class="searchPrompt"
-            for="custom-location-search"
-            id="find-choices-head"
-          >Where would you like to find choices?</label>
-          <input
-            class="input"
-            id="custom-location-search"
-            type="text"
-            v-model.lazy="cityName"
-            v-on:change="getBusinesses"
-            placeholder="Address, City, Zip Code, etc..."
-          />
-          <button id="get-choices-custom" class="searchButton" @click="getBusinesses">Get Choices</button>
-          <img
-            id="or-logo-custom"
-            class="orLogo"
-            src="//decidor.s3.amazonaws.com/OR_solid_white.png"
-            alt="OR"
-          />
-          <button
-            id="location-custom-butt"
-            class="locationButton"
-            @click="getLocation()"
-          >Get My Location For Me</button>
+              class="searchPrompt"
+              for="custom-location-search"
+              id="find-choices-head"
+            >Where would you like to find choices?</label>
+            <input
+              class="input"
+              id="custom-location-search"
+              type="text"
+              v-model="cityName"
+              v-on:keyup.enter="getBusinesses"
+              placeholder="Address, City, Zip Code, etc..."
+            />
+             <button id="get-choices-custom" :disabled='cityName.length && searchTerm.length < 3' class="searchButton" @click="getBusinesses">← TYPE STUFF</button>
+             <button id="get-choices-custom-2" :disabled='cityName.length && searchTerm.length < 3' class="searchButton" @click="getBusinesses">← TYPE STUFF</button>
+          <img id="or-logo-custom" class="orLogo" src="//decidor.s3.amazonaws.com/OR_solid_white.png" alt="OR" />
+          <button id="location-custom-butt" class="locationButton" :disabled='searchTerm.length < 3' @click="getLocation()">Get My Location For Me</button>
         </article>
       </div>
 
@@ -68,14 +56,14 @@
             class="input"
             id="movie-location-search"
             type="text"
-            v-model.lazy="cityName"
-            v-on:change="getCityID()"
-            placeholder=" City Name"
+            v-model="cityName"
+            v-on:keyup.enter="getCityID()"
+            placeholder="City Name"
           />
-          <button class="searchButton" @click="getCityID()">Get Choices</button>
+          <button :disabled='cityName.length < 3' class="searchButton" @click="getCityID()">← TYPE STUFF</button>
         </div>
         <img class="orLogo" src="//decidor.s3.amazonaws.com/OR_solid_white.png" alt="OR" />
-        <button class="locationButton" @click="getMovieLocation()">Get My Location For Me</button>
+        <button class="locationButton" :disabled='cityName.length < 3' @click="getMovieLocation()">Get My Location For Me</button>
       </div>
 
       <div v-if="!hiddenMovies">
@@ -221,7 +209,8 @@ export default {
       hiddenNetflixFilms: true,
       formattedSearch: "",
       lat: "",
-      lon: ""
+      lon: "",
+      inputFilled: false
     };
   },
   mounted() {
