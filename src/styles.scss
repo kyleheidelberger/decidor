@@ -30,7 +30,8 @@ body {
     text-align: center;
     letter-spacing: 0.5px;
     font-family: $mon;
-    padding: 1.5em;
+    padding-top: 1em;
+    padding-bottom: 1.1em;
     // padding: .5em .5em 1em .5em;
     text-shadow: 3px 2px 2px #105ccc;
     // -webkit-filter: drop-shadow(6px 5px 5px #105ccc);
@@ -531,7 +532,10 @@ body {
 }
 
 .another-choice {
-  margin: 30px 0px 30px 100px;
+  grid-area: link;
+  max-width: 500px;
+  margin-left: 300px;
+  margin-top: 10px
 }
 
 .logo {
@@ -795,7 +799,7 @@ body {
   font-family: $mon;
   font-size: 3.3rem;
   height: 3rem;
-  margin: 0px 0px 0px 0px;
+  margin: 0px 0px 40px 0px;
 }
 // styling the cards
 .cardImage {
@@ -810,22 +814,24 @@ body {
     // position: absolute;
     // z-index: 1;
     // position: relative;
+    margin-top: 40px;
 }
 
 .buttons-container {
     // max-width: 800px;
-    margin-top: 2%;
+    // margin-top: 2%;
     justify-content: center;
     display: grid;
     // grid-template-rows: 100px;
     grid-template-columns: repeat(2, 400px);
-    grid-row-gap: 100px;
+    // grid-row-gap: 100px;
     grid-column-gap: 300px;
     grid-template-areas:
     "kyle kyle"
     "progbar progbar"
     "img img"
-    "title title";
+    "title title"
+    "link link";
 }
 
 
@@ -964,6 +970,26 @@ progress::-webkit-progress-value {
   text-align: justify;
 }
 
+.screenshots-div {
+  text-align: center;
+}
+
+.screenshot {
+  width: 600px;
+  border: 3px solid white;
+  border-radius: 10px;
+  margin: 50px;
+}
+
+#deck-screenshot {
+  margin: 0px;
+  width: 300px;
+}
+
+.great-choice {
+  font-size: 1em;
+}
+
 //  Tablet Landscape (iPad Landscape & iPad Pro Portrait)
 @media only screen and (min-width: 1024px) and (max-width: 1024px) {
   .buttons-container {
@@ -981,8 +1007,8 @@ progress::-webkit-progress-value {
   .another-choice {
     grid-area: link;
     max-width: 500px;
-    margin-left:220px;
-    margin-right: 200px;
+    margin-left:300px;
+    margin-top: 10px;
   }
 
   .logo-div {
@@ -1176,6 +1202,7 @@ progress::-webkit-progress-value {
     max-width: 500px;
     margin-left:220px;
     margin-right: 200px;
+    margin-top: 20px;
   }
 
   .logo-div {
@@ -1446,8 +1473,9 @@ progress::-webkit-progress-value {
 }
 
 .cardImage {
-  max-height: 275px;
+  max-height: 250px;
   max-width: 200px;
+  margin-top: 5px;
 }
 
 .cardTitle {
@@ -1461,10 +1489,19 @@ progress::-webkit-progress-value {
   text-align: center;
 
 }
+
+.this-or-that {
+  margin-bottom: 5px;
+}
+
+.another-choice {
+  margin-top: 5px;
+}
+
 }
 
 // Small mobile (portrait - 375px and smaller)
-@media only screen and (max-width: 375px) {
+@media only screen and (max-width: 374px) {
 
   .page-title {
       font-size: 1.5rem;
@@ -1505,6 +1542,7 @@ progress::-webkit-progress-value {
     font-size: 1.4rem;
     letter-spacing: 0.2px;
     height: 1.5rem;
+    margin-bottom: 5px;
   }
 
   .buttons-container {
@@ -1527,6 +1565,7 @@ progress::-webkit-progress-value {
   .cardImage {
     max-height: 200px;
     max-width: 200px;
+    margin-top: 5px;
   }
 
   .cardTitle {
@@ -1554,6 +1593,8 @@ progress::-webkit-progress-value {
     margin-bottom: 10px;
   }
 
-
+  .another-choice {
+    margin-top: 5px;
+  }
 
 }
