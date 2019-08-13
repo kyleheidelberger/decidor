@@ -1099,6 +1099,11 @@ progress::-webkit-progress-value {
     "link link";
   }
 
+ .deck-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 2%;
+  }
+
   .another-choice {
     grid-area: link;
     max-width: 500px;
