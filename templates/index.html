@@ -1,6 +1,13 @@
 {% extends "base.html" %}
 
-{% block content %}    
+{% block content %}
 <div id="info">
 </div>
+<footer class="footer-choice" role="contentinfo">
+    <a href="//github.com/decider-team/decidr">
+        <img class="github-logo" src="//decidor.s3.us-east-2.amazonaws.com/GitHub_Logo_White.png" />
+    </a>
+    <a href="{% url 'decks' %}""><img src="//decidor.s3.us-east-2.amazonaws.com/decidor_logo_no_text100.png"></a>
+    <a href="{% url 'access' %}">Accessibility</a>
+</footer>
 {% endblock %}

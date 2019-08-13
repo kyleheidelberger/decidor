@@ -1,7 +1,7 @@
 <template>
-<section>
-  <h1 class="page-title" :class="{ hiddenDick:hiddenTitle }">What can we help you decide?</h1>
-    <main class="deck" role="main">
+  <section>
+    <h1 class="page-title" :class="{ hiddenDick:hiddenTitle }">What can we help you decide?</h1>
+    <div class="deck">
       <div v-if="!hiddenSearch" class="searchBar">
         <label class="searchPrompt" for="location-search">Where would you like to find choices?</label>
         <div>
@@ -122,8 +122,14 @@
           </div>
         </button>
       </div>
-    </main>
-</section>
+    </div>
+    <div>
+      <footer v-if="!hiddenDeck" class="footer" role="contentinfo">
+      </footer>
+      <footer v-if="hiddenDeck" class="choice-footer" role="contentinfo">
+      </footer>
+    </div>
+  </section>
 </template>
 
 
