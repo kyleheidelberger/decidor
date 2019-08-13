@@ -1,6 +1,6 @@
 <template>
-  <section>
-    <h1 class="page-title" :class="{ hiddenDick:hiddenTitle }">What can we help you decide?</h1>
+<section>
+  <h1 class="page-title" :class="{ hiddenDick:hiddenTitle }">What can we help you decide?</h1>
     <main class="deck" role="main">
       <div v-if="!hiddenSearch" class="searchBar">
         <label class="searchPrompt" for="location-search">Where would you like to find choices?</label>
@@ -19,34 +19,33 @@
         <button class="locationButton" @click="getLocation()">Get My Location For Me</button>
       </div>
 
-      <div v-if="!hiddenCustomSearch" class="searchBar">
-        <div>
-          <label class="searchPrompt" for="custom-term-search">What are you looking for?</label>
-          <input
-            class="input"
-            id="custom-term-search"
-            type="text"
-            v-model.lazy="searchTerm"
-            placeholder=" Coffee, bookstores, etc..."
-          />
-        </div>
-        <div>
+      <div v-if="!hiddenCustomSearch">
+        <article class='customSearchGrid'>
+          <label id="custom-search-head" class="searchPrompt" for="custom-term-search">What are you looking for?</label>
+            <input
+              class="input"
+              id="custom-term-search"
+              type="text"
+              v-model.lazy="searchTerm"
+              placeholder=" Coffee, bookstores, etc..."
+            />
           <label
-            class="searchPrompt"
-            for="custom-location-search"
-          >Where would you like to find choices?</label>
-          <input
-            class="input"
-            id="custom-location-search"
-            type="text"
-            v-model.lazy="cityName"
-            v-on:change="getBusinesses"
-            placeholder="Address, City, Zip Code, etc..."
-          />
-          <button class="searchButton" @click="getBusinesses">Get Choices</button>
-        </div>
-        <img class="orLogo" src="//decidor.s3.amazonaws.com/OR_solid_white.png" alt="OR" />
-        <button class="locationButton" @click="getLocation()">Get My Location For Me</button>
+              class="searchPrompt"
+              for="custom-location-search"
+              id="find-choices-head"
+            >Where would you like to find choices?</label>
+            <input
+              class="input"
+              id="custom-location-search"
+              type="text"
+              v-model.lazy="cityName"
+              v-on:change="getBusinesses"
+              placeholder="Address, City, Zip Code, etc..."
+            />
+            <button id="get-choices-custom" class="searchButton" @click="getBusinesses">Get Choices</button>
+          <img id="or-logo-custom" class="orLogo" src="//decidor.s3.amazonaws.com/OR_solid_white.png" alt="OR" />
+          <button id="location-custom-butt" class="locationButton" @click="getLocation()">Get My Location For Me</button>
+        </article>
       </div>
 
       <div v-if="!hiddenMovieSearch" class="searchBar">
@@ -123,7 +122,7 @@
         </button>
       </div>
     </main>
-  </section>
+</section>
 </template>
 
 
