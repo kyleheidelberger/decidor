@@ -106,22 +106,22 @@
         <ChoiceLogic :choices="allDecks.nonFictionDeck" />
       </div>
 
-        <div id="deckContainer" :class="{hiddenContainer: hiddenContainer}" class="deck-grid">
-          <button
-            v-for="(deck, key) in allDecks"
-            :key="`${deck}${key}`"
-            class="deckButton"
-            @click="sendKey(key)"
-            :class="{ hiddenDick: hiddenDeck }"
-          >
-            <div class="deck-container">
-              <h2 class="deckTitle">{{deck.title}}</h2>
-              <div class="overlay">
-                <img class="deckImage" :src="deck.image" :alt="deck.description" />
-              </div>
+      <div id="deckContainer" :class="{hiddenContainer: hiddenContainer}" class="deck-grid">
+        <button
+          v-for="(deck, key) in allDecks"
+          :key="`${deck}${key}`"
+          class="deckButton"
+          @click="sendKey(key)"
+          :class="{ hiddenDick: hiddenDeck }"
+        >
+          <div class="deck-container">
+            <h2 class="deckTitle">{{deck.title}}</h2>
+            <div class="overlay">
+              <img class="deckImage" :src="deck.image" :alt="deck.description" />
             </div>
-          </button>
-        </div>
+          </div>
+        </button>
+      </div>
     </main>
   </section>
 </template>
@@ -143,7 +143,7 @@ const bookBaseURL = `https://api.nytimes.com/svc/books/v3/lists/current/`;
 const nytApiKey = `4QC7YMXjnIWo1dTtGFpj5itZlVDPvbOk`;
 
 const movieBaseURL =
-  "https://api.internationalshowtimes.com/v4/movies/?fields=title,slug,poster_image.flat&countries=US&release_date_to=";
+  "https://api.internationalshowtimes.com/v4/movies/?fields=title,slug,website,poster_image.flat&countries=US&release_date_to=";
 const movieApiKey = "LafOf9zLcvERnGpF3IBU85w8txyALDvH";
 
 const movieCityURL =
@@ -574,11 +574,13 @@ export default {
         let movieTitle = movie.title;
         let movieDescription = movie.slug;
         let movieCover = movie.poster_image;
+        let movieURL = movie.website;
 
         this.allDecks.inTheaters.push({
           title: movieTitle,
           description: movieDescription,
-          card_image: movieCover
+          card_image: movieCover,
+          url: movieURL
         });
         filteredMovies = [];
         this.allDecks.movies = [];
