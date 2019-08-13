@@ -9,11 +9,11 @@
             class="input"
             id="location-search"
             type="text"
-            v-model.lazy="cityName"
-            v-on:change="getBusinesses"
+            v-model="cityName"
+            v-on:keyup.enter="getBusinesses"
             placeholder=" Address, City, Zip Code, etc..."
           />
-          <button class="searchButton" @click="getBusinesses">Get Choices</button>
+          <button v-if='cityName.length >= 3' @click="getBusinesses">Get Choices</button>
         </div>
         <img class="orLogo" src="//decidor.s3.amazonaws.com/OR_solid_white.png" alt="OR" />
         <button class="locationButton" @click="getLocation()">Get My Location For Me</button>
@@ -55,11 +55,11 @@
             class="input"
             id="movie-location-search"
             type="text"
-            v-model.lazy="cityName"
-            v-on:change="getCityID()"
-            placeholder=" City Name"
+            v-model="cityName"
+            v-on:keyup.enter="getCityID()"
+            placeholder="City Name"
           />
-          <button class="searchButton" @click="getCityID">Get Choices</button>
+          <button v-if='cityName.length >= 3' class="searchButton" @click="getCityID">Get Choices</button>
         </div>
         <img class="orLogo" src="//decidor.s3.amazonaws.com/OR_solid_white.png" alt="OR" />
         <button class="locationButton" @click="getMovieLocation()">Get My Location For Me</button>
@@ -202,7 +202,8 @@ export default {
       hiddenNetflixFilms: true,
       formattedSearch: "",
       lat: "",
-      lon: ""
+      lon: "",
+      inputFilled: false
     };
   },
   mounted() {
