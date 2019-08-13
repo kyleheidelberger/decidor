@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <div>
     <h1 class="info-title">Decisions made easy.</h1>
     <h2 class="what-is">What is decidor?</h2>
       <p class="whatis-text">
@@ -10,7 +10,7 @@
         options at a time?  That’s where decidOR comes in.  decidOR takes 
         the stress out of decision-making.  Decisions made <em>easy.</em>
       </p>
-    <h3 class="what-is">How to Play</h3>
+    <h2 class="what-is">How to Play</h2>
       <p class="whatis-text"> 
         Choose a category, and decidOR will present you just two options 
         from the collection in a head-to-head matchup.  Pick your preference 
@@ -19,7 +19,7 @@
         rounds and crown your final decision “Winner!”.  Decision victory 
         is <em>yours.</em>
       </p>
-  </section>
+  </div>
 </template>
 
 <script>
