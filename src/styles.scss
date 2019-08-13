@@ -120,6 +120,55 @@ body {
     flex-direction: column;
 }
 
+.customSearchGrid {
+  display: grid;
+  // grid-template-columns: 1fr;
+  grid-gap: 10%;
+  justify-content: center;
+  grid-template-areas: 
+            "a a a a"
+            "b b b b"
+            "c c c c"
+            "d d d d"
+            "e e e e"
+            "f f f f"
+            "g g g g";
+}
+
+#custom-search-head {
+  grid-area: a;
+  margin: 0 auto;
+}
+#custom-term-search {
+  grid-area: b;
+  margin: 0 auto;
+}
+
+#find-choices-head {
+  grid-area: c;
+  margin: 0 auto;
+}
+
+#custom-location-search {
+  grid-area: d;
+  margin: 0 auto;
+}
+
+#or-logo-custom {
+  grid-area: e;
+  margin: 0 auto;
+}
+
+#location-custom-butt {
+  grid-area: f;
+  margin: 0 auto;
+}
+
+#get-choices-custom {
+  grid-area: g;
+  margin: 0 auto;
+}
+
 .searchPrompt {
   padding: 1rem;
   color: #fff;
