@@ -1170,6 +1170,23 @@ progress::-webkit-progress-value {
       flex-wrap: wrap;
   }
 
+  .customSearchGrid {
+  display: grid;
+  // grid-template-columns: 1fr;
+  grid-row-gap: 10%;
+  justify-content: center;
+  grid-template-areas: 
+            "a"
+            "b"
+            "c"
+            "d"
+            "g"
+            "e"
+            "f";  
+  }
+  .searchButton {
+    margin: 0 auto;
+  }
   .deckImage {
     max-width: 150px;
     max-height: 150px;
@@ -1177,7 +1194,15 @@ progress::-webkit-progress-value {
   .overlay:before {
     width: 150px;
   }
-
+  .phone {
+    margin: 0 auto;
+    align-self: center;
+  }
+  .help {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
   .deckTitle {
     font-size: .9rem;
   }
@@ -1270,7 +1295,6 @@ progress::-webkit-progress-value {
   #movie-location-search {
     min-width: 250px;
     max-width: 250px;
-    margin: 0px 0px 20px 0px;
   }
 
   .orLogo {
