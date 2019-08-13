@@ -138,6 +138,8 @@
     <div>
       <footer v-if="!hiddenDeck" class="footer" role="contentinfo">
       </footer>
+      <footer v-if="hiddenDeck" class="choice-footer" role="contentinfo">
+      </footer>
     </div>
   </section>
 </template>
