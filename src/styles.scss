@@ -19,6 +19,10 @@ p.whatis-text a {
   text-decoration:underline;
 }
 
+footer a {
+  text-decoration:underline;
+}
+
 body {
     background: $br no-repeat center center fixed;
     background-size: cover;
@@ -913,10 +917,11 @@ progress::-webkit-progress-value {
 }
 
 .footer {
-  font-size: 1rem;
+  display: flex;
+  justify-content: space-around;
+  font-size: 1.5rem;
   color: white;
   font-family: $mon;
-  // position: absolute;
   bottom: 0px;
   left: 0;
   width: 100%;
@@ -926,15 +931,17 @@ progress::-webkit-progress-value {
 }
 
 .footer-choice {
-  font-size: 1rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 1.5rem;
   color: white;
   font-family: $mon;
-  // position: absolute;
   bottom: 0px;
   left: 0;
   width: 100%;
   text-align: center;
-  margin-top: 20px;
+  margin-top: 70px;
   margin-bottom: 20px;
 }
 
@@ -989,6 +996,16 @@ progress::-webkit-progress-value {
 .great-choice {
   font-size: 1em;
 }
+
+.github-logo {
+  width: 146px;
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                            // START MEDIA QUERIES //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
 
 //  Tablet Landscape (iPad Landscape & iPad Pro Portrait)
 @media only screen and (min-width: 1024px) and (max-width: 1024px) {
