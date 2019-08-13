@@ -72,7 +72,7 @@
             v-on:change="getCityID()"
             placeholder=" City Name"
           />
-          <button class="searchButton" @click="getCityID">Get Choices</button>
+          <button class="searchButton" @click="getCityID()">Get Choices</button>
         </div>
         <img class="orLogo" src="//decidor.s3.amazonaws.com/OR_solid_white.png" alt="OR" />
         <button class="locationButton" @click="getMovieLocation()">Get My Location For Me</button>
