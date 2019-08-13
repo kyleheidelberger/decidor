@@ -13,7 +13,7 @@
             v-on:keyup.enter="getBusinesses"
             placeholder=" Address, City, Zip Code, etc..."
           />
-          <button :disabled='cityName.length < 3' class="searchButton" @click="getBusinesses">← TYPE STUFF</button>
+          <button :disabled='cityName.length < 3' class="searchButton" @click="getBusinesses">TYPE STUFF</button>
         </div>
         <img class="orLogo" src="//decidor.s3.amazonaws.com/OR_solid_white.png" alt="OR" />
         <button class="locationButton" @click="getLocation()">Get My Location For Me</button>
@@ -42,10 +42,10 @@
               v-on:keyup.enter="getBusinesses"
               placeholder="Address, City, Zip Code, etc..."
             />
-             <button id="get-choices-custom" :disabled='cityName.length && searchTerm.length < 3' class="searchButton" @click="getBusinesses">← TYPE STUFF</button>
-             <button id="get-choices-custom-2" :disabled='cityName.length && searchTerm.length < 3' class="searchButton" @click="getBusinesses">← TYPE STUFF</button>
-          <img id="or-logo-custom" class="orLogo" src="//decidor.s3.amazonaws.com/OR_solid_white.png" alt="OR" />
-          <button id="location-custom-butt" class="locationButton" :disabled='searchTerm.length < 3' @click="getLocation()">Get My Location For Me</button>
+             <button id="get-choices-custom" :disabled='cityName.length && searchTerm.length < 3' class="searchButton" @click="getBusinesses">TYPE STUFF</button>
+             <!-- <button id="get-choices-custom-2" :disabled='cityName.length && searchTerm.length < 3' class="searchButton" @click="getBusinesses">← TYPE STUFF</button> -->
+          <span id="or-logo-custom" class="orLogo">or</span>
+          <button id="location-custom-butt" class="locationButton" :disabled='searchTerm.length < 6' @click="getLocation()">Get my location for me</button>
         </article>
       </div>
 
@@ -60,7 +60,7 @@
             v-on:keyup.enter="getCityID()"
             placeholder="City Name"
           />
-          <button :disabled='cityName.length < 3' class="searchButton" @click="getCityID()">← TYPE STUFF</button>
+          <button :disabled='cityName.length < 3' class="searchButton" @click="getCityID()">TYPE STUFF</button>
         </div>
         <img class="orLogo" src="//decidor.s3.amazonaws.com/OR_solid_white.png" alt="OR" />
         <button class="locationButton" @click="getMovieLocation()">Get My Location For Me</button>
