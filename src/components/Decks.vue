@@ -51,7 +51,7 @@
 
       <div v-if="!hiddenMovieSearch" class="searchBar">
         <label class="searchPrompt" for="movie-location-search">Where would you like to find movies?</label>
-        <div>
+        <div class='help'>
           <input
             class="input"
             id="movie-location-search"
@@ -60,7 +60,7 @@
             v-on:keyup.enter="getCityID()"
             placeholder="City Name"
           />
-          <button :disabled='cityName.length < 3' class="searchButton" @click="getCityID()">TYPE STUFF</button>
+          <button :disabled='cityName.length < 3' class="searchButton phone" @click="getCityID()">TYPE STUFF</button>
         </div>
         <img class="orLogo" src="//decidor.s3.amazonaws.com/OR_solid_white.png" alt="OR" />
         <button class="locationButton" @click="getMovieLocation()">Get My Location For Me</button>
