@@ -13,7 +13,7 @@
             v-on:keyup.enter="getBusinesses"
             placeholder=" Address, City, Zip Code, etc..."
           />
-          <button v-if='cityName.length >= 3' @click="getBusinesses">Get Choices</button>
+          <button :disabled='cityName.length < 3' class="searchButton" @click="getBusinesses">← TYPE STUFF</button>
         </div>
         <img class="orLogo" src="//decidor.s3.amazonaws.com/OR_solid_white.png" alt="OR" />
         <button class="locationButton" @click="getLocation()">Get My Location For Me</button>
