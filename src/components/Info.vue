@@ -18,7 +18,7 @@
       Start by choosing from one of our Decks: curated collections of common options to choose from.
       Our "bracket-style" algorithm will guide you through the process by presenting you with two options at a time. Keep picking the one you prefer until you arrive at your final decision. A progress bar indicates how far your are through the process, while the color of the bar changes each time you enter a new round of preferences.
     </p>
-    </section>
+    </div>
 </template>
 
 <script>
@@ -27,7 +27,6 @@ import Info from "./Info.vue";
 export default {
   name: "info",
   components: {
-    Info
   }
 };
 </script>
