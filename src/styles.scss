@@ -1200,7 +1200,7 @@ progress::-webkit-progress-value {
   .customSearchGrid {
   display: grid;
   // grid-template-columns: 1fr;
-  grid-row-gap: 10%;
+  grid-row-gap: 2%;
   justify-content: center;
   grid-template-areas: 
             "a"
@@ -1290,7 +1290,7 @@ progress::-webkit-progress-value {
 
   .progress {
     width: 655px;
-    margin: 10px 100px 10px 100px;
+    margin: 10px 100px 20px 100px;
   }
 
   .finalChoice {
@@ -1339,14 +1339,14 @@ progress::-webkit-progress-value {
   #custom-term-search {
     min-width: 250px;
     max-width: 250px;
-    margin: 10px 0px 20px 0px;
+    margin: 10px 0px 20px 80px;
     font-size: 1.1em;
   }
 
   #custom-location-search {
     min-width: 250px;
     max-width: 250px;
-    margin: 10px 0px 20px 0px;
+    margin: 10px 0px 20px 80px;
     font-size: 1.1em;
   }
 
@@ -1681,6 +1681,16 @@ progress::-webkit-progress-value {
   margin-top: 5px;
 }
 
+.customSearchGrid {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;     
+}
+
+#custom-search-head, #find-choices-head, #custom-term-search, #custom-location-search, #get-choices-custom, #location-custom-butt, #or-logo-custom {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 }
 
 // Small mobile (portrait - 375px and smaller)
@@ -1778,6 +1788,14 @@ progress::-webkit-progress-value {
 
   .another-choice {
     margin-top: 5px;
+  }
+
+  #custom-term-search {
+    margin: 10px 0px 20px 40px;
+  }
+
+  #custom-location-search {
+    margin: 10px 0px 20px 40px;
   }
 
 }
