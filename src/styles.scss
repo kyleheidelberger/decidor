@@ -1580,6 +1580,7 @@ progress::-webkit-progress-value {
 .another-choice {
   grid-area: link;
   max-width: 500px;
+  
 }
 
 .logo-div {
@@ -1679,6 +1680,8 @@ progress::-webkit-progress-value {
 
 .another-choice {
   margin-top: 5px;
+  margin-bottom: 10px;
+
 }
 
 .customSearchGrid {
@@ -1788,6 +1791,7 @@ progress::-webkit-progress-value {
 
   .another-choice {
     margin-top: 5px;
+    margin-bottom: 10px;
   }
 
   #custom-term-search {
@@ -1796,6 +1800,17 @@ progress::-webkit-progress-value {
 
   #custom-location-search {
     margin: 10px 0px 20px 40px;
+  }
+
+  .customSearchGrid {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;     
+  }
+
+  #custom-search-head, #find-choices-head, #custom-term-search, #custom-location-search, #get-choices-custom, #location-custom-butt, #or-logo-custom {
+    margin-top: 5px;
+    margin-bottom: 5px;
   }
 
 }
