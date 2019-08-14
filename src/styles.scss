@@ -1074,6 +1074,25 @@ progress::-webkit-progress-value {
   margin-bottom: 20px;
 }
 
+.footer-choice {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 1.5rem;
+  color: white;
+  font-family: $mon;
+  bottom: 0px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  margin-top: 70px;
+  margin-bottom: 20px;
+}
+
+.github-logo {
+  width: 146px;
+}
+
 .info-title {
   color: #fff;
   font-size: 3.5rem;
