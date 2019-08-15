@@ -62,8 +62,8 @@
           />
           <button :disabled='cityName.length < 3' class="searchButton phone" @click="getCityID()">TYPE STUFF</button>
         </div>
-        <img class="orLogo" src="//decidor.s3.amazonaws.com/OR_solid_white.png" alt="OR" />
-        <button class="locationButton" @click="getMovieLocation()">Get My Location For Me</button>
+        <img class="orLogo" id="movie-or-logo" src="//decidor.s3.amazonaws.com/OR_solid_white.png" alt="OR" />
+        <button class="locationButton" id="movie-location-button" @click="getMovieLocation()">Get My Location For Me</button>
       </div>
 
       <div v-if="!hiddenMovies">

@@ -1361,6 +1361,10 @@ progress::-webkit-progress-value {
     border-radius: 10px;
   }
 
+  #movie-or-logo, #movie-location-button {
+    display: none;
+  }
+
 }
 
 // iPad Portrait ONLY
